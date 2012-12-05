@@ -32,7 +32,7 @@ def main():
         if not os.path.exists('bin'): os.makedirs('bin')
 
         # Link all of the scripts into home/bin.
-        for script in glob.glob('.files/bin/*.py'):
+        for script in glob.glob(os.path.abspath('.files/bin') + '/*.py'):
             if 'py2exe' in script: continue
             os.system('ln -s %s bin/%s' % (script, os.path.splitext(os.path.basename(script))[0]))
 

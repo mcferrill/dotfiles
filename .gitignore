@@ -1,0 +1,4 @@
+bin/clean
+bin/cleanlines
+bin/filecount
+bin/lines
