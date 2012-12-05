@@ -13,10 +13,10 @@ def main():
     os.rename(os.path.basename(os.path.dirname(__file__)), '.files')
 
     # Windows
-    if sys.platform == 'win32':
+    if sys.platform in ('win32', 'cygwin'):
 
         # Create a "junction" (symlink-like) to home/bin.
-        os.system(r'.files\bin\junction.exe bin .files\bin')
+        os.system(r'.files/bin/junction.exe bin .files/bin')
 
         # Add home/bin to our system path.
         os.system('SET PATH=%%PATH%%;%s' % os.path.join(os.path.abspath(os.curdir)))
