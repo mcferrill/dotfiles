@@ -10,5 +10,5 @@ if __name__ == '__main__':
             directories.append(dirname)
         for filename in filenames:
             files.append(filename)
-                
+
     print '%s directories and %s files' % (len(directories),len(files))
