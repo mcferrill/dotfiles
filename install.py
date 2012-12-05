@@ -37,6 +37,7 @@ def main():
             os.system('ln -s %s bin/%s' % (script, os.path.splitext(os.path.basename(script))[0]))
 
         # Link the bash and vim settings.
+        os.system('rm -rf .bashrc .profile .vim .vimrc')
         os.system('ln -s .files/.bashrc .bashrc')
         os.system('ln -s .files/.bashrc .profile')
         os.system('ln -s .files/.vim .vim')
