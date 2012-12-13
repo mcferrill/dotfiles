@@ -8,12 +8,11 @@ autocmd! bufwritepost .vimrc source %
 " Better copy & paste
 " When you want to paste large blocks of code into vim, press F2 before you
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
-
 set pastetoggle=<F2>
 set clipboard=unnamed
 
 " Mouse and backspace
-set mouse=a
+" set mouse=a
 set bs=2     " make backspace behave like normal again
 
 
@@ -68,8 +67,8 @@ vnoremap > >gv  " better indentation
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-"au InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Color scheme
@@ -148,10 +147,10 @@ set laststatus=2
 " Settings for ctrlp
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
-"let g:ctrlp_max_height = 30
-"set wildignore+=*.pyc
-"set wildignore+=*_build/*
-"set wildignore+=*/coverage/*
+let g:ctrlp_max_height = 30
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
 
 
 " Settings for python-mode
