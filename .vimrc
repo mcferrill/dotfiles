@@ -12,7 +12,7 @@ set pastetoggle=<F2>
 set clipboard=unnamed
 
 " Mouse and backspace
-" set mouse=a
+set mouse=a
 set bs=2     " make backspace behave like normal again
 
 
