@@ -42,5 +42,6 @@ def main():
         os.system('ln -s .files/.bashrc .profile')
         os.system('ln -s .files/.vim .vim')
         os.system('ln -s .files/.vimrc .vimrc')
+        os.system('ln -s .files/gitignore .gitignore')
 
 if __name__=='__main__': main()
