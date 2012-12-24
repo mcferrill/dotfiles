@@ -187,6 +187,6 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " Python folding
 " mkdir -p ~/.vim/ftplugin
 " wget -O ~/.vim/ftplugin/python_editing.vim http://www.vim.org/scripts/download_script.php?src_id=5492
-"" set nofoldenable
+set nofoldenable
 
 nmap <silent> <C-D> :NERDTreeToggle<CR>
