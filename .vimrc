@@ -68,14 +68,14 @@ vnoremap > >gv  " better indentation
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
+" au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Color scheme
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-"" set t_Co=256
-"" color wombat256mod
+set t_Co=256
+color wombat256mod
 
 
 " Enable syntax highlighting
@@ -83,7 +83,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 filetype off
 filetype plugin indent on
 syntax on
-
+"set background=dark
 
 " Showing line numbers and length
 set number  " show line numbers
@@ -132,11 +132,12 @@ set noswapfile
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
 
+" Smarty syntax highlighting
+au BufRead,BufNewFile *.tpl set filetype=smarty
 
 " ============================================================================
 " Python IDE Setup
 " ============================================================================
-
 
 " Settings for vim-powerline
 " cd ~/.vim/bundle
