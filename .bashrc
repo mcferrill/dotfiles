@@ -8,7 +8,9 @@ alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -A"
 alias cls="clear"
-export VISUAL='nano'
+alias python="python2.7"
+alias vim=$HOME/bin/vim
+export VISUAL='vim'
 
 PATH=$PATH:$HOME/bin
 
