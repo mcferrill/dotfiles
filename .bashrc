@@ -19,13 +19,8 @@ PATH=$PATH:$HOME/bin
 
 source $HOME/.files/git-completion.bash
 source $HOME/.files/git-colors.sh
-#source $HOME/.files/git-prompt.sh
-#source $HOME/.files/git-prompt.sh
-#GIT_PS1_SHOWDIRTYSTATE=1
-#GIT_PS1_SHOWUNTRACKEDFILES=1
-#GIT_PS1_SHOWSTASHSTATE=1
+source $HOME/.files/git-prompt.sh
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWSTASHSTATE=1
 #GIT_PS1_SHOWUPSTREAM="auto"
-#GIT_PS1_SHOWCOLORHINTS=1
-#PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
-
-# User specific aliases and functions
