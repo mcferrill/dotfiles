@@ -1,0 +1,12 @@
+[user]
+	email = mcferrill@gmail.com
+	name = Micah Ferrill
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+    dt = difftool
+    st = status --short
+[color]
+	ui = true

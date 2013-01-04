@@ -10,6 +10,7 @@ alias la="ls -A"
 alias cls="clear"
 alias python="python2.7"
 alias vim=$HOME/bin/vim
+alias vimdiff=$HOME/bin/vimdiff
 export VISUAL='vim'
 
 PATH=$PATH:$HOME/bin
