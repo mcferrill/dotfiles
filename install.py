@@ -8,6 +8,20 @@ import os
 # Constants
 home = os.environ.get('HOME')
 repo = join(home, '.files')
+backup = join(home, 'dotfiles.old')
+
+
+def symlink(source, target):
+    """Create a symlink to source called target without deleting old files."""
+
+    if os.path.exists(target):
+        if not os.path.exists(backup):
+            os.makedirs(backup)
+        print '\tBacking up old %s' % basename(target)
+        os.rename(target, join(backup, basename(target)))
+
+    print '\tLinking %s to %s' % (target, source)
+    os.system('ln -s "%s" "%s"' % (source, target))
 
 
 def main():
@@ -40,11 +54,11 @@ def main():
             os.makedirs('bin')
 
         # Link all of the scripts into home/bin.
-        for script in glob.glob(abspath(join(repo, 'bin', '/*.py'))):
+        for script in glob.glob(abspath(join(repo, 'bin', '*.py'))):
             if 'py2exe' in script:
                 continue
-            os.system('ln -s %s bin/%s' % (script,
-                                           splitext(basename(script))[0]))
+            symlink(script,
+                    join('bin', splitext(basename(script))[0]))
 
         # Link the bash and vim settings.
         #os.system('rm -rf .bashrc .profile .vim .vimrc')
