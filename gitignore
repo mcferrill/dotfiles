@@ -1,7 +1,0 @@
-*.pyc
-*.egg-info
-.project
-.pydevproject
-.coverage
-build
-dist
