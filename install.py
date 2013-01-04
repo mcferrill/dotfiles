@@ -60,8 +60,10 @@ def main():
             symlink(script,
                     join('bin', splitext(basename(script))[0]))
 
-        # Link the bash and vim settings.
-        #os.system('rm -rf .bashrc .profile .vim .vimrc')
+        # Link all the dotfiles into the home directory.
+        for config in glob.glob(join(repo, 'dot', '*')):
+            symlink(config, join(home, '.' + basename(config)))
+        #os.system('rm -rf .bashrc .profile .Vvim .vimrc')
         #os.system('ln -s .files/.bashrc .bashrc')
         #os.system('ln -s .files/.bashrc .profile')
         #os.system('ln -s .files/.vim .vim')

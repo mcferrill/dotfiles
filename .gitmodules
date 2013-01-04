@@ -1,24 +1,15 @@
-[submodule ".vim/bundle/ctrlp.vim"]
-	path = .vim/bundle/ctrlp.vim
+[submodule "dot/vim/bundle/ctrlp.vim"]
+	path = dot/vim/bundle/ctrlp.vim
 	url = git://github.com/kien/ctrlp.vim
-[submodule ".vim/bundle/nerdtree"]
-	path = .vim/bundle/nerdtree
+[submodule "dot/vim/bundle/nerdtree"]
+	path = dot/vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree
-[submodule ".vim/bundle/python-mode"]
-	path = .vim/bundle/python-mode
+[submodule "dot/vim/bundle/python-mode"]
+	path = dot/vim/bundle/python-mode
 	url = git://github.com/klen/python-mode
-[submodule ".vim/bundle/snipmate"]
-	path = .vim/bundle/snipmate
+[submodule "dot/vim/bundle/snipmate"]
+	path = dot/vim/bundle/snipmate
 	url = git://github.com/msanders/snipmate.vim
-[submodule ".vim/bundle/vim-haml"]
-	path = .vim/bundle/vim-haml
+[submodule "dot/vim/bundle/vim-haml"]
+	path = dot/vim/bundle/vim-haml
 	url = git://github.com/tpope/vim-haml
-[submodule "vim-powerline"]
-	path = vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline
-[submodule ".vim/bundle/vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround
-[submodule ".vim/bundle/vim-powerline"]
-	path = .vim/bundle/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline
