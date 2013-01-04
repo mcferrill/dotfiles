@@ -13,14 +13,15 @@ alias vim=$HOME/bin/vim
 alias vimdiff=$HOME/bin/vimdiff
 export VISUAL='vim'
 
+# Add home/bin to our path.
 PATH=$PATH:$HOME/bin
 
-# Git tab completion and prompt.
+DOTFILES=$HOME/dotfiles
 
-source $HOME/.files/git/git-completion.bash
-source $HOME/.files/git/git-colors.sh
-source $HOME/.files/git/git-prompt.sh
+# Git tab completion and prompt.
+source $DOTFILES/git/git-completion.bash
+source $DOTFILES/git/git-colors.sh
+source $DOTFILES/git/git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWSTASHSTATE=1
-#GIT_PS1_SHOWUPSTREAM="auto"

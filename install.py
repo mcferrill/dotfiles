@@ -7,7 +7,7 @@ import os
 
 # Constants
 home = os.environ.get('HOME')
-repo = join(home, '.files')
+repo = join(home, 'dotfiles')
 backup = join(home, 'dotfiles.old')
 
 
