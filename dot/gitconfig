@@ -1,0 +1,14 @@
+[user]
+	email = mcferrill@gmail.com
+	name = Micah Ferrill
+[diff]
+    tool = default-diff
+[difftool]
+    prompt = false
+[difftool "default-diff"]
+    cmd = /home/mcferrill/bin/vimdiff $LOCAL $REMOTE
+[alias]
+    dt = difftool
+    st = status --short
+[color]
+	ui = true
