@@ -43,5 +43,6 @@ def main():
         os.system('ln -s .files/.vim .vim')
         os.system('ln -s .files/.vimrc .vimrc')
         os.system('ln -s .files/gitignore .gitignore')
+        os.system('ln -s .files/.gitconfig .gitconfig')
 
 if __name__=='__main__': main()
