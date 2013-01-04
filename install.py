@@ -14,7 +14,7 @@ backup = join(home, 'dotfiles.old')
 def symlink(source, target):
     """Create a symlink to source called target without deleting old files."""
 
-    if os.path.exists(target):
+    if os.path.exists(target) or os.path.islink(target):
         if not os.path.exists(backup):
             os.makedirs(backup)
         print '\tBacking up old %s' % basename(target)
