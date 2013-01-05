@@ -100,7 +100,7 @@ if [ $? -eq 0 ]; then \
     echo "'$Green'"$(__git_ps1 " (%s)"'$Color_Off'); \
   else \
     # @5 - Changes to working tree
-    echo "'$IRed'"$(__git_ps1 " {%s}"'$Color_Off'); \
+    echo "'$IRed'"$(__git_ps1 " (%s)"'$Color_Off'); \
   fi) \$ "; \
 else \
   # @2 - Prompt when not in GIT repo
