@@ -17,10 +17,10 @@ def symlink(source, target):
     if os.path.exists(target) or os.path.islink(target):
         if not os.path.exists(backup):
             os.makedirs(backup)
-        print '\tBacking up old %s' % basename(target)
+        print 'Backing up old %s' % basename(target)
         os.rename(target, join(backup, basename(target)))
 
-    print '\tLinking %s to %s' % (target, source)
+    print 'Linking %s to %s' % (target, source)
     os.system('ln -s "%s" "%s"' % (source, target))
 
 
@@ -63,13 +63,6 @@ def main():
         # Link all the dotfiles into the home directory.
         for config in glob.glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)))
-        #os.system('rm -rf .bashrc .profile .Vvim .vimrc')
-        #os.system('ln -s .files/.bashrc .bashrc')
-        #os.system('ln -s .files/.bashrc .profile')
-        #os.system('ln -s .files/.vim .vim')
-        #os.system('ln -s .files/.vimrc .vimrc')
-        #os.system('ln -s .files/gitignore .gitignore')
-        #os.system('ln -s .files/.gitconfig .gitconfig')
 
 if __name__ == '__main__':
     main()
