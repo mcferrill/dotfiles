@@ -4,10 +4,13 @@
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
+
+# Aliases
 alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -A"
 alias cls="clear"
+alias p="plaid"
 alias python="python2.7"
 alias vim=$HOME/bin/vim
 alias vimdiff=$HOME/bin/vimdiff
@@ -22,6 +25,4 @@ DOTFILES=$HOME/dotfiles
 source $DOTFILES/git/git-completion.bash
 source $DOTFILES/git/git-colors.sh
 source $DOTFILES/git/git-prompt.sh
-#GIT_PS1_SHOWDIRTYSTATE=1
-#GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWSTASHSTATE=1

@@ -10,5 +10,7 @@
 [alias]
     dt = difftool
     st = status --short
+    ci = commit
+    co = checkout
 [color]
 	ui = true
