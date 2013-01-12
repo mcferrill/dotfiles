@@ -1,14 +1,16 @@
 #!/usr/bin/env python
 
+"""Walk a directory structure and get a count of files and directories."""
+
 import os
 
 if __name__ == '__main__':
     files = []
     directories = []
-    for dirname,dirnames,filenames in os.walk(os.curdir):
+    for dirname, dirnames, filenames in os.walk(os.curdir):
         for dirname in dirnames:
             directories.append(dirname)
         for filename in filenames:
             files.append(filename)
 
-    print '%s directories and %s files' % (len(directories),len(files))
+    print '%s directories and %s files' % (len(directories), len(files))
