@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+"""Strips excess whitespace off the end of lines of code."""
+
 import glob
 import sys
 
