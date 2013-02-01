@@ -1,43 +1,63 @@
-" Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
 
-" Better copy & paste
+" Settings "
+
+set history=700
+set undolevels=700
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set nobackup
+set nowritebackup
+set noswapfile
+autocmd! bufwritepost .vimrc source %
 set pastetoggle=<F2>
 set clipboard=unnamed
-
-" Mouse and backspace
 set mouse=a
-set bs=2     " make backspace behave like normal again
-
-" Rebind <Leader> key
+set bs=2
 let mapleader = ","
 
-" Removes highlight of your last search
+
+" Key Bindings "
+
+" Clear search highlight
 noremap <C-n> :nohl<CR>
 vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
-" Quicksave command
+" Quicksave
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
 inoremap <C-Z> <C-O>:update<CR>
 
-" Quick quit command
+" Quick quit
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+" Select all
+map <Leader>a ggVG
 
-" easier moving between tabs
+" Easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
-" map sort function to a key
+" Sort with leader-s
 vnoremap <Leader>s :sort<CR>
+
+" for when I'm feeling adventurous!
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
 
 " easier moving of code blocks
 vnoremap < <gv  " better indentation
@@ -48,11 +68,22 @@ inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" easier formatting of paragraphs
+"" vmap Q gq
+"" nmap Q gqap
+
+" move the cursor in insert mode
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
+
+
+" Color Scheme "
+
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 " au InsertLeave * match ExtraWhitespace /\s\+$/
-
-" Color scheme
 set t_Co=256
 color wombat256mod
 
@@ -69,30 +100,8 @@ set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
-" easier formatting of paragraphs
-"" vmap Q gq
-"" nmap Q gqap
 
-" Useful settings
-set history=700
-set undolevels=700
-
-" Real programmers don't use TABs but spaces
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set shiftround
-set expandtab
-
-" Make search case insensitive
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-set nobackup
-set nowritebackup
-set noswapfile
+" Plugins "
 
 " Setup Pathogen to manage your plugins
 call pathogen#infect()
@@ -133,10 +142,11 @@ function! OmniPopup(action)
     return a:action
 endfunction
 
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+"inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
+"inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
 " Python folding
 set nofoldenable
 
+" NerdTree shortcut
 nmap <silent> <C-D> :NERDTreeToggle<CR>
