@@ -3,3 +3,4 @@ bin/cleanlines
 bin/filecount
 bin/lines
 bin/vim
+dot/vim/.netrwhist
