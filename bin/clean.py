@@ -4,13 +4,17 @@
 
 import os
 import sys
+import shutil
 
 
 def walk(dirname=os.curdir):
     for basename in os.listdir(dirname):
         pathname = dirname + '/' + basename
         if os.path.isdir(pathname) and '-r' in sys.argv:
-            walk(pathname)
+            if pathname.endswith('__pycache__'):
+                shutil.rmtree(pathname)
+            else:
+                walk(pathname)
         else:
             if basename.endswith('~'):
                 os.remove(pathname)
