@@ -23,7 +23,7 @@ PATH=$PATH:$HOME/bin
 DOTFILES=$HOME/dotfiles
 
 # Git tab completion and prompt.
-source $DOTFILES/git/git-completion.bash
+#source $DOTFILES/git/git-completion.bash
 source $DOTFILES/git/git-colors.sh
 source $DOTFILES/git/git-prompt.sh
 GIT_PS1_SHOWSTASHSTATE=1
