@@ -10,11 +10,12 @@ alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -A"
 alias cls="clear"
-alias p="plaid"
 alias python="python2.7"
 alias pytest='py.test-2.7'
+alias grep="grep --color"
 alias vim=$HOME/bin/vim
 alias vimdiff=$HOME/bin/vimdiff
+
 export VISUAL='vim'
 
 # Add home/bin to our path.
