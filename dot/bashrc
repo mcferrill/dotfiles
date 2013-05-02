@@ -10,11 +10,14 @@ alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -A"
 alias cls="clear"
-alias python="python2.7"
+alias python2="python2.7"
+alias python3="python3.3"
+alias python="python2"
 alias pytest='py.test-2.7'
+alias pytest3='py.test-3.3'
 alias grep="grep --color"
 alias vim=$HOME/bin/vim
-alias vimdiff=$HOME/bin/vimdiff
+alias vimdiff=$HOME/bin/vim
 
 export VISUAL='vim'
 
