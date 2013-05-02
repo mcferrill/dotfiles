@@ -17,7 +17,6 @@ alias pytest='py.test-2.7'
 alias pytest3='py.test-3.3'
 alias grep="grep --color"
 alias vim=$HOME/bin/vim
-alias vimdiff=$HOME/bin/vim
 
 export VISUAL='vim'
 
