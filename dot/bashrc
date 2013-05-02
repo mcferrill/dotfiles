@@ -26,8 +26,8 @@ DOTFILES=$HOME/dotfiles
 # Git tab completion and prompt.
 #source $DOTFILES/git/git-completion.bash
 source $DOTFILES/git/git-colors.sh
-source $DOTFILES/git/git-prompt.sh
-GIT_PS1_SHOWSTASHSTATE=1
+#source $DOTFILES/git/git-prompt.sh
+#GIT_PS1_SHOWSTASHSTATE=1
 
 # Add screen name to prompt.
 case $TERM in
