@@ -18,7 +18,7 @@ alias pytest3='py.test-3.3'
 alias grep="grep --color"
 alias vim=$HOME/bin/vim
 
-export VISUAL='vim'
+export VISUAL=$HOME/bin/vim
 
 # Add home/bin to our path.
 PATH=$PATH:$HOME/bin
