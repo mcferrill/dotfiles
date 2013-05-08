@@ -16,6 +16,7 @@ alias python="python2"
 alias pytest='py.test-2.7'
 alias pytest3='py.test-3.3'
 alias grep="grep --color"
+alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
 alias vim=$HOME/bin/vim
 
 export VISUAL=$HOME/bin/vim
