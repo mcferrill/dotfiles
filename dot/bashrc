@@ -42,3 +42,14 @@ case $TERM in
         ;;
 esac
 export PS1="${SCREENTITLE}"$PS1
+
+# System specific settings
+if [ -f $DOTFILES/sys.sh ]; then
+    source $DOTFILES/sys.sh
+fi
+
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/envs
+if [ -f $VIRTUALENVWRAPPER_SH ]; then
+    source $VIRTUALENVWRAPPER_SH
+fi

@@ -5,3 +5,4 @@ bin/lines
 bin/vim
 bin/vimdiff
 dot/vim/.netrwhist
+sys.sh
