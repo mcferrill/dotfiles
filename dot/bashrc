@@ -43,8 +43,10 @@ case $TERM in
 esac
 export PS1="${SCREENTITLE}"$PS1
 
-# Default virtualenvwrapper.sh location
+# Default virtualenvwrapper settings
 VIRTUALENVWRAPPER_SH=/usr/local/bin/virtualenvwrapper.sh 
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
+export WORKON_HOME=$HOME/envs
 
 # System specific settings
 if [ -f $DOTFILES/sys.sh ]; then
