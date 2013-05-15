@@ -43,6 +43,9 @@ case $TERM in
 esac
 export PS1="${SCREENTITLE}"$PS1
 
+# Default virtualenvwrapper.sh location
+VIRTUALENVWRAPPER_SH=/usr/local/bin/virtualenvwrapper.sh 
+
 # System specific settings
 if [ -f $DOTFILES/sys.sh ]; then
     source $DOTFILES/sys.sh
