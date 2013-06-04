@@ -16,6 +16,3 @@
 [submodule "dot/vim/bundle/powerline"]
 	path = dot/vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline
-[submodule "dot/vim/bundle/vim-phpqa"]
-	path = dot/vim/bundle/vim-phpqa
-	url = https://github.com/joonty/vim-phpqa.git
