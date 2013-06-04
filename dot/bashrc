@@ -24,6 +24,9 @@ export VISUAL=$HOME/bin/vim
 # Add home/bin to our path.
 PATH=$PATH:$HOME/bin
 
+# Add pear to our path
+PATH=$HOME/pear:$PATH
+
 DOTFILES=$HOME/dotfiles
 
 # Git tab completion and prompt.
