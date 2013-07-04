@@ -47,7 +47,6 @@ esac
 export PS1="${SCREENTITLE}"$PS1
 
 # Default virtualenvwrapper settings
-VIRTUALENVWRAPPER_SH=/usr/local/bin/virtualenvwrapper.sh 
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 export WORKON_HOME=$HOME/envs
 
@@ -61,3 +60,7 @@ export WORKON_HOME=$HOME/envs
 if [ -f $VIRTUALENVWRAPPER_SH ]; then
     source $VIRTUALENVWRAPPER_SH
 fi
+
+# Pip settings
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
