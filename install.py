@@ -30,7 +30,8 @@ def main():
     os.chdir(home)
 
     # Rename our directory to our repo constant.
-    os.rename(basename(dirname(__file__)), repo)
+    if not repo.endswith(dirname(__file__)):
+        os.rename(basename(dirname(__file__)), repo)
 
     # Create a "junction" (symlink-like) to home/bin.
     if sys.platform in ('win32', 'cygwin'):
