@@ -27,7 +27,7 @@ PATH=$PATH:$HOME/bin
 # Add pear to our path
 PATH=$HOME/pear:$PATH
 
-DOTFILES=$HOME/dotfiles
+DOTFILES=$HOME/.files
 
 # Git tab completion and prompt.
 #source $DOTFILES/git/git-completion.bash
@@ -48,7 +48,7 @@ export PS1="${SCREENTITLE}"$PS1
 
 # Default virtualenvwrapper settings
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-export WORKON_HOME=$HOME/envs
+export WORKON_HOME=$HOME/.envs
 
 # System specific settings
 if [ -f $DOTFILES/sys.sh ]; then
@@ -56,7 +56,6 @@ if [ -f $DOTFILES/sys.sh ]; then
 fi
 
 # Virtualenvwrapper
-export WORKON_HOME=$HOME/envs
 if [ -f $VIRTUALENVWRAPPER_SH ]; then
     source $VIRTUALENVWRAPPER_SH
 fi
