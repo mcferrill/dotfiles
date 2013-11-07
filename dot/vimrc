@@ -148,5 +148,6 @@ endfunction
 " Python folding
 set nofoldenable
 
-" NerdTree shortcut
+" NerdTree 
 nmap <silent> <C-D> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.py[co]$']
