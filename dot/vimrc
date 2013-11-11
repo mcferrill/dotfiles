@@ -150,4 +150,4 @@ set nofoldenable
 
 " NerdTree 
 nmap <silent> <C-D> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.py[co]$']
+let NERDTreeIgnore = ['\.py[co]$', '__pycache__$']
