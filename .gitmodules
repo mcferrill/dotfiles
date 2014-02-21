@@ -16,3 +16,6 @@
 [submodule "dot/vim/bundle/powerline"]
 	path = dot/vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline
+[submodule "dot/vim/bundle/vim-coffee-script"]
+	path = dot/vim/bundle/vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
