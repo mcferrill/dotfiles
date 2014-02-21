@@ -2,7 +2,9 @@
 
 """Walk a directory structure and count lines of code."""
 
-import glob
+from itertools import chain
+from glob import glob
+import sys
 import os
 
 types = ['.py', '.js', '.html', '.haml', '.sass', '.css', '.cgi']
@@ -10,11 +12,8 @@ exceptions = ('ckeditor',)
 
 
 def crawl(path=os.curdir):
-    lines = 0
-    chars = 0
-    files = []
-    for type in types:
-        files += glob.glob(path + '/*' + type)
+    lines, chars = 0, 0
+    files = chain(*[glob(path + '/*' + type) for type in types])
     for obj in files:
         exception = False
         for exc in exceptions:
@@ -23,12 +22,11 @@ def crawl(path=os.curdir):
                 continue
         if exception:
             continue
-        f = open(obj)
-        s = f.read()
+        with open(obj) as f:
+            s = f.read()
         lines += len([l for l in s.splitlines() if l.strip()])
         chars += len(s)
-        f.close()
-    for obj in glob.glob(path + '/*'):
+    for obj in glob(path + '/*'):
         if os.path.isdir(obj):
             result = crawl(obj)
             lines += result[0]
@@ -36,6 +34,8 @@ def crawl(path=os.curdir):
     return lines, chars
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1:
+        types = sys.argv[1:]
     lines, chars = crawl()
     print 'There are %s lines and %s characters in this and nested \
 directories.' % (lines, chars)
