@@ -6,7 +6,7 @@ import sys
 import os
 
 # Constants
-home = os.environ.get('HOME')
+home = os.environ.get('HOME', os.environ.get('USERPROFILE'))
 repo = join(home, '.files')
 backup = join(home, 'dotfiles.old')
 
@@ -39,7 +39,7 @@ def main():
                   join(repo, 'bin'))
 
     # Windows
-    if sys.platform == 'win23':
+    if sys.platform == 'win32':
         # Add home/bin to our system path.
         os.system('SET PATH=%%PATH%%;%s' % join(abspath(os.curdir)))
 
