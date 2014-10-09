@@ -60,6 +60,7 @@ def main():
                 continue
             symlink(script,
                     join('bin', splitext(basename(script))[0]))
+        symlink(abspath(join(repo, 'bin', 'cloc')), join('bin', 'cloc'))
 
         # Link all the dotfiles into the home directory.
         for config in glob.glob(join(repo, 'dot', '*')):
