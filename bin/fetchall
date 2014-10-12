@@ -20,7 +20,9 @@ def find_repos(where=os.curdir):
 
 
 def main():
-    base = sys.argv[-1] if len(sys.argv) > 1 else os.curdir
+    base = os.curdir
+    if len(sys.argv) > 1:
+        base = sys.argv[-1]
     for repo in find_repos(base):
         os.chdir(repo)
         print 'Updating %s' % os.path.basename(repo)
