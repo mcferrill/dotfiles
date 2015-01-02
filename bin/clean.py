@@ -24,6 +24,10 @@ def walk(dirname=os.curdir):
                 os.remove(pathname)
             elif basename.endswith('.pyc'):
                 os.remove(pathname)
+            elif basename.startswith('.DS_Store'):
+                os.remove(pathname)
+            elif basename.startswith('._.DS_Store'):
+                os.remove(pathname)
 
 if __name__ == '__main__':
     walk()
