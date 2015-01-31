@@ -19,3 +19,6 @@
 [submodule "dot/vim/bundle/vim-coffee-script"]
 	path = dot/vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "dot/vim/bundle/ada-mode"]
+	path = dot/vim/bundle/ada-mode
+	url = https://github.com/vim-scripts/Ada-Bundle.git

@@ -15,7 +15,7 @@ alias pytest3='py.test-3.3'
 alias grep="grep --color"
 alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
 
-export VISUAL=$HOME/bin/vim
+export VISUAL=vim
 
 # Add home/bin to our path.
 PATH=$PATH:$HOME/bin
