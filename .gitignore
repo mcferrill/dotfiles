@@ -6,3 +6,4 @@ bin/vim
 bin/vimdiff
 dot/vim/.netrwhist
 sys.sh
+.DS_Store
