@@ -31,10 +31,6 @@ source $DOTFILES/git/git-colors.sh
 #source $DOTFILES/git/git-prompt.sh
 #GIT_PS1_SHOWSTASHSTATE=1
 
-if [ "$VIRTUAL_ENV" ]; then 
-    source $VIRTUAL_ENV/bin/activate; 
-fi 
-
 # Add screen name to prompt.
 case $TERM in
     screen*)
@@ -63,3 +59,8 @@ fi
 # Pip settings
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
+
+if [ "$VIRTUAL_ENV" ]; then 
+    source $VIRTUAL_ENV/bin/activate; 
+fi 
+
