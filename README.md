@@ -30,5 +30,8 @@ Currently used on:
 * CentOS (webfaction)
 * Ubuntu
 * Cygwin (windows 8)
+* Mac OSX 10.10 (note: ensure "terminal->prefs->profiles->terminal->save lines
+  to scrollback when an app status bar is present" is enabled to get mouse
+scrolling within screen
 
 Suggestions are welcome.
