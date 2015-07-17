@@ -22,3 +22,6 @@
 [submodule "dot/vim/bundle/ada-mode"]
 	path = dot/vim/bundle/ada-mode
 	url = https://github.com/vim-scripts/Ada-Bundle.git
+[submodule "dot/vim/bundle/fugitive.vim"]
+	path = dot/vim/bundle/fugitive.vim
+	url = https://github.com/tpope/vim-fugitive.git
