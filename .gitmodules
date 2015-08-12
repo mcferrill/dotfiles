@@ -4,12 +4,6 @@
 [submodule "dot/vim/bundle/nerdtree"]
 	path = dot/vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree
-[submodule "dot/vim/bundle/python-mode"]
-	path = dot/vim/bundle/python-mode
-	url = git://github.com/klen/python-mode
-[submodule "dot/vim/bundle/snipmate"]
-	path = dot/vim/bundle/snipmate
-	url = git://github.com/msanders/snipmate.vim
 [submodule "dot/vim/bundle/haml"]
 	path = dot/vim/bundle/haml
 	url = git://github.com/tpope/vim-haml
