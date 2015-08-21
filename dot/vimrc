@@ -162,3 +162,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Use two spaces for ada
+autocmd FileType ada setlocal shiftwidth=2 tabstop=2
+
+" Force .md files to be read as markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
