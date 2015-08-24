@@ -34,7 +34,7 @@ def main():
         os.rename(basename(dirname(__file__)), repo)
 
     # Create a "junction" (symlink-like) to home/bin.
-    if sys.platform in ('win32', 'cygwin'):
+    if sys.platform in ('win32'):
         os.system(join(repo, 'bin', 'junction.exe') + ' bin ' +
                   join(repo, 'bin'))
 
