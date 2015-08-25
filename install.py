@@ -24,6 +24,17 @@ def symlink(source, target):
     os.system('ln -s "%s" "%s"' % (source, target))
 
 
+def install_submodules():
+    """Load all of the submodules (vim plugins, etc.) as part of the install
+    process.
+    """
+
+    print 'Installing sub-modules.'
+    os.chdir(repo)
+    os.system('git submodule init')
+    os.system('git submodule update')
+
+
 def main():
 
     # Move to the directory above the script's location (home folder)
@@ -33,13 +44,15 @@ def main():
     if not repo.endswith(dirname(__file__)):
         os.rename(basename(dirname(__file__)), repo)
 
-    # Create a "junction" (symlink-like) to home/bin.
-    if sys.platform in ('win32'):
+    # Windows
+    if sys.platform == 'win32':
+        print 'This platform is currently not supported!'
+        return
+
+        # Create a "junction" (symlink-like) to home/bin.
         os.system(join(repo, 'bin', 'junction.exe') + ' bin ' +
                   join(repo, 'bin'))
 
-    # Windows
-    if sys.platform == 'win32':
         # Add home/bin to our system path.
         os.system('SET PATH=%%PATH%%;%s' % join(abspath(os.curdir)))
 
@@ -58,13 +71,16 @@ def main():
         for script in glob.glob(abspath(join(repo, 'bin', '*.py'))):
             if 'py2exe' in script:
                 continue
-            symlink(script,
-                    join('bin', splitext(basename(script))[0]))
+            symlink(script, join('bin', splitext(basename(script))[0]))
+
+        # Special handler for cloc (perl).
         symlink(abspath(join(repo, 'bin', 'cloc')), join('bin', 'cloc'))
 
         # Link all the dotfiles into the home directory.
         for config in glob.glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)))
+
+    install_submodules()
 
 if __name__ == '__main__':
     main()
