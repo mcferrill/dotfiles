@@ -24,17 +24,6 @@ def symlink(source, target):
     os.system('ln -s "%s" "%s"' % (source, target))
 
 
-def install_submodules():
-    """Load all of the submodules (vim plugins, etc.) as part of the install
-    process.
-    """
-
-    print 'Installing sub-modules.'
-    os.chdir(repo)
-    os.system('git submodule init')
-    os.system('git submodule update')
-
-
 def main():
 
     # Move to the directory above the script's location (home folder)
@@ -80,7 +69,15 @@ def main():
         for config in glob.glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)))
 
-    install_submodules()
+    print 'Installing sub-modules.'
+    os.chdir(repo)
+    os.system('git submodule init')
+    os.system('git submodule update')
+
+    print 'Installing additional python packages.'
+    os.system('pip install -r requirements.txt')
+
+    print 'Installation complete!'
 
 if __name__ == '__main__':
     main()
