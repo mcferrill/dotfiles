@@ -7,9 +7,6 @@
 [submodule "dot/vim/bundle/haml"]
 	path = dot/vim/bundle/haml
 	url = git://github.com/tpope/vim-haml
-[submodule "dot/vim/bundle/powerline"]
-	path = dot/vim/bundle/powerline
-	url = git://github.com/Lokaltog/vim-powerline
 [submodule "dot/vim/bundle/vim-coffee-script"]
 	path = dot/vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
@@ -25,3 +22,6 @@
 [submodule "dot/vim/bundle/vim-wombat-scheme"]
 	path = dot/vim/bundle/vim-wombat-scheme
 	url = https://github.com/sheerun/vim-wombat-scheme.git
+[submodule "dot/vim/bundle/vim-airline"]
+	path = dot/vim/bundle/vim-airline
+	url = https://github.com/bling/vim-airline.git
