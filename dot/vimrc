@@ -79,11 +79,14 @@ imap <C-k> <C-o>k
 imap <C-l> <C-o>l
 
 
+" Setup Pathogen to manage your plugins
+call pathogen#infect()
+
+
 " Color Scheme "
 
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-" au InsertLeave * match ExtraWhitespace /\s\+$/
 set t_Co=256
 color wombat256mod
 
@@ -102,9 +105,6 @@ highlight ColorColumn ctermbg=233
 
 
 " Plugins "
-
-" Setup Pathogen to manage your plugins
-call pathogen#infect()
 
 " Smarty syntax highlighting
 au BufRead,BufNewFile *.tpl set filetype=smarty
