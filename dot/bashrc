@@ -27,10 +27,14 @@ DOTFILES=$HOME/.files
 
 # Git tab completion and prompt.
 source $DOTFILES/git/git-completion.bash
-source $DOTFILES/git/git-colors.sh
-source $DOTFILES/git/git-prompt.sh
+#source $DOTFILES/git/git-colors.sh
+#source $DOTFILES/git/git-prompt.sh
 #GIT_PS1_SHOWSTASHSTATE=1
 #GIT_PS1_SHOWDIRTYSTATE=1
+
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
+GIT_PROMPT_THEME=Single_line
+source $DOTFILES/git/bash-git-prompt/gitprompt.sh
 
 # Pip settings
 PIP_VIRTUALENV_BASE=$WORKON_HOME
