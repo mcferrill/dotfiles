@@ -88,7 +88,7 @@ call pathogen#infect()
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 set t_Co=256
-color wombat256mod
+color wombat
 
 " Enable syntax highlighting
 filetype off
@@ -100,8 +100,6 @@ set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
 
 
 " Plugins "

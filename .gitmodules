@@ -22,3 +22,6 @@
 [submodule "dot/vim/bundle/syntastic"]
 	path = dot/vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "dot/vim/bundle/vim-wombat-scheme"]
+	path = dot/vim/bundle/vim-wombat-scheme
+	url = https://github.com/sheerun/vim-wombat-scheme.git
