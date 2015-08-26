@@ -69,13 +69,15 @@ def install():
         for config in glob.glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)))
 
-    print 'Installing sub-modules.'
-    os.chdir(repo)
-    os.system('git submodule init')
-    os.system('git submodule update')
+    if '-ns' not in sys.argv:
+        print 'Installing sub-modules.'
+        os.chdir(repo)
+        os.system('git submodule init')
+        os.system('git submodule update')
 
-    print 'Installing additional python packages.'
-    os.system('sudo pip install -r requirements.txt')
+    if '-np' not in sys.argv:
+        print 'Installing additional python packages.'
+        os.system('sudo pip install -r requirements.txt')
 
     print 'Installation complete!'
 
