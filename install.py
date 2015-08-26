@@ -83,7 +83,7 @@ def install():
 
     if '-np' not in sys.argv:
         print 'Installing additional python packages.'
-        os.system('sudo pip install -r requirements.txt')
+        os.system('pip install -r requirements.txt')
 
     print 'Installation complete!'
 
