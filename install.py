@@ -75,6 +75,12 @@ def install():
         os.system('git submodule init')
         os.system('git submodule update')
 
+        if sys.platform == 'cygwin':
+            os.system(
+                'git clone https://github.com/transcode-open/apt-cyg.git')
+            symlink(abspath(join(repo, 'apt-cyg', 'apt-cyg')),
+                    abspath(join(home, 'bin', 'apt-cyg')))
+
     if '-np' not in sys.argv:
         print 'Installing additional python packages.'
         os.system('sudo pip install -r requirements.txt')

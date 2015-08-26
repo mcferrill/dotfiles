@@ -6,4 +6,5 @@ bin/vim
 bin/vimdiff
 dot/vim/.netrwhist
 sys.sh
+apt-cyg
 .DS_Store
