@@ -24,7 +24,7 @@ def symlink(source, target):
     os.system('ln -s "%s" "%s"' % (source, target))
 
 
-def main():
+def install():
 
     # Move to the directory above the script's location (home folder)
     os.chdir(home)
@@ -75,9 +75,22 @@ def main():
     os.system('git submodule update')
 
     print 'Installing additional python packages.'
-    os.system('pip install -r requirements.txt')
+    os.system('sudo pip install -r requirements.txt')
 
     print 'Installation complete!'
+
+
+def help():
+    print 'usage: install.py [-ns] [-np]\n-ns: don\'t install submodules\
+\n-np: don\'t install pip extras'
+
+
+def main():
+    if '-h' in sys.argv:
+        help()
+    else:
+        install()
+
 
 if __name__ == '__main__':
     main()
