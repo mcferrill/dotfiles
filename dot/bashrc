@@ -18,7 +18,7 @@ alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
 export VISUAL=vim
 
 # Add home/bin to our path.
-PATH=$PATH:$HOME/bin
+PATH=$HOME/bin:$PATH
 
 # Add pear to our path
 PATH=$HOME/pear:$PATH
@@ -26,25 +26,20 @@ PATH=$HOME/pear:$PATH
 DOTFILES=$HOME/.files
 
 # Git tab completion and prompt.
-#source $DOTFILES/git/git-completion.bash
+source $DOTFILES/git/git-completion.bash
 source $DOTFILES/git/git-colors.sh
-#source $DOTFILES/git/git-prompt.sh
+source $DOTFILES/git/git-prompt.sh
 #GIT_PS1_SHOWSTASHSTATE=1
+#GIT_PS1_SHOWDIRTYSTATE=1
 
-# Add screen name to prompt.
-case $TERM in
-    screen*)
-        SCREENTITLE='\[\ek\e\\\]\[\ek\W\e\\\]'
-        ;;
-    *)
-        SCREENTITLE=''
-        ;;
-esac
-export PS1="${SCREENTITLE}"$PS1
+# Pip settings
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
 
 # Default virtualenvwrapper settings
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-export WORKON_HOME=$HOME/.envs
+VIRTUALENVWRAPPER_PYTHON=python
+VIRTUALENVWRAPPER_SH=virtualenvwrapper.sh
+WORKON_HOME=$HOME/.envs
 
 # System specific settings
 if [ -f $DOTFILES/sys.sh ]; then
@@ -52,15 +47,10 @@ if [ -f $DOTFILES/sys.sh ]; then
 fi
 
 # Virtualenvwrapper
-if [ -f $VIRTUALENVWRAPPER_SH ]; then
+if [ "$VIRTUALENVWRAPPER_SH" ]; then
     source $VIRTUALENVWRAPPER_SH
 fi
-
-# Pip settings
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
 
 if [ "$VIRTUAL_ENV" ]; then 
     source $VIRTUAL_ENV/bin/activate; 
 fi 
-
