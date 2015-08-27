@@ -1,29 +1,41 @@
 
-" Settings "
-
 set history=700
 set undolevels=700
+
+" Indentation
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
+
+" Use two spaces for indentation in ada
+autocmd FileType ada setlocal shiftwidth=2 tabstop=2
+
+" Searching
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+
+" Disable backup and swap files
 set nobackup
 set nowritebackup
 set noswapfile
+
+" Autoreload vimrc
 autocmd! bufwritepost .vimrc source %
+
+" Clipboard
 set pastetoggle=<F2>
 set clipboard=unnamed
+
 set mouse=a
 set bs=2
 let mapleader = ","
 
-
-" Key Bindings "
+" Force .md files to be read as markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Clear search highlight
 noremap <C-n> :nohl<CR>
@@ -46,10 +58,10 @@ map <Leader>a ggVG
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
-" Sort with leader-s
+" Sorting (very useful for alphabetizing python imports)
 vnoremap <Leader>s :sort<CR>
 
-" for when I'm feeling adventurous!
+" Disable arrow keys for navigation
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -59,74 +71,55 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" easier moving of code blocks
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+" Move the cursor in insert mode with CTRL
+imap <C-h> <C-o>h
+imap <C-j> <C-o>j
+imap <C-k> <C-o>k
+imap <C-l> <C-o>l
+
+" Indent and dedent more easily.
+vnoremap < <gv
+vnoremap > >gv
 nnoremap <Tab> >>_
 nnoremap <S-Tab> <<_
 inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" easier formatting of paragraphs
-"" vmap Q gq
-"" nmap Q gqap
-
-" move the cursor in insert mode
-imap <C-h> <C-o>h
-imap <C-j> <C-o>j
-imap <C-k> <C-o>k
-imap <C-l> <C-o>l
-
-
-" Setup Pathogen to manage your plugins
+" Invoke pathogen to automagically load plugins, colors, etc.
 call pathogen#infect()
 
 
-" Color Scheme "
+" Theme / Appearance "
 
-" Show whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 set t_Co=256
 color wombat
 
+" Show whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
 " Enable syntax highlighting
-filetype off
 filetype plugin indent on
 syntax on
 
-" Showing line numbers and length
+" Line numbers, document width, and wrapping
 set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
 
 
-" Plugins "
+" Plugin Settings "
 
 " Smarty syntax highlighting
 au BufRead,BufNewFile *.tpl set filetype=smarty
 
-" Settings for vim-powerline
-set laststatus=2
-
-" Settings for ctrlp
+" ctrlp
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
-
-" Settings for python-mode
-map <Leader>g :call RopeGotoDefinition()<CR>
-let ropevim_enable_shortcuts = 1
-let g:pymode_rope_goto_def_newwin = "vnew"
-let g:pymode_rope_extended_complete = 1
-let g:pymode_breakpoint = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_builtin_objs = 0
-let g:pymode_syntax_builtin_funcs = 0
-let g:pymode_rope = 0
-"" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+set wildignore+=.tox*
 
 " Better navigating through omnicomplete option list
 set completeopt=longest,menuone
@@ -141,12 +134,6 @@ function! OmniPopup(action)
     return a:action
 endfunction
 
-"inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-"inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-" Python folding
-set nofoldenable
-
 " NerdTree 
 nmap <silent> <C-D> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.py[co]$', '__pycache__$']
@@ -155,14 +142,8 @@ let NERDTreeIgnore = ['\.py[co]$', '__pycache__$']
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Use two spaces for ada
-autocmd FileType ada setlocal shiftwidth=2 tabstop=2
-
-" Force .md files to be read as markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
