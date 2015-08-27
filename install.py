@@ -69,7 +69,7 @@ def install():
         for config in glob.glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)))
 
-    if '-ns' not in sys.argv:
+    if '-n' not in sys.argv:
         print 'Installing sub-modules.'
         os.chdir(repo)
         os.system('git submodule init')
@@ -81,16 +81,12 @@ def install():
             symlink(abspath(join(repo, 'apt-cyg', 'apt-cyg')),
                     abspath(join(home, 'bin', 'apt-cyg')))
 
-    if '-np' not in sys.argv:
-        print 'Installing additional python packages.'
-        os.system('pip install -r requirements.txt')
-
     print 'Installation complete!'
+    print 'To install additional python extras use: pip -r requirements.txt'
 
 
 def help():
-    print 'usage: install.py [-ns] [-np]\n-ns: don\'t install submodules\
-\n-np: don\'t install pip extras'
+    print 'usage: install.py [-n]\n-n: don\'t install submodules'
 
 
 def main():
