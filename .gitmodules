@@ -28,3 +28,6 @@
 [submodule "git/bash-git-prompt"]
 	path = git/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt.git
+[submodule "dot/vim/bundle/vim-php"]
+	path = dot/vim/bundle/vim-php
+	url = https://github.com/StanAngeloff/php.vim.git
