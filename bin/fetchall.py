@@ -9,28 +9,21 @@ import sys
 def find_repos(where=os.curdir):
     """Find git repositories under a top level directory."""
 
-    repos = []
-
     for dirname, dirnames, filenames in os.walk(where):
         if '.git' in dirnames:
-            repos.append(os.path.abspath(dirname))
-            continue
-
-    return repos
+            yield os.path.abspath(dirname)
 
 
 def main():
-    base = os.curdir
-    if len(sys.argv) > 1:
-        base = sys.argv[-1]
+    base = sys.argv[-1] if len(sys.argv) > 1 else os.curdir
     for repo in find_repos(base):
         os.chdir(repo)
         print 'Updating %s' % os.path.basename(repo)
         try:
             os.system('git fetch --all')
         except KeyboardInterrupt:
-            continue
-
+            print 'Stopped by user.'
+            break
 
 if __name__ == '__main__':
     main()
