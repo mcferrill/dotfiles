@@ -1,8 +1,9 @@
 
 set history=700
 set undolevels=700
+set laststatus=2
 
-" Indentation
+" Use four spaces for indentation in general
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -22,9 +23,6 @@ set smartcase
 set nobackup
 set nowritebackup
 set noswapfile
-
-" Autoreload vimrc
-autocmd! bufwritepost .vimrc source %
 
 " Clipboard
 set pastetoggle=<F2>
@@ -88,7 +86,6 @@ vnoremap <S-Tab> <gv
 
 " Invoke pathogen to automagically load plugins, colors, etc.
 call pathogen#infect()
-
 
 " Theme / Appearance "
 
