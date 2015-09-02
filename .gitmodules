@@ -34,3 +34,6 @@
 [submodule "dot/vim/bundle/vim-smarty"]
 	path = dot/vim/bundle/vim-smarty
 	url = https://github.com/vim-scripts/smarty-syntax.git
+[submodule "dot/vim/bundle/vim-css-color"]
+	path = dot/vim/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color.git
