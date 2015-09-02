@@ -9,9 +9,11 @@ import sys
 def find_repos(where=os.curdir):
     """Find git repositories under a top level directory."""
 
+    repos = []
     for dirname, dirnames, filenames in os.walk(where):
         if '.git' in dirnames:
-            yield os.path.abspath(dirname)
+            repos.append(os.path.abspath(dirname))
+    return repos
 
 
 def main():
