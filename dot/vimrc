@@ -20,8 +20,13 @@ set ignorecase
 set smartcase
 
 " Disable backup and swap files
-set nobackup
+set undodir=~/.vim/tmp/undo//
+set backupdir=~/.vim/tmp/backup//
+set backup
+"set nobackup
 set nowritebackup
+
+" Disable swap files.
 set noswapfile
 
 " Clipboard
