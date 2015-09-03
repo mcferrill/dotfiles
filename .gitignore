@@ -8,3 +8,4 @@ dot/vim/.netrwhist
 sys.sh
 apt-cyg
 .DS_Store
+dot/vim/tmp/*
