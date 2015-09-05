@@ -1,7 +1,7 @@
 
-set history=700
-set undolevels=700
-set laststatus=2
+set mouse=a
+set bs=2
+let mapleader = ","
 
 " Use four spaces for indentation in general
 set tabstop=4
@@ -15,16 +15,16 @@ autocmd FileType ada setlocal shiftwidth=2 tabstop=2
 
 " Searching
 set hlsearch
-set incsearch
 set ignorecase
 set smartcase
 
-" Disable backup and swap files
+" Backups and persistent undo
 set undodir=~/.vim/tmp/undo//
+set undofile
+set undolevels=1000
+set undoreload=10000
 set backupdir=~/.vim/tmp/backup//
 set backup
-"set nobackup
-set nowritebackup
 
 " Disable swap files.
 set noswapfile
@@ -33,17 +33,8 @@ set noswapfile
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-set mouse=a
-set bs=2
-let mapleader = ","
-
 " Force .md files to be read as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
-" Clear search highlight
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
 
 " Quicksave
 noremap <C-Z> :update<CR>
@@ -99,10 +90,6 @@ color wombat
 
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-
-" Enable syntax highlighting
-filetype plugin indent on
-syntax on
 
 " Line numbers, document width, and wrapping
 set number  " show line numbers
