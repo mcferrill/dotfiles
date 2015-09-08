@@ -2,17 +2,18 @@
 
 from os.path import dirname, abspath, basename, join, splitext
 import glob
-import sys
 import os
+import sys
 
 # Constants
 home = os.environ.get('HOME', os.environ.get('USERPROFILE'))
+cur = dirname(abspath(__file__))
 repo = join(home, '.files')
 backup = join(home, 'dotfiles.old')
 
 
 def symlink(source, target):
-    """Create a symlink to source called target without deleting old files."""
+    """Create a symlink "target" for "source" without deleting old files."""
 
     if os.path.exists(target) or os.path.islink(target):
         if not os.path.exists(backup):
@@ -26,14 +27,14 @@ def symlink(source, target):
 
 def install():
 
-    # Move to the directory above the script's location (home folder)
+    # Move to the home directory.
     os.chdir(home)
 
-    # Rename our directory to our repo constant.
-    if not repo.endswith(dirname(__file__)):
-        os.rename(basename(dirname(__file__)), repo)
+    # Install to our repo constant (.files).
+    if repo != cur:
+        os.rename(cur, repo)
 
-    # Windows
+    # Windows (disabled for now)
     if sys.platform == 'win32':
         print 'This platform is currently not supported!'
         return
@@ -63,12 +64,13 @@ def install():
             symlink(script, join('bin', splitext(basename(script))[0]))
 
         # Special handler for cloc (perl).
-        symlink(abspath(join(repo, 'bin', 'cloc')), join('bin', 'cloc'))
+        symlink(join(repo, 'bin', 'cloc'), join('bin', 'cloc'))
 
         # Link all the dotfiles into the home directory.
         for config in glob.glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)))
 
+    # Install git submodules (optional).
     if '-n' not in sys.argv:
         print 'Installing sub-modules.'
         os.chdir(repo)
@@ -81,17 +83,14 @@ def install():
             symlink(abspath(join(repo, 'apt-cyg', 'apt-cyg')),
                     abspath(join(home, 'bin', 'apt-cyg')))
 
-    print 'Installation complete!'
-    print 'To install additional python extras use: pip -r requirements.txt'
-
-
-def help():
-    print 'usage: install.py [-n]\n-n: don\'t install submodules'
+    print '''Installation complete!
+To install additional python extras use: pip install -r \
+requirements.txt'''
 
 
 def main():
     if '-h' in sys.argv:
-        help()
+        print 'usage: install.py [-n]\n-n: don\'t install submodules'
     else:
         install()
 
