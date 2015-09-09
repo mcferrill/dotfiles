@@ -88,9 +88,20 @@ To install additional python extras use: pip install -r \
 requirements.txt'''
 
 
+def update():
+    os.chdir(cur)
+    print 'Downloading latest from bitbucket...'
+    os.system('git pull origin master')
+    print 'Installing'
+    install()
+
+
 def main():
     if '-h' in sys.argv:
-        print 'usage: install.py [-n]\n-n: don\'t install submodules'
+        print 'usage: install.py [-n | -u]\n-n: don\'t install submodules\n\
+-u: download latest from git (update)'
+    elif '-u' in sys.argv:
+        update()
     else:
         install()
 
