@@ -91,7 +91,8 @@ requirements.txt'''
 def update():
     os.chdir(cur)
     print 'Downloading latest from bitbucket...'
-    os.system('git pull origin master')
+    os.system('git fetch origin')
+    os.system('git merge origin/master')
     print 'Installing'
     install()
 
