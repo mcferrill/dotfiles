@@ -5,27 +5,32 @@ import glob
 import os
 import sys
 
+from docopt import docopt
+
 # Constants
 home = os.environ.get('HOME', os.environ.get('USERPROFILE'))
 cur = dirname(abspath(__file__))
 repo = join(home, '.files')
-backup = join(home, 'dotfiles.old')
+backup_dir = join(home, 'dotfiles.old')
 
 
-def symlink(source, target):
+def symlink(source, target, backup=True):
     """Create a symlink "target" for "source" without deleting old files."""
 
     if os.path.exists(target) or os.path.islink(target):
-        if not os.path.exists(backup):
-            os.makedirs(backup)
-        print 'Backing up old %s' % basename(target)
-        os.rename(target, join(backup, basename(target)))
+        if backup:
+            if not os.path.exists(backup_dir):
+                os.makedirs(backup_dir)
+            print 'Backing up old %s' % basename(target)
+            os.rename(target, join(backup_dir, basename(target)))
+        else:
+            os.remove(target)
 
     print 'Linking %s to %s' % (target, source)
     os.system('ln -s "%s" "%s"' % (source, target))
 
 
-def install():
+def install(args):
 
     # Move to the home directory.
     os.chdir(home)
@@ -61,17 +66,20 @@ def install():
         for script in glob.glob(abspath(join(repo, 'bin', '*.py'))):
             if 'py2exe' in script:
                 continue
-            symlink(script, join('bin', splitext(basename(script))[0]))
+            symlink(script, join('bin', splitext(basename(script))[0]),
+                    not args['--force'])
 
         # Special handler for cloc (perl).
-        symlink(join(repo, 'bin', 'cloc'), join('bin', 'cloc'))
+        symlink(join(repo, 'bin', 'cloc'), join('bin', 'cloc'),
+                not args['--force'])
 
         # Link all the dotfiles into the home directory.
         for config in glob.glob(join(repo, 'dot', '*')):
-            symlink(config, join(home, '.' + basename(config)))
+            symlink(config, join(home, '.' + basename(config)),
+                    not args['--force'])
 
     # Install git submodules (optional).
-    if '-n' not in sys.argv:
+    if not args['--no-submodules']:
         print 'Installing sub-modules.'
         os.chdir(repo)
         os.system('git submodule init')
@@ -88,23 +96,30 @@ To install additional python extras use: pip install -r \
 requirements.txt'''
 
 
-def update():
+def update(args):
     os.chdir(cur)
     print 'Downloading latest from bitbucket...'
     os.system('git fetch origin')
     os.system('git merge origin/master')
     print 'Installing'
-    install()
+    install(args)
 
 
 def main():
-    if '-h' in sys.argv:
-        print 'usage: install.py [-n | -u]\n-n: don\'t install submodules\n\
--u: download latest from git (update)'
-    elif '-u' in sys.argv:
-        update()
+    usage = '''usage: install.py [options]
+
+Options:
+    -n, --no-submodules  Don't install submodules.
+    -u, --update         Download latest from git (update).
+    -f, --force          Force overwrite of existing files (no backup).
+'''
+
+    args = docopt(usage)
+
+    if args['--update']:
+        update(args)
     else:
-        install()
+        install(args)
 
 
 if __name__ == '__main__':
