@@ -9,3 +9,4 @@ sys.sh
 apt-cyg
 .DS_Store
 dot/vim/tmp/*
+*.pyc
