@@ -27,10 +27,11 @@ DOTFILES=$HOME/.files
 
 # Git tab completion and prompt.
 source $DOTFILES/git/git-completion.bash
-source $DOTFILES/git/git-colors.sh #@todo: replace this
+source $DOTFILES/git/bash-git-prompt/prompt-colors.sh
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
-GIT_PROMPT_THEME=Single_line
-GIT_PROMPT_START="$White\u$IWhite@$Yellow\h $White\W$Color_Off"
+GIT_PROMPT_START="$White\u$BoldWhite@$Yellow\h $White\W$ResetColor"
+GIT_PROMPT_END_USER="$ResetColor $ "
+GIT_PROMPT_END_ROOT="$BoldRed #${ResetColor} "
 source $DOTFILES/git/bash-git-prompt/gitprompt.sh
 
 # Pip settings
