@@ -38,7 +38,6 @@ PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
 
 # Default virtualenvwrapper settings
-VIRTUALENVWRAPPER_PYTHON=python
 VIRTUALENVWRAPPER_SH=virtualenvwrapper.sh
 WORKON_HOME=$HOME/.envs
 
@@ -52,6 +51,7 @@ if [ "$VIRTUALENVWRAPPER_SH" ]; then
     source $VIRTUALENVWRAPPER_SH
 fi
 
+# If we open a shell within a virtual env, make sure it's activated.
 if [ "$VIRTUAL_ENV" ]; then 
     source $VIRTUAL_ENV/bin/activate; 
 fi 
