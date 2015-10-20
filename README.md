@@ -6,20 +6,20 @@ that allow consistent behavior between multiple tools across environments.
 
 Requirements
 ------------
-The only real requirements for this to install are python and pip. More tools
-that are configured:
+The only real requirement for this to install is python. More tools that are
+configured:
 
-* Python
+* Bash
 * Vim
 * GNU Screen
 * Virtualenvwrapper
 * Pip
+* Git
 
 Installation
 ------------
-Run "python dotfiles/install.py" and the installer should run. You may need to
-put some more config variables (specifically virtualenvwrapper related stuff)
-in a dotfiles (or .files) /sys.sh file.
+Run "python dotfiles/install.py" and the installer should run. You can put
+system specific configuration in ~/.files/sys.sh and they will also be sourced.
 
 Supported Platforms
 -------------------
