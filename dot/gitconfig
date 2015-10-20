@@ -1,6 +1,6 @@
 [user]
-	email = mcferrill@gmail.com
-	name = Micah Ferrill
+    email = mcferrill@gmail.com
+    name = Micah Ferrill
 [diff]
     tool = default-diff
 [difftool]
@@ -13,6 +13,6 @@
     ci = commit
     co = checkout
 [color]
-	ui = true
+    ui = true
 [core]
-	autocrlf = input
+    autocrlf = input
