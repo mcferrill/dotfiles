@@ -1,5 +1,5 @@
 # Syntax and style checking.
-flake8>=2.4.1
+flake8
 
 # Virtual environments toolset
-virtualenvwrapper>=4.7.0
+virtualenvwrapper
