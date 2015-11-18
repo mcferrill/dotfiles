@@ -6,6 +6,9 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Aliases
+alias mv="mv -i"
+alias rm="rm -i"
+alias cp="cp -i"
 alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -A"
