@@ -89,7 +89,8 @@ def install(args):
             os.system(
                 'git clone https://github.com/transcode-open/apt-cyg.git')
             symlink(abspath(join(repo, 'apt-cyg', 'apt-cyg')),
-                    abspath(join(home, 'bin', 'apt-cyg')))
+                    abspath(join(home, 'bin', 'apt-cyg')),
+                    not args['--force'])
 
     print '''Installation complete!
 To install additional python extras use: pip install -r \
