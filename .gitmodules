@@ -61,3 +61,6 @@
 [submodule "dot/vim/bundle/delimitMate"]
 	path = dot/vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "dot/vim/bundle/vim-airline-themes"]
+	path = dot/vim/bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
