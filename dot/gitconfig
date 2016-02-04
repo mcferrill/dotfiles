@@ -6,7 +6,7 @@
 [difftool]
     prompt = false
 [difftool "default-diff"]
-    cmd = vimdiff $LOCAL $REMOTE
+    cmd = mvimdiff $LOCAL $REMOTE -v
 [alias]
     dt = difftool
     st = status --short
