@@ -116,9 +116,13 @@ set fo-=t   " don't automatically wrap text when typing
 " ctrlp
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
-set wildignore+=*_build/*
+set wildignore+=*build/*
+set wildignore+=*dist/*
 set wildignore+=*/coverage/*
 set wildignore+=.tox*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+set wildignore+=*node_modules*
 
 " NerdTree 
 nmap <silent> <C-D> :NERDTreeToggle<CR>
