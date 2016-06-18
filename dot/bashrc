@@ -37,13 +37,13 @@ GIT_PROMPT_END_USER="$ResetColor $ "
 GIT_PROMPT_END_ROOT="$BoldRed #${ResetColor} "
 source $DOTFILES/git/bash-git-prompt/gitprompt.sh
 
-# Pip settings
-PIP_VIRTUALENV_BASE=$WORKON_HOME
-PIP_RESPECT_VIRTUALENV=true
-
 # Default virtualenvwrapper settings
 VIRTUALENVWRAPPER_SH=virtualenvwrapper.sh
 WORKON_HOME=$HOME/.envs
+
+# Pip settings
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
 
 # System specific settings
 if [ -f $DOTFILES/sys.sh ]; then
