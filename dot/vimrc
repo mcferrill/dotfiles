@@ -140,3 +140,6 @@ let g:syntastic_check_on_wq = 0
 " Snippets (UltiSnip + vim-snippets)
 let g:UltiSnipsExpandTrigger="<NUL>"
 let g:UltiSnipsListSnippets="<NUL><ENTER>"
+
+" DelimitMate
+let delimitMate_expand_cr = 1
