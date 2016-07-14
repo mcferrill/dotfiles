@@ -4,9 +4,6 @@
 [submodule "dot/vim/bundle/nerdtree"]
 	path = dot/vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree
-[submodule "dot/vim/bundle/haml"]
-	path = dot/vim/bundle/haml
-	url = git://github.com/tpope/vim-haml
 [submodule "dot/vim/bundle/vim-coffee-script"]
 	path = dot/vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
