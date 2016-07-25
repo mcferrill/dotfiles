@@ -22,7 +22,7 @@ def main():
         os.chdir(repo)
         print 'Updating %s' % os.path.basename(repo)
         try:
-            os.system('git fetch --all')
+            os.system('git fetch --all --tags')
         except KeyboardInterrupt:
             print 'Stopped by user.'
             break
