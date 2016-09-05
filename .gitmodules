@@ -70,6 +70,3 @@
 [submodule "dot/vim/bundle/vim-es6"]
 	path = dot/vim/bundle/vim-es6
 	url = https://github.com/isRuslan/vim-es6.git
-[submodule "dot/vim/bundle/SimpylFold"]
-	path = dot/vim/bundle/SimpylFold
-	url = https://github.com/tmhedberg/SimpylFold.git
