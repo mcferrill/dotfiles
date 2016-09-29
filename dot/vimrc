@@ -30,7 +30,9 @@ set noswapfile
 
 " Clipboard
 set pastetoggle=<F2>
-set clipboard=unnamed
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
 
 
 " Custom Key Bindings "
