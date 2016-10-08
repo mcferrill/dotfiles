@@ -13,6 +13,7 @@ alias ls="ls --color"
 alias ll="ls -l"
 alias la="ls -A"
 alias cls="clear"
+alias tree="tree -C"
 alias free="free -th"
 alias pytest='py.test-2.7'
 alias pytest3='py.test-3.3'
