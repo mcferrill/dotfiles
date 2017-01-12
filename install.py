@@ -64,8 +64,6 @@ def install(args):
 
         # Link all of the scripts into home/bin.
         for script in glob.glob(abspath(join(repo, 'bin', '*.py'))):
-            if 'py2exe' in script:
-                continue
             symlink(script, join('bin', splitext(basename(script))[0]),
                     not args['--force'])
 
