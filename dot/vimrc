@@ -100,8 +100,11 @@ au BufRead,BufNewFile *.tpl set filetype=smarty
 call pathogen#infect()
 
 " Theme / Appearance
-set t_Co=256
-color wombat
+" set t_Co=256
+" color wombat
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
