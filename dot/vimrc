@@ -103,8 +103,9 @@ call pathogen#infect()
 " set t_Co=256
 " color wombat
 syntax enable
-set background=dark
+" let g:solarized_termcolors=256
 colorscheme solarized
+set bg=dark
 
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
