@@ -101,11 +101,11 @@ call pathogen#infect()
 
 " Theme / Appearance
 " set t_Co=256
-" color wombat
-syntax enable
+color wombat
+" syntax enable
 " let g:solarized_termcolors=256
-colorscheme solarized
-set bg=dark
+" colorscheme solarized
+" set bg=dark
 
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -145,13 +145,5 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" Snippets (UltiSnip + vim-snippets)
-let g:UltiSnipsExpandTrigger="<NUL>"
-let g:UltiSnipsListSnippets="<NUL><ENTER>"
-
 " DelimitMate
 let delimitMate_expand_cr = 1
-
-" SimpylFold
-" let g:SimpylFold_docstring_preview = 1
-let g:SimpylFold_fold_docstring = 0
