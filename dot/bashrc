@@ -32,11 +32,11 @@ DOTFILES=$HOME/.files
 source $DOTFILES/git/git-completion.bash
 source $DOTFILES/git/bash-git-prompt/prompt-colors.sh
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
-# GIT_PROMPT_START="$White\u$BoldWhite@$Yellow\h $White\W$ResetColor"
-# GIT_PROMPT_END_USER="$ResetColor $ "
-# GIT_PROMPT_END_ROOT="$BoldRed #${ResetColor} "
-GIT_PROMPT_THEME=Custom
-GIT_PROMPT_THEME_FILE=$DOTFILES/git/colors.sh
+GIT_PROMPT_START="$White\u$BoldWhite@$Yellow\h $White\W$ResetColor"
+GIT_PROMPT_END_USER="$ResetColor $ "
+GIT_PROMPT_END_ROOT="$BoldRed #${ResetColor} "
+# GIT_PROMPT_THEME=Custom
+# GIT_PROMPT_THEME_FILE=$DOTFILES/git/colors.sh
 source $DOTFILES/git/bash-git-prompt/gitprompt.sh
 
 # Default virtualenvwrapper settings
