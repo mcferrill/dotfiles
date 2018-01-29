@@ -101,11 +101,19 @@ call pathogen#infect()
 
 " Theme / Appearance
 " set t_Co=256
-color wombat
+if ($THEME == 'dark')
+    color wombat 
+    let g:airline_theme='wombat'
+    set background=dark
+else
+    color solarized 
+    set background=light
+    let g:airline_theme='solarized'
+endif
 " syntax enable
 " let g:solarized_termcolors=256
 " colorscheme solarized
-" set bg=dark
+" set background=$VIM_BG
 
 " Show whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -151,4 +159,3 @@ let g:syntastic_check_on_wq = 0
 let delimitMate_expand_cr = 1
 
 " Airline
-let g:airline_theme='wombat'
