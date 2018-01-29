@@ -6,7 +6,7 @@
 
 define_helpers() {
   # PathShort="${BoldBlue}\u:${Cyan}\W"
-  PathShort="${BoldBlue}\u@${Cyan}\h ${BoldBlue}\W"
+  PathShort="${Gray}\u@${Yellow}\h ${ResetColor}${Gray}\W${ResetColor}"
 }
 
 override_git_prompt_colors() {
@@ -27,8 +27,8 @@ override_git_prompt_colors() {
 
   # GIT_PROMPT_START_USER="${Yellow}${PathShort}${ResetColor}"
   # GIT_PROMPT_START="$White\u$BoldWhite@$Yellow\h $White\W$ResetColor"
-  GIT_PROMPT_START="${Yellow}${PathShort}${ResetColor}"
-  GIT_PROMPT_END_USER="${BoldBlue} $ ${ResetColor}"
+  GIT_PROMPT_START="${PathShort}"
+  GIT_PROMPT_END_USER="${ResetColor}${Gray} $ ${ResetColor}"
   GIT_PROMPT_END_ROOT="${BoldRed} # ${ResetColor}"
 
   GIT_PROMPT_SYMBOLS_NO_REMOTE_TRACKING="✭"
