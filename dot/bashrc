@@ -63,13 +63,13 @@ it2prof() {
 }
 
 light(){
-    it2prof Light
     export THEME=light
+    it2prof Light
 }
 
 dark(){
-    it2prof Default
     export THEME=dark
+    it2prof Default
 }
 
 # Default to dark theme
