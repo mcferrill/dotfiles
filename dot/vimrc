@@ -101,14 +101,14 @@ call pathogen#infect()
 
 " Theme / Appearance
 " set t_Co=256
-if ($THEME == 'dark')
-    color wombat 
-    let g:airline_theme='wombat'
-    set background=dark
-else
+if ($THEME == 'light')
     color solarized 
     set background=light
     let g:airline_theme='solarized'
+else
+    color wombat 
+    let g:airline_theme='wombat'
+    set background=dark
 endif
 " syntax enable
 " let g:solarized_termcolors=256
