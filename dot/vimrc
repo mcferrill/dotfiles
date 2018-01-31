@@ -100,7 +100,7 @@ au BufRead,BufNewFile *.tpl set filetype=smarty
 call pathogen#infect()
 
 " Theme / Appearance
-set t_Co=256
+" set t_Co=256
 if ($THEME == 'light')
     color solarized 
     set background=light
