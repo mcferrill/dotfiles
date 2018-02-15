@@ -63,7 +63,8 @@ def install(args):
             os.makedirs('bin')
 
         # Link all of the scripts into home/bin.
-        for script in glob.glob(abspath(join(repo, 'bin', '*.py'))):
+        for script in glob.glob(abspath(join(repo, 'bin', '*.py'))) + \
+                glob.glob(abspath(join(repo, 'bin', '*.sh'))):
             symlink(script, join('bin', splitext(basename(script))[0]),
                     not args['--force'])
 
