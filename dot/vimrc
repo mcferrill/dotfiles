@@ -101,7 +101,7 @@ call pathogen#infect()
 
 " Theme / Appearance
 " set t_Co=256
-if ($THEME == 'light')
+if ($USER_THEME == 'light')
     color solarized 
     set background=light
     let g:airline_theme='solarized'
