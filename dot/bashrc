@@ -32,7 +32,7 @@ GIT_PROMPT_FETCH_REMOTE_STATUS=0
 source $DOTFILES/git/bash-git-prompt/gitprompt.sh
 
 # Default virtualenvwrapper settings
-VIRTUALENVWRAPPER_SH=virtualenvwrapper.sh
+VIRTUALENVWRAPPER_SH="$(which virtualenvwrapper.sh)"
 WORKON_HOME=$HOME/.envs
 
 # Pip settings
