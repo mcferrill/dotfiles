@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from __future__ import print_function
 from os.path import dirname, abspath, basename, join, splitext
 import glob
 import os
@@ -21,12 +22,12 @@ def symlink(source, target, backup=True):
         if backup:
             if not os.path.exists(backup_dir):
                 os.makedirs(backup_dir)
-            print 'Backing up old %s' % basename(target)
+            print('Backing up old %s' % basename(target))
             os.rename(target, join(backup_dir, basename(target)))
         else:
             os.remove(target)
 
-    print 'Linking %s to %s' % (target, source)
+    print('Linking %s to %s' % (target, source))
     os.system('ln -s "%s" "%s"' % (source, target))
 
 
@@ -41,7 +42,7 @@ def install(args):
 
     # Windows (disabled for now)
     if sys.platform == 'win32':
-        print 'This platform is currently not supported!'
+        print('This platform is currently not supported!')
         return
 
         # Create a "junction" (symlink-like) to home/bin.
@@ -79,7 +80,7 @@ def install(args):
 
     # Install git submodules (optional).
     if not args['--no-submodules']:
-        print 'Installing sub-modules.'
+        print('Installing sub-modules.')
         os.chdir(repo)
         os.system('git submodule init')
         os.system('git submodule update')
@@ -91,17 +92,17 @@ def install(args):
                     abspath(join(home, 'bin', 'apt-cyg')),
                     not args['--force'])
 
-    print '''Installation complete!
+    print('''Installation complete!
 To install additional python extras use: pip install -r \
-requirements.txt'''
+requirements.txt''')
 
 
 def update(args):
     os.chdir(cur)
-    print 'Downloading latest from bitbucket...'
+    print('Downloading latest from bitbucket...')
     os.system('git fetch origin')
     os.system('git merge origin/master')
-    print 'Installing'
+    print('Installing')
     install(args)
 
 
