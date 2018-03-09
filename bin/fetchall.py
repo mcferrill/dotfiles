@@ -2,6 +2,8 @@
 
 """Locate and synchronize git working repositories."""
 
+from __future__ import print_function
+
 import os
 import sys
 
@@ -20,11 +22,11 @@ def main():
     base = sys.argv[-1] if len(sys.argv) > 1 else os.curdir
     for repo in find_repos(base):
         os.chdir(repo)
-        print 'Updating %s' % os.path.basename(repo)
+        print('Updating %s' % os.path.basename(repo))
         try:
             os.system('git fetch --all --tags')
         except KeyboardInterrupt:
-            print 'Stopped by user.'
+            print('Stopped by user.')
             break
 
 if __name__ == '__main__':

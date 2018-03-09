@@ -2,6 +2,8 @@
 
 """Walk a directory structure and get a count of files and directories."""
 
+from __future__ import print_function
+
 import os
 
 if __name__ == '__main__':
@@ -13,4 +15,4 @@ if __name__ == '__main__':
         for filename in filenames:
             files.append(filename)
 
-    print '%s directories and %s files' % (len(directories), len(files))
+    print('%s directories and %s files' % (len(directories), len(files)))
