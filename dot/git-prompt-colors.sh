@@ -21,7 +21,7 @@ override_git_prompt_colors() {
   GIT_PROMPT_CHANGED="${Blue}✚ ${ResetColor}"
   GIT_PROMPT_UNTRACKED="${Cyan}…${ResetColor}"
   GIT_PROMPT_STASHED="${BoldMagenta}⚑ ${ResetColor}"
-  GIT_PROMPT_CLEAN="${Green}✔ ${ResetColor}"
+  GIT_PROMPT_CLEAN="${Green}✔${ResetColor}"
 
   GIT_PROMPT_COMMAND_FAIL="${Red}✘"
 
