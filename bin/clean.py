@@ -12,7 +12,7 @@ def walk(dirname=os.curdir):
         pathname = dirname + '/' + basename
         if os.path.isdir(pathname) and '-r' in sys.argv:
             if pathname.endswith('__pycache__'):
-                shutil.rmtree(pathname)
+                shutil.rmtree(pathname, True)
             else:
                 walk(pathname)
         else:
@@ -28,6 +28,7 @@ def walk(dirname=os.curdir):
                 os.remove(pathname)
             elif basename.startswith('._.DS_Store'):
                 os.remove(pathname)
+
 
 if __name__ == '__main__':
     walk()
