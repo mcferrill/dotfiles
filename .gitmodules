@@ -76,3 +76,6 @@
 [submodule "dot/vim/bundle/vim-pug"]
 	path = dot/vim/bundle/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
+[submodule "dot/vim/bundle/vim-qml"]
+	path = dot/vim/bundle/vim-qml
+	url = https://github.com/peterhoeg/vim-qml.git
