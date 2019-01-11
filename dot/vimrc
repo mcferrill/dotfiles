@@ -158,6 +158,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint']
+if exists('g:syntastic_extra_filetypes')
+    call add(g:syntastic_extra_filetypes, 'qml')
+else
+    let g:syntastic_extra_filetypes = ['qml']
+endif
 
 " DelimitMate
 let delimitMate_expand_cr = 1
