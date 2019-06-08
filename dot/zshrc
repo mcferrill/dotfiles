@@ -2,43 +2,128 @@
 ########################################
 # Default zshrc
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
+# autoload -Uz promptinit
+# promptinit
+# prompt adam1
 
-setopt histignorealldups sharehistory
+# setopt histignorealldups sharehistory
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# # Use emacs keybindings even if our EDITOR is set to vi
+# bindkey -e
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
+# # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+# HISTSIZE=1000
+# SAVEHIST=1000
+# HISTFILE=~/.zsh_history
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
+# # Use modern completion system
+# autoload -Uz compinit
+# compinit
 
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
+# zstyle ':completion:*' auto-description 'specify: %d'
+# zstyle ':completion:*' completer _expand _complete _correct _approximate
+# zstyle ':completion:*' format 'Completing %d'
+# zstyle ':completion:*' group-name ''
+# zstyle ':completion:*' menu select=2
+# eval "$(dircolors -b)"
+# zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# zstyle ':completion:*' list-colors ''
+# zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+# zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+# zstyle ':completion:*' menu select=long
+# zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+# zstyle ':completion:*' use-compctl false
+# zstyle ':completion:*' verbose true
 
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+# zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 ###################################################
+# .bashrc import
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# Aliases
+alias mv="mv -i"
+alias rm="rm -i"
+alias cp="cp -i"
+alias ls="ls --color"
+alias ll="ls -l"
+alias la="ls -A"
+alias cls="clear"
+alias tree="tree -C"
+alias free="free -th"
+alias grep="grep --color -n"
+alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
+
+export VISUAL=vim
+
+# Add home/bin to our path.
+PATH=$HOME/bin:$PATH
+
+DOTFILES=$HOME/.files
+
+# # Git tab completion and prompt.
+# # source $DOTFILES/git/git-completion.bash
+# # source $DOTFILES/git/bash-git-prompt/prompt-colors.sh
+# # GIT_PROMPT_FETCH_REMOTE_STATUS=0
+# # source $DOTFILES/git/bash-git-prompt/gitprompt.sh
+
+# # Default virtualenvwrapper settings
+VIRTUALENVWRAPPER_SH="$(which virtualenvwrapper.sh)"
+WORKON_HOME=$HOME/.envs
+
+# # Pip settings
+# PIP_VIRTUALENV_BASE=$WORKON_HOME
+# PIP_RESPECT_VIRTUALENV=true
+
+# # System specific settings
+if [ -f $DOTFILES/sys.sh ]; then
+    source $DOTFILES/sys.sh
+fi
+
+# # Virtualenvwrapper
+# if [ -f $VIRTUALENVWRAPPER_SH ]; then
+#     source $VIRTUALENVWRAPPER_SH
+# fi
+
+# # If we open a shell within a virtual env, make sure it's activated.
+# if [ "$VIRTUAL_ENV" ]; then 
+#     source $VIRTUAL_ENV/bin/activate; 
+# fi 
+
+# Switch iTerm2 profile
+# it2prof() {
+#     echo -e "\033]50;SetProfile=$1\a"
+# }
+
+# light(){
+#     export USER_THEME=light
+#     if [ "$(uname)" == "Darwin" ]; then
+#         it2prof Light
+#     fi
+# }
+
+# dark(){
+#     export USER_THEME=dark
+#     if [ "$(uname)" == "Darwin" ]; then
+#         it2prof Default
+#     fi
+# }
+
+# Default to dark theme
+# if [ "$USER_THEME" = "light" ]; then
+#     light
+# else
+#     dark
+# fi
+
+#################################
+
+
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -50,6 +135,7 @@ export ZSH="$HOME/.files/oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# ZSH_THEME="wezm"
 ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
@@ -110,7 +196,19 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    git
+    docker
+    node
+    npm
+    pip
+    pipenv
+    python
+    tmux
+    # ubuntu
+    virtualenvwrapper
+    vscode
+)
 
 source $ZSH/oh-my-zsh.sh
 
