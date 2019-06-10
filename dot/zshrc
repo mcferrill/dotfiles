@@ -46,19 +46,6 @@
 #     . /etc/bashrc
 # fi
 
-# Aliases
-alias mv="mv -i"
-alias rm="rm -i"
-alias cp="cp -i"
-alias ls="ls --color"
-alias ll="ls -l"
-alias la="ls -A"
-alias cls="clear"
-alias tree="tree -C"
-alias free="free -th"
-alias grep="grep --color -n"
-alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
-
 export VISUAL=vim
 
 # Add home/bin to our path.
@@ -76,9 +63,9 @@ DOTFILES=$HOME/.files
 VIRTUALENVWRAPPER_SH="$(which virtualenvwrapper.sh)"
 WORKON_HOME=$HOME/.envs
 
-# # Pip settings
-# PIP_VIRTUALENV_BASE=$WORKON_HOME
-# PIP_RESPECT_VIRTUALENV=true
+# Pip settings
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
 
 # # System specific settings
 if [ -f $DOTFILES/sys.sh ]; then
@@ -90,10 +77,10 @@ fi
 #     source $VIRTUALENVWRAPPER_SH
 # fi
 
-# # If we open a shell within a virtual env, make sure it's activated.
-# if [ "$VIRTUAL_ENV" ]; then 
-#     source $VIRTUAL_ENV/bin/activate; 
-# fi 
+# If we open a shell within a virtual env, make sure it's activated.
+if [ "$VIRTUAL_ENV" ]; then 
+    source $VIRTUAL_ENV/bin/activate; 
+fi 
 
 # Switch iTerm2 profile
 # it2prof() {
@@ -205,7 +192,7 @@ plugins=(
     pipenv
     python
     tmux
-    # ubuntu
+    iterm2
     virtualenvwrapper
     vscode
 )
@@ -237,3 +224,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Aliases
+alias mv="mv -i"
+alias rm="rm -i"
+alias cp="cp -i"
+alias ls="ls --color"
+alias ll="ls -l"
+alias la="ls -A"
+alias cls="clear"
+alias tree="tree -C"
+alias free="free -th"
+alias grep="grep --color -n"
+alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
