@@ -83,23 +83,23 @@ if [ "$VIRTUAL_ENV" ]; then
 fi 
 
 # Switch iTerm2 profile
-# it2prof() {
-#     echo -e "\033]50;SetProfile=$1\a"
-# }
+it2prof() {
+    echo -e "\033]50;SetProfile=$1\a"
+}
 
-# light(){
-#     export USER_THEME=light
-#     if [ "$(uname)" == "Darwin" ]; then
-#         it2prof Light
-#     fi
-# }
+light(){
+    export USER_THEME=light
+    if [ "$(uname)" == "Darwin" ]; then
+        it2prof Light
+    fi
+}
 
-# dark(){
-#     export USER_THEME=dark
-#     if [ "$(uname)" == "Darwin" ]; then
-#         it2prof Default
-#     fi
-# }
+dark(){
+    export USER_THEME=dark
+    if [ "$(uname)" == "Darwin" ]; then
+        it2prof Default
+    fi
+}
 
 # Default to dark theme
 # if [ "$USER_THEME" = "light" ]; then
