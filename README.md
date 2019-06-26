@@ -9,8 +9,10 @@ Requirements
 The only real requirement for this to install is python. More tools that are
 configured:
 
+* Zsh
 * Bash
 * Vim
+* Tmux
 * GNU Screen
 * Virtualenvwrapper
 * Pip
@@ -25,9 +27,9 @@ Supported Platforms
 -------------------
 Currently used on:
 
-* CentOS
 * Ubuntu
-* Cygwin
+* CentOS
+* Windows Subsystem for Linux (Ubuntu)
 * Mac OSX 10.10 (note: ensure "terminal->prefs->profiles->terminal->save lines
   to scrollback when an app status bar is present" is enabled to get mouse
 scrolling within screen
