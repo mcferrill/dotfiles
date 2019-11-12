@@ -79,3 +79,9 @@ if [ "$USER_THEME" = "light" ]; then
 else
     dark
 fi
+
+###-tns-completion-start-###
+if [ -f /Users/mcferrill/.tnsrc ]; then 
+    source /Users/mcferrill/.tnsrc 
+fi
+###-tns-completion-end-###
