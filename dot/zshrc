@@ -237,3 +237,9 @@ alias tree="tree -C"
 alias free="free -th"
 alias grep="grep --color -n"
 alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
+
+###-tns-completion-start-###
+if [ -f /Users/mcferrill/.tnsrc ]; then 
+    source /Users/mcferrill/.tnsrc 
+fi
+###-tns-completion-end-###
