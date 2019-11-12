@@ -88,3 +88,6 @@
 [submodule "dot/vim/bundle/vim-svelte"]
 	path = dot/vim/bundle/vim-svelte
 	url = https://github.com/burner/vim-svelte.git
+[submodule "dot/vim/bundle/vim-vue"]
+	path = dot/vim/bundle/vim-vue
+	url = https://github.com/posva/vim-vue.git
