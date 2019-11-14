@@ -191,7 +191,6 @@ plugins=(
     pip
     pipenv
     python
-    tmux
     iterm2
     virtualenvwrapper
     vscode
