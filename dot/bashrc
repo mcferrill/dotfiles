@@ -1,29 +1,12 @@
-# .bashrc
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Aliases
-alias mv="mv -i"
-alias rm="rm -i"
-alias cp="cp -i"
-alias ls="ls --color"
-alias ll="ls -l"
-alias la="ls -A"
-alias cls="clear"
-alias tree="tree -C"
-alias free="free -th"
-alias grep="grep --color -n"
-alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
-
-export VISUAL=vim
-
-# Add home/bin to our path.
-PATH=$HOME/bin:$PATH
-
 DOTFILES=$HOME/.files
+
+source $DOTFILES/aliases.sh
 
 # Git tab completion and prompt.
 source $DOTFILES/git/git-completion.bash
@@ -31,11 +14,11 @@ source $DOTFILES/git/bash-git-prompt/prompt-colors.sh
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
 source $DOTFILES/git/bash-git-prompt/gitprompt.sh
 
-# Default virtualenvwrapper settings
+# Virtualenvwrapper
 VIRTUALENVWRAPPER_SH="$(which virtualenvwrapper.sh)"
 WORKON_HOME=$HOME/.envs
 
-# Pip settings
+# Pip 
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
 
@@ -53,32 +36,6 @@ fi
 if [ "$VIRTUAL_ENV" ]; then 
     source $VIRTUAL_ENV/bin/activate; 
 fi 
-
-# Switch iTerm2 profile
-it2prof() {
-    echo -e "\033]50;SetProfile=$1\a"
-}
-
-light(){
-    export USER_THEME=light
-    if [ "$(uname)" == "Darwin" ]; then
-        it2prof Light
-    fi
-}
-
-dark(){
-    export USER_THEME=dark
-    if [ "$(uname)" == "Darwin" ]; then
-        it2prof Default
-    fi
-}
-
-# Default to dark theme
-if [ "$USER_THEME" = "light" ]; then
-    light
-else
-    dark
-fi
 
 ###-tns-completion-start-###
 if [ -f /Users/mcferrill/.tnsrc ]; then 
