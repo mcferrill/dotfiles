@@ -29,8 +29,10 @@ Currently used on:
 * Ubuntu
 * CentOS
 * Windows Subsystem for Linux (Ubuntu)
-* Mac OSX 10.10 (note: ensure "terminal->prefs->profiles->terminal->save lines
-  to scrollback when an app status bar is present" is enabled to get mouse
-scrolling within screen)
+* macOS 10.15 w/ iterm2
 
-Suggestions are welcome.
+To Do
+-----
+* Include sys.sh (platform-specific settings) and have install script select
+based on reported platform.
+* Make python3 default "python" with python2 and python3 aliases as needed.
