@@ -1,6 +1,4 @@
 
-" General Settings "
-
 set mouse=a
 if has("mouse_sgr")
     set ttymouse=sgr
@@ -9,6 +7,7 @@ else
 end
 set bs=2
 let mapleader = ","
+set noswapfile
 
 " Use four spaces for indentation in general
 set tabstop=4
@@ -30,35 +29,29 @@ set undoreload=10000
 set backupdir=~/.vim/tmp/backup//
 set backup
 
-" Disable swap files.
-set noswapfile
-
 " Clipboard
 set pastetoggle=<F2>
 if $TMUX == ''
     set clipboard+=unnamed
 endif
 
-
-" Custom Key Bindings "
-
 " Quicksave with <Ctrl>-Z
 noremap <C-Z> :update<CR>
 vnoremap <C-Z> <C-C>:update<CR>
 inoremap <C-Z> <C-O>:update<CR>
 
-" Quick exit 
+" Quick exit with leader-e or leader-E (close all)
 noremap <Leader>e :quit<CR>  " Quit current window
 noremap <Leader>E :qa!<CR>   " Quit all windows
 
-" Select all
+" Select all with leader-a
 map <Leader>a ggVG
 
-" Easier tab switching
+" Switch tabs with leader-m/n
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 
-" Sorting (very useful for alphabetizing python imports)
+" Sorting lines with leader-s
 vnoremap <Leader>s :sort<CR>
 
 " Disable arrow keys for navigation
@@ -86,8 +79,15 @@ inoremap <S-Tab> <C-D>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" Show whitespace with leader-l
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
 
-" Language Specific Settings "
+" Line numbers, document width, and wrapping
+set number  " show line numbers
+set tw=79   " width of document (used by gd)
+set nowrap  " don't automatically wrap on load
+set fo-=t   " don't automatically wrap text when typing
 
 " Force .md files to be read as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -104,8 +104,7 @@ au BufRead,BufNewFile *.tpl set filetype=smarty
 " Invoke pathogen to automagically load plugins, themes, etc.
 call pathogen#infect()
 
-" Theme / Appearance
-" set t_Co=256
+" Set theme based on light or dark mode
 if ($USER_THEME == 'light')
     color solarized 
     set background=light
@@ -114,23 +113,7 @@ if ($USER_THEME == 'light')
 else
     color wombat 
     let g:airline_theme='wombat'
-    " set background=dark
 endif
-" syntax enable
-
-" Show whitespace
-" autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-nmap <leader>l :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
-
-" Line numbers, document width, and wrapping
-set number  " show line numbers
-set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
-
-
-" Plugin Settings "
 
 " ctrlp
 let g:ctrlp_max_height = 30
@@ -166,5 +149,3 @@ endif
 
 " DelimitMate
 let delimitMate_expand_cr = 1
-
-" Airline
