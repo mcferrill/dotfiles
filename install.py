@@ -1,8 +1,16 @@
 #!/usr/bin/env python
 
+'''usage: install.py [options]
+
+Options:
+    -n, --no-submodules  Don't install submodules.
+    -u, --update         Download latest from git (update).
+    -f, --force          Force overwrite of existing files (no backup).
+'''
+
 from __future__ import print_function
 from os.path import dirname, abspath, basename, join, splitext
-import glob
+from glob import glob
 import os
 import sys
 
@@ -40,12 +48,10 @@ def install(args):
     if repo != cur:
         os.rename(cur, repo)
 
-    # Windows (disabled for now)
+    # Windows (not recently tested)
     if sys.platform == 'win32':
-        print('This platform is currently not supported!')
-        return
 
-        # Create a "junction" (symlink-like) to home/bin.
+        # Create a "junction" (windows symlink) to home/bin.
         os.system(join(repo, 'bin', 'junction.exe') + ' bin ' +
                   join(repo, 'bin'))
 
@@ -59,38 +65,28 @@ def install(args):
     # Unix-based
     else:
 
+        backup = not args['--force']
+
         # Make sure home/bin exists.
         if not os.path.exists('bin'):
             os.makedirs('bin')
 
         # Link all of the scripts into home/bin.
-        for script in glob.glob(abspath(join(repo, 'bin', '*.py'))) + \
-                glob.glob(abspath(join(repo, 'bin', '*.sh'))):
-            symlink(script, join('bin', splitext(basename(script))[0]),
-                    not args['--force'])
-
-        # Special handler for cloc (perl).
-        symlink(join(repo, 'bin', 'cloc'), join('bin', 'cloc'),
-                not args['--force'])
+        bin_dir = abspath(join(repo, 'bin'))
+        scripts = glob(bin_dir + '/*.py') + glob(bin_dir + '/*.sh')
+        for script in scripts:
+            script_name, _ = splitext(basename(script))
+            symlink(script, join('bin', script_name), backup)
 
         # Link all the dotfiles into the home directory.
-        for config in glob.glob(join(repo, 'dot', '*')):
-            symlink(config, join(home, '.' + basename(config)),
-                    not args['--force'])
+        for config in glob(join(repo, 'dot', '*')):
+            symlink(config, join(home, '.' + basename(config)), backup)
 
     # Install git submodules (optional).
     if not args['--no-submodules']:
         print('Installing sub-modules.')
         os.chdir(repo)
-        os.system('git submodule init')
-        os.system('git submodule update')
-
-        if sys.platform == 'cygwin':
-            os.system(
-                'git clone https://github.com/transcode-open/apt-cyg.git')
-            symlink(abspath(join(repo, 'apt-cyg', 'apt-cyg')),
-                    abspath(join(home, 'bin', 'apt-cyg')),
-                    not args['--force'])
+        os.system('git submodule init && git submodule update')
 
     print('''Installation complete!
 To install additional python extras use: pip install -r \
@@ -98,30 +94,22 @@ requirements.txt''')
 
 
 def update(args):
+    """Pull latest updates from github before installing."""
+
     os.chdir(cur)
+
     print('Downloading latest from github...')
     os.system('git fetch origin')
     os.system('git merge origin/master')
+
     print('Installing')
     install(args)
 
 
-def main():
-    usage = '''usage: install.py [options]
-
-Options:
-    -n, --no-submodules  Don't install submodules.
-    -u, --update         Download latest from git (update).
-    -f, --force          Force overwrite of existing files (no backup).
-'''
-
-    args = docopt(usage)
+if __name__ == '__main__':
+    args = docopt(__doc__)
 
     if args['--update']:
         update(args)
     else:
         install(args)
-
-
-if __name__ == '__main__':
-    main()
