@@ -6,6 +6,8 @@ Options:
     -n, --no-submodules  Don't install submodules.
     -u, --update         Download latest from git (update).
     -f, --force          Force overwrite of existing files (no backup).
+    -s, --system         Install system updates based on platform.
+    -p, --pull           Pull submodule updates.
 '''
 
 from __future__ import print_function
@@ -40,6 +42,8 @@ def symlink(source, target, backup=True):
 
 
 def install(args):
+
+    print('Installing')
 
     # Move to the home directory.
     os.chdir(home)
@@ -93,6 +97,22 @@ To install additional python extras use: pip install -r \
 requirements.txt''')
 
 
+def system_updates(args):
+    """Run system updates based on platform."""
+
+    if sys.platform == 'darwin':
+        os.system('brew update && brew upgrade')
+
+
+def pull(args):
+    """Pull submodule updates."""
+
+    os.chdir(cur)
+
+    os.system('git submodule foreach git pull origin master')
+    print('Be sure to push updates if needed')
+
+
 def update(args):
     """Pull latest updates from github before installing."""
 
@@ -102,14 +122,15 @@ def update(args):
     os.system('git fetch origin')
     os.system('git merge origin/master')
 
-    print('Installing')
-    install(args)
-
 
 if __name__ == '__main__':
     args = docopt(__doc__)
 
+    if args['--system']:
+        system_updates(args)
     if args['--update']:
         update(args)
-    else:
-        install(args)
+    if args['--pull']:
+        pull(args)
+
+    install(args)
