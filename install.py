@@ -80,7 +80,7 @@ def install(args):
         if sys.platform == 'darwin':
             os.system('brew update && brew upgrade')
 
-        elif sys.platform == 'linux' and os.system('which apt') == 0:
+        elif sys.platform.startswith('linux') and os.system('which apt') == 0:
             os.system('sudo apt update && sudo apt upgrade -y')
             os.system('sudo apt autoremove -y && sudo apt autoclean')
 
