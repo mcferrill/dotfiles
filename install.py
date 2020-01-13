@@ -105,6 +105,10 @@ def install(args):
     os.chdir(repo)
     os.system('git submodule init && git submodule update')
 
+    # Check pip for outdated packages
+    os.system('python2 -m pip list --outdated')
+    os.system('python3 -m pip list --outdated')
+
     print('''Installation complete!
 To install additional python extras use: pip install -r \
 requirements.txt''')

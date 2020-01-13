@@ -10,6 +10,7 @@ alias tree="tree -C"
 alias free="free -th"
 alias grep="grep --color -n"
 alias screen="screen -s bash" # Make sure bashrc gets executed in cygwin.
+alias python="python3"
 
 export PATH=$HOME/bin:$PATH
 export VISUAL=vim

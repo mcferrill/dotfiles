@@ -35,4 +35,3 @@ To Do
 -----
 * Include sys.sh (platform-specific settings) and have install script select
 based on reported platform.
-* Make python3 default "python" with python2 and python3 aliases as needed.
