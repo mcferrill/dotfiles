@@ -109,8 +109,9 @@ def install(args):
     os.system('git submodule init && git submodule update')
 
     # Check pip for outdated packages
-    print('Checking pip for outdated packages')
+    print('Checking pip2 for outdated packages')
     os.system('python2 -m pip list --outdated')
+    print('Checking pip3 for outdated packages')
     os.system('python3 -m pip list --outdated')
 
     print('''Installation complete!
