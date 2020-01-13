@@ -3,11 +3,8 @@
 '''usage: install.py [options]
 
 Options:
-    -n, --no-submodules  Don't install submodules.
-    -u, --update         Download latest from git (update).
+    -u, --update         Pull updates for submodules.
     -f, --force          Force overwrite of existing files (no backup).
-    -s, --system         Install system updates based on platform.
-    -p, --pull           Pull submodule updates.
 '''
 
 from __future__ import print_function
@@ -42,10 +39,20 @@ def symlink(source, target, backup=True):
 
 
 def install(args):
+    """Pull latest from github and symlink everything. Optionally backs up any
+    overwritten config files.
+    """
+
+    print('Downloading latest from github...')
+    os.chdir(cur)
+    os.system('git fetch origin')
+    os.system('git merge origin/master')
+
+    if args['--update']:
+        os.system('git submodule foreach git pull origin master')
+        print('Be sure to push updates if needed')
 
     print('Installing')
-
-    # Move to the home directory.
     os.chdir(home)
 
     # Install to our repo constant (.files).
@@ -69,6 +76,13 @@ def install(args):
     # Unix-based
     else:
 
+        if sys.platform == 'darwin':
+            os.system('brew update && brew upgrade')
+
+        elif sys.platform == 'linux' and os.system('which apt') == 0:
+            os.system('sudo apt update && sudo apt upgrade -y')
+            os.system('sudo apt autoremove -y && sudo apt autoclean')
+
         backup = not args['--force']
 
         # Make sure home/bin exists.
@@ -86,51 +100,17 @@ def install(args):
         for config in glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)), backup)
 
-    # Install git submodules (optional).
-    if not args['--no-submodules']:
-        print('Installing sub-modules.')
-        os.chdir(repo)
-        os.system('git submodule init && git submodule update')
+    # Install git submodules.
+    print('Installing sub-modules.')
+    os.chdir(repo)
+    os.system('git submodule init && git submodule update')
 
     print('''Installation complete!
 To install additional python extras use: pip install -r \
 requirements.txt''')
 
 
-def system_updates(args):
-    """Run system updates based on platform."""
-
-    if sys.platform == 'darwin':
-        os.system('brew update && brew upgrade')
-
-
-def pull(args):
-    """Pull submodule updates."""
-
-    os.chdir(cur)
-
-    os.system('git submodule foreach git pull origin master')
-    print('Be sure to push updates if needed')
-
-
-def update(args):
-    """Pull latest updates from github before installing."""
-
-    os.chdir(cur)
-
-    print('Downloading latest from github...')
-    os.system('git fetch origin')
-    os.system('git merge origin/master')
-
-
 if __name__ == '__main__':
     args = docopt(__doc__)
-
-    if args['--system']:
-        system_updates(args)
-    if args['--update']:
-        update(args)
-    if args['--pull']:
-        pull(args)
 
     install(args)
