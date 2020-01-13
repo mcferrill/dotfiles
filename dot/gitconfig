@@ -15,4 +15,6 @@
 [color]
     ui = true
 [core]
-    autocrlf = input
+	autocrlf = input
+	eol = lf
+	filemode = false
