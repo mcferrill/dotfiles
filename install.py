@@ -76,6 +76,7 @@ def install(args):
     # Unix-based
     else:
 
+        print('Installing system updates')
         if sys.platform == 'darwin':
             os.system('brew update && brew upgrade')
 
@@ -86,6 +87,7 @@ def install(args):
         backup = not args['--force']
 
         # Make sure home/bin exists.
+        print('Linking scripts to ~/bin')
         if not os.path.exists('bin'):
             os.makedirs('bin')
 
@@ -97,15 +99,17 @@ def install(args):
             symlink(script, join('bin', script_name), backup)
 
         # Link all the dotfiles into the home directory.
+        print('Linking remaining dotfiles')
         for config in glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)), backup)
 
     # Install git submodules.
-    print('Installing sub-modules.')
+    print('Installing sub-modules')
     os.chdir(repo)
     os.system('git submodule init && git submodule update')
 
     # Check pip for outdated packages
+    print('Checking pip for outdated packages')
     os.system('python2 -m pip list --outdated')
     os.system('python3 -m pip list --outdated')
 
