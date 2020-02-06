@@ -48,10 +48,6 @@ def install(args):
     os.system('git fetch origin')
     os.system('git merge origin/master')
 
-    if args['--update']:
-        os.system('git submodule foreach git pull origin master')
-        print('Be sure to push updates if needed')
-
     print('Installing')
     os.chdir(home)
 
@@ -107,6 +103,11 @@ def install(args):
     print('Installing sub-modules')
     os.chdir(repo)
     os.system('git submodule init && git submodule update')
+
+    if args['--update']:
+        print('Updating submodules')
+        os.system('git submodule foreach git pull origin master')
+        print('Be sure to push updates if needed')
 
     # Check pip for outdated packages
     print('Checking pip2 for outdated packages')
