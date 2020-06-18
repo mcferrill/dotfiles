@@ -18,3 +18,5 @@
 	autocrlf = input
 	eol = lf
 	filemode = false
+[pull]
+	rebase = false
