@@ -2,7 +2,6 @@
 DOTFILES=$HOME/.files
 
 # Virtualenvwrapper
-VIRTUALENVWRAPPER_SH="$(which virtualenvwrapper.sh)"
 WORKON_HOME=$HOME/.envs
 
 # Pip 
@@ -25,21 +24,11 @@ ZSH_THEME="robbyrussell"
 plugins=(
     git
     docker
-    node
-    npm
-    pip
-    pipenv
-    python
     iterm2
     virtualenvwrapper
     vscode
+    kubectl
 )
 source $ZSH/oh-my-zsh.sh
 
 source $DOTFILES/aliases.sh
-
-###-tns-completion-start-###
-if [ -f /Users/mcferrill/.tnsrc ]; then 
-    source /Users/mcferrill/.tnsrc 
-fi
-###-tns-completion-end-###
