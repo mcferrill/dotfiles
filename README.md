@@ -20,6 +20,8 @@ The only real dependencies are python and git. More tools that are configured:
 * Virtualenvwrapper
 * Pip
 * Git
+* iterm2 (mac)
+* Windows Terminal
 
 Installation
 ------------
@@ -33,8 +35,4 @@ Currently used on:
 * Ubuntu
 * CentOS
 * macOS w/ iterm2
-
-To Do
------
-* Include sys.sh (platform-specific settings) and have install script select
-based on reported platform.
+* Windows 10 (powershell & WSL)
