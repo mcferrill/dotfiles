@@ -4,6 +4,11 @@ dotfiles
 This is a set of config files mostly starting with "." (hence the repo name)
 that allow consistent behavior between multiple tools across environments.
 
+Prerequisites
+-------------
+Python 3.6+
+git
+
 Requirements
 ------------
 The only real dependencies are python and git. More tools that are configured:
@@ -12,7 +17,6 @@ The only real dependencies are python and git. More tools that are configured:
 * Bash
 * Vim
 * Tmux
-* GNU Screen
 * Virtualenvwrapper
 * Pip
 * Git
@@ -28,8 +32,7 @@ Currently used on:
 
 * Ubuntu
 * CentOS
-* Windows Subsystem for Linux (Ubuntu)
-* macOS 10.15 w/ iterm2
+* macOS w/ iterm2
 
 To Do
 -----
