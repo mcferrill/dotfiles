@@ -1,13 +1,15 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 '''usage: install.py [options]
 
 Options:
     -u, --update         Pull updates for submodules.
     -f, --force          Force overwrite of existing files (no backup).
+    -ns, --no-system     Skip system (apt/brew/yum) updates.
+    -nd, --no-download   Skip any network-dependent steps.
+    -np, --no-pip        Skip python modules.
 '''
 
-from __future__ import print_function
 from os.path import dirname, abspath, basename, join, splitext
 from glob import glob
 import os
@@ -38,40 +40,34 @@ def symlink(source, target, backup=True):
     os.system('ln -s "%s" "%s"' % (source, target))
 
 
-def install(args):
+def main(args):
     """Pull latest from github and symlink everything. Optionally backs up any
     overwritten config files.
     """
 
-    print('Downloading latest from github...')
-    os.chdir(cur)
-    os.system('git fetch origin')
-    os.system('git merge origin/master')
+    # Parse commandline args
+    args = docopt(__doc__)
+    backup = not args['--force']
 
-    print('Installing')
+    # Pull core and submmodule updates from github
+    if not args['--no-download']:
+        print('Downloading latest version from github...')
+        os.chdir(cur)
+        os.system('git fetch origin')
+        os.system('git merge origin/master')
+        os.system('git submodule init && git submodule update')
+
+        if not args['--no-pip']:
+            print('Installing python modules')
+            os.system('python -m pip install -r requirements.txt')
+
+    # Install to REPO
+    print('Installing to {}'.format(repo))
     os.chdir(home)
-
-    # Install to our repo constant (.files).
     if repo != cur:
         os.rename(cur, repo)
 
-    # Windows (not recently tested)
-    if sys.platform == 'win32':
-
-        # Create a "junction" (windows symlink) to home/bin.
-        os.system(join(repo, 'bin', 'junction.exe') + ' bin ' +
-                  join(repo, 'bin'))
-
-        # Add home/bin to our system path.
-        os.system('SET PATH=%%PATH%%;%s' % join(abspath(os.curdir)))
-
-        # Add the .py extension to the system pathext variable so we can call
-        # python scripts directly.
-        os.system('SET PATHEXT=%%PATHEXT%%;.PY')
-
-    # Unix-based
-    else:
-
+    if not args['--no-system'] and not args['--no-download']:
         print('Installing system updates')
         if sys.platform == 'darwin':
             os.system('brew update && brew upgrade')
@@ -80,14 +76,23 @@ def install(args):
             os.system('sudo apt update && sudo apt upgrade -y')
             os.system('sudo apt autoremove -y && sudo apt autoclean')
 
-        backup = not args['--force']
+    # Windows (not recently tested)
+    if sys.platform == 'win32':
 
-        # Make sure home/bin exists.
-        print('Linking scripts to ~/bin')
+        # Create a "junction" (windows symlink) to home/bin.
+        os.system(join(repo, 'bin', 'junction.exe') + ' bin ' +
+                  join(repo, 'bin'))
+        
+        print('Please add {} to your windows path'.format(os.path.join(repo, 'bin')))
+
+    # Unix-based
+    else:
+
+        # Link all of the scripts into $HOME/bin.
+        print('Installing scripts to ~/bin')
         if not os.path.exists('bin'):
             os.makedirs('bin')
 
-        # Link all of the scripts into home/bin.
         bin_dir = abspath(join(repo, 'bin'))
         scripts = glob(bin_dir + '/*.py') + glob(bin_dir + '/*.sh')
         for script in scripts:
@@ -99,26 +104,12 @@ def install(args):
         for config in glob(join(repo, 'dot', '*')):
             symlink(config, join(home, '.' + basename(config)), backup)
 
-    # Install git submodules.
-    print('Installing sub-modules')
-    os.chdir(repo)
-    os.system('git submodule init && git submodule update')
-
-    if args['--update']:
-        print('Updating submodules')
-        os.system('git submodule foreach git pull origin master')
-        print('Be sure to push updates if needed')
-
     # Check pip for outdated packages
     print('Checking pip for outdated packages')
-    os.system('python3 -m pip list --outdated')
+    os.system('python -m pip list --outdated')
 
-    print('''Installation complete!
-To install additional python extras use: pip install -r \
-requirements.txt''')
+    print('Installation complete!')
 
 
 if __name__ == '__main__':
-    args = docopt(__doc__)
-
-    install(args)
+    main()
