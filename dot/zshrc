@@ -1,5 +1,6 @@
 
 DOTFILES=$HOME/.files
+export PATH=$DOTFILES/bin:$PATH
 
 # Virtualenvwrapper
 WORKON_HOME=$HOME/.envs
