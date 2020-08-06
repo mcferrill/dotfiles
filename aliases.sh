@@ -11,5 +11,4 @@ alias free="free -th"
 alias grep="grep --color -n"
 alias python="python3"
 
-export PATH=$HOME/bin:$PATH
 export VISUAL=vim
