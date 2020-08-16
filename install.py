@@ -113,10 +113,11 @@ class DotfilesInstaller:
             elif sys.platform.startswith('linux'):
                 if self.run('which apt').returncode == 0:
                     # Run without sudo if fails (for termux benefit)
-                    if self.run('sudo apt update && sudo apt upgrade -y'):
+                    if self.run('which sudo').returncode:
                         self.run('apt update && apt upgrade -y')
                         self.run('apt autoremove -y && apt autoclean')
                     else:
+                        self.run('sudo apt update && sudo apt upgrade -y')
                         self.run(
                             'sudo apt autoremove -y && sudo apt autoclean')
 
