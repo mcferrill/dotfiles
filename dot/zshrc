@@ -21,11 +21,12 @@ fi
 export ZSH="$HOME/.files/oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(
-    git
+    gitfast
     docker
     iterm2
+    python
+    tmux
     virtualenvwrapper
-    vscode
     kubectl
 )
 source $ZSH/oh-my-zsh.sh
