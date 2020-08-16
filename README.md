@@ -6,8 +6,9 @@ that allow consistent behavior between multiple tools across environments.
 
 Prerequisites
 -------------
-Python 3.6+
-git
+
+* Python 3.6+
+* git
 
 Requirements
 ------------
