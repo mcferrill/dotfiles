@@ -23,9 +23,9 @@ if [ -f $DOTFILES/sys.sh ]; then
 fi
 
 # Git tab completion and prompt.
-source $DOTFILES/git/git-completion.bash
-source $DOTFILES/git/bash-git-prompt/prompt-colors.sh
+source $DOTFILES/prompt/git-completion.bash
+source $DOTFILES/prompt/bash-git-prompt/prompt-colors.sh
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
-source $DOTFILES/git/bash-git-prompt/gitprompt.sh
+source $DOTFILES/prompt/bash-git-prompt/gitprompt.sh
 
-source $DOTFILES/aliases.sh
+source $DOTFILES/prompt/aliases.sh
