@@ -10,5 +10,6 @@ alias tree="tree -C"
 alias free="free -th"
 alias grep="grep --color -n"
 alias python="python3"
+alias clean="pyclean"
 
 export VISUAL=vim

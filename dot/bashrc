@@ -5,18 +5,13 @@ if [ -f /etc/bashrc ]; then
 fi
 
 DOTFILES=$HOME/.files
-
-source $DOTFILES/aliases.sh
-
-# Git tab completion and prompt.
-source $DOTFILES/git/git-completion.bash
-source $DOTFILES/git/bash-git-prompt/prompt-colors.sh
-GIT_PROMPT_FETCH_REMOTE_STATUS=0
-source $DOTFILES/git/bash-git-prompt/gitprompt.sh
+PATH=$DOTFILES/bin:$PATH
 
 # Virtualenvwrapper
-VIRTUALENVWRAPPER_SH="$(which virtualenvwrapper.sh)"
 WORKON_HOME=$HOME/.envs
+if [ "$VIRTUAL_ENV" ]; then 
+    source $VIRTUAL_ENV/bin/activate; 
+fi 
 
 # Pip 
 PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -27,18 +22,10 @@ if [ -f $DOTFILES/sys.sh ]; then
     source $DOTFILES/sys.sh
 fi
 
-# Virtualenvwrapper
-if [ -f $VIRTUALENVWRAPPER_SH ]; then
-    source $VIRTUALENVWRAPPER_SH
-fi
+# Git tab completion and prompt.
+source $DOTFILES/git/git-completion.bash
+source $DOTFILES/git/bash-git-prompt/prompt-colors.sh
+GIT_PROMPT_FETCH_REMOTE_STATUS=0
+source $DOTFILES/git/bash-git-prompt/gitprompt.sh
 
-# If we open a shell within a virtual env, make sure it's activated.
-if [ "$VIRTUAL_ENV" ]; then 
-    source $VIRTUAL_ENV/bin/activate; 
-fi 
-
-###-tns-completion-start-###
-if [ -f /Users/mcferrill/.tnsrc ]; then 
-    source /Users/mcferrill/.tnsrc 
-fi
-###-tns-completion-end-###
+source $DOTFILES/aliases.sh
