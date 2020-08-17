@@ -1,4 +1,7 @@
 
+scriptencoding utf-8
+set encoding=utf-8
+
 set mouse=a
 if has("mouse_sgr")
     set ttymouse=sgr
