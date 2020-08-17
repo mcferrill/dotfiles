@@ -20,7 +20,7 @@
 	path = dot/vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
 [submodule "git/bash-git-prompt"]
-	path = git/bash-git-prompt
+	path = prompt/bash-git-prompt
 	url = https://github.com/magicmonty/bash-git-prompt.git
 [submodule "dot/vim/bundle/vim-php"]
 	path = dot/vim/bundle/vim-php
@@ -77,7 +77,7 @@
 	path = dot/vim/bundle/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
 [submodule "oh-my-zsh"]
-	path = oh-my-zsh
+	path = prompt/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "dot/vim/bundle/vim-javascript"]
 	path = dot/vim/bundle/vim-javascript

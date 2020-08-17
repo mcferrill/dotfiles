@@ -18,7 +18,7 @@ if [ -f $DOTFILES/sys.sh ]; then
 fi
 
 # oh-my-zsh
-export ZSH="$HOME/.files/oh-my-zsh"
+export ZSH="$HOME/.files/prompt/oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(
     gitfast
@@ -31,7 +31,7 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
-source $DOTFILES/aliases.sh
+source $DOTFILES/prompt/aliases.sh
 
 function light {
     iterm2_profile Light
