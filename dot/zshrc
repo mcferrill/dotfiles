@@ -4,6 +4,9 @@ export PATH=$DOTFILES/bin:$PATH
 
 # Virtualenvwrapper
 WORKON_HOME=$HOME/.envs
+if [ "$VIRTUAL_ENV" ]; then 
+    source $VIRTUAL_ENV/bin/activate; 
+fi 
 
 # Pip 
 PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -14,22 +17,28 @@ if [ -f $DOTFILES/sys.sh ]; then
     source $DOTFILES/sys.sh
 fi
 
-# If we open a shell within a virtual env, make sure it's activated.
-if [ "$VIRTUAL_ENV" ]; then 
-    source $VIRTUAL_ENV/bin/activate; 
-fi 
-
 # oh-my-zsh
 export ZSH="$HOME/.files/oh-my-zsh"
 ZSH_THEME="robbyrussell"
 plugins=(
-    git
+    gitfast
     docker
     iterm2
+    python
+    tmux
     virtualenvwrapper
-    vscode
     kubectl
 )
 source $ZSH/oh-my-zsh.sh
 
 source $DOTFILES/aliases.sh
+
+function light {
+    iterm2_profile Light
+    export USER_THEME="light"
+}
+
+function dark {
+    iterm2_profile Default
+    export USER_THEME="dark"
+}
