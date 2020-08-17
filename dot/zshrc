@@ -32,3 +32,13 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 source $DOTFILES/aliases.sh
+
+function light {
+    iterm2_profile Light
+    export USER_THEME="light"
+}
+
+function dark {
+    iterm2_profile Default
+    export USER_THEME="dark"
+}
