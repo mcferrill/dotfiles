@@ -4,28 +4,25 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
+# Shared aliases, etc.
+source $DOTFILES/prompt/aliases.sh
+
 DOTFILES=$HOME/.files
 PATH=$DOTFILES/bin:$PATH
 
-# Virtualenvwrapper
+# Python (virtualenvwrapper, pip, etc.)
 WORKON_HOME=$HOME/.envs
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
+if [ "virtualenvwrapper.sh" ]; then 
+    source virtualenvwrapper.sh 
+fi 
 if [ "$VIRTUAL_ENV" ]; then 
     source $VIRTUAL_ENV/bin/activate; 
 fi 
-
-# Pip 
-PIP_VIRTUALENV_BASE=$WORKON_HOME
-PIP_RESPECT_VIRTUALENV=true
-
-# System specific settings
-if [ -f $DOTFILES/sys.sh ]; then
-    source $DOTFILES/sys.sh
-fi
 
 # Git tab completion and prompt.
 source $DOTFILES/prompt/git-completion.bash
 source $DOTFILES/prompt/bash-git-prompt/prompt-colors.sh
 GIT_PROMPT_FETCH_REMOTE_STATUS=0
 source $DOTFILES/prompt/bash-git-prompt/gitprompt.sh
-
-source $DOTFILES/prompt/aliases.sh
