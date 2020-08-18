@@ -1,21 +1,6 @@
 
-DOTFILES=$HOME/.files
+export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
-
-# Virtualenvwrapper
-WORKON_HOME=$HOME/.envs
-if [ "$VIRTUAL_ENV" ]; then 
-    source $VIRTUAL_ENV/bin/activate; 
-fi 
-
-# Pip 
-PIP_VIRTUALENV_BASE=$WORKON_HOME
-PIP_RESPECT_VIRTUALENV=true
-
-# System specific settings
-if [ -f $DOTFILES/sys.sh ]; then
-    source $DOTFILES/sys.sh
-fi
 
 # oh-my-zsh
 export ZSH="$HOME/.files/prompt/oh-my-zsh"
@@ -31,7 +16,16 @@ plugins=(
 )
 source $ZSH/oh-my-zsh.sh
 
+# Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
+
+# Python (virtualenvwrapper, pip, etc.)
+WORKON_HOME=$HOME/.envs
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
+if [ "$VIRTUAL_ENV" ]; then 
+    source $VIRTUAL_ENV/bin/activate; 
+fi 
 
 function light {
     iterm2_profile Light
