@@ -10,9 +10,6 @@ if [ "$VIRTUAL_ENV" ]; then
     source $VIRTUAL_ENV/bin/activate; 
 fi 
 
-# Shared aliases, etc.
-source $DOTFILES/prompt/aliases.sh
-
 function light {
     iterm2_profile Light
     export USER_THEME="light"
@@ -23,6 +20,9 @@ function dark {
     export USER_THEME="dark"
 }
 
+# Shared settings for bash & zsh
+source $DOTFILES/prompt/common.sh
+
 # oh-my-zsh
 export ZSH="$HOME/.files/prompt/oh-my-zsh"
 ZSH_THEME="robbyrussell"
@@ -32,7 +32,9 @@ plugins=(
     iterm2
     python
     tmux
-    virtualenvwrapper
     kubectl
 )
 source $ZSH/oh-my-zsh.sh
+
+# Shared aliases, etc.
+source $DOTFILES/prompt/aliases.sh
