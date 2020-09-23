@@ -95,8 +95,9 @@ set fo-=t   " don't automatically wrap text when typing
 " Force .md files to be read as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" Use two spaces for indentation in ada
+" Use two spaces for indentation where appropriate
 autocmd FileType ada setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Smarty syntax highlighting
 au BufRead,BufNewFile *.tpl set filetype=smarty
