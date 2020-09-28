@@ -6,8 +6,8 @@ export PATH=$DOTFILES/bin:$PATH
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
-if [ "virtualenvwrapper.sh" ]; then 
-    source virtualenvwrapper.sh 
+if [ "$(which virtualenvwrapper.sh)" ]; then 
+    source $(which virtualenvwrapper.sh)
 fi 
 if [ "$VIRTUAL_ENV" ]; then 
     source $VIRTUAL_ENV/bin/activate; 
