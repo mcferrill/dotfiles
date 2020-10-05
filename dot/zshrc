@@ -2,17 +2,6 @@
 export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
 
-# Python (virtualenvwrapper, pip, etc.)
-WORKON_HOME=$HOME/.envs
-PIP_VIRTUALENV_BASE=$WORKON_HOME
-PIP_RESPECT_VIRTUALENV=true
-if [ "$(which virtualenvwrapper.sh)" ]; then 
-    source $(which virtualenvwrapper.sh)
-fi 
-if [ "$VIRTUAL_ENV" ]; then 
-    source $VIRTUAL_ENV/bin/activate; 
-fi 
-
 function light {
     iterm2_profile Light
     export USER_THEME="light"
@@ -25,6 +14,18 @@ function dark {
 
 # Shared settings for bash & zsh
 source $DOTFILES/prompt/common.sh
+
+# Python (virtualenvwrapper, pip, etc.)
+WORKON_HOME=$HOME/.envs
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
+if [ "$(which virtualenvwrapper.sh)" ]; then 
+    source "$(which virtualenvwrapper.sh)"
+fi 
+if [ "$VIRTUAL_ENV" ]; then 
+    source $VIRTUAL_ENV/bin/activate; 
+fi 
+
 
 # oh-my-zsh
 export ZSH="$HOME/.files/prompt/oh-my-zsh"
