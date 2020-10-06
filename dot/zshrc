@@ -2,6 +2,7 @@
 export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
 
+# macOS light and dark themes
 function light {
     iterm2_profile Light
     export USER_THEME="light"
