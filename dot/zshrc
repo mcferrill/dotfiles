@@ -2,7 +2,19 @@
 export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
 
-# macOS light and dark themes
+# Python (virtualenvwrapper, pip, etc.)
+WORKON_HOME=$HOME/.envs
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
+if [ "$VIRTUAL_ENV" ]; then 
+    source $VIRTUAL_ENV/bin/activate; 
+else
+    if [ "virtualenvwrapper.sh" ]; then 
+        source virtualenvwrapper.sh 
+    fi 
+fi
+
+# macOS terminal themes
 function light {
     iterm2_profile Light
     export USER_THEME="light"
