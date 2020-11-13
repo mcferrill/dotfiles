@@ -2,6 +2,9 @@
 export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
 
+# Shared settings for bash & zsh
+source $DOTFILES/prompt/common.sh
+
 # Python (virtualenvwrapper, pip, etc.)
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -24,9 +27,6 @@ function dark {
     iterm2_profile Default
     export USER_THEME="dark"
 }
-
-# Shared settings for bash & zsh
-source $DOTFILES/prompt/common.sh
 
 # Python (virtualenvwrapper, pip, etc.)
 WORKON_HOME=$HOME/.envs
