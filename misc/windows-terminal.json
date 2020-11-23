@@ -20,7 +20,11 @@
     "profiles": {
         "defaults": {
             // Put settings here that you want to apply to all profiles.
-            "fontSize": 8
+            "fontSize": 8,
+            // Default (dark) mode
+            "colorScheme": "Wombat"
+            // Light mode (disable above)
+            //"colorScheme": "Solarized Light"
         },
         "list": [
             {
@@ -34,13 +38,11 @@
             {
                 "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
                 "hidden": false,
-                "colorScheme": "Wombat",
                 "name": "Ubuntu",
                 "commandline": "wsl.exe ~",
                 "source": "Windows.Terminal.Wsl"
             },
             {
-                "colorScheme": "Wombat",
                 "commandline": "powershell.exe -noe -c \"&{Import-Module \"\"\"C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/Tools/Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 779c3676}\"",
                 "name": "VS2019 PowerShell",
                 "startingDirectory": "C:/Users/Micah"
@@ -83,7 +85,28 @@
             "brightWhite": "#ffffff",
             "background": "#171717",
             "foreground": "#dedacf"
-        }
+        },
+        {
+            "name": "Solarized Light",
+            "black": "#073642",
+            "red": "#dc322f",
+            "green": "#859900",
+            "yellow": "#b58900",
+            "blue": "#268bd2",
+            "purple": "#d33682",
+            "cyan": "#2aa198",
+            "white": "#eee8d5",
+            "brightBlack": "#002b36",
+            "brightRed": "#cb4b16",
+            "brightGreen": "#586e75",
+            "brightYellow": "#657b83",
+            "brightBlue": "#839496",
+            "brightPurple": "#6c71c4",
+            "brightCyan": "#93a1a1",
+            "brightWhite": "#fdf6e3",
+            "background": "#fdf6e3",
+            "foreground": "#657b83"
+          }
     ],
     // Add custom keybindings to this array.
     // To unbind a key combination from your defaults.json, set the command to "unbound".
