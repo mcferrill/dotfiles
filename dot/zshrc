@@ -1,4 +1,6 @@
 
+zmodload zsh/zprof
+
 export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
 
@@ -11,10 +13,8 @@ PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
 if [ "$VIRTUAL_ENV" ]; then 
     source $VIRTUAL_ENV/bin/activate; 
-else
-    if [ "virtualenvwrapper.sh" ]; then 
-        source virtualenvwrapper.sh 
-    fi 
+elif [ "virtualenvwrapper.sh" ]; then 
+    source virtualenvwrapper_lazy.sh
 fi
 
 # macOS terminal themes
@@ -27,17 +27,6 @@ function dark {
     iterm2_profile Default
     export USER_THEME="dark"
 }
-
-# Python (virtualenvwrapper, pip, etc.)
-WORKON_HOME=$HOME/.envs
-PIP_VIRTUALENV_BASE=$WORKON_HOME
-PIP_RESPECT_VIRTUALENV=true
-if [ "$(which virtualenvwrapper.sh)" ]; then 
-    source "$(which virtualenvwrapper.sh)"
-fi 
-if [ "$VIRTUAL_ENV" ]; then 
-    source $VIRTUAL_ENV/bin/activate; 
-fi 
 
 
 # oh-my-zsh
