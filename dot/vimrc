@@ -1,4 +1,7 @@
 
+set exrc
+set secure
+
 scriptencoding utf-8
 set encoding=utf-8
 
