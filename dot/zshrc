@@ -37,10 +37,10 @@ ZSH_THEME="daveverwer"
 plugins=(
     gitfast
     docker
-    iterm2
+    # iterm2
     python
     tmux
-    kubectl
+    # kubectl
 )
 source $ZSH/oh-my-zsh.sh
 
