@@ -94,3 +94,6 @@
 [submodule "dot/vim/bundle/twig.vim"]
 	path = dot/vim/bundle/twig.vim
 	url = https://github.com/nelsyeung/twig.vim.git
+[submodule "dot/vim/bundle/vim-vue-plugin.git"]
+	path = dot/vim/bundle/vim-vue-plugin.git
+	url = git@github.com:leafOfTree/vim-vue-plugin.git
