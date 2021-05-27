@@ -36,10 +36,10 @@ export ZSH="$HOME/.files/prompt/oh-my-zsh"
 ZSH_THEME="daveverwer"
 plugins=(
     gitfast
-    docker
+    # docker
     # iterm2
-    python
-    tmux
+    # python
+    # tmux
     # kubectl
 )
 source $ZSH/oh-my-zsh.sh
