@@ -35,7 +35,7 @@ export ZSH="$HOME/.files/prompt/oh-my-zsh"
 # ZSH_THEME="clean"
 ZSH_THEME="daveverwer"
 plugins=(
-    gitfast
+    # gitfast
     # docker
     # iterm2
     # python
