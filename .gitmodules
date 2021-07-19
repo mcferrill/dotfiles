@@ -76,9 +76,6 @@
 [submodule "dot/vim/bundle/vim-qml"]
 	path = dot/vim/bundle/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
-[submodule "oh-my-zsh"]
-	path = prompt/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "dot/vim/bundle/vim-javascript"]
 	path = dot/vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
