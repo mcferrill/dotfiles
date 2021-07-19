@@ -17,6 +17,12 @@ elif [ "virtualenvwrapper.sh" ]; then
     source virtualenvwrapper_lazy.sh
 fi
 
+if [ "$(which pipx)" ]; then
+    autoload -U bashcompinit
+    bashcompinit
+    eval "$(register-python-argcomplete pipx)"
+fi
+
 # macOS terminal themes
 function light {
     iterm2_profile Light
@@ -46,3 +52,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
+
+# Created by `pipx` on 2021-07-19 14:45:09
+export PATH="$PATH:/home/mcferrill/.local/bin"
