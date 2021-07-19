@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "final_space": true,
+  "osc99": true,
+  "console_title": true,
+  "console_title_style": "template",
+  "console_title_template": "{{.Folder}}{{if .Root}} :: root{{end}} :: {{.Shell}}",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        { 
+          "type": "root",
+          "style": "plain",
+          "foreground": "yellow",
+          "properties": {
+            "root_icon": ""
+          }
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "foreground": "black",
+          "background": "lightBlue",
+          "leading_diamond": "",
+          "trailing_diamond": "",
+          "properties": {
+            "style": "mixed"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "black",
+          "background": "green",
+          "properties": {
+            "display_status_detail": true,
+            "branch_icon": " ",
+            "branch_identical_icon": "≡",
+            "branch_ahead_icon": "↑",
+            "branch_behind_icon": "↓",
+            "branch_gone": "≢",
+            "local_working_icon": "",
+            "local_staged_icon": "",
+            "stash_count_icon": "",
+            "commit_icon": "▷ ",
+            "tag_icon": "▶ ",
+            "rebase_icon": "Ɫ ",
+            "cherry_pick_icon": "✓ ",
+            "merge_icon": "◴ ",
+            "no_commits_icon": "[no commits]",
+            "status_separator_icon": " │",
+            "status_colors_enabled": true,
+            "color_background": true,
+            "local_changes_color": "yellow"
+          }
+        }
+      ]
+    }
+  ]
+}
