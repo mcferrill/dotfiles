@@ -30,7 +30,7 @@ function dark {
 
 # oh-my-zsh
 export ZSH=$DOTFILES/prompt/oh-my-zsh
-plugins=(git)
+plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
 source $ZSH/oh-my-zsh.sh
 
 # oh-my-posh
@@ -38,5 +38,3 @@ eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.jso
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
-
-source $DOTFILES/prompt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
