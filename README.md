@@ -10,6 +10,10 @@ Prerequisites
 * Python 3.6+
 * git
 
+Manual installs (optional)
+--------------------------
+* [winget](https://github.com/microsoft/winget-cli/releases)
+
 Requirements
 ------------
 The only real dependencies are python and git. More tools that are configured:
