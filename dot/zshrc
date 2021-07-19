@@ -28,7 +28,12 @@ function dark {
     export USER_THEME="dark"
 }
 
+# oh-my-zsh
+export ZSH=$DOTFILES/prompt/oh-my-zsh
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
 
+# oh-my-posh
 eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.json)"
 
 # Shared aliases, etc.
