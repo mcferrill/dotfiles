@@ -94,12 +94,12 @@
 [submodule "dot/vim/bundle/vim-vue-plugin.git"]
 	path = dot/vim/bundle/vim-vue-plugin.git
 	url = git@github.com:leafOfTree/vim-vue-plugin.git
-[submodule "prompt/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
-	path = prompt/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+[submodule "prompt/zsh-plugins/plugins/zsh-syntax-highlighting"]
+	path = prompt/zsh-plugins/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "prompt/oh-my-zsh"]
 	path = prompt/oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh.git
-[submodule "prompt/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
-	path = prompt/oh-my-zsh/custom/plugins/zsh-autosuggestions
+[submodule "prompt/zsh-plugins/plugins/zsh-autosuggestions"]
+	path = prompt/zsh-plugins/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
