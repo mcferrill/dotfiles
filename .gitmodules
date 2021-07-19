@@ -97,3 +97,6 @@
 [submodule "prompt/zsh-syntax-highlighting"]
 	path = prompt/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "prompt/oh-my-zsh"]
+	path = prompt/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
