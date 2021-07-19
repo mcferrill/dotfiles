@@ -21,11 +21,8 @@ if [ "$VIRTUAL_ENV" ]; then
     source $VIRTUAL_ENV/bin/activate; 
 fi 
 
-# Git tab completion and prompt.
-source $DOTFILES/prompt/git-completion.bash
-source $DOTFILES/prompt/bash-git-prompt/prompt-colors.sh
-GIT_PROMPT_FETCH_REMOTE_STATUS=0
-source $DOTFILES/prompt/bash-git-prompt/gitprompt.sh
+# oh-my-posh
+eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/robbyrussel.omp.json)"
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
