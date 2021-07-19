@@ -34,21 +34,13 @@ function dark {
     export USER_THEME="dark"
 }
 
-
 # oh-my-zsh
-export ZSH="$HOME/.files/prompt/oh-my-zsh"
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="clean"
-ZSH_THEME="daveverwer"
-plugins=(
-    # gitfast
-    # docker
-    # iterm2
-    # python
-    # tmux
-    # kubectl
-)
+export ZSH=$DOTFILES/prompt/oh-my-zsh
+plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
 source $ZSH/oh-my-zsh.sh
+
+# oh-my-posh
+eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.json)"
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh

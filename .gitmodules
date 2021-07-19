@@ -76,9 +76,6 @@
 [submodule "dot/vim/bundle/vim-qml"]
 	path = dot/vim/bundle/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
-[submodule "oh-my-zsh"]
-	path = prompt/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "dot/vim/bundle/vim-javascript"]
 	path = dot/vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
@@ -97,3 +94,12 @@
 [submodule "dot/vim/bundle/vim-vue-plugin.git"]
 	path = dot/vim/bundle/vim-vue-plugin.git
 	url = git@github.com:leafOfTree/vim-vue-plugin.git
+[submodule "prompt/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = prompt/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "prompt/oh-my-zsh"]
+	path = prompt/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+[submodule "prompt/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = prompt/oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
