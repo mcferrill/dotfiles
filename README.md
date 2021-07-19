@@ -13,6 +13,7 @@ Prerequisites
 Manual installs (optional)
 --------------------------
 * [winget](https://github.com/microsoft/winget-cli/releases)
+* Fira Code NF from [NerdFonts](https://www.nerdfonts.com/)
 
 Requirements
 ------------
