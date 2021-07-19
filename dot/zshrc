@@ -46,3 +46,4 @@ source $ZSH/oh-my-zsh.sh
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
+source $DOTFILES/prompt/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

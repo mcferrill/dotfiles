@@ -97,3 +97,6 @@
 [submodule "dot/vim/bundle/vim-vue-plugin.git"]
 	path = dot/vim/bundle/vim-vue-plugin.git
 	url = git@github.com:leafOfTree/vim-vue-plugin.git
+[submodule "prompt/zsh-syntax-highlighting"]
+	path = prompt/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
