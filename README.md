@@ -13,17 +13,17 @@ Prerequisites
 Manual installs (optional)
 --------------------------
 
-* Fira Code NF from [NerdFonts](https://www.nerdfonts.com/)
-* [Visual Studio Code](https://code.visualstudio.com/) (settings synced elsewhere)
-* [neovim](https://neovim.io/)
-* [ag/the-silver-searcher](https://github.com/ggreer/the_silver_searcher)
-* [Python](https://www.python.org/) (update-alternatives on linux)
 * macOS
   * [Homebrew](https://brew.sh/)
   * iterm2
 * Windows
+  * [scoop](https://scoop.sh/)
   * [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3#activetab=pivot:overviewtab)
-  * [winget](https://github.com/microsoft/winget-cli/releases) or [scoop](https://scoop.sh/)
+* [Python](https://www.python.org/) (update-alternatives on linux)
+* Fira Code NF from [NerdFonts](https://www.nerdfonts.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) (settings synced elsewhere)
+* [neovim](https://neovim.io/)
+* [ag/the-silver-searcher](https://github.com/ggreer/the_silver_searcher)
 
 Tools Configured Here
 ---------------------
