@@ -14,6 +14,7 @@ Options:
 
 from glob import glob
 from os.path import dirname, abspath, basename, join
+import psutil
 import os
 import subprocess
 import sys
@@ -23,8 +24,9 @@ from docopt import docopt
 # Constants
 HOME = os.environ.get('HOME', os.environ.get('USERPROFILE'))
 CURDIR = dirname(abspath(__file__))
-REPO = join(HOME, 'dotfiles') if sys.platform == 'win32' else join(HOME, '.files') 
+REPO = join(HOME, '.files')
 BACKUP_DIR = join(HOME, 'dotfiles.old')
+POWERSHELL = psutil.Process(os.getppid()).name() == 'powershell.exe'
 
 
 class DotfilesInstaller:
@@ -32,6 +34,9 @@ class DotfilesInstaller:
     def symlink(self, source, target):
         """Create a symlink "target" for "source" without deleting old files.
         """
+
+        if os.path.islink(target) and os.path.realpath(target) == source:
+            return
 
         if os.path.exists(target) or os.path.islink(target):
             if not self.args['--force']:
@@ -45,7 +50,15 @@ class DotfilesInstaller:
 
         if self.args['--verbose']:
             print('Linking %s to %s' % (target, source))
-        os.system('ln -s "%s" "%s"' % (source, target))
+        if sys.platform == 'win32':
+            cmd = 'mklink'
+            if POWERSHELL:
+                cmd = f'cmd /c {cmd}'
+            if os.path.isdir(source):
+                cmd += ' /d'
+            os.system(f'{cmd} {target} {source}')
+        else:
+            os.system('ln -s "%s" "%s"' % (source, target))
 
     def run(self, cmd):
         """Run a system command with verbosity based on args."""
@@ -58,7 +71,7 @@ class DotfilesInstaller:
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         else:
             return subprocess.run(cmd)
-    
+
     def download_updates(self):
         """Pull git updates and ensure pip packages were installed."""
 
@@ -75,7 +88,7 @@ class DotfilesInstaller:
             self.run([
                 'python3', '-m', 'pip',
                 'install', '-r', 'requirements.txt'])
-            
+
     def update_submodules(self):
         """Install latest master branch of each submodule."""
 
@@ -84,15 +97,18 @@ class DotfilesInstaller:
         self.run([
             'git', 'submodule', 'foreach',
             'git', 'pull', 'origin', 'master'])
-        
+
     def install_system_updates(self):
-        """Run homebrew or apt updates."""
+        """Run system specific updates (scoop, homebrew, apt, etc)."""
 
         if not self.args['--quiet']:
             print('Installing system updates')
 
         if sys.platform == 'darwin':
             self.run('brew update && brew upgrade')
+
+        elif sys.platform == 'win32':
+            self.run('scoop update')
 
         elif sys.platform.startswith('linux'):
             # Debian based systems (apt)
@@ -105,6 +121,31 @@ class DotfilesInstaller:
                     self.run('sudo apt update && sudo apt upgrade -y')
                     self.run(
                         'sudo apt autoremove -y && sudo apt autoclean')
+
+    def install_windows(self):
+        """Install dotfiles to windows-specific paths."""
+
+        # .config
+        for fname in os.listdir(join(REPO, 'dot', 'config')):
+            self.symlink(join(REPO, 'dot', 'config', fname),
+                         join(HOME, '.config', fname))
+
+        # pip
+        self.symlink(join(REPO, 'dot', 'pip'), join(HOME, 'pip'))
+
+        # Simple symlinks
+        for path in ('poshthemes',):
+            self.symlink(join(REPO, 'dot', path), join(HOME, '.' + path))
+
+        # vim
+        self.symlink(join(REPO, 'dot', 'vimrc'), join(HOME, '_vimrc'))
+        self.symlink(join(REPO, 'dot', 'vim'), join(HOME, 'vimfiles'))
+
+        # neovim
+        self.symlink(join(REPO, 'dot', 'vim'),
+                     join(HOME, 'AppData', 'Local', 'nvim'))
+        self.symlink(join(REPO, 'dot', 'vimrc'),
+                     join(HOME, 'AppData', 'Local', 'nvim', 'init.vim'))
 
     def main(self):
         """Pull latest from github and symlink everything. Optionally backs up
@@ -121,25 +162,38 @@ class DotfilesInstaller:
             self.update_submodules()
 
         # Install to REPO
-        if not self.args['--quiet']:
-            print(f'Installing to {REPO}')
-        os.chdir(HOME)
-        if REPO != CURDIR:
-            os.rename(CURDIR, REPO)
+        if sys.platform == 'win32':
+            print(f'Note that dotfiles will remain at {CURDIR}')
+        else:
+            if not self.args['--quiet']:
+                print(f'Installing to {REPO}')
+            os.chdir(HOME)
+            if REPO != CURDIR:
+                os.rename(CURDIR, REPO)
 
         if not self.args['--no-system'] and not self.args['--no-download']:
             self.install_system_updates()
 
         if sys.platform == 'win32':
-            if not self.args['-q']:
-                print('Make sure {} is in your path'.format(
-                    join(repo, 'bin')))
-        else:
-            # Link all the dotfiles into the home directory.
             if not self.args['--quiet']:
-                print('Installing dotfiles')
+                print('Make sure {} is in your path'.format(
+                    join(CURDIR, 'bin')))
+
+        # Link all the dotfiles into the home directory.
+        if not self.args['--quiet']:
+            print('Installing dotfiles')
+        if not os.path.exists(join(HOME, '.config')):
+            os.mkdir(join(HOME, '.config'))
+        if sys.platform == 'win32':
+            self.install_windows()
+        else:
             for config in glob(join(REPO, 'dot', '*')):
-                self.symlink(config, join(HOME, '.' + basename(config)))
+                if os.path.split(config)[-1] == 'config':
+                    for sub in glob(join(REPO, 'dot', 'config', '*')):
+                        self.symlink(config,
+                                     join(HOME, 'config', basename(sub)))
+                else:
+                    self.symlink(config, join(HOME, '.' + basename(config)))
 
         if not self.args['--quiet']:
             print('Installation complete!')
