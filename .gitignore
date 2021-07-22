@@ -11,3 +11,4 @@ apt-cyg
 dot/vim/tmp/*
 *.pyc
 .vscode
+dot/vim/init.vim

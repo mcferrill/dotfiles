@@ -82,13 +82,6 @@ class DotfilesInstaller:
         self.run(['git', 'submodule', 'init'])
         self.run(['git', 'submodule', 'update'])
 
-        if not self.args['--no-pip']:
-            if not self.args['--quiet']:
-                print('Installing python modules')
-            self.run([
-                'python3', '-m', 'pip',
-                'install', '-r', 'requirements.txt'])
-
     def update_submodules(self):
         """Install latest master branch of each submodule."""
 
@@ -158,12 +151,22 @@ class DotfilesInstaller:
         if not self.args['--no-download']:
             self.download_updates()
 
+        # Install pip dependencies
+        if not self.args['--no-pip']:
+            if not self.args['--quiet']:
+                print('Installing python modules')
+            self.run([
+                'python3', '-m', 'pip',
+                'install', '-r', 'requirements.txt'])
+            self.run(['pipx', 'ensurepath'])
+
         if self.args['--update']:
             self.update_submodules()
 
         # Install to REPO
         if sys.platform == 'win32':
-            print(f'Note that dotfiles will remain at {CURDIR}')
+            if not self.args['--quiet']:
+                print(f'Note that dotfiles will remain at {CURDIR}')
         else:
             if not self.args['--quiet']:
                 print(f'Installing to {REPO}')
