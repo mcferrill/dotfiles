@@ -1,5 +1,3 @@
-# Syntax and style checking.
 flake8
-
-# Virtual environments toolset
 virtualenvwrapper
+pipx

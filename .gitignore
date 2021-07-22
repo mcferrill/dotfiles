@@ -10,3 +10,5 @@ apt-cyg
 .DS_Store
 dot/vim/tmp/*
 *.pyc
+.vscode
+dot/vim/init.vim
