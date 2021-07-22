@@ -14,7 +14,6 @@ Options:
 
 from glob import glob
 from os.path import dirname, abspath, basename, join
-import psutil
 import os
 import subprocess
 import sys
@@ -26,7 +25,12 @@ HOME = os.environ.get('HOME', os.environ.get('USERPROFILE'))
 CURDIR = dirname(abspath(__file__))
 REPO = join(HOME, '.files')
 BACKUP_DIR = join(HOME, 'dotfiles.old')
-POWERSHELL = psutil.Process(os.getppid()).name() == 'powershell.exe'
+
+try:
+    import psutil
+    POWERSHELL = psutil.Process(os.getppid()).name() == 'powershell.exe'
+except ImportError:
+    POWERSHELL = False
 
 
 class DotfilesInstaller:
@@ -193,10 +197,14 @@ class DotfilesInstaller:
             for config in glob(join(REPO, 'dot', '*')):
                 if os.path.split(config)[-1] == 'config':
                     for sub in glob(join(REPO, 'dot', 'config', '*')):
-                        self.symlink(config,
+                        self.symlink(sub,
                                      join(HOME, 'config', basename(sub)))
                 else:
                     self.symlink(config, join(HOME, '.' + basename(config)))
+
+            # neovim
+            self.symlink(join(REPO, 'dot', 'vim'), join(HOME, '.config', 'nvim'))
+            self.symlink(join(REPO, 'dot', 'vimrc'), join(REPO, 'dot', 'vim', 'init.vim'))
 
         if not self.args['--quiet']:
             print('Installation complete!')
