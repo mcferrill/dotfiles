@@ -202,8 +202,10 @@ class DotfilesInstaller:
                     self.symlink(config, join(HOME, '.' + basename(config)))
 
             # neovim
-            self.symlink(join(REPO, 'dot', 'vim'), join(HOME, '.config', 'nvim'))
-            self.symlink(join(REPO, 'dot', 'vimrc'), join(REPO, 'dot', 'vim', 'init.vim'))
+            self.symlink(join(REPO, 'dot', 'vim'),
+                         join(HOME, '.config', 'nvim'))
+            self.symlink(join(REPO, 'dot', 'vimrc'),
+                         join(REPO, 'dot', 'vim', 'init.vim'))
 
         if not self.args['--quiet']:
             print('Installation complete!')
