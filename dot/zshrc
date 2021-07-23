@@ -20,7 +20,7 @@ fi
 if [ "$(which pipx)" ]; then
     autoload -U bashcompinit
     bashcompinit
-    eval "$(register-python-argcomplete pipx)"
+    # eval "$(register-python-argcomplete pipx)"
 fi
 
 # macOS terminal themes
@@ -41,7 +41,9 @@ plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
 source $ZSH/oh-my-zsh.sh
 
 # oh-my-posh
-eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.json)"
+if [ "$(which oh-my-posh)" ]; then
+    eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.json)"
+fi
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
