@@ -196,10 +196,14 @@ class DotfilesInstaller:
             for config in glob(join(REPO, 'dot', '*')):
                 if os.path.split(config)[-1] == 'config':
                     for sub in glob(join(REPO, 'dot', 'config', '*')):
-                        self.symlink(config,
+                        self.symlink(sub,
                                      join(HOME, 'config', basename(sub)))
                 else:
                     self.symlink(config, join(HOME, '.' + basename(config)))
+
+            # neovim
+            self.symlink(join(REPO, 'dot', 'vim'), join(HOME, '.config', 'nvim'))
+            self.symlink(join(REPO, 'dot', 'vimrc'), join(REPO, 'dot', 'vim', 'init.vim'))
 
         if not self.args['--quiet']:
             print('Installation complete!')
