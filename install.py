@@ -14,7 +14,6 @@ Options:
 
 from glob import glob
 from os.path import dirname, abspath, basename, join
-import psutil
 import os
 import subprocess
 import sys
@@ -26,7 +25,11 @@ HOME = os.environ.get('HOME', os.environ.get('USERPROFILE'))
 CURDIR = dirname(abspath(__file__))
 REPO = join(HOME, '.files')
 BACKUP_DIR = join(HOME, 'dotfiles.old')
-POWERSHELL = psutil.Process(os.getppid()).name() == 'powershell.exe'
+try:
+    import psutil
+    POWERSHELL = psutil.Process(os.getppid()).name() == 'powershell.exe'
+except ImportError:
+    POWERSHELL = None
 
 
 class DotfilesInstaller:
@@ -101,7 +104,7 @@ class DotfilesInstaller:
             self.run('brew update && brew upgrade')
 
         elif sys.platform == 'win32':
-            self.run('scoop update')
+            os.system('scoop update')
 
         elif sys.platform.startswith('linux'):
             # Debian based systems (apt)
