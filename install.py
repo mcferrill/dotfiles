@@ -121,11 +121,6 @@ class DotfilesInstaller:
     def install_windows(self):
         """Install dotfiles to windows-specific paths."""
 
-        # .config
-        for fname in os.listdir(join(REPO, 'dot', 'config')):
-            self.symlink(join(REPO, 'dot', 'config', fname),
-                         join(HOME, '.config', fname))
-
         # pip
         self.symlink(join(REPO, 'dot', 'pip'), join(HOME, 'pip'))
 
