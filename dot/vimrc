@@ -121,13 +121,13 @@ call pathogen#infect()
 
 " Set theme based on light or dark mode
 if ($USER_THEME == 'light')
-    color solarized 
     set background=light
-    let g:airline_theme='solarized'
-    let g:solarized_termcolors=256
+    let g:airline_theme='github'
+    colorscheme github
 else
-    color wombat 
-    let g:airline_theme='wombat'
+    set background=dark
+    let g:gh_color = "soft"
+    colorscheme ghdark
 endif
 
 " ctrlp

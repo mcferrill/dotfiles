@@ -100,3 +100,9 @@
 [submodule "prompt/zsh-plugins/plugins/zsh-autosuggestions"]
 	path = prompt/zsh-plugins/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "dot/vim/bundle/vim-colors-github"]
+	path = dot/vim/bundle/vim-colors-github
+	url = https://github.com/cormacrelf/vim-colors-github
+[submodule "dot/vim/bundle/vim-github-dark"]
+	path = dot/vim/bundle/vim-github-dark
+	url = https://github.com/vv9k/vim-github-dark
