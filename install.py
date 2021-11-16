@@ -3,13 +3,14 @@
 '''usage: install.py [options]
 
 Options:
-    -q, --quiet          Show no output.
-    -v, --verbose        Show output from subcommands.
-    -u, --update         Pull updates for submodules.
-    -f, --force          Force overwrite of existing files (no backup).
-    --no-system          Skip system (brew/scoop) updates.
-    --no-download        Skip any network-dependent steps.
-    --no-pip             Skip python setup.
+    -q, --quiet    Show no output.
+    -v, --verbose  Show output from subcommands.
+    -u, --update   Pull updates for submodules.
+    -f, --force    Force overwrite of existing files (no backup).
+    -o, --os       Install OS (apt/apk) updates.
+    --no-system    Skip global (brew/scoop/npm/pip[x]) updates.
+    --no-download  Skip any network-dependent steps.
+    --no-pip       Skip python setup.
 '''
 
 from glob import glob
@@ -98,7 +99,7 @@ class DotfilesInstaller:
         """Run system specific updates (scoop, homebrew, apt, etc)."""
 
         if not self.args['--quiet']:
-            print('Installing system updates')
+            print('Installing global updates')
 
         if self.run('which brew').returncode == 0:
             print('Installing homebrew updates')
@@ -106,20 +107,23 @@ class DotfilesInstaller:
             self.run('brew upgrade')
 
         elif sys.platform == 'win32':
-            print('Updating scoop')
+            print('Installing scoop updates')
             self.run('scoop update *')
 
-        if sys.platform.startswith('linux'):
+        if sys.platform.startswith('linux') and self.args['--os']:
+
+            # Use sudo if present.
+            sudo = '' if self.run('which sudo').returncode else ' sudo'
+
             # Debian based systems (apt)
             if self.run('which apt').returncode == 0:
-                # Run without sudo if fails (for termux benefit)
-                if self.run('which sudo').returncode:
-                    self.run('apt update && apt upgrade -y')
-                    self.run('apt autoremove -y && apt autoclean')
-                else:
-                    self.run('sudo apt update && sudo apt upgrade -y')
-                    self.run(
-                        'sudo apt autoremove -y && sudo apt autoclean')
+                self.run(f'{sudo} apt update')
+                self.run(f'{sudo} apt upgrade -y')
+
+            # APK (alpine)
+            elif self.run('which apk').returncode == 0:
+                self.run(f'{sudo} apk update')
+                self.run(f'{sudo} apt upgrade')
 
     def install_windows(self):
         """Install dotfiles to windows-specific paths."""
@@ -162,7 +166,8 @@ class DotfilesInstaller:
         self.run([
             'python3', '-m', 'pip',
             'install', '-r', 'requirements.txt'])
-        self.run(['pipx', 'ensurepath'])
+        self.run('pipx ensurepath')
+        self.run('pipx upgrade-all')
 
     def install_dotfiles_directory(self):
         if sys.platform == 'win32':
