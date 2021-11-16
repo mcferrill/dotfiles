@@ -123,7 +123,7 @@ class DotfilesInstaller:
             # APK (alpine)
             elif self.run('which apk').returncode == 0:
                 self.run(f'{sudo} apk update')
-                self.run(f'{sudo} apt upgrade')
+                self.run(f'{sudo} apk upgrade')
 
     def install_windows(self):
         """Install dotfiles to windows-specific paths."""
