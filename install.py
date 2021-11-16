@@ -7,9 +7,9 @@ Options:
     -v, --verbose        Show output from subcommands.
     -u, --update         Pull updates for submodules.
     -f, --force          Force overwrite of existing files (no backup).
-    -ns, --no-system     Skip system (apt/brew) updates.
-    -nd, --no-download   Skip any network-dependent steps.
-    -np, --no-pip        Skip python modules.
+    --no-system          Skip system (brew/scoop) updates.
+    --no-download        Skip any network-dependent steps.
+    --no-pip             Skip python setup.
 '''
 
 from glob import glob
@@ -72,8 +72,8 @@ class DotfilesInstaller:
         if not self.args['--verbose']:
             return subprocess.run(
                 cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        else:
-            return subprocess.run(cmd)
+
+        return subprocess.run(cmd)
 
     def download_updates(self):
         """Pull git updates and ensure pip packages were installed."""
@@ -100,13 +100,16 @@ class DotfilesInstaller:
         if not self.args['--quiet']:
             print('Installing system updates')
 
-        if sys.platform == 'darwin':
-            self.run('brew update && brew upgrade')
+        if self.run('which brew').returncode == 0:
+            print('Installing homebrew updates')
+            self.run('brew update')
+            self.run('brew upgrade')
 
         elif sys.platform == 'win32':
-            os.system('scoop update')
+            print('Updating scoop')
+            self.run('scoop update *')
 
-        elif sys.platform.startswith('linux'):
+        if sys.platform.startswith('linux'):
             # Debian based systems (apt)
             if self.run('which apt').returncode == 0:
                 # Run without sudo if fails (for termux benefit)
@@ -138,6 +141,40 @@ class DotfilesInstaller:
         self.symlink(join(REPO, 'dot', 'vimrc'),
                      join(HOME, 'AppData', 'Local', 'nvim', 'init.vim'))
 
+    def install_unix(self):
+        for config in glob(join(REPO, 'dot', '*')):
+            if os.path.split(config)[-1] == 'config':
+                for sub in glob(join(REPO, 'dot', 'config', '*')):
+                    self.symlink(sub,
+                                 join(HOME, 'config', basename(sub)))
+            else:
+                self.symlink(config, join(HOME, '.' + basename(config)))
+
+        # neovim
+        self.symlink(join(REPO, 'dot', 'vim'),
+                     join(HOME, '.config', 'nvim'))
+        self.symlink(join(REPO, 'dot', 'vimrc'),
+                     join(REPO, 'dot', 'vim', 'init.vim'))
+
+    def install_python_dependencies(self):
+        if not self.args['--quiet']:
+            print('Installing python modules')
+        self.run([
+            'python3', '-m', 'pip',
+            'install', '-r', 'requirements.txt'])
+        self.run(['pipx', 'ensurepath'])
+
+    def install_dotfiles_directory(self):
+        if sys.platform == 'win32':
+            if not self.args['--quiet']:
+                print(f'Note that dotfiles will remain at {CURDIR}')
+        else:
+            if not self.args['--quiet']:
+                print(f'Installing to {REPO}')
+            os.chdir(HOME)
+            if REPO != CURDIR:
+                os.rename(CURDIR, REPO)
+
     def main(self):
         """Pull latest from github and symlink everything. Optionally backs up
         any overwritten config files.
@@ -151,34 +188,19 @@ class DotfilesInstaller:
 
         # Install pip dependencies
         if not self.args['--no-pip']:
-            if not self.args['--quiet']:
-                print('Installing python modules')
-            self.run([
-                'python3', '-m', 'pip',
-                'install', '-r', 'requirements.txt'])
-            self.run(['pipx', 'ensurepath'])
+            self.install_python_dependencies()
 
         if self.args['--update']:
             self.update_submodules()
 
         # Install to REPO
-        if sys.platform == 'win32':
-            if not self.args['--quiet']:
-                print(f'Note that dotfiles will remain at {CURDIR}')
-        else:
-            if not self.args['--quiet']:
-                print(f'Installing to {REPO}')
-            os.chdir(HOME)
-            if REPO != CURDIR:
-                os.rename(CURDIR, REPO)
+        self.install_dotfiles_directory()
 
         if not self.args['--no-system'] and not self.args['--no-download']:
             self.install_system_updates()
 
-        if sys.platform == 'win32':
-            if not self.args['--quiet']:
-                print('Make sure {} is in your path'.format(
-                    join(CURDIR, 'bin')))
+        if sys.platform == 'win32' and not self.args['--quiet']:
+            print(f'Make sure {join(CURDIR, "bin")} is in your path')
 
         # Link all the dotfiles into the home directory.
         if not self.args['--quiet']:
@@ -188,19 +210,7 @@ class DotfilesInstaller:
         if sys.platform == 'win32':
             self.install_windows()
         else:
-            for config in glob(join(REPO, 'dot', '*')):
-                if os.path.split(config)[-1] == 'config':
-                    for sub in glob(join(REPO, 'dot', 'config', '*')):
-                        self.symlink(sub,
-                                     join(HOME, 'config', basename(sub)))
-                else:
-                    self.symlink(config, join(HOME, '.' + basename(config)))
-
-            # neovim
-            self.symlink(join(REPO, 'dot', 'vim'),
-                         join(HOME, '.config', 'nvim'))
-            self.symlink(join(REPO, 'dot', 'vimrc'),
-                         join(REPO, 'dot', 'vim', 'init.vim'))
+            self.install_unix()
 
         if not self.args['--quiet']:
             print('Installation complete!')
