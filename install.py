@@ -13,7 +13,9 @@ Options:
     --no-pip       Skip python setup.
 '''
 
+from contextlib import redirect_stdout
 from glob import glob
+from io import StringIO
 from os.path import dirname, abspath, basename, join
 import os
 import subprocess
@@ -101,14 +103,15 @@ class DotfilesInstaller:
         if not self.args['--quiet']:
             print('Installing global updates')
 
-        if self.run('which brew').returncode == 0:
+        if sys.platform == 'win32':
+            print('Installing scoop updates')
+            with redirect_stdout(StringIO()):
+                os.system('scoop update *')
+
+        elif self.run('which brew').returncode == 0:
             print('Installing homebrew updates')
             self.run('brew update')
             self.run('brew upgrade')
-
-        elif sys.platform == 'win32':
-            print('Installing scoop updates')
-            self.run('scoop update *')
 
         if sys.platform.startswith('linux') and self.args['--os']:
 
