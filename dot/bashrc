@@ -26,3 +26,4 @@ eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/robbyrussel.omp.js
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
+. "$HOME/.cargo/env"

@@ -1,2 +1,3 @@
 source ~/.bashrc
 umask 002
+. "$HOME/.cargo/env"
