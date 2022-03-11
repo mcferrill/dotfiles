@@ -106,3 +106,6 @@
 [submodule "dot/vim/bundle/neomake.vim"]
 	path = dot/vim/bundle/neomake.vim
 	url = https://github.com/neomake/neomake
+[submodule "dot/vim/bundle/listtoggle.vim"]
+	path = dot/vim/bundle/listtoggle.vim
+	url = https://github.com/Valloric/ListToggle

@@ -88,7 +88,7 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " Show whitespace with leader-l
-nmap <leader>l :set list!<CR>
+"nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 " Line numbers, document width, and wrapping
@@ -150,21 +150,6 @@ let NERDTreeIgnore = ['\.py[co]$', '__pycache__$']
 
 " Neomake
 call neomake#configure#automake('nrwi', 500)
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['jshint']
-if exists('g:syntastic_extra_filetypes')
-    call add(g:syntastic_extra_filetypes, 'qml')
-else
-    let g:syntastic_extra_filetypes = ['qml']
-endif
 
 " DelimitMate
 let delimitMate_expand_cr = 1
