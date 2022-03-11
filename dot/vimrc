@@ -135,6 +135,8 @@ set wildignore+=*.pyc
 set wildignore+=*build/*
 set wildignore+=*dist/*
 set wildignore+=*obj/*
+set wildignore+=*__pypackages__/*
+set wildignore+=*__pycache__/*
 set wildignore+=*/coverage/*
 set wildignore+=.tox*
 set wildignore+=*.o
@@ -146,13 +148,16 @@ set wildignore+=*node_modules*
 nmap <silent> <C-D> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.py[co]$', '__pycache__$']
 
+" Neomake
+call neomake#configure#automake('nrwi', 500)
+
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['jshint']
 if exists('g:syntastic_extra_filetypes')

@@ -10,9 +10,6 @@
 [submodule "dot/vim/bundle/fugitive.vim"]
 	path = dot/vim/bundle/fugitive.vim
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "dot/vim/bundle/syntastic"]
-	path = dot/vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
 [submodule "dot/vim/bundle/vim-wombat-scheme"]
 	path = dot/vim/bundle/vim-wombat-scheme
 	url = https://github.com/sheerun/vim-wombat-scheme.git
@@ -106,3 +103,6 @@
 [submodule "dot/vim/bundle/vim-github-dark"]
 	path = dot/vim/bundle/vim-github-dark
 	url = https://github.com/vv9k/vim-github-dark
+[submodule "dot/vim/bundle/neomake.vim"]
+	path = dot/vim/bundle/neomake.vim
+	url = https://github.com/neomake/neomake
