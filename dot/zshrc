@@ -50,3 +50,5 @@ source $DOTFILES/prompt/aliases.sh
 
 # Created by `pipx` on 2021-07-19 14:45:09
 export PATH="$PATH:/home/mcferrill/.local/bin"
+
+export PATH=$PATH:~/.local/bin
