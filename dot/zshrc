@@ -17,12 +17,6 @@ elif [ "virtualenvwrapper.sh" ]; then
     source virtualenvwrapper_lazy.sh
 fi
 
-if [ "$(which pipx)" ]; then
-    autoload -U bashcompinit
-    bashcompinit
-    # eval "$(register-python-argcomplete pipx)"
-fi
-
 # macOS terminal themes
 function light {
     iterm2_profile Light
@@ -34,11 +28,14 @@ function dark {
     export USER_THEME="dark"
 }
 
+autoload -Uz compinit && compinit
+
 # oh-my-zsh
 export ZSH=$DOTFILES/prompt/oh-my-zsh
 export ZSH_CUSTOM=$DOTFILES/prompt/zsh-plugins
-plugins=( git zsh-syntax-highlighting zsh-autosuggestions )
+plugins=(zsh-syntax-highlighting zsh-autosuggestions virtualenv)
 source $ZSH/oh-my-zsh.sh
+export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 # oh-my-posh
 if [ "$(which oh-my-posh)" ]; then
@@ -47,8 +44,5 @@ fi
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
-
-# Created by `pipx` on 2021-07-19 14:45:09
-export PATH="$PATH:/home/mcferrill/.local/bin"
 
 export PATH=$PATH:~/.local/bin
