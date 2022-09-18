@@ -3,6 +3,7 @@ zmodload zsh/zprof
 
 export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
+export PATH=$PATH:~/.local/bin
 
 # Shared settings for bash & zsh
 source $DOTFILES/prompt/common.sh
@@ -11,10 +12,11 @@ source $DOTFILES/prompt/common.sh
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 if [ "$VIRTUAL_ENV" ]; then 
     source $VIRTUAL_ENV/bin/activate; 
-elif [ "virtualenvwrapper.sh" ]; then 
-    source virtualenvwrapper_lazy.sh
+elif [ "$(which virtualenvwrapper.sh)" ]; then 
+    source "$(which virtualenvwrapper.sh)"
 fi
 
 # macOS terminal themes
@@ -45,4 +47,3 @@ fi
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
 
-export PATH=$PATH:~/.local/bin
