@@ -40,8 +40,14 @@ source $ZSH/oh-my-zsh.sh
 export VIRTUAL_ENV_DISABLE_PROMPT=0
 
 # oh-my-posh
-if [ "$(which oh-my-posh)" ]; then
-    eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.json)"
+#if [ "$(which oh-my-posh)" ]; then
+#    eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.json)"
+#fi
+
+# starship
+if command -v starship &> /dev/null
+then
+    eval "$(starship init zsh)"
 fi
 
 # Shared aliases, etc.

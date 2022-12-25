@@ -153,7 +153,7 @@ class DotfilesInstaller:
             if os.path.split(config)[-1] == 'config':
                 for sub in glob(join(REPO, 'dot', 'config', '*')):
                     self.symlink(sub,
-                                 join(HOME, 'config', basename(sub)))
+                                 join(HOME, '.config', basename(sub)))
             else:
                 self.symlink(config, join(HOME, '.' + basename(config)))
 

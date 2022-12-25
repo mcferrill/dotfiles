@@ -1,0 +1,24 @@
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+format = """\
+$username$hostname \
+$directory\
+$git_branch$git_commit$git_state$git_metrics$git_status\
+$python\
+$character"""
+
+[username]
+# show_always = true
+format = '[$user]($style)@'
+
+[hostname]
+# ssh_only = false
+format = '[$ssh_symbol$hostname]($style)'
+
+[python]
+format = '[(\($virtualenv\))]($style)'
