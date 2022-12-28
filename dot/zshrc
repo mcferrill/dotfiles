@@ -35,14 +35,9 @@ autoload -Uz compinit && compinit
 # oh-my-zsh
 export ZSH=$DOTFILES/prompt/oh-my-zsh
 export ZSH_CUSTOM=$DOTFILES/prompt/zsh-plugins
-plugins=(zsh-syntax-highlighting zsh-autosuggestions virtualenv)
+plugins=(colored-man-pages colorize zsh-syntax-highlighting zsh-autosuggestions)
+export ZSH_COLORIZE_STYLE=github-dark
 source $ZSH/oh-my-zsh.sh
-export VIRTUAL_ENV_DISABLE_PROMPT=0
-
-# oh-my-posh
-#if [ "$(which oh-my-posh)" ]; then
-#    eval "$(oh-my-posh --init --shell zsh --config ~/.poshthemes/robbyrussel.omp.json)"
-#fi
 
 # starship
 if command -v starship &> /dev/null
