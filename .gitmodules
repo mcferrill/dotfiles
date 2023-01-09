@@ -87,7 +87,7 @@
 	url = https://github.com/nelsyeung/twig.vim.git
 [submodule "dot/vim/bundle/vim-vue-plugin.git"]
 	path = dot/vim/bundle/vim-vue-plugin.git
-	url = git@github.com:leafOfTree/vim-vue-plugin.git
+	url = https://github.com/leafOfTree/vim-vue-plugin.git
 [submodule "prompt/zsh-plugins/plugins/zsh-syntax-highlighting"]
 	path = prompt/zsh-plugins/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
