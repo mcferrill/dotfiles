@@ -21,9 +21,11 @@ if [ "$VIRTUAL_ENV" ]; then
     source $VIRTUAL_ENV/bin/activate; 
 fi 
 
-# oh-my-posh
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/robbyrussel.omp.json)"
+# starship
+if command -v starship &> /dev/null
+then
+    eval "$(starship init bash)"
+fi
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
-. "$HOME/.cargo/env"
