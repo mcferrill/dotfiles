@@ -5,9 +5,6 @@ export DOTFILES=$HOME/.files
 export PATH=$DOTFILES/bin:$PATH
 export PATH=$PATH:~/.local/bin
 
-# Shared settings for bash & zsh
-source $DOTFILES/prompt/common.sh
-
 # Python (virtualenvwrapper, pip, etc.)
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -46,10 +43,7 @@ then
 fi
 
 # Shared aliases, etc.
-source $DOTFILES/prompt/aliases.sh
+. $DOTFILES/prompt/aliases.sh
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+# Shared settings for bash & zsh
+. $DOTFILES/prompt/common.sh
