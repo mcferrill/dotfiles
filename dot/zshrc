@@ -41,3 +41,5 @@ source $ZSH/oh-my-zsh.sh
 
 # Shared aliases, etc.
 . $DOTFILES/prompt/aliases.sh
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
