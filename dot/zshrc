@@ -42,4 +42,12 @@ source $ZSH/oh-my-zsh.sh
 # Shared aliases, etc.
 . $DOTFILES/prompt/aliases.sh
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# asdf (assumes linuxbrew by default)
+ASDF="/home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    ASDF="/opt/homebrew/opt/asdf/libexec/asdf.sh" 
+fi
+if [ -f $ASDF ]; then
+   . $ASDF
+fi
+
