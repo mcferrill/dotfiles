@@ -1,6 +1,8 @@
 
+brew "git"
 brew "python"
 brew "pdm"
+brew "cloc"
 brew "starship"
 brew "the_silver_searcher"
 brew "tmux"
