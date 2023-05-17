@@ -1,0 +1,16 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.tmux.conf: dot/tmux.conf
+    ~/.vimrc: dot/vimrc
+
+# - create:
+#     - ~/downloads
+#     - ~/.vim/undo-history
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
