@@ -26,7 +26,8 @@
 
 - create:
     - ~/.config
-    - ~/.vim/undo-history
+    - ~/.vim/tmp/undo
+    - ~/.vim/tmp/backup
 
 - link:
     ~/.bashrc:

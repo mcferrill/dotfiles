@@ -30,11 +30,11 @@ set ignorecase
 set smartcase
 
 " Backups and persistent undo
-set undodir=~/.vim/tmp/undo//
+set undodir=~/.vim/tmp/undo/
 set undofile
 set undolevels=1000
 set undoreload=10000
-set backupdir=~/.vim/tmp/backup//
+set backupdir=~/.vim/tmp/backup/
 set backup
 
 " Clipboard
@@ -144,7 +144,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 set wildignore+=*node_modules*
 
-" NerdTree 
+" NerdTree
 nmap <silent> <C-D> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.py[co]$', '__pycache__$']
 
