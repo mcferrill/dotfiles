@@ -1,17 +1,13 @@
-dotfiles
-========
+# mcferrill's dotfiles
 
 This is a set of config files mostly starting with "." (hence the repo name)
-that allow consistent behavior between multiple tools across environments.
+that allow consistent behavior between multiple tools across environments. Uses [dotbot](https://github.com/anishathalye/dotbot)
 
-Prerequisites
--------------
+Install with::
 
-* Python 3.6+
-* git
+    git clone <repo> .files && .files/install
 
-Manual installs (optional)
---------------------------
+## Manual installs (optional)
 
 * macOS
   * [Homebrew](https://brew.sh/)
@@ -25,10 +21,7 @@ Manual installs (optional)
 * [neovim](https://neovim.io/)
 * [ag/the-silver-searcher](https://github.com/ggreer/the_silver_searcher)
 
-Tools Configured Here
----------------------
-
-The only real dependencies are python and git. More tools that are configured:
+## Tools Configured Here
 
 * Zsh
 * Bash
@@ -40,16 +33,11 @@ The only real dependencies are python and git. More tools that are configured:
 * iterm2 (mac)
 * Windows Terminal
 
-Installation
-------------
+## Per-machine config
 
-Run "python dotfiles/install.py" and the installer should run. You can put
-system specific configuration in ~/.files/sys.sh and they will also be sourced.
+You can put system specific configuration in ~/.files/sys.sh and they will also be sourced.
 
-Supported Platforms
--------------------
-
-Currently used on:
+## Currently used on
 
 * Ubuntu
 * Windows 10 (powershell & WSL)

@@ -1,16 +1,28 @@
+# @TODO: add apt updates like before?
+# @TODO: windows support?
+
 - defaults:
     link:
       relink: true
 
 - clean: ['~']
 
-- link:
-    ~/.tmux.conf: dot/tmux.conf
-    ~/.vimrc: dot/vimrc
+- create:
+    - ~/.config
+    - ~/.vim/undo-history
 
-# - create:
-#     - ~/downloads
-#     - ~/.vim/undo-history
+- link:
+    ~/.bashrc:
+    ~/.config/starship.toml:
+    ~/.gitconfig:
+    ~/.jshintrc:
+    ~/.pip:
+    ~/.tmux.conf:
+    ~/.vim/autoload: vim/autoload
+    ~/.vim/bundle: vim/bundle
+    ~/.vim/init.vim: vimrc
+    ~/.vimrc:
+    ~/.zshrc:
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]

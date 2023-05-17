@@ -1,35 +1,35 @@
 [submodule "dot/vim/bundle/ctrlp"]
-	path = dot/vim/bundle/ctrlp
+	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim
 [submodule "dot/vim/bundle/nerdtree"]
-	path = dot/vim/bundle/nerdtree
+	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree
 [submodule "dot/vim/bundle/vim-coffee-script"]
-	path = dot/vim/bundle/vim-coffee-script
+	path = vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "dot/vim/bundle/fugitive.vim"]
 	path = dot/vim/bundle/fugitive.vim
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "dot/vim/bundle/vim-wombat-scheme"]
-	path = dot/vim/bundle/vim-wombat-scheme
+	path = vim/bundle/vim-wombat-scheme
 	url = https://github.com/sheerun/vim-wombat-scheme.git
 [submodule "dot/vim/bundle/vim-airline"]
-	path = dot/vim/bundle/vim-airline
+	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
 [submodule "dot/vim/bundle/vim-php"]
-	path = dot/vim/bundle/vim-php
+	path = vim/bundle/vim-php
 	url = https://github.com/StanAngeloff/php.vim.git
 [submodule "dot/vim/bundle/vim-smarty"]
 	path = dot/vim/bundle/vim-smarty
 	url = https://github.com/vim-scripts/smarty-syntax.git
 [submodule "dot/vim/bundle/vim-css-color"]
-	path = dot/vim/bundle/vim-css-color
+	path = vim/bundle/vim-css-color
 	url = https://github.com/ap/vim-css-color.git
 [submodule "dot/vim/bundle/vim-easymotion"]
 	path = dot/vim/bundle/vim-easymotion
 	url = https://github.com/easymotion/vim-easymotion.git
 [submodule "dot/vim/bundle/vim-sensible"]
-	path = dot/vim/bundle/vim-sensible
+	path = vim/bundle/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
 [submodule "dot/vim/bundle/supertab"]
 	path = dot/vim/bundle/supertab
@@ -41,52 +41,52 @@
 	path = dot/vim/bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
 [submodule "dot/vim/bundle/vim-commentary"]
-	path = dot/vim/bundle/vim-commentary
+	path = vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
 [submodule "dot/vim/bundle/vim-surround"]
-	path = dot/vim/bundle/vim-surround
+	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "dot/vim/bundle/delimitMate"]
-	path = dot/vim/bundle/delimitMate
+	path = vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 [submodule "dot/vim/bundle/vim-airline-themes"]
-	path = dot/vim/bundle/vim-airline-themes
+	path = vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "dot/vim/bundle/vim-python-pep8-indent"]
-	path = dot/vim/bundle/vim-python-pep8-indent
+	path = vim/bundle/vim-python-pep8-indent
 	url = https://github.com/hynek/vim-python-pep8-indent.git
 [submodule "dot/vim/bundle/html5.vim"]
-	path = dot/vim/bundle/html5.vim
+	path = vim/bundle/html5.vim
 	url = https://github.com/othree/html5.vim.git
 [submodule "dot/vim/bundle/vim-es6"]
-	path = dot/vim/bundle/vim-es6
+	path = vim/bundle/vim-es6
 	url = https://github.com/isRuslan/vim-es6.git
 [submodule "dot/vim/bundle/vim-solarized"]
-	path = dot/vim/bundle/vim-solarized
+	path = vim/bundle/vim-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "dot/vim/bundle/vim-pug"]
-	path = dot/vim/bundle/vim-pug
+	path = vim/bundle/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
 [submodule "dot/vim/bundle/vim-qml"]
-	path = dot/vim/bundle/vim-qml
+	path = vim/bundle/vim-qml
 	url = https://github.com/peterhoeg/vim-qml.git
 [submodule "dot/vim/bundle/vim-javascript"]
-	path = dot/vim/bundle/vim-javascript
+	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript
 [submodule "dot/vim/bundle/vim-jsx"]
-	path = dot/vim/bundle/vim-jsx
+	path = vim/bundle/vim-jsx
 	url = https://github.com/mxw/vim-jsx
 [submodule "dot/vim/bundle/vim-svelte"]
-	path = dot/vim/bundle/vim-svelte
+	path = vim/bundle/vim-svelte
 	url = https://github.com/burner/vim-svelte.git
 [submodule "dot/vim/bundle/vim-vue"]
-	path = dot/vim/bundle/vim-vue
+	path = vim/bundle/vim-vue
 	url = https://github.com/posva/vim-vue.git
 [submodule "dot/vim/bundle/twig.vim"]
-	path = dot/vim/bundle/twig.vim
+	path = vim/bundle/twig.vim
 	url = https://github.com/nelsyeung/twig.vim.git
 [submodule "dot/vim/bundle/vim-vue-plugin.git"]
-	path = dot/vim/bundle/vim-vue-plugin.git
+	path = vim/bundle/vim-vue-plugin.git
 	url = https://github.com/leafOfTree/vim-vue-plugin.git
 [submodule "prompt/zsh-plugins/plugins/zsh-syntax-highlighting"]
 	path = prompt/zsh-plugins/plugins/zsh-syntax-highlighting
@@ -98,13 +98,13 @@
 	path = prompt/zsh-plugins/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "dot/vim/bundle/vim-colors-github"]
-	path = dot/vim/bundle/vim-colors-github
+	path = vim/bundle/vim-colors-github
 	url = https://github.com/cormacrelf/vim-colors-github
 [submodule "dot/vim/bundle/neomake.vim"]
-	path = dot/vim/bundle/neomake.vim
+	path = vim/bundle/neomake.vim
 	url = https://github.com/neomake/neomake
 [submodule "dot/vim/bundle/listtoggle.vim"]
-	path = dot/vim/bundle/listtoggle.vim
+	path = vim/bundle/listtoggle.vim
 	url = https://github.com/Valloric/ListToggle
 [submodule "dotbot"]
 	path = dotbot
