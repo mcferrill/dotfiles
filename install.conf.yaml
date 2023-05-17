@@ -2,8 +2,25 @@
 # @TODO: windows support?
 
 - defaults:
+    brew:
+        stdin: true
+        stderr: true
+        stdout: true
+    cask:
+        stdin: true
+        stderr: true
+        stdout: true
+    brewfile:
+        stdin: true
+        stderr: true
+        stdout: true
     link:
       relink: true
+
+- install-brew: true
+
+- brewfile:
+    - Brewfile
 
 - clean: ['~']
 
@@ -16,7 +33,6 @@
     ~/.config/starship.toml:
     ~/.gitconfig:
     ~/.jshintrc:
-    ~/.pip:
     ~/.tmux.conf:
     ~/.vim/autoload: vim/autoload
     ~/.vim/bundle: vim/bundle
