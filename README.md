@@ -9,29 +9,20 @@ Install with::
 
 ## Manual installs (optional)
 
-* macOS
-  * [Homebrew](https://brew.sh/)
-  * iterm2
 * Windows
   * [scoop](https://scoop.sh/)
   * [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3#activetab=pivot:overviewtab)
-* [Python](https://www.python.org/) (update-alternatives on linux)
-* Fira Code NF from [NerdFonts](https://www.nerdfonts.com/)
 * [Visual Studio Code](https://code.visualstudio.com/) (settings synced elsewhere)
-* [neovim](https://neovim.io/)
-* [ag/the-silver-searcher](https://github.com/ggreer/the_silver_searcher)
 
 ## Tools Configured Here
 
-* Zsh
-* Bash
-* Vim/neovim
-* Tmux
-* Virtualenvwrapper
-* Pip
+* Prompts
+  * Zsh + oh-my-zsh & plugins (autocomplete, history search, etc.)
+  * Bash
+  * starship (prompt & styling for both of the above)
 * Git
-* iterm2 (mac)
-* Windows Terminal
+* Tmux & tmate (terminal multiplexing & sharing)
+* Vim/neovim & plugins
 
 ## Per-machine config
 
@@ -39,6 +30,6 @@ You can put system specific configuration in ~/.files/sys.sh and they will also 
 
 ## Currently used on
 
-* Ubuntu
-* Windows 10 (powershell & WSL)
 * macOS w/ iterm2
+* Ubuntu
+* Windows 11 (powershell & WSL2)
