@@ -3,7 +3,7 @@
 This is a set of config files mostly starting with "." (hence the repo name)
 that allow consistent behavior between multiple tools across environments. Uses [dotbot](https://github.com/anishathalye/dotbot)
 
-Install with::
+Install with:
 
     git clone <repo> .files && .files/install
 
