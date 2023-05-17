@@ -106,3 +106,6 @@
 [submodule "dot/vim/bundle/listtoggle.vim"]
 	path = dot/vim/bundle/listtoggle.vim
 	url = https://github.com/Valloric/ListToggle
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
