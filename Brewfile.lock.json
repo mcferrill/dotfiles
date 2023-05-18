@@ -486,6 +486,25 @@
           }
         }
       }
+    },
+    "tap": {
+      "homebrew/cask-fonts": {
+        "revision": "05f1237ea49f7bea85cce74fe3a66c97755585f8"
+      }
+    },
+    "cask": {
+      "font-fira-code-nerd-font": {
+        "version": "3.0.1",
+        "options": {
+          "full_name": "font-fira-code-nerd-font"
+        }
+      },
+      "iterm2": {
+        "version": "3.4.19",
+        "options": {
+          "full_name": "iterm2"
+        }
+      }
     }
   },
   "system": {
@@ -495,6 +514,16 @@
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.3.0"
+      }
+    },
+    "macos": {
+      "ventura": {
+        "HOMEBREW_VERSION": "4.0.18",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "14.3.0.0.1.1679647830",
+        "Xcode": "14.3",
+        "macOS": "13.3.1"
       }
     }
   }
