@@ -514,6 +514,12 @@
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.3.0"
+      },
+      "Debian GNU/Linux 10 (buster) (buster)": {
+        "HOMEBREW_VERSION": "4.0.19",
+        "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
+        "Homebrew/homebrew-core": "api",
+        "GCC": "8.3.0"
       }
     },
     "macos": {
