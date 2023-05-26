@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -e
+
+CONFIG="install.conf.yaml"
+DOTBOT_DIR="dotbot"
+
+DOTBOT_BIN="bin/dotbot"
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+cd "${BASEDIR}"
+
+echo "pulling latest from github"
+git pull
+
+echo "running apt updates"
+if (command -v apt >/dev/null 2>&1) then
+    if (command -v sudo >/dev/null 2>&1) then
+        sudo apt update && sudo apt upgrade -y
+    else
+        apt update && apt upgrade -y
+    fi
+fi
+
+echo "running brew updates"
+if (command -v brew >/dev/null 2>&1) then
+    brew update && brew upgrade
+fi
+
+echo "running ./install"
+source ./install
+
