@@ -14,17 +14,11 @@ source $DOTFILES/prompt/common.sh
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
-if [ "$(which virtualenvwrapper.sh)" ]; then 
+if [ "$(which virtualenvwrapper.sh)" ]; then
     source "$(which virtualenvwrapper.sh)"
-fi 
-if [ "$VIRTUAL_ENV" ]; then 
-    source $VIRTUAL_ENV/bin/activate; 
-fi 
-
-# starship
-if command -v starship &> /dev/null
-then
-    eval "$(starship init bash)"
+fi
+if [ "$VIRTUAL_ENV" ]; then
+    source $VIRTUAL_ENV/bin/activate;
 fi
 
 # Shared aliases, etc.

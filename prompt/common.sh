@@ -1,5 +1,5 @@
 
-export VISUAL=vim
+export VISUAL=nvim
 
 # System specific settings
 if [ -f $DOTFILES/sys.sh ]; then

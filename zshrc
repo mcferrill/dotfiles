@@ -13,22 +13,11 @@ WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
- if [ "$VIRTUAL_ENV" ]; then 
-     source $VIRTUAL_ENV/bin/activate; 
- elif [ "$(which virtualenvwrapper.sh)" ]; then 
-     source "$(which virtualenvwrapper.sh)"
- fi
-
-# macOS terminal themes
-function light {
-    iterm2_profile Light
-    export USER_THEME="light"
-}
-
-function dark {
-    iterm2_profile Default
-    export USER_THEME="dark"
-}
+if [ "$VIRTUAL_ENV" ]; then
+    source $VIRTUAL_ENV/bin/activate;
+elif [ "$(which virtualenvwrapper.sh)" ]; then
+    source "$(which virtualenvwrapper.sh)"
+fi
 
 autoload -Uz compinit && compinit
 
@@ -45,7 +34,7 @@ source $ZSH/oh-my-zsh.sh
 # asdf (assumes linuxbrew by default)
 ASDF="/home/linuxbrew/.linuxbrew/opt/asdf/libexec/asdf.sh"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    ASDF="/opt/homebrew/opt/asdf/libexec/asdf.sh" 
+    ASDF="/opt/homebrew/opt/asdf/libexec/asdf.sh"
 fi
 if [ -f $ASDF ]; then
    . $ASDF
