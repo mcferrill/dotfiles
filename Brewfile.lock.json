@@ -524,11 +524,11 @@
     },
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.0.20",
+        "HOMEBREW_VERSION": "4.0.20-17-gc34e833-dirty",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "14.3.0.0.1.1679647830",
-        "Xcode": "14.3",
+        "CLT": "14.3.1.0.1.1683849156",
+        "Xcode": "14.3.1",
         "macOS": "13.4"
       }
     }
