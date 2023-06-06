@@ -1,5 +1,6 @@
 # @TODO: add apt updates like before?
 # @TODO: windows support?
+# TODO: mac settings eg: defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 - defaults:
     brew:
