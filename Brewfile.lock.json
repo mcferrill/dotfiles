@@ -510,7 +510,7 @@
   "system": {
     "linux": {
       "Ubuntu 22.04.2 LTS (jammy)": {
-        "HOMEBREW_VERSION": "4.0.25",
+        "HOMEBREW_VERSION": "4.0.26",
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.3.0"
