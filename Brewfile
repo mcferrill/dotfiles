@@ -11,6 +11,9 @@ brew "neovim"
 brew "zsh"
 
 # macos
-tap "homebrew/cask-fonts" if OS.mac?
-cask "font-fira-code-nerd-font" if OS.mac?
-cask "iterm2" if OS.mac?
+if OS.mac?
+    brew "dark-mode"
+    tap "homebrew/cask-fonts"
+    cask "font-fira-code-nerd-font"
+    cask "iterm2"
+end
