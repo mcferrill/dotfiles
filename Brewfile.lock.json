@@ -538,7 +538,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "8d4d09b723e1e14ac738117d1059a26c8ccf236e"
+        "revision": "90466475e2f63e6a045c2e0cdf6e1cde0bbac2c2"
       }
     },
     "cask": {
@@ -579,7 +579,7 @@
     },
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.1.10",
+        "HOMEBREW_VERSION": "4.1.11",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.1.0.1.1683849156",
