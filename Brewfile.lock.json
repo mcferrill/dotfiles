@@ -51,6 +51,11 @@
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
+            "arm64_sonoma": {
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.11/blobs/sha256:60d59d221883b02d24d391d7d549d6da9994e8b8921ffb3ef2b80590ef5b3153",
+              "sha256": "60d59d221883b02d24d391d7d549d6da9994e8b8921ffb3ef2b80590ef5b3153"
+            },
             "arm64_ventura": {
               "cellar": "/opt/homebrew/Cellar",
               "url": "https://ghcr.io/v2/homebrew/core/python/3.11/blobs/sha256:55f29263615ffcb1a9097c71fd3ce42647d4f40f6eeecda1317f43cd2a3fcef5",
@@ -65,6 +70,11 @@
               "cellar": "/opt/homebrew/Cellar",
               "url": "https://ghcr.io/v2/homebrew/core/python/3.11/blobs/sha256:81f634e2b40bff2f51bf8f172c97e9963022a3e1fad666e913977f5609f10c51",
               "sha256": "81f634e2b40bff2f51bf8f172c97e9963022a3e1fad666e913977f5609f10c51"
+            },
+            "sonoma": {
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.11/blobs/sha256:714512858f4a3f5e1c4399efd3808ac0c231646c94e9058f706e88769ae27aa5",
+              "sha256": "714512858f4a3f5e1c4399efd3808ac0c231646c94e9058f706e88769ae27aa5"
             },
             "ventura": {
               "cellar": "/usr/local/Cellar",
