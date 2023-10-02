@@ -592,6 +592,11 @@
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
+            "arm64_sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/dark-mode/blobs/sha256:98777785e6fb000da0969b716bb7ee5397ce75872031c7c7d9ebed750cf38d2b",
+              "sha256": "98777785e6fb000da0969b716bb7ee5397ce75872031c7c7d9ebed750cf38d2b"
+            },
             "arm64_ventura": {
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/dark-mode/blobs/sha256:220d410b3879326e6d7b359cf4ca5e4feeafa76b12998e4fcd64ef420ffc1f29",
@@ -638,7 +643,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "971fd2b5cb79c358a6347d4f2c3eaf134bcaf5cb"
+        "revision": "beebb2553957d65516296527e87ec99bf52589e1"
       }
     },
     "cask": {
@@ -685,6 +690,14 @@
         "CLT": "15.0.0.0.1.1694021235",
         "Xcode": "15.0",
         "macOS": "13.6"
+      },
+      "sonoma": {
+        "HOMEBREW_VERSION": "4.1.14",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "api",
+        "CLT": "15.0.0.0.1.1694021235",
+        "Xcode": "15.0",
+        "macOS": "14.0"
       }
     }
   }
