@@ -31,7 +31,7 @@ local plugins = {
         "mypy",
         "emmet-ls",
         "grammarly-languageserver",
-        "json-lsp",
+        -- "json-lsp",
         "prettier",
         "ruff-lsp",
         -- "rust-analyzer",
