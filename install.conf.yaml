@@ -48,3 +48,5 @@
     ~/.vimrc:
     ~/.zshrc:
 
+- shell:
+  - [nvim --headless +NvChadUpdate +MasonInstallAll +qa, Installing neovim plugins]
