@@ -113,5 +113,5 @@
 	path = dotbot-brew
 	url = https://github.com/wren/dotbot-brew.git
 [submodule "nvchad"]
-	path = nvchad
+	path = vim/nvchad
 	url = https://github.com/NvChad/NvChad

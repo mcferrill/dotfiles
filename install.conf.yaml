@@ -37,7 +37,8 @@
 - link:
     ~/.bashrc:
     ~/.config/starship.toml:
-    ~/.config/nvim: nvchad
+    ~/.config/nvim: vim/nvchad
+    ~/.config/nvim/lua/custom: vim/custom
     ~/.gitconfig:
     ~/.jshintrc:
     ~/.tmux.conf:
