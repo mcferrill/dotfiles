@@ -14,8 +14,8 @@ local servers = {
   "json-lsp",
   "prettier",
   "ruff_lsp",
-  "rust-analyzer",
-  "tailwindcss-language-server",
+  -- "rust-analyzer",
+  -- "tailwindcss-language-server",
   "tsserver",
 }
 for _, lsp in ipairs(servers) do
