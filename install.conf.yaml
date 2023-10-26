@@ -1,5 +1,4 @@
-# @TODO: add apt updates like before?
-# @TODO: windows support?
+# TODO: windows support?
 # TODO: mac settings eg: defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 - defaults:
@@ -30,11 +29,15 @@
     - ~/.vim/tmp/undo
     - ~/.vim/tmp/backup
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - [chsh -s $(which zsh), Making zsh the default shell]
+    - [pdm plugin add pdm-django, Installing django plugin for pdm]
+
 - link:
     ~/.bashrc:
     ~/.config/starship.toml:
-    ~/.config/nvim: ~/.vim
-    ~/.config/nvim/init.vim: vimrc
+    ~/.config/nvim: nvchad
     ~/.gitconfig:
     ~/.jshintrc:
     ~/.tmux.conf:
@@ -44,7 +47,3 @@
     ~/.vimrc:
     ~/.zshrc:
 
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-    - [chsh -s $(which zsh), Making zsh the default shell]
-    - [pdm plugin add pdm-django, Installing django plugin for pdm]
