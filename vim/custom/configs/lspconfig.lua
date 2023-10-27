@@ -8,13 +8,14 @@ local servers = {
   "clangd",
   "cssls",
   "emmet_ls",
+  "eslint",
   -- "grammarly-languageserver",
   "html",
   -- "json-lsp",
   "ruff_lsp",
   -- "rust-analyzer",
   -- "tailwindcss-language-server",
-  "tsserver",
+ -- "tsserver",
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
