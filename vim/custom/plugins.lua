@@ -22,6 +22,17 @@ local plugins = {
     end, -- Override to setup mason-lspconfig
   },
 
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  },
+
   -- override plugin configs
   {
     "williamboman/mason.nvim",
@@ -31,6 +42,8 @@ local plugins = {
         "mypy",
         "emmet-ls",
         "grammarly-languageserver",
+        "eslint-lsp",
+        "lua-language-server",
         -- "json-lsp",
         "prettier",
         "ruff-lsp",
