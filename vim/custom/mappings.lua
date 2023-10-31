@@ -3,13 +3,28 @@ local M = {}
 
 M.general = {
   n = {
-    [";"] = { ":", "enter command mode", opts = { nowait = true } },
+    ["<C-a>"] = { "ggVG", "select-all", opts = { nowait = true } },
+    ["<C-d>"] = { ":NvimTreeToggle<CR>", "toggle file explorer", opts = { nowait = true } },
+    ["<C-p>"] = { "<cmd>Telescope find_files<cr>", "telescope find files", opts = { nowait = true } },
+    ["<C-S-P>"] = { function() require('telescope.builtin').find_files({no_ignore=true, hidden=true}) end, "telescope find all files", opts = { nowait = true } },
+    ["<C-`>"] = { function () require('nvterm.terminal').toggle('horizontal') end, "toggle horizontal terminal", opts = { nowait = true } },
+    ["<Leader>y"] = { "'\"+y'", "yank within vim", opts = { nowait = true } },
+    ["<Leader>Y"] = { "'\"+Y'", "yank to system clipboard", opts = { nowait = true } },
   },
   v = {
-    [">"] = { ">gv", "indent"},
+    ["<Tab>"] = { ">gv", "indent"},
+    ["<S-Tab>"] = { "<gv", "dedent"},
+    ["<Leader>s"] = { ":sort<CR>", "sort", opts = { nowait = true } },
+    ["<Leader>y"] = { "'\"+y'", "yank within vim", opts = { nowait = true } },
+    ["<Leader>Y"] = { "'\"+Y'", "yank to system clipboard", opts = { nowait = true } },
+  },
+  i = {
+    ["<S-Tab>"] = { "<C-D>", "dedent"},
+  },
+  x = {
+    ["<S-p>"] = { "\"_dP", "paste without clobbering pastebin"},
   },
 }
 
--- more keybinds!
 
 return M
