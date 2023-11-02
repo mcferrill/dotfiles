@@ -1,13 +1,14 @@
 
-brew "git"
-brew "python"
-brew "pdm"
 brew "cloc"
+brew "fzf"
+brew "git"
+brew "neovim"
+brew "pdm"
+brew "python"
 brew "starship"
 brew "the_silver_searcher"
-brew "tmux"
 brew "tmate"
-brew "neovim"
+brew "tmux"
 brew "zsh"
 
 # macos

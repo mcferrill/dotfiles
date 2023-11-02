@@ -3,6 +3,7 @@ local M = {}
 
 M.general = {
   n = {
+    ["<C-f>"] = { "<cmd>silent !tmux neww tmux-sessionizer<CR>", "launch tmux-sessionizer",},
     ["<C-h>"] = { "<cmd>TmuxNavigateLeft<CR>", "Window left",},
     ["<C-j>"] = { "<cmd>TmuxNavigateDown<CR>", "Window down",},
     ["<C-k>"] = { "<cmd>TmuxNavigateUp<CR>", "Window up",},

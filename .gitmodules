@@ -118,3 +118,4 @@
 [submodule "tpm"]
 	path = tpm
 	url = git@github.com:tmux-plugins/tpm.git
+  ignore = dirty
