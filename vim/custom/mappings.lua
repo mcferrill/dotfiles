@@ -3,6 +3,10 @@ local M = {}
 
 M.general = {
   n = {
+    ["<C-h>"] = { "<cmd>TmuxNavigateLeft<CR>", "Window left",},
+    ["<C-j>"] = { "<cmd>TmuxNavigateDown<CR>", "Window down",},
+    ["<C-k>"] = { "<cmd>TmuxNavigateUp<CR>", "Window up",},
+    ["<C-l>"] = { "<cmd>TmuxNavigateRight<CR>", "Window right",},
     ["<C-a>"] = { "ggVG", "select-all", opts = { nowait = true } },
     ["<C-d>"] = { ":NvimTreeToggle<CR>", "toggle file explorer", opts = { nowait = true } },
     ["<C-p>"] = { "<cmd>Telescope find_files<cr>", "telescope find files", opts = { nowait = true } },

@@ -29,6 +29,8 @@ if (command -v brew >/dev/null 2>&1) then
     brew update && brew upgrade
 fi
 
+~/.config/tmux/plugins/tpm/bin/update_plugins all
+
 echo "running ./install"
 source ./install
 

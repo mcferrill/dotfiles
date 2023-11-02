@@ -26,9 +26,8 @@
 
 - create:
     - ~/.config
-    - ~/.config/nvim/undo
+    - ~/.config/tmux/plugins
     - ~/.vim/tmp/undo
-    - ~/.vim/tmp/backup
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
@@ -42,7 +41,8 @@
     ~/.config/nvim/lua/custom: vim/custom
     ~/.gitconfig:
     ~/.jshintrc:
-    ~/.tmux.conf:
+    ~/.config/tmux/tmux.conf:
+    ~/.config/tmux/plugins/tpm: tpm
     ~/.vim/autoload: vim/autoload
     ~/.vim/bundle: vim/bundle
     ~/.vim/init.vim: vimrc
@@ -51,3 +51,4 @@
 
 - shell:
   - [nvim --headless +NvChadUpdate +MasonInstallAll +qa, Installing neovim plugins]
+  - [~/.config/tmux/plugins/tpm/bin/install_plugins]
