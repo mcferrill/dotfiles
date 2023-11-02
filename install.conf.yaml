@@ -26,6 +26,7 @@
 
 - create:
     - ~/.config
+    - ~/.config/nvim/undo
     - ~/.vim/tmp/undo
     - ~/.vim/tmp/backup
 
