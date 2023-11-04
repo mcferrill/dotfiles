@@ -622,7 +622,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "3cfc1c330399ff1155f75b2c75499a62d16085d1"
+        "revision": "d3db7b050893f332ad0e9ea1d59da8ae54bf81de"
       }
     },
     "cask": {
@@ -633,7 +633,7 @@
         }
       },
       "iterm2": {
-        "version": "3.4.21",
+        "version": "3.4.22",
         "options": {
           "full_name": "iterm2"
         }
