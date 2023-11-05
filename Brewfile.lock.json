@@ -622,7 +622,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "d3db7b050893f332ad0e9ea1d59da8ae54bf81de"
+        "revision": "59438ee340e93fc5251982179d32cc55cb7dc68d"
       }
     },
     "cask": {
@@ -655,7 +655,7 @@
         "GCC": "8.3.0"
       },
       "Ubuntu 22.04.3 LTS (jammy)": {
-        "HOMEBREW_VERSION": "4.1.17",
+        "HOMEBREW_VERSION": "4.1.18",
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.4.0"
