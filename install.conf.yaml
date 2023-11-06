@@ -17,6 +17,9 @@
     link:
       relink: true
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - install-brew: true
 
 - brewfile:
@@ -30,7 +33,6 @@
     - ~/.vim/tmp/undo
 
 - shell:
-    - [git submodule update --init --recursive, Installing submodules]
     - [chsh -s $(which zsh), Making zsh the default shell]
     - [pdm plugin add pdm-django, Installing django plugin for pdm]
 
