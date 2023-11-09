@@ -5,14 +5,15 @@ local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
 local servers = {
-  "clangd",
+  -- "clangd",
   "cssls",
   "emmet_ls",
   "eslint",
   -- "grammarly-languageserver",
   "html",
+  "tsserver",
   -- "json-lsp",
-  "ruff_lsp",
+  -- "ruff_lsp",
   -- "rust-analyzer",
   -- "tailwindcss-language-server",
  -- "tsserver",

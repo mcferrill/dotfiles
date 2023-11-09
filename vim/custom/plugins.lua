@@ -47,10 +47,13 @@ local plugins = {
         "mypy",
         "emmet-ls",
         "grammarly-languageserver",
+
+        "typescript-language-server",
         "eslint-lsp",
+        "prettierd",
+
         "lua-language-server",
         -- "json-lsp",
-        "prettier",
         "ruff-lsp",
         -- "rust-analyzer",
         -- "tailwindcss-language-server",
