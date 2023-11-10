@@ -43,19 +43,19 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        -- python
         "black",
-        "mypy",
-        "emmet-ls",
-        "grammarly-languageserver",
+        "pyright",
+        "ruff-lsp",
 
+        -- web
         "typescript-language-server",
         "eslint-lsp",
         "prettierd",
 
+        "grammarly-languageserver",
+        "emmet-ls",
         "lua-language-server",
-        -- "json-lsp",
-        "ruff-lsp",
-        -- "rust-analyzer",
         -- "tailwindcss-language-server",
       },
     },
