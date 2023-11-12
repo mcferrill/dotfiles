@@ -20,6 +20,7 @@ elif [ "$(which virtualenvwrapper.sh)" ]; then
 fi
 
 autoload -Uz compinit && compinit
+bindkey -s ^f "tmux-sessionizer\n"
 
 # oh-my-zsh
 export ZSH=$DOTFILES/prompt/oh-my-zsh
