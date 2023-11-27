@@ -51,6 +51,8 @@ local plugins = {
         -- web
         "typescript-language-server",
         "eslint-lsp",
+        "eslint-vue-plugin",
+        "vls",
         "prettierd",
 
         "grammarly-languageserver",

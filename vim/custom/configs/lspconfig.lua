@@ -9,14 +9,9 @@ local servers = {
   "emmet_ls",
   "eslint",
   "ruff_lsp",
-  -- "grammarly-languageserver",
   "html",
   "tsserver",
-  -- "json-lsp",
-  -- "ruff_lsp",
-  -- "rust-analyzer",
-  -- "tailwindcss-language-server",
- -- "tsserver",
+  "vuels",
 }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
