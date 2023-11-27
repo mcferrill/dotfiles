@@ -622,12 +622,12 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "bc51befba35fd0df87233386f2dff700859cba79"
+        "revision": "9eb089df1b1599407fe0ef88c745ffb8a1ec8fd0"
       }
     },
     "cask": {
       "font-fira-code-nerd-font": {
-        "version": "3.0.2",
+        "version": "3.1.1",
         "options": {
           "full_name": "font-fira-code-nerd-font"
         }
