@@ -10,6 +10,7 @@ brew "the_silver_searcher"
 brew "tmate"
 brew "tmux"
 brew "zsh"
+brew "fnm"
 
 # macos
 if OS.mac?

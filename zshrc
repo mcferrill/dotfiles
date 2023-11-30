@@ -8,6 +8,8 @@ export PATH=$PATH:~/.local/bin
 # Shared settings for bash & zsh
 . $DOTFILES/prompt/common.sh
 
+eval "$(fnm env --use-on-cd)"
+
 # Python (virtualenvwrapper, pip, etc.)
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
