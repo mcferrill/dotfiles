@@ -676,7 +676,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "c82d8efd2cdcf7efc813714c3b0cde9c2aae246a"
+        "revision": "c2bc6e514a65319891e4970d4a5f29bb3004906c"
       }
     },
     "cask": {
@@ -730,7 +730,7 @@
         "Homebrew/homebrew-core": "api",
         "CLT": "15.0.0.0.1.1694021235",
         "Xcode": "15.0.1",
-        "macOS": "14.1.1"
+        "macOS": "14.1.2"
       }
     }
   }
