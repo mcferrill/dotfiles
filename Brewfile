@@ -18,4 +18,5 @@ if OS.mac?
     tap "homebrew/cask-fonts"
     cask "font-fira-code-nerd-font"
     cask "iterm2"
+    cask "karabiner-elements"
 end

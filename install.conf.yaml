@@ -29,6 +29,7 @@
 
 - create:
     - ~/.config
+    - ~/.config/karabiner
     - ~/.config/tmux/plugins
     - ~/.vim/tmp/undo
 
@@ -38,6 +39,7 @@
 
 - link:
     ~/.bashrc:
+    ~/.config/karabiner/karabiner.json:
     ~/.config/starship.toml:
     ~/.config/nvim: vim/nvchad
     ~/.config/nvim/lua/custom: vim/custom
