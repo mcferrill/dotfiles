@@ -23,6 +23,7 @@ Install with:
 * Git
 * Tmux & tmate (terminal multiplexing & sharing)
 * Vim/neovim & plugins
+* karabiner (macos keyboard customization) - more easily generated with [this](https://github.com/mxstbr/karabiner)
 
 ## Per-machine config
 
