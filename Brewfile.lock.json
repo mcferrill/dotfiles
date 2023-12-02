@@ -691,6 +691,12 @@
         "options": {
           "full_name": "iterm2"
         }
+      },
+      "karabiner-elements": {
+        "version": "14.12.0",
+        "options": {
+          "full_name": "karabiner-elements"
+        }
       }
     }
   },
