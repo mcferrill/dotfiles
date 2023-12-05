@@ -15,6 +15,7 @@ M.general = {
     ["<C-`>"] = { function () require('nvterm.terminal').toggle('horizontal') end, "toggle horizontal terminal", opts = { nowait = true } },
     ["<Leader>y"] = { "'\"+y'", "yank within vim", opts = { nowait = true } },
     ["<Leader>Y"] = { "'\"+Y'", "yank to system clipboard", opts = { nowait = true } },
+    [",a"] = { "ggVG", "select all", opts = {} },
     [",e"] = { ":q<CR>", "close current window", opts = {} },
     [",E"] = { ":qa!<CR>", "close all windows", opts = {} },
   },
