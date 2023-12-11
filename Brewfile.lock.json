@@ -676,7 +676,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "a7fb1a6146ccd9a8d164c4c7f529da56d56310e9"
+        "revision": "bab4952d33a03664f500e5db514e4cd31c06c703"
       }
     },
     "cask": {
@@ -731,12 +731,12 @@
         "macOS": "13.6"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.24",
+        "HOMEBREW_VERSION": "4.1.25",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "15.0.0.0.1.1694021235",
+        "CLT": "15.1.0.0.1.1700200546",
         "Xcode": "15.0.1",
-        "macOS": "14.1.2"
+        "macOS": "14.2"
       }
     }
   }
