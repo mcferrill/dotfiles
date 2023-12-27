@@ -19,4 +19,5 @@ if OS.mac?
     cask "font-fira-code-nerd-font"
     cask "iterm2"
     cask "karabiner-elements"
+    cask "keepingyouawake"
 end

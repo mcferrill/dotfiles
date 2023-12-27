@@ -697,6 +697,12 @@
         "options": {
           "full_name": "karabiner-elements"
         }
+      },
+      "keepingyouawake": {
+        "version": "1.6.5",
+        "options": {
+          "full_name": "keepingyouawake"
+        }
       }
     }
   },
