@@ -676,7 +676,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "cc54a5c9f085c402d479431a26f86eb3f09c1e64"
+        "revision": "e80db5cea332c518263535cd24b47d3fe60519bc"
       }
     },
     "cask": {
@@ -687,7 +687,7 @@
         }
       },
       "iterm2": {
-        "version": "3.4.22",
+        "version": "3.4.23",
         "options": {
           "full_name": "iterm2"
         }
@@ -731,7 +731,7 @@
         "macOS": "13.6"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.0",
+        "HOMEBREW_VERSION": "4.2.1",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
