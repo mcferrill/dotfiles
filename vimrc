@@ -117,7 +117,7 @@ au BufRead,BufNewFile *.tpl set filetype=smarty
 " Third Party Addons "
 
 " Invoke pathogen to automagically load plugins, themes, etc.
-call pathogen#infect()
+" call pathogen#infect()
 
 " Set theme based on light or dark mode
 if ($USER_THEME == 'light')
