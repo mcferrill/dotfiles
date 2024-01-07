@@ -47,8 +47,6 @@
     ~/.jshintrc:
     ~/.config/tmux/tmux.conf:
     ~/.config/tmux/plugins/tpm: tpm
-    ~/.vim/autoload: vim/autoload
-    ~/.vim/bundle: vim/bundle
     ~/.vim/init.vim: vimrc
     ~/.vimrc:
     ~/.zshrc:
