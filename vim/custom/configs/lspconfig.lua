@@ -9,6 +9,7 @@ local servers = {
   "emmet_ls",
   "eslint",
   "ruff_lsp",
+  "pyright",
   "html",
   "tsserver",
   "vuels",
