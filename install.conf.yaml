@@ -33,10 +33,6 @@
     - ~/.config/tmux/plugins
     - ~/.vim/tmp/undo
 
-- shell:
-    - [chsh -s $(which zsh), Making zsh the default shell]
-    - [pdm plugin add pdm-django, Installing django plugin for pdm]
-
 - link:
     ~/.bashrc:
     ~/.config/karabiner/karabiner.json:
@@ -54,3 +50,4 @@
 - shell:
   - [nvim --headless +NvChadUpdate +MasonInstallAll +qa, Installing neovim plugins]
   - [~/.config/tmux/plugins/tpm/bin/install_plugins]
+  - [pdm plugin add pdm-django, Installing django plugin for pdm]

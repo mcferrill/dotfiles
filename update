@@ -14,8 +14,8 @@ echo "pulling latest from github"
 git pull
 
 if [ "$(uname -s)" != "Darwin" ]; then
-    echo "running apt updates"
     if (command -v apt >/dev/null 2>&1) then
+        echo "running apt updates"
         if (command -v sudo >/dev/null 2>&1) then
             sudo apt update && sudo apt upgrade -y
         else
