@@ -90,45 +90,45 @@
         }
       },
       "pdm": {
-        "version": "2.12.1",
+        "version": "2.12.2",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sonoma": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:b1184a023a67fa5257aeb60ac2ed8c0c95ea017ee1922d5b1ec8bf5773c33901",
-              "sha256": "b1184a023a67fa5257aeb60ac2ed8c0c95ea017ee1922d5b1ec8bf5773c33901"
+              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:a2d1304cbf5bfabf32ed6a0c7cb98c4b8c468e6d3f0e57038cee77fde9759b1c",
+              "sha256": "a2d1304cbf5bfabf32ed6a0c7cb98c4b8c468e6d3f0e57038cee77fde9759b1c"
             },
             "arm64_ventura": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:e76c6bad3bc35eeea1c353842416e3282625405dae65b2c9ef82843afd6ff575",
-              "sha256": "e76c6bad3bc35eeea1c353842416e3282625405dae65b2c9ef82843afd6ff575"
+              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:34a17ef929ffd0ae542b7ff8726c0a8d64a671ffb2f011adbdd18d1e9a9fc78b",
+              "sha256": "34a17ef929ffd0ae542b7ff8726c0a8d64a671ffb2f011adbdd18d1e9a9fc78b"
             },
             "arm64_monterey": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:53b010ed50c2441ad3c3d74c06ece58c9a57ee40a166b4a920d30a3ee5b8e417",
-              "sha256": "53b010ed50c2441ad3c3d74c06ece58c9a57ee40a166b4a920d30a3ee5b8e417"
+              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:2e831db921f052a17832a2e417a8b966dc1ca9889bc45555baa11f9032b0dbd0",
+              "sha256": "2e831db921f052a17832a2e417a8b966dc1ca9889bc45555baa11f9032b0dbd0"
             },
             "sonoma": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:7f1a8ff944e22f86400940069b394e5605e265d4b7dcc4fe39bbe9292178eb94",
-              "sha256": "7f1a8ff944e22f86400940069b394e5605e265d4b7dcc4fe39bbe9292178eb94"
+              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:c61d6a1e4fc9d8c8e890dfa7dfd7e65e457e6869d97bc45d3b592820c86f9c33",
+              "sha256": "c61d6a1e4fc9d8c8e890dfa7dfd7e65e457e6869d97bc45d3b592820c86f9c33"
             },
             "ventura": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:c059d637dd66f1bb0711baa880c88fe5fdd0f7e9a3edb8cb0c8e7a0c2d141b01",
-              "sha256": "c059d637dd66f1bb0711baa880c88fe5fdd0f7e9a3edb8cb0c8e7a0c2d141b01"
+              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:2c2c1a996dd721cb95dbecfc0fe09125460e24d986e244a8e0b150205b44ac4a",
+              "sha256": "2c2c1a996dd721cb95dbecfc0fe09125460e24d986e244a8e0b150205b44ac4a"
             },
             "monterey": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:6f2d035379d156274d6e0617c4afb15ac83088dd9cd78b850832ff9402bc0da0",
-              "sha256": "6f2d035379d156274d6e0617c4afb15ac83088dd9cd78b850832ff9402bc0da0"
+              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:f4f4227e81a2fb3c6b81aeeba6193d0dbffeceaa2d28f7e64643071cab83fe57",
+              "sha256": "f4f4227e81a2fb3c6b81aeeba6193d0dbffeceaa2d28f7e64643071cab83fe57"
             },
             "x86_64_linux": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:c938b5c9146276ae8cc6ac8916465abf23fc03b10afa0af7a6508fb70915df8b",
-              "sha256": "c938b5c9146276ae8cc6ac8916465abf23fc03b10afa0af7a6508fb70915df8b"
+              "url": "https://ghcr.io/v2/homebrew/core/pdm/blobs/sha256:f0d777776cbbcc238e9dfa396043a6d11330e400cad1b52bc69c24c362eba8c8",
+              "sha256": "f0d777776cbbcc238e9dfa396043a6d11330e400cad1b52bc69c24c362eba8c8"
             }
           }
         }
