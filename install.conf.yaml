@@ -32,6 +32,7 @@
     - ~/.config/karabiner
     - ~/.config/tmux/plugins
     - ~/.vim/tmp/undo
+    - ~/.hushlogin
 
 - link:
     ~/.bashrc:
@@ -51,3 +52,4 @@
   - [nvim --headless +NvChadUpdate +MasonInstallAll +qa, Installing neovim plugins]
   - [~/.config/tmux/plugins/tpm/bin/install_plugins]
   - [pdm plugin add pdm-django, Installing django plugin for pdm]
+  - [touch ~/.hushlogin]
