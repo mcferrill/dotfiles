@@ -15,9 +15,10 @@ brew "fnm"
 # macos
 if OS.mac?
     brew "dark-mode"
+    brew "cormacrelf/tap/dark-notify"
     tap "homebrew/cask-fonts"
     cask "font-fira-code-nerd-font"
-    cask "iterm2"
+    cask "iterm2-beta"
     cask "karabiner-elements"
     cask "keepingyouawake"
 end
