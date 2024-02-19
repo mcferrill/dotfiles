@@ -18,5 +18,4 @@
 	url = https://github.com/NvChad/NvChad
 [submodule "tpm"]
 	path = tpm
-	url = git@github.com:tmux-plugins/tpm.git
-  ignore = dirty
+	url = https://github.com/tmux-plugins/tpm.git
