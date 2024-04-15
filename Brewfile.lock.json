@@ -660,12 +660,12 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "bfd4e57d9ab408e94442d6ab01646235e854590f"
+        "revision": "199c0321a490495b58ae386b68057a2df0b8e0be"
       }
     },
     "cask": {
       "font-fira-code-nerd-font": {
-        "version": "3.2.0",
+        "version": "3.2.1",
         "options": {
           "full_name": "font-fira-code-nerd-font"
         }
@@ -739,7 +739,7 @@
         "macOS": "13.6"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.17",
+        "HOMEBREW_VERSION": "4.2.18",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
