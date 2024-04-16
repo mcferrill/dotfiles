@@ -22,6 +22,6 @@ PIP_RESPECT_VIRTUALENV=true
 # fnm (rust-based nvm/n alternative)
 if command -v fnm &> /dev/null
 then
-  fnm env --use-on-cd
+  eval "$(fnm env --use-on-cd)"
 fi
 
