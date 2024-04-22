@@ -660,7 +660,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "b21c237886e8b5cbf037d559a6af59c600ab8398"
+        "revision": "8ea6fb98c9885599db3f05c0af006cf152e32b8d"
       }
     },
     "cask": {
@@ -739,7 +739,7 @@
         "macOS": "13.6"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.18",
+        "HOMEBREW_VERSION": "4.2.19",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
