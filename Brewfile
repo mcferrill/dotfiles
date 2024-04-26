@@ -21,5 +21,7 @@ if OS.mac?
     cask "font-fira-code-nerd-font"
     cask "iterm2-beta"
     cask "karabiner-elements"
+    cask "1password-cli"
+    brew "bitwarden-cli"
     cask "keepingyouawake"
 end

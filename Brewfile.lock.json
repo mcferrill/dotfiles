@@ -656,6 +656,50 @@
       "cormacrelf/tap/dark-notify": {
         "version": "0.1.2",
         "bottle": false
+      },
+      "bitwarden-cli": {
+        "version": "2024.3.1",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:234b7d7a360a02e1ac45223dbdb6c12e741b47f8e505c90c1634cca38e3b580e",
+              "sha256": "234b7d7a360a02e1ac45223dbdb6c12e741b47f8e505c90c1634cca38e3b580e"
+            },
+            "arm64_ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:bb6b3648e8092836862b39a77f95a0fbe89133cef56b14d56be5246fc597d188",
+              "sha256": "bb6b3648e8092836862b39a77f95a0fbe89133cef56b14d56be5246fc597d188"
+            },
+            "arm64_monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:4c4d5a19448506a2cf19afc860dd7f709bddc6463b905aa095ab2c9cfe8c198d",
+              "sha256": "4c4d5a19448506a2cf19afc860dd7f709bddc6463b905aa095ab2c9cfe8c198d"
+            },
+            "sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:2b41c879007266c830967f9c6e8c2ed06e8df863bdde6c12627b938dbaea8ec3",
+              "sha256": "2b41c879007266c830967f9c6e8c2ed06e8df863bdde6c12627b938dbaea8ec3"
+            },
+            "ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:77558fdb9e8d2b69293fa48d502b85fe4477170d207a00079678d0e9c4ce17c1",
+              "sha256": "77558fdb9e8d2b69293fa48d502b85fe4477170d207a00079678d0e9c4ce17c1"
+            },
+            "monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:09c5830ff1b3f97ad1be140e8f5f1859c03e042d60b8cb833684f016e6bbde2a",
+              "sha256": "09c5830ff1b3f97ad1be140e8f5f1859c03e042d60b8cb833684f016e6bbde2a"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:fdb847dc684abcda103c32d727d008ff065f2f1f238feea58786fb8a6a79d856",
+              "sha256": "fdb847dc684abcda103c32d727d008ff065f2f1f238feea58786fb8a6a79d856"
+            }
+          }
+        }
       }
     },
     "tap": {
@@ -698,6 +742,12 @@
         "version": "4.0.0",
         "options": {
           "full_name": "dozer"
+        }
+      },
+      "1password-cli": {
+        "version": "2.27.0",
+        "options": {
+          "full_name": "1password-cli"
         }
       }
     }
