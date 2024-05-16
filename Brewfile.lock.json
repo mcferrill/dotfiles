@@ -704,7 +704,7 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "1173eafac517306b9532fe87e87b536c37dab14c"
+        "revision": "0ed20f35d21ebc3f4f829689b101078718ad5ce1"
       }
     },
     "cask": {
