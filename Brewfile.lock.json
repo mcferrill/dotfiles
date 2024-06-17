@@ -763,7 +763,7 @@
         "GCC": "11.4.0"
       },
       "Ubuntu 22.04.4 LTS (jammy)": {
-        "HOMEBREW_VERSION": "4.3.5",
+        "HOMEBREW_VERSION": "4.3.6",
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.4.0"
