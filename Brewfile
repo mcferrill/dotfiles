@@ -2,6 +2,7 @@
 brew "cloc"
 brew "fzf"
 brew "git"
+brew "git-lfs"
 brew "neovim"
 brew "pdm"
 brew "python"
