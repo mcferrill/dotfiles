@@ -29,6 +29,7 @@
 
 - create:
     - ~/.config
+    - ~/.config/nvim
     - ~/.config/karabiner
     - ~/.config/tmux/plugins
     - ~/.vim/tmp/undo
@@ -38,8 +39,9 @@
     ~/.bashrc:
     ~/.config/karabiner/karabiner.json:
     ~/.config/starship.toml:
-    ~/.config/nvim: vim/nvchad
-    ~/.config/nvim/lua/custom: vim/custom
+    # ~/.config/nvim: vim/nvchad
+    # ~/.config/nvim/lua/custom: vim/custom
+    ~/.config/nvim/init.lua: nvim.lua
     ~/.gitconfig:
     ~/.jshintrc:
     ~/.config/tmux/tmux.conf:
@@ -49,7 +51,7 @@
     ~/.zshrc:
 
 - shell:
-  - [nvim --headless +NvChadUpdate +MasonInstallAll +qa, Installing neovim plugins]
+  - [nvim --headless +"Lazy Update" +qa, Installing neovim plugins]
   - [~/.config/tmux/plugins/tpm/bin/install_plugins]
   - [pdm plugin add pdm-django, Installing django plugin for pdm]
   - [touch ~/.hushlogin]
