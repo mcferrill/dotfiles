@@ -46,45 +46,45 @@
         }
       },
       "python": {
-        "version": "3.12.5",
+        "version": "3.12.6",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sonoma": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:b0ff9819a9f471ac30796037098acdc318883b1a8fdfb4f9b9926590eace41dd",
-              "sha256": "b0ff9819a9f471ac30796037098acdc318883b1a8fdfb4f9b9926590eace41dd"
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:00871488a4207f0265eab8e339146f63874e7454487169e819a1e4a5bd13a62b",
+              "sha256": "00871488a4207f0265eab8e339146f63874e7454487169e819a1e4a5bd13a62b"
             },
             "arm64_ventura": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:46bfedee260602e564ba4da5551a676c7c4c5605357c79183f2da0855f81fac5",
-              "sha256": "46bfedee260602e564ba4da5551a676c7c4c5605357c79183f2da0855f81fac5"
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:2d4c6e84be927a29d116e1f2bd5e09e0b00dab2141d58377f255949d363b5892",
+              "sha256": "2d4c6e84be927a29d116e1f2bd5e09e0b00dab2141d58377f255949d363b5892"
             },
             "arm64_monterey": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:a8cbb6621923a75a61511d6478ae231ed4f56f703b9f244bfb9d5d6ec45d5b14",
-              "sha256": "a8cbb6621923a75a61511d6478ae231ed4f56f703b9f244bfb9d5d6ec45d5b14"
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:d9c70d61697dc082c561f47bf8bde3cf2dcdb1070f0705a65d9acd67ff3acf65",
+              "sha256": "d9c70d61697dc082c561f47bf8bde3cf2dcdb1070f0705a65d9acd67ff3acf65"
             },
             "sonoma": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:9f9356133056b279b4dc874b44ccade6690f07d8dcbe8bc387b2158f9218a78e",
-              "sha256": "9f9356133056b279b4dc874b44ccade6690f07d8dcbe8bc387b2158f9218a78e"
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:ac351a070751905ceb68a1f570601ff0b712613830e2b6c14063c7243b2bb259",
+              "sha256": "ac351a070751905ceb68a1f570601ff0b712613830e2b6c14063c7243b2bb259"
             },
             "ventura": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:af7af812d9b66eddb1164ff90a0851da6658516b04746abee8c44d953dc8bc8e",
-              "sha256": "af7af812d9b66eddb1164ff90a0851da6658516b04746abee8c44d953dc8bc8e"
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:8abd20343a066df8d2be5c81c4a2a968838003cf40da8838c052255747d704eb",
+              "sha256": "8abd20343a066df8d2be5c81c4a2a968838003cf40da8838c052255747d704eb"
             },
             "monterey": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:26ab776eaefe245d630a22bd358c7422af2ae65afe6623f7ec4b9c64fc986b84",
-              "sha256": "26ab776eaefe245d630a22bd358c7422af2ae65afe6623f7ec4b9c64fc986b84"
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:594da1f2f1785d54cc85b646fe0520813071fc74fd7d610f4ecad4b55ce842c0",
+              "sha256": "594da1f2f1785d54cc85b646fe0520813071fc74fd7d610f4ecad4b55ce842c0"
             },
             "x86_64_linux": {
               "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:44f7dd6260f4e4d3e802e55b8226e498c0c9949ac48eb0ba7c04b13a179ce9f1",
-              "sha256": "44f7dd6260f4e4d3e802e55b8226e498c0c9949ac48eb0ba7c04b13a179ce9f1"
+              "url": "https://ghcr.io/v2/homebrew/core/python/3.12/blobs/sha256:e0c5b329ce19642fa0d54abf71fb33eae36cee265ff03479fe1ae929918a1329",
+              "sha256": "e0c5b329ce19642fa0d54abf71fb33eae36cee265ff03479fe1ae929918a1329"
             }
           }
         }
@@ -527,6 +527,11 @@
               "url": "https://ghcr.io/v2/homebrew/core/dark-mode/blobs/sha256:dc8e59edc2327ebe14e1b5c1d40a9fe8a7138749ec5ae092ff752c28c83e97aa",
               "sha256": "dc8e59edc2327ebe14e1b5c1d40a9fe8a7138749ec5ae092ff752c28c83e97aa"
             },
+            "sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/dark-mode/blobs/sha256:1daf58b83385b1dd3e852d8ca4b051a875e510e02115b6d0502082fa52ef0058",
+              "sha256": "1daf58b83385b1dd3e852d8ca4b051a875e510e02115b6d0502082fa52ef0058"
+            },
             "ventura": {
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/dark-mode/blobs/sha256:46d4c9a2055387cd9a0abf38f563e803034e4a946313dae838f30d6025633421",
@@ -648,45 +653,45 @@
         "bottle": false
       },
       "bitwarden-cli": {
-        "version": "2024.6.0",
+        "version": "2024.8.2",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sonoma": {
-              "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:fb752136fdb18ceea631e6626e260b6385691af02663e0e31c97ac5a963d59b7",
-              "sha256": "fb752136fdb18ceea631e6626e260b6385691af02663e0e31c97ac5a963d59b7"
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:4c5a0045ba46b89ac3858b6bfe77e8cecdb9d6ea6c845ff93df55682167a34cf",
+              "sha256": "4c5a0045ba46b89ac3858b6bfe77e8cecdb9d6ea6c845ff93df55682167a34cf"
             },
             "arm64_ventura": {
-              "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:20c64724b8206cbf15c90a05c7d16104ff894215f7941512ded8229994d84f98",
-              "sha256": "20c64724b8206cbf15c90a05c7d16104ff894215f7941512ded8229994d84f98"
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:46ace386d5b8a179a47165f09ffe21e16a0cde2b2bedc92503ea843c7836c74e",
+              "sha256": "46ace386d5b8a179a47165f09ffe21e16a0cde2b2bedc92503ea843c7836c74e"
             },
             "arm64_monterey": {
-              "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:b1ff22ce78035dfcbc6ffb446bc18dcf1d9cc8f3863c2d6f181be32c1fbf36bc",
-              "sha256": "b1ff22ce78035dfcbc6ffb446bc18dcf1d9cc8f3863c2d6f181be32c1fbf36bc"
+              "cellar": "/opt/homebrew/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:29456cf833df0a6760bc14fdef3a918cb53d357ef0bbbfb70486004cc4e11a43",
+              "sha256": "29456cf833df0a6760bc14fdef3a918cb53d357ef0bbbfb70486004cc4e11a43"
             },
             "sonoma": {
-              "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:2bc9e93b9a543900829ab80f0b8ef6a8c7273e228092203bfaaab88946119296",
-              "sha256": "2bc9e93b9a543900829ab80f0b8ef6a8c7273e228092203bfaaab88946119296"
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:37a2c651312845a653f028fd33ee6140b6aca75835a2c6c952bb68bfed87e11e",
+              "sha256": "37a2c651312845a653f028fd33ee6140b6aca75835a2c6c952bb68bfed87e11e"
             },
             "ventura": {
-              "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:3133beeb8430b0f86e8fbde85b5fb0c45926b60b790ef86189b425cffd5aced7",
-              "sha256": "3133beeb8430b0f86e8fbde85b5fb0c45926b60b790ef86189b425cffd5aced7"
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:be9b3414c20bde9c0f8dd05863404058fc2cd59428ff16e1201f5e29aae6a282",
+              "sha256": "be9b3414c20bde9c0f8dd05863404058fc2cd59428ff16e1201f5e29aae6a282"
             },
             "monterey": {
-              "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:f434edb274e170149b485f8608dc1659186b693bbf563dc6b2a99332ec0c5be2",
-              "sha256": "f434edb274e170149b485f8608dc1659186b693bbf563dc6b2a99332ec0c5be2"
+              "cellar": "/usr/local/Cellar",
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:e9a2989cf7b380fbd8f402ede056a8431e2320f366c0f852c19f28c2b429d1a4",
+              "sha256": "e9a2989cf7b380fbd8f402ede056a8431e2320f366c0f852c19f28c2b429d1a4"
             },
             "x86_64_linux": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:f627fb9dd646f59e47d1182aadd9e9f3b4214f220c247adb49c48371f6f9db81",
-              "sha256": "f627fb9dd646f59e47d1182aadd9e9f3b4214f220c247adb49c48371f6f9db81"
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:8943aaca2933117a28af11f0227fb3f5415d50d439855c461b40ea560c809dc3",
+              "sha256": "8943aaca2933117a28af11f0227fb3f5415d50d439855c461b40ea560c809dc3"
             }
           }
         }
@@ -755,7 +760,7 @@
         }
       },
       "karabiner-elements": {
-        "version": "14.13.0",
+        "version": "15.0.0",
         "options": {
           "full_name": "karabiner-elements"
         }
@@ -779,7 +784,7 @@
         }
       },
       "1password-cli": {
-        "version": "2.29.0",
+        "version": "2.30.0",
         "options": {
           "full_name": "1password-cli"
         }
@@ -823,12 +828,12 @@
         "macOS": "13.6"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.7",
+        "HOMEBREW_VERSION": "4.3.20",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
         "Xcode": "15.4",
-        "macOS": "14.5"
+        "macOS": "14.6.1"
       }
     }
   }
