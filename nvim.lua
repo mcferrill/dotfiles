@@ -932,7 +932,6 @@ require("lazy").setup({
 -- ChangeBackground changes the background mode based on macOS's `Appearance`
 -- setting. We also refresh the statusline colors to reflect the new mode.
 function ChangeBackground()
-	-- Execute the shell command and capture the output
 	local handle = io.popen("dark-mode status")
 	local result = handle:read("*a") -- Read the entire output
 	handle:close() -- Close the handle
