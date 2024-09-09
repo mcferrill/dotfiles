@@ -585,9 +585,7 @@ require("lazy").setup({
 				ts_ls = {},
 				cssls = {},
 				html = {},
-				volar = {
-					filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
-				},
+				volar = {},
 				ruff_lsp = {},
 				eslint = {},
 				emmet_ls = {},
