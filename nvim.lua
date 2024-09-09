@@ -40,6 +40,8 @@ vim.opt.smartcase = true
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
 
+vim.opt.termguicolors = true
+
 -- Decrease update time
 vim.opt.updatetime = 50
 
@@ -218,18 +220,17 @@ require("lazy").setup({
 	{
 		"cormacrelf/dark-notify",
 		config = function()
-			require("dark_notify").run({
-				schemes = {
-					-- you can use a different colorscheme for each
-					dark = "wombat_classic",
-					-- even a different `set background=light/dark` setting or lightline theme
-					-- if you use lightline, you may want to configure lightline themes,
-					-- even if they're the same one, especially if the theme reacts to :set bg
-					light = {
-						colorscheme = "github_light",
+			local dn = require("dark_notify")
+			if vim.loop.os_uname().sysname == "darwin" then
+				dn.run({
+					schemes = {
+						dark = "wombat_classic",
+						light = "github_light",
 					},
-				},
-			})
+				})
+			else
+				vim.cmd.colorscheme("wombat_classic")
+			end
 		end,
 	},
 
@@ -929,35 +930,6 @@ require("lazy").setup({
 		},
 	},
 })
-
--- Adapted from https://arslan.io/2021/02/15/automatic-dark-mode-for-terminal-applications/
--- ChangeBackground changes the background mode based on macOS's `Appearance`
--- setting. We also refresh the statusline colors to reflect the new mode.
-function ChangeBackground()
-	local handle = io.popen("dark-mode status")
-	local result = handle:read("*a") -- Read the entire output
-	handle:close() -- Close the handle
-
-	if result == "off\n" then
-		vim.opt.background = "light"
-		vim.cmd.colorscheme("github_light")
-	else
-		vim.opt.background = "dark"
-		vim.cmd.colorscheme("wombat_classic")
-	end
-
-	--
-	-- try
-	--   execute "AirlineRefresh"
-	-- catch
-	-- endtry
-end
-
--- initialize the colorscheme for the first run
-ChangeBackground()
-
--- change the color scheme if we receive a SigUSR1
--- autocmd SigUSR1 * call ChangeBackground()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
