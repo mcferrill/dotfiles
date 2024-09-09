@@ -584,7 +584,7 @@ require("lazy").setup({
 				ts_ls = {},
 				cssls = {},
 				html = {},
-				vuels = {},
+				volar = {},
 				ruff_lsp = {},
 				eslint = {},
 				emmet_ls = {},
