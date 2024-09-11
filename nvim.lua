@@ -221,7 +221,7 @@ require("lazy").setup({
 		"cormacrelf/dark-notify",
 		config = function()
 			local dn = require("dark_notify")
-			if vim.loop.os_uname().sysname == "darwin" then
+			if vim.loop.os_uname().sysname == "Darwin" then
 				dn.run({
 					schemes = {
 						dark = "wombat_classic",
