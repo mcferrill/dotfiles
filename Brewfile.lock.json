@@ -385,6 +385,11 @@
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
+            "arm64_sequoia": {
+              "cellar": ":any",
+              "url": "https://ghcr.io/v2/homebrew/core/tmate/blobs/sha256:b27b6f267188c6bd851cf061dc7fabf97a127c7930a57070cb46caf0333ef71f",
+              "sha256": "b27b6f267188c6bd851cf061dc7fabf97a127c7930a57070cb46caf0333ef71f"
+            },
             "arm64_sonoma": {
               "cellar": ":any",
               "url": "https://ghcr.io/v2/homebrew/core/tmate/blobs/sha256:1d2e440f793063b6f35862278723efe92afdbe5bab8a23bff6bf122b3f6a61f9",
@@ -883,6 +888,12 @@
       },
       "Ubuntu 22.04.4 LTS (jammy)": {
         "HOMEBREW_VERSION": "4.3.20",
+        "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
+        "Homebrew/homebrew-core": "api",
+        "GCC": "11.4.0"
+      },
+      "Ubuntu 22.04.5 LTS (jammy)": {
+        "HOMEBREW_VERSION": "4.3.21",
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.4.0"
