@@ -51,7 +51,9 @@
     ~/.zshrc:
 
 - shell:
-  - [nvim --headless "+Lazy! sync" +MasonToolsUpdateSync +TSUpdate +qa, Installing neovim plugins]
+  # - [nvim --headless "+Lazy! sync" +MasonToolsUpdateSync +TSUpdate +qa, Installing neovim plugins]
+  # Disabled mason update for now since it's not working on WSL
+  - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
   - [~/.config/tmux/plugins/tpm/bin/install_plugins]
   - [pdm plugin add pdm-django, Installing django plugin for pdm]
   - [touch ~/.hushlogin]
