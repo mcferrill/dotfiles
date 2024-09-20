@@ -713,50 +713,40 @@
         "bottle": false
       },
       "bitwarden-cli": {
-        "version": "2024.8.2",
+        "version": "2024.9.0",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sequoia": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:df76fb24942bf115385548265c82aed7279e4b33071bf333f0a6d667c192f938",
-              "sha256": "df76fb24942bf115385548265c82aed7279e4b33071bf333f0a6d667c192f938"
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:2383245b9a12e0c354dd68c720451de46aae601c12887bde28c949c8bf67d5e6",
+              "sha256": "2383245b9a12e0c354dd68c720451de46aae601c12887bde28c949c8bf67d5e6"
             },
             "arm64_sonoma": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:4c5a0045ba46b89ac3858b6bfe77e8cecdb9d6ea6c845ff93df55682167a34cf",
-              "sha256": "4c5a0045ba46b89ac3858b6bfe77e8cecdb9d6ea6c845ff93df55682167a34cf"
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:2a42ac44f92ea430b309bed47be24d4bfc37decd5eeb3eb5a11e8714b5e5664e",
+              "sha256": "2a42ac44f92ea430b309bed47be24d4bfc37decd5eeb3eb5a11e8714b5e5664e"
             },
             "arm64_ventura": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:46ace386d5b8a179a47165f09ffe21e16a0cde2b2bedc92503ea843c7836c74e",
-              "sha256": "46ace386d5b8a179a47165f09ffe21e16a0cde2b2bedc92503ea843c7836c74e"
-            },
-            "arm64_monterey": {
-              "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:29456cf833df0a6760bc14fdef3a918cb53d357ef0bbbfb70486004cc4e11a43",
-              "sha256": "29456cf833df0a6760bc14fdef3a918cb53d357ef0bbbfb70486004cc4e11a43"
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:066c34a2d005f4c9d4097d0f573737456e71b74cd633d97200e20669be196a89",
+              "sha256": "066c34a2d005f4c9d4097d0f573737456e71b74cd633d97200e20669be196a89"
             },
             "sonoma": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:37a2c651312845a653f028fd33ee6140b6aca75835a2c6c952bb68bfed87e11e",
-              "sha256": "37a2c651312845a653f028fd33ee6140b6aca75835a2c6c952bb68bfed87e11e"
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:f01b6466381189ff1daac576f3e41ed9c16f3e00e48647b18a5a6817f9067c19",
+              "sha256": "f01b6466381189ff1daac576f3e41ed9c16f3e00e48647b18a5a6817f9067c19"
             },
             "ventura": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:be9b3414c20bde9c0f8dd05863404058fc2cd59428ff16e1201f5e29aae6a282",
-              "sha256": "be9b3414c20bde9c0f8dd05863404058fc2cd59428ff16e1201f5e29aae6a282"
-            },
-            "monterey": {
-              "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:e9a2989cf7b380fbd8f402ede056a8431e2320f366c0f852c19f28c2b429d1a4",
-              "sha256": "e9a2989cf7b380fbd8f402ede056a8431e2320f366c0f852c19f28c2b429d1a4"
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:f5cb3d914f7173554fe4d8a9c2c7208ab8e1ec433a3f9c645060526de97ea29b",
+              "sha256": "f5cb3d914f7173554fe4d8a9c2c7208ab8e1ec433a3f9c645060526de97ea29b"
             },
             "x86_64_linux": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:8943aaca2933117a28af11f0227fb3f5415d50d439855c461b40ea560c809dc3",
-              "sha256": "8943aaca2933117a28af11f0227fb3f5415d50d439855c461b40ea560c809dc3"
+              "url": "https://ghcr.io/v2/homebrew/core/bitwarden-cli/blobs/sha256:002a7f7e4b6655fe8f3b7ca8a62fc50954422066483eaedc656524c560e7c26b",
+              "sha256": "002a7f7e4b6655fe8f3b7ca8a62fc50954422066483eaedc656524c560e7c26b"
             }
           }
         }
@@ -898,7 +888,7 @@
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "16.0.0.0.1.1724870825",
-        "Xcode": "15.4",
+        "Xcode": "16.0",
         "macOS": "14.7"
       }
     }
