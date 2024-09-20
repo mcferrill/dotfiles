@@ -588,7 +588,7 @@ require("lazy").setup({
 				volar = {},
 				ruff_lsp = {},
 				eslint = {},
-				emmet_ls = {},
+				-- emmet_ls = {},
 				lua_ls = {
 					-- cmd = {...},
 					-- filetypes = { ...},
@@ -670,7 +670,7 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "black" },
+				python = { "ruff" },
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 			},
