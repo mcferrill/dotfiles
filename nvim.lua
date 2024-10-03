@@ -609,7 +609,7 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				gopls = {},
-				-- pyright = {},
+				pyright = {},
 				ts_ls = {},
 				cssls = {},
 				html = {},
@@ -714,7 +714,7 @@ require("lazy").setup({
 			end,
 			formatters_by_ft = {
 				lua = { "stylua" },
-				python = { "ruff" },
+				python = { "ruff_lsp" },
 				-- You can use 'stop_after_first' to run the first available formatter from the list
 				javascript = { "prettierd", "prettier", stop_after_first = true },
 			},
