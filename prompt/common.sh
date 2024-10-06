@@ -11,17 +11,14 @@ fi
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
-# Disabled for now, manually enable via sys.sh if needed.
-# export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-# if [ "$VIRTUAL_ENV" ]; then
-#     source $VIRTUAL_ENV/bin/activate;
-# elif [ "$(which virtualenvwrapper.sh)" ]; then
-#     source "$(which virtualenvwrapper.sh)"
-# fi
+
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+if [ "$(which virtualenvwrapper.sh)" ]; then
+    source "$(which virtualenvwrapper.sh)"
+fi
 
 # fnm (rust-based nvm/n alternative)
-if command -v fnm &> /dev/null
-then
+if command -v fnm &> /dev/null; then
   eval "$(fnm env --use-on-cd)"
 fi
 
