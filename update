@@ -24,8 +24,8 @@ if [ "$(uname -s)" != "Darwin" ]; then
     fi
 fi
 
-echo "running brew updates"
 if (command -v brew >/dev/null 2>&1) then
+    echo "running brew updates"
     brew update && brew upgrade
 fi
 
