@@ -39,8 +39,6 @@
     ~/.bashrc:
     ~/.config/karabiner/karabiner.json:
     ~/.config/starship.toml:
-    # ~/.config/nvim: vim/nvchad
-    # ~/.config/nvim/lua/custom: vim/custom
     ~/.config/nvim/init.lua: nvim.lua
     ~/.gitconfig:
     ~/.jshintrc:
@@ -51,7 +49,6 @@
     ~/.zshrc:
 
 - shell:
-  # - [nvim --headless "+Lazy! sync" +MasonToolsUpdateSync +TSUpdate +qa, Installing neovim plugins]
   # Disabled mason update for now since it's not working on WSL
   - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
   - [~/.config/tmux/plugins/tpm/bin/install_plugins]
