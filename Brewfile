@@ -15,10 +15,8 @@ brew "zsh"
 
 # macos
 if OS.mac?
-    brew "bitwarden-cli"
     brew "cormacrelf/tap/dark-notify"
     brew "dark-mode"
-    cask "1password-cli"
     cask "dozer"
     cask "font-fira-code-nerd-font"
     cask "iterm2-beta"
