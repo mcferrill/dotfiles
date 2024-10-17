@@ -573,7 +573,7 @@ require("lazy").setup({
 			null_ls.setup({
 				sources = {
 					null_ls.builtins.formatting.djlint,
-					null_ls.builtins.diagnostics.djlint,
+					-- null_ls.builtins.diagnostics.djlint,
 					-- null_ls.builtins.completion.spell,
 					-- require("none-ls.diagnostics.eslint"), -- requires none-ls-extras.nvim
 				},
