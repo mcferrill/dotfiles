@@ -46,6 +46,7 @@
     ~/.vim/init.vim: vimrc
     ~/.vimrc:
     ~/.zshrc:
+    ~/.aerospace.toml:
 
 - shell:
   # Disabled mason update for now since it's not working on WSL
@@ -53,3 +54,7 @@
   - [~/.config/tmux/plugins/tpm/bin/install_plugins]
   - [pdm plugin add pdm-django, Installing django plugin for pdm]
   - [touch ~/.hushlogin]
+
+  # Fix mission control w/ aerospace
+  - [defaults write com.apple.dock expose-group-apps -bool true && killall Dock]
+  - [defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer]

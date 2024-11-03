@@ -22,4 +22,5 @@ if OS.mac?
     cask "iterm2-beta"
     cask "karabiner-elements"
     cask "keepingyouawake"
+    cask "nikitabobko/tap/aerospace"
 end

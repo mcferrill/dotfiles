@@ -763,6 +763,12 @@
         "options": {
           "full_name": "1password-cli"
         }
+      },
+      "aerospace": {
+        "version": "0.15.2-Beta",
+        "options": {
+          "full_name": "nikitabobko/tap/aerospace"
+        }
       }
     }
   },
