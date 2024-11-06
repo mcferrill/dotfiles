@@ -803,6 +803,12 @@
         "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
         "Homebrew/homebrew-core": "api",
         "GCC": "11.4.0"
+      },
+      "Ubuntu 24.04.1 LTS (noble)": {
+        "HOMEBREW_VERSION": "4.4.4",
+        "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
+        "Homebrew/homebrew-core": "api",
+        "GCC": "13.2.0"
       }
     },
     "macos": {
