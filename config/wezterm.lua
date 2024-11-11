@@ -21,7 +21,7 @@ config.color_scheme = scheme_for_appearance(get_appearance())
 
 config.automatically_reload_config = true
 config.font = wezterm.font_with_fallback({
-    { family = "FiraCode Nerd Font", weight = "DemiBold" },
+    -- { family = "FiraCode Nerd Font", weight = "DemiBold" },
     { family = "Fira Code", weight = "DemiBold" },
 })
 
@@ -32,7 +32,7 @@ config.window_background_opacity = 0.90
 if package.config:sub(1, 1) == "/" then
     config.font_size = 13
 else
-    config.font_size = 11
+    config.font_size = 10.25
 end
 
 return config
