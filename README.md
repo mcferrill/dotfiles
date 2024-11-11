@@ -17,6 +17,7 @@ Install with:
 * Neovim & plugins
 * karabiner (macos keyboard customization) - more easily generated with [this](https://github.com/mxstbr/karabiner)
 * aerospace (macos window manager)
+* wezterm
 
 ## Per-machine config
 

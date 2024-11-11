@@ -16,6 +16,7 @@
     - ~/.config/karabiner
     - ~/.config/nvim
     - ~/.config/tmux/plugins
+    - ~/.config/wezterm
     - ~/.hushlogin
     - ~/.vim/tmp/undo
 
@@ -25,6 +26,7 @@
     ~/.config/starship.toml: config/starship.toml
     ~/.config/tmux/plugins/tpm: tpm
     ~/.config/tmux/tmux.conf: config/tmux.conf
+    ~/.config/wezterm/wezterm.lua: config/wezterm.lua
     ~/.gitconfig: config/gitconfig
     ~/.vimrc: config/vimrc
     ~/.zshrc: config/zshrc

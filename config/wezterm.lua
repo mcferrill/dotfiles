@@ -1,19 +1,20 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
-
--- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- This is where you actually apply your config choices
-
--- For example, changing the color scheme:
 config.color_scheme = "Kanagawa (Gogh)"
-
 config.automatically_reload_config = true
--- config.window_decorations = "RESIZE"
-config.font = wezterm.font("Fira Code")
-config.enable_tab_bar = false
-config.font_size = 11
+config.font = wezterm.font_with_fallback({
+    { family = "FiraCode Nerd Font", weight = "DemiBold" },
+    { family = "Fira Code", weight = "DemiBold" },
+})
 
--- and finally, return the configuration to wezterm
+config.enable_tab_bar = false
+
+-- Use smaller font size on windows
+if package.config:sub(1, 1) == "/" then
+    config.font_size = 13
+else
+    config.font_size = 11
+end
+
 return config
