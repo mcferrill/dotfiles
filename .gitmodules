@@ -13,16 +13,10 @@
 [submodule "dotbot-brew"]
 	path = dotbot-brew
 	url = https://github.com/wren/dotbot-brew.git
-[submodule "nvchad"]
-	path = vim/nvchad
-	url = https://github.com/NvChad/NvChad
 [submodule "tpm"]
 	path = tpm
 	url = https://github.com/tmux-plugins/tpm.git
-  ignore = dirty
-[submodule "dotbot-ifplatform"]
-	path = dotbot-ifplatform
-	url = https://github.com/ssbanerje/dotbot-ifplatform.git
+	ignore = dirty
 [submodule "dotbot-crossplatform"]
 	path = dotbot-crossplatform
 	url = git@github.com:msdrigg/dotbot-crossplatform.git
