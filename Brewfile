@@ -1,5 +1,4 @@
 
-brew "cloc"
 brew "fnm"
 brew "fzf"
 brew "git"
@@ -9,7 +8,6 @@ brew "pdm"
 brew "python"
 brew "starship"
 brew "the_silver_searcher"
-brew "tmate"
 brew "tmux"
 brew "zsh"
 

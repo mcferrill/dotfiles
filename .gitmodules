@@ -20,3 +20,6 @@
 	path = tpm
 	url = https://github.com/tmux-plugins/tpm.git
   ignore = dirty
+[submodule "dotbot-ifplatform"]
+	path = dotbot-ifplatform
+	url = https://github.com/ssbanerje/dotbot-ifplatform.git

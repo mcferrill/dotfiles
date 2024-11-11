@@ -1,4 +1,3 @@
-# TODO: windows support?
 # TODO: mac settings eg: defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 - defaults:
@@ -17,9 +16,6 @@
     link:
       relink: true
 
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-
 - install-brew: true
 
 - brewfile:
@@ -37,24 +33,26 @@
 
 - link:
     ~/.bashrc:
-    ~/.config/karabiner/karabiner.json:
+    ~/.zshrc:
     ~/.config/starship.toml:
     ~/.config/nvim/init.lua: nvim.lua
     ~/.gitconfig:
     ~/.config/tmux/tmux.conf:
     ~/.config/tmux/plugins/tpm: tpm
     ~/.vim/init.vim: vimrc
-    ~/.vimrc:
-    ~/.zshrc:
-    ~/.aerospace.toml:
+
+- ifmacos:
+    - link:
+        ~/.config/karabiner/karabiner.json:
+        ~/.aerospace.toml:
+
+    - shell:
+      # Fix mission control w/ aerospace
+      - [defaults write com.apple.dock expose-group-apps -bool true && killall Dock]
+      - [defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer]
 
 - shell:
   # Disabled mason update for now since it's not working on WSL
   - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
   - [~/.config/tmux/plugins/tpm/bin/install_plugins]
   - [pdm plugin add pdm-django, Installing django plugin for pdm]
-  - [touch ~/.hushlogin]
-
-  # Fix mission control w/ aerospace
-  - [defaults write com.apple.dock expose-group-apps -bool true && killall Dock]
-  - [defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer]
