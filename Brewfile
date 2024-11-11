@@ -17,8 +17,8 @@ if OS.mac?
     brew "dark-mode"
     cask "dozer"
     cask "font-fira-code-nerd-font"
-    cask "iterm2-beta"
     cask "karabiner-elements"
     cask "keepingyouawake"
     cask "nikitabobko/tap/aerospace"
+    cask "wezterm"
 end
