@@ -1,18 +1,6 @@
 # TODO: mac settings eg: defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 - defaults:
-    brew:
-        stdin: true
-        stderr: true
-        stdout: true
-    cask:
-        stdin: true
-        stderr: true
-        stdout: true
-    brewfile:
-        stdin: true
-        stderr: true
-        stdout: true
     link:
       relink: true
 
@@ -41,18 +29,22 @@
     ~/.config/tmux/plugins/tpm: tpm
     ~/.vim/init.vim: vimrc
 
-- ifmacos:
-    - link:
-        ~/.config/karabiner/karabiner.json:
-        ~/.aerospace.toml:
+- crossplatform-link:
+    ~/.config/karabiner/karabiner.json:
+        platform: darwin
+    ~/.aerospace.toml:
+        platform: darwin
 
-    - shell:
-      # Fix mission control w/ aerospace
-      - [defaults write com.apple.dock expose-group-apps -bool true && killall Dock]
-      - [defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer]
+- crossplatform-shell:
+    - command: defaults write com.apple.dock expose-group-apps -bool true && killall Dock
+      platform: darwin
+      description: Adjust expose to work with aerospace
+    - command: defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
+      platform: darwin
+      description: Adjust spaces spans-displays to work with aerospace
 
 - shell:
   # Disabled mason update for now since it's not working on WSL
   - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
-  - [~/.config/tmux/plugins/tpm/bin/install_plugins]
+  - [~/.config/tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
   - [pdm plugin add pdm-django, Installing django plugin for pdm]
