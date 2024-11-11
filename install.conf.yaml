@@ -26,7 +26,7 @@
     ~/.config/tmux/plugins/tpm: tpm
     ~/.config/tmux/tmux.conf: config/tmux.conf
     ~/.gitconfig: config/gitconfig
-    ~/.vim/init.vim: vimrc
+    ~/.vimrc: config/vimrc
     ~/.zshrc: config/zshrc
 
 - crossplatform-link:
@@ -48,5 +48,5 @@
 - shell:
   # Disabled mason update for now since it's not working on WSL
   - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
-  - [~/.config/tmux/plugins/tpm/bin/install_plugins, Installing tmux plugins]
+  - [~/.config/tmux/plugins/tpm/bin/install_plugins || true, Installing tmux plugins]
   - [pdm plugin add pdm-django, Installing django plugin for pdm]
