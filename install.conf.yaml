@@ -20,19 +20,21 @@
     - ~/.vim/tmp/undo
 
 - link:
-    ~/.bashrc:
-    ~/.config/nvim/init.lua: nvim.lua
-    ~/.config/starship.toml:
+    ~/.bashrc: config/bashrc
+    ~/.config/nvim/init.lua: config/nvim.lua
+    ~/.config/starship.toml: config/starship.toml
     ~/.config/tmux/plugins/tpm: tpm
-    ~/.config/tmux/tmux.conf:
-    ~/.gitconfig:
+    ~/.config/tmux/tmux.conf: config/tmux.conf
+    ~/.gitconfig: config/gitconfig
     ~/.vim/init.vim: vimrc
-    ~/.zshrc:
+    ~/.zshrc: config/zshrc
 
 - crossplatform-link:
     ~/.config/karabiner/karabiner.json:
+        path: config/karabiner.json
         platform: darwin
     ~/.aerospace.toml:
+        path: config/aerospace.toml
         platform: darwin
 
 - crossplatform-shell:
