@@ -13,21 +13,21 @@
 
 - create:
     - ~/.config
-    - ~/.config/nvim
     - ~/.config/karabiner
+    - ~/.config/nvim
     - ~/.config/tmux/plugins
-    - ~/.vim/tmp/undo
     - ~/.hushlogin
+    - ~/.vim/tmp/undo
 
 - link:
     ~/.bashrc:
-    ~/.zshrc:
-    ~/.config/starship.toml:
     ~/.config/nvim/init.lua: nvim.lua
-    ~/.gitconfig:
-    ~/.config/tmux/tmux.conf:
+    ~/.config/starship.toml:
     ~/.config/tmux/plugins/tpm: tpm
+    ~/.config/tmux/tmux.conf:
+    ~/.gitconfig:
     ~/.vim/init.vim: vimrc
+    ~/.zshrc:
 
 - crossplatform-link:
     ~/.config/karabiner/karabiner.json:

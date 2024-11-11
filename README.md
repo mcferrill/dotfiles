@@ -7,23 +7,16 @@ Install with:
 
     git clone <repo> .files && .files/install
 
-## Manual installs (optional)
-
-* Windows
-  * [scoop](https://scoop.sh/)
-  * [Windows Terminal Preview](https://www.microsoft.com/en-us/p/windows-terminal-preview/9n8g5rfz9xk3#activetab=pivot:overviewtab)
-* [Visual Studio Code](https://code.visualstudio.com/) (settings synced elsewhere)
-
 ## Tools Configured Here
 
-* Prompts
+* Prompt
   * Zsh + oh-my-zsh & plugins (autocomplete, history search, etc.)
-  * Bash
-  * starship (prompt & styling for both of the above)
+  * starship (terminal styling)
 * Git
-* Tmux & tmate (terminal multiplexing & sharing)
-* Vim/neovim & plugins
+* Tmux & plugins
+* Neovim & plugins
 * karabiner (macos keyboard customization) - more easily generated with [this](https://github.com/mxstbr/karabiner)
+* aerospace (macos window manager)
 
 ## Per-machine config
 
@@ -31,6 +24,6 @@ You can put system specific configuration in ~/.files/sys.sh and they will also 
 
 ## Currently used on
 
-* macOS w/ iterm2
+* macOS
 * Ubuntu
 * Windows 11 (powershell & WSL2)
