@@ -17,17 +17,6 @@
 
 - clean: ["~"]
 
-# - create:
-#       - ~/.config
-#       - ~/.config/karabiner
-#       - ~/.config/nvim
-#       - ~/.config/tmux/plugins
-#       - ~/.config/wezterm
-#       - ~/.hushlogin
-#       - ~/.vim/tmp/undo
-
-# - link:
-
 - crossplatform-shell:
       - command: mkdir ..\\AppData\\Local\\nvim
         platform: win32
