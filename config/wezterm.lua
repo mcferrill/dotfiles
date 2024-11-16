@@ -33,6 +33,7 @@ if package.config:sub(1, 1) == "/" then
     config.font_size = 13
 else
     config.font_size = 10.25
+    config.default_prog = {'powershell.exe'}
 end
 
 return config
