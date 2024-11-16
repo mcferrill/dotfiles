@@ -1,10 +1,10 @@
-# Install
-# Install-Module PSReadLine -AllowPrerelease -Force
+# To Install
+# Install-Module PSReadLine -Force
 
-# $profile
 if ($host.Name -eq 'ConsoleHost')
 {
     Import-Module PSReadLine
 }
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+Invoke-Expression (&starship init powershell)

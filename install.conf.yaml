@@ -1,54 +1,104 @@
 # TODO: mac settings eg: defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
 - defaults:
-    link:
-      relink: true
+      link:
+          relink: true
+          create: true
+      crossplatform-link:
+          relink: true
+          create: true
+          force: true
+          fallback_to_copy: true
 
 - install-brew: true
 
 - brewfile:
-    - Brewfile
+      - Brewfile
 
-- clean: ['~']
+- clean: ["~"]
 
-- create:
-    - ~/.config
-    - ~/.config/karabiner
-    - ~/.config/nvim
-    - ~/.config/tmux/plugins
-    - ~/.config/wezterm
-    - ~/.hushlogin
-    - ~/.vim/tmp/undo
+# - create:
+#       - ~/.config
+#       - ~/.config/karabiner
+#       - ~/.config/nvim
+#       - ~/.config/tmux/plugins
+#       - ~/.config/wezterm
+#       - ~/.hushlogin
+#       - ~/.vim/tmp/undo
 
-- link:
-    ~/.bashrc: config/bashrc
-    ~/.config/nvim/init.lua: config/nvim.lua
-    ~/.config/starship.toml: config/starship.toml
-    ~/.config/tmux/plugins/tpm: tpm
-    ~/.config/tmux/tmux.conf: config/tmux.conf
-    ~/.config/wezterm/wezterm.lua: config/wezterm.lua
-    ~/.gitconfig: config/gitconfig
-    ~/.vimrc: config/vimrc
-    ~/.zshrc: config/zshrc
-
-- crossplatform-link:
-    ~/.config/karabiner/karabiner.json:
-        path: config/karabiner.json
-        platform: darwin
-    ~/.aerospace.toml:
-        path: config/aerospace.toml
-        platform: darwin
+# - link:
 
 - crossplatform-shell:
-    - command: defaults write com.apple.dock expose-group-apps -bool true && killall Dock
-      platform: darwin
-      description: Adjust expose to work with aerospace
-    - command: defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
-      platform: darwin
-      description: Adjust spaces spans-displays to work with aerospace
+      - command: mkdir ..\\AppData\\Local\\nvim
+        platform: win32
+        description: Ensure nvim directory exists
+
+- crossplatform-link:
+      - ~/.gitconfig:
+            path: config/gitconfig
+            force: true
+            fallback_to_copy: true
+      - ~/.wezterm.lua:
+            path: config/wezterm.lua
+            platform: "win32"
+            force: true
+            fallback_to_copy: true
+      - ~/Documents/Powershell/Microsoft.PowerShell_profile.ps1:
+            path: misc/Powershell.ps1
+            platform: "win32"
+            force: true
+            fallback_to_copy: true
+      - ~/.config/starship.toml:
+            path: config/starship.toml
+      - ~/AppData/Local/nvim/init.lua:
+            path: config/nvim.lua
+            platform: "win32"
+            force: true
+            fallback_to_copy: true
+            create: true
+
+      - ~/.bashrc:
+            path: config/bashrc
+            platform: "!win32"
+      - ~/.config/nvim/init.lua:
+            path: config/nvim.lua
+            platform: "!win32"
+      - ~/.config/tmux/tmux.conf:
+            path: config/tmux.conf
+            platform: "!win32"
+      - ~/.config/tmux/plugins/tpm:
+            path: tpm
+            platform: "!win32"
+      - ~/.config/wezterm/wezterm.lua:
+            path: config/wezterm.lua
+            platform: "!win32"
+      - ~/.vimrc:
+            path: config/vimrc
+            platform: "!win32"
+      - ~/.zshrc:
+            path: config/zshrc
+            platform: "!win32"
+
+      - ~/.config/karabiner/karabiner.json:
+            path: config/karabiner.json
+            platform: darwin
+      - ~/.aerospace.toml:
+            path: config/aerospace.toml
+            platform: darwin
+
+- crossplatform-shell:
+      - command: defaults write com.apple.dock expose-group-apps -bool true && killall Dock
+        platform: darwin
+        description: Adjust expose to work with aerospace
+      - command: defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
+        platform: darwin
+        description: Adjust spaces spans-displays to work with aerospace
 
 - shell:
-  # Disabled mason update for now since it's not working on WSL
-  - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
-  - [~/.config/tmux/plugins/tpm/bin/install_plugins || true, Installing tmux plugins]
-  - [pdm plugin add pdm-django, Installing django plugin for pdm]
+      # Disabled mason update for now since it's not working on WSL
+      - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
+      - [
+            ~/.config/tmux/plugins/tpm/bin/install_plugins || true,
+            Installing tmux plugins,
+        ]
+      - [pdm plugin add pdm-django, Installing django plugin for pdm]
