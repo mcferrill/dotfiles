@@ -20,9 +20,10 @@
 - crossplatform-shell:
       - command: mkdir ..\\AppData\\Local\\nvim
         platform: win32
-        description: Ensure nvim directory exists
+        description: Ensure nvim directory exists on windows
       - command: cargo install bws --locked
         platform: "!win32"
+        quiet: true
         description: Install bitwarden secrets manager
 
 - crossplatform-link:
@@ -31,11 +32,12 @@
             platform: "win32"
             force: true
             fallback_to_copy: true
-      - ~/Documents/Powershell/Microsoft.PowerShell_profile.ps1:
-            path: misc/Powershell.ps1
-            platform: "win32"
-            force: true
-            fallback_to_copy: true
+      # This doesn't seem to work rn
+      # - ~/Documents/Powershell/Microsoft.PowerShell_profile.ps1:
+      #       path: misc/Powershell.ps1
+      #       platform: "win32"
+      #       force: true
+      #       fallback_to_copy: true
       - ~/.config/starship.toml:
             path: config/starship.toml
       - ~/AppData/Local/nvim/init.lua:
@@ -77,9 +79,11 @@
 - crossplatform-shell:
       - command: defaults write com.apple.dock expose-group-apps -bool true && killall Dock
         platform: darwin
+        quiet: true
         description: Adjust expose to work with aerospace
       - command: defaults write com.apple.spaces spans-displays -bool true && killall SystemUIServer
         platform: darwin
+        quiet: true
         description: Adjust spaces spans-displays to work with aerospace
 
 - shell:
