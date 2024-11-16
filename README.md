@@ -33,6 +33,8 @@ Add "update" to update dotfiles, submodules, and system as in `./install update`
   - [karabiner](https://karabiner-elements.pqrs.org/) - keyboard customization (more easily generated with [this](https://github.com/mxstbr/karabiner))
   - [aerospace](https://github.com/nikitabobko/AeroSpace) - window manager (like i3)
 
+**Note:** I had to install mingw on windows to provide a c compiler to neovim
+
 ## Per-machine config
 
 On unixy systems you can put system specific configuration in ~/.files/sys.sh and they will also be sourced.
