@@ -1,27 +1,27 @@
 [user]
-	email = mcferrill@pm.me
-	name = Micah Ferrill
+        email = mcferrill@pm.me
+        name = Micah Ferrill
 [diff]
-	tool = default-diff
+        tool = default-diff
 [difftool]
-	prompt = false
+        prompt = false
 [difftool "default-diff"]
-	cmd = nvim -d $LOCAL $REMOTE
+        cmd = nvim -d $LOCAL $REMOTE
 [alias]
-	dt = difftool
-	st = status --short
-	ci = commit
-	co = checkout
+        dt = difftool
+        st = status --short
+        ci = commit
+        co = checkout
 [color]
-	ui = true
+        ui = true
 [core]
-	autocrlf = input
-	eol = lf
-	filemode = false
+        autocrlf = input
+        eol = lf
+        filemode = false
 [pull]
-	rebase = false
+        rebase = false
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process

@@ -23,10 +23,10 @@
         description: Ensure nvim directory exists
 
 - crossplatform-link:
-      - ~/.gitconfig:
-            path: config/gitconfig
-            force: true
-            fallback_to_copy: true
+      # - ~/.gitconfig:
+      #       path: config/gitconfig
+      #       force: true
+      #       fallback_to_copy: true
       - ~/.wezterm.lua:
             path: config/wezterm.lua
             platform: "win32"

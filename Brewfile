@@ -10,6 +10,7 @@ brew "starship"
 brew "the_silver_searcher"
 brew "tmux"
 brew "zsh"
+brew "bitwarden-cli"
 
 # macos
 if OS.mac?
