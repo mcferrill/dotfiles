@@ -1,6 +1,11 @@
 $ErrorActionPreference = "Stop"
 
 $CONFIG = "install.conf.yaml"
+$trimmed_args = $args[0..($args.Length - 1)]
+if ($args.Length -gt 0) {
+    $CONFIG = $args[0] + ".conf.yaml"
+    $trimmed_args = $args[1..($args.Length - 1)]
+}
 $DOTBOT_DIR = "dotbot"
 
 $DOTBOT_BIN = "bin/dotbot"
@@ -15,7 +20,7 @@ foreach ($PYTHON in ('python', 'python3')) {
     if (& { $ErrorActionPreference = "SilentlyContinue"
             ![string]::IsNullOrEmpty((&$PYTHON -V))
             $ErrorActionPreference = "Stop" }) {
-        &$PYTHON $(Join-Path $BASEDIR -ChildPath $DOTBOT_DIR | Join-Path -ChildPath $DOTBOT_BIN) -d $BASEDIR --plugin-dir dotbot-brew --plugin-dir dotbot-crossplatform -c $CONFIG $Args
+        &$PYTHON $(Join-Path $BASEDIR -ChildPath $DOTBOT_DIR | Join-Path -ChildPath $DOTBOT_BIN) -d $BASEDIR --plugin-dir dotbot-brew --plugin-dir dotbot-crossplatform -c $CONFIG $trimmed_args
         return
     }
 }
