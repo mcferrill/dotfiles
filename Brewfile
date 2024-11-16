@@ -11,6 +11,8 @@ brew "the_silver_searcher"
 brew "tmux"
 brew "zsh"
 brew "bitwarden-cli"
+brew "rust"
+brew "jq"
 
 # macos
 if OS.mac?

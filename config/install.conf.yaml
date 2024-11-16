@@ -21,12 +21,11 @@
       - command: mkdir ..\\AppData\\Local\\nvim
         platform: win32
         description: Ensure nvim directory exists
+      - command: cargo install bws --locked
+        platform: "!win32"
+        description: Install bitwarden secrets manager
 
 - crossplatform-link:
-      # - ~/.gitconfig:
-      #       path: config/gitconfig
-      #       force: true
-      #       fallback_to_copy: true
       - ~/.wezterm.lua:
             path: config/wezterm.lua
             platform: "win32"
