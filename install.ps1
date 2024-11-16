@@ -4,7 +4,11 @@ $CONFIG = "config/install.conf.yaml"
 $trimmed_args = $args[0..($args.Length - 1)]
 if ($args.Length -gt 0) {
     $CONFIG = "config/" + $args[0] + ".conf.yaml"
-    $trimmed_args = $args[1..($args.Length - 1)]
+    $trimmed_args = if ($args.Length -gt 1) {
+        $args[1..($args.Length - 1)]
+    } else {
+        @()
+    }
 }
 $DOTBOT_DIR = "dotbot"
 
