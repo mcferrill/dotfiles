@@ -3,6 +3,9 @@
 set -e
 
 CONFIG="install.conf.yaml"
+if [ $# -ne 0 ]; then
+    CONFIG="$1.conf.yaml"
+fi
 DOTBOT_DIR="dotbot"
 
 DOTBOT_BIN="bin/dotbot"
@@ -12,4 +15,4 @@ cd "${BASEDIR}"
 git submodule sync --quiet --recursive
 git submodule update --init --recursive
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -v -d "${BASEDIR}" --plugin-dir dotbot-brew --plugin-dir dotbot-crossplatform -c "${CONFIG}" "${@}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -v -d "${BASEDIR}" --plugin-dir dotbot-brew --plugin-dir dotbot-crossplatform -c "${CONFIG}" "${@:2}"

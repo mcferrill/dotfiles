@@ -1,0 +1,19 @@
+
+- shell:
+  - [git submodule foreach 'git pull origin main || :', try pulling main]
+  - [git submodule foreach 'git pull origin master || :', try pulling master]
+
+- crossplatform-shell:
+    - command: sudo apt update && sudo apt upgrade -y 
+      platform: linux
+      description: apt updates (sudo)
+    - command: apt update && apt upgrade -y 
+      platform: linux
+      description: apt updates (non-sudo)
+    - command: brew update && brew upgrade
+      platform: "!win32"
+      description: brew updates
+    - command: ~/.config/tmux/plugins/tpm/bin/update_plugins all
+      platform: "!win32"
+      description: tmux plugin updates
+
