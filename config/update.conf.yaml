@@ -9,19 +9,34 @@
       - command: sudo apt update && sudo apt upgrade -y
         platform: linux
         description: apt updates (sudo)
+        stdout: true
+        stderr: true
+        stdin: true
       - command: apt update && apt upgrade -y
         platform: linux
         description: apt updates (non-sudo)
+        stdout: true
+        stderr: true
+        stdin: true
       - command: brew update && brew upgrade
         platform: "!win32"
         description: brew updates
+        stdout: true
+        stderr: true
+        stdin: true
       - command: ~/.config/tmux/plugins/tpm/bin/update_plugins all
         platform: "!win32"
         description: tmux plugin updates
+        stdout: true
+        stderr: true
+        stdin: true
 
       - command: scoop update --all
         platform: "win32"
         description: scoop updates
+        stdout: true
+        stderr: true
+        stdin: true
       - command: wsl -- ~/.files/install update
         platform: "win32"
         description: wsl updates
