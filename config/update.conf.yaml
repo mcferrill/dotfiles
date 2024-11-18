@@ -1,4 +1,5 @@
 - shell:
+      - [git pull, get latest version]
       - [git submodule foreach 'git pull origin main || :', try pulling main]
       - [
             git submodule foreach 'git pull origin master || :',
