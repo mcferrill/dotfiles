@@ -22,7 +22,7 @@
       - command: scoop update --all
         platform: "win32"
         description: scoop updates
-      - command: wsl -- ~/.files/install update
+      - command: wsl --shell-type standard -- ~/.files/install update
         platform: "win32"
         description: wsl updates
         stdout: true
