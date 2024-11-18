@@ -37,7 +37,7 @@
         stdout: true
         stderr: true
         stdin: true
-      - command: wsl -- ~/.files/install update
+      - command: wsl --shell-type standard -- ~/.files/install update
         platform: "win32"
         description: wsl updates
         stdout: true
