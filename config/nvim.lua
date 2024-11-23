@@ -81,10 +81,10 @@ vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "launch tmux-sessionizer" })
 
 -- swap vim/tmux panes with Ctrl-hjkl
-vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Window left" })
-vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Window down" })
-vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Window up" })
-vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Window right" })
+-- vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Window left" })
+-- vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Window down" })
+-- vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Window up" })
+-- vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Window right" })
 
 -- select-all
 vim.keymap.set("n", "<C-a>", "ggVG", { desc = "select-all", nowait = true })
@@ -148,6 +148,18 @@ require("lazy").setup({
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             local cmp = require("cmp")
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+        end,
+    },
+
+    {
+        "mrjones2014/smart-splits.nvim",
+        lazy = false,
+        config = function()
+            local smartsplits = require("smart-splits")
+            vim.keymap.set("n", "<C-h>", smartsplits.move_cursor_left)
+            vim.keymap.set("n", "<C-j>", smartsplits.move_cursor_down)
+            vim.keymap.set("n", "<C-k>", smartsplits.move_cursor_up)
+            vim.keymap.set("n", "<C-l>", smartsplits.move_cursor_right)
         end,
     },
 
