@@ -21,6 +21,10 @@ Add "update" to update dotfiles, submodules, and system as in `./install update`
 
 **Note:** On windows you'll need to manually copy config/profile.ps1 to $PROFILE.
 
+## Secrets
+
+Some things like SSH keys or private configs shouldn't be used. You can use a secrets manager like bitwarden's to store and sync these items.
+
 ## Tools Configured
 
 - Powershell (windows), zsh+oh-my-zsh (everything else) - shell autocomplete, history search, etc.
