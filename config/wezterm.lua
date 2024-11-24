@@ -87,9 +87,11 @@ config.enable_tab_bar = false
 config.window_background_opacity = 0.90
 
 -- Use powershell, and smaller font size on windows
+local windows = false
 if package.config:sub(1, 1) == "/" then
     config.font_size = 13
 else
+    windows = true
     config.font_size = 10.25
     config.default_prog = { "powershell.exe" }
 end
@@ -127,14 +129,17 @@ config.keys = {
     split_nav("k"),
     split_nav("l"),
 
-    -- wezterm-sessionizer
-    { key = "f", mods = "CTRL", action = wezterm.action_callback(wezterm_sessionizer) },
-
     -- toggle pane zoom
     { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 
     -- vi-mode copy
     { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 }
+
+-- wezterm-sessionizer
+-- TODO: implement on windows?
+if not windows then
+    table.insert(config.keys, { key = "f", mods = "CTRL", action = wezterm.action_callback(wezterm_sessionizer) })
+end
 
 return config
