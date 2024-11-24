@@ -153,29 +153,20 @@ end
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
     -- splitting
-    {
-        mods = "LEADER",
-        key = "-",
-        action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
-    },
-    {
-        mods = "LEADER",
-        key = "\\",
-        action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
-    },
-
-    -- move between split panes
+    { mods = "LEADER", key = "-", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { mods = "LEADER", key = "\\", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
     split_nav("move", "h"),
     split_nav("move", "j"),
     split_nav("move", "k"),
     split_nav("move", "l"),
 
-    {
-        key = "f",
-        mods = "CTRL",
-        action = wezterm.action_callback(sessionizer),
-    },
+    -- wezterm-sessionizer
+    { key = "f", mods = "CTRL", action = wezterm.action_callback(sessionizer) },
 
+    -- toggle pane zoom
+    { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
+
+    -- vi-mode copy
     { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 }
 
