@@ -2,19 +2,18 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
+-- Get the last path segment from a string
 local function basename(path)
-    -- Split the path into parts
     local parts = {}
     for part in string.gmatch(path, "[^/]+") do
         table.insert(parts, part)
     end
-
-    -- The last part will be the filename or directory name
     return parts[#parts] or ""
 end
 
+-- Check if table contains element.
 local function contains(table, element)
-    for k, v in pairs(table) do
+    for _, v in pairs(table) do
         if v == element then
             return true
         end
@@ -22,8 +21,7 @@ local function contains(table, element)
     return false
 end
 
--- Emulates tmux-sessionizer script
-local function sessionizer(window, pane)
+local function wezterm_sessionizer(window, pane)
     local success, stdout, stderr = wezterm.run_child_process({
         "find",
         wezterm.home_dir .. "/projects",
@@ -53,34 +51,12 @@ local function sessionizer(window, pane)
             fuzzy = true,
             action = wezterm.action_callback(function(_, _, _, dir)
                 if dir then
-                    local selected_dir = dir
-                    if not selected_dir then
-                        return
-                    end
-
-                    -- Convert directory name to workspace name
-                    local selected_name = basename(selected_dir):gsub("%.", "_")
-
-                    wezterm.log_error(selected_dir, basename(selected_name))
-
-                    -- Check if workspace exists, if not, create it
+                    local selected_name = basename(dir):gsub("%.", "_")
                     local workspaces = wezterm.mux.get_workspace_names()
                     if not contains(workspaces, selected_name) then
-                        wezterm.log_error("launch", selected_name)
-                        wezterm.mux.spawn_window({
-                            workspace = selected_name,
-                            cwd = selected_dir,
-                        })
+                        wezterm.mux.spawn_window({ workspace = selected_name, cwd = dir })
                     end
-
-                    -- Switch to the workspace
-                    wezterm.log_error("switch to", selected_name)
-                    window:perform_action(
-                        act.SwitchToWorkspace({
-                            name = selected_name,
-                        }),
-                        pane
-                    )
+                    window:perform_action(act.SwitchToWorkspace({ name = selected_name }), pane)
                 end
             end),
         }),
@@ -88,14 +64,11 @@ local function sessionizer(window, pane)
     )
 end
 
-function get_appearance()
+local function auto_theme()
+    local appearance = "Dark"
     if wezterm.gui then
-        return wezterm.gui.get_appearance()
+        appearance = wezterm.gui.get_appearance()
     end
-    return "Dark"
-end
-
-function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
         return "Kanagawa (Gogh)"
     else
@@ -103,9 +76,7 @@ function scheme_for_appearance(appearance)
     end
 end
 
--- config.color_scheme = "Kanagawa (Gogh)"
-config.color_scheme = scheme_for_appearance(get_appearance())
-
+config.color_scheme = auto_theme()
 config.automatically_reload_config = true
 config.font = wezterm.font_with_fallback({
     -- { family = "FiraCode Nerd Font", weight = "DemiBold" },
@@ -114,37 +85,24 @@ config.font = wezterm.font_with_fallback({
 
 config.enable_tab_bar = false
 config.window_background_opacity = 0.90
+config.font_size = 13
 
--- Use smaller font size on windows
-if package.config:sub(1, 1) == "/" then
-    config.font_size = 13
-else
+-- Use powershell, and smaller font size on windows
+if not package.config:sub(1, 1) == "/" then
     config.font_size = 10.25
     config.default_prog = { "powershell.exe" }
 end
 
-local function is_vim(pane)
-    return pane:get_user_vars().IS_NVIM == "true"
-end
-
-local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
-
-local function split_nav(resize_or_move, key)
+local function split_nav(key)
+    local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
     return {
         key = key,
-        mods = resize_or_move == "resize" and "META" or "CTRL",
+        mods = "CTRL",
         action = wezterm.action_callback(function(win, pane)
-            if is_vim(pane) then
-                -- pass the keys through to vim/nvim
-                win:perform_action({
-                    SendKey = { key = key, mods = resize_or_move == "resize" and "META" or "CTRL" },
-                }, pane)
+            if pane:get_user_vars().IS_NVIM == "true" then
+                win:perform_action({ SendKey = { key = key, mods = "CTRL" } }, pane)
             else
-                if resize_or_move == "resize" then
-                    win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
-                else
-                    win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
-                end
+                win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
             end
         end),
     }
@@ -155,13 +113,13 @@ config.keys = {
     -- splitting
     { mods = "LEADER", key = "-", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
     { mods = "LEADER", key = "\\", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    split_nav("move", "h"),
-    split_nav("move", "j"),
-    split_nav("move", "k"),
-    split_nav("move", "l"),
+    split_nav("h"),
+    split_nav("j"),
+    split_nav("k"),
+    split_nav("l"),
 
     -- wezterm-sessionizer
-    { key = "f", mods = "CTRL", action = wezterm.action_callback(sessionizer) },
+    { key = "f", mods = "CTRL", action = wezterm.action_callback(wezterm_sessionizer) },
 
     -- toggle pane zoom
     { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
