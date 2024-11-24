@@ -151,6 +151,8 @@ require("lazy").setup({
         end,
     },
 
+    { "xiyaowong/transparent.nvim", lazy = false },
+
     {
         "mrjones2014/smart-splits.nvim",
         lazy = false,
