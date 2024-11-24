@@ -71,9 +71,8 @@ local function auto_theme()
     end
     if appearance:find("Dark") then
         return "Kanagawa (Gogh)"
-    else
-        return "Builtin Solarized Light"
     end
+    return "Builtin Solarized Light"
 end
 
 config.color_scheme = auto_theme()
@@ -96,11 +95,11 @@ else
     config.default_prog = { "powershell.exe" }
 end
 
-local function split_nav(key)
-    local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
+local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
+local function split_nav(key, mods)
     return {
         key = key,
-        mods = "CTRL",
+        mods = mods,
         action = wezterm.action_callback(function(win, pane)
             if pane:get_user_vars().IS_NVIM == "true" then
                 win:perform_action({ SendKey = { key = key, mods = "CTRL" } }, pane)
@@ -113,7 +112,7 @@ end
 
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
-    -- splitting
+    -- create splits with - and | and navigate with CTRL-hjkl or LEADER-hjkl
     {
         mods = "LEADER",
         key = "-",
@@ -124,10 +123,14 @@ config.keys = {
         key = "\\",
         action = wezterm.action.SplitHorizontal({ args = config.default_prog, domain = "CurrentPaneDomain" }),
     },
-    split_nav("h"),
-    split_nav("j"),
-    split_nav("k"),
-    split_nav("l"),
+    split_nav("h", "CTRL"),
+    split_nav("j", "CTRL"),
+    split_nav("k", "CTRL"),
+    split_nav("l", "CTRL"),
+    split_nav("h", "LEADER"),
+    split_nav("j", "LEADER"),
+    split_nav("k", "LEADER"),
+    split_nav("l", "LEADER"),
 
     -- toggle pane zoom
     { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
