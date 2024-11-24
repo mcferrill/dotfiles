@@ -124,16 +124,10 @@ else
 end
 
 local function is_vim(pane)
-    -- this is set by the plugin, and unset on ExitPre in Neovim
     return pane:get_user_vars().IS_NVIM == "true"
 end
 
-local direction_keys = {
-    h = "Left",
-    j = "Down",
-    k = "Up",
-    l = "Right",
-}
+local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
 
 local function split_nav(resize_or_move, key)
     return {
@@ -181,6 +175,8 @@ config.keys = {
         mods = "CTRL",
         action = wezterm.action_callback(sessionizer),
     },
+
+    { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 }
 
 return config
