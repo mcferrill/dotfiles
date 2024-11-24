@@ -85,10 +85,11 @@ config.font = wezterm.font_with_fallback({
 
 config.enable_tab_bar = false
 config.window_background_opacity = 0.90
-config.font_size = 13
 
 -- Use powershell, and smaller font size on windows
-if not package.config:sub(1, 1) == "/" then
+if package.config:sub(1, 1) == "/" then
+    config.font_size = 13
+else
     config.font_size = 10.25
     config.default_prog = { "powershell.exe" }
 end
@@ -111,8 +112,16 @@ end
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
     -- splitting
-    { mods = "LEADER", key = "-", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
-    { mods = "LEADER", key = "\\", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    {
+        mods = "LEADER",
+        key = "-",
+        action = wezterm.action.SplitVertical({ args = config.default_prog, domain = "CurrentPaneDomain" }),
+    },
+    {
+        mods = "LEADER",
+        key = "\\",
+        action = wezterm.action.SplitHorizontal({ args = config.default_prog, domain = "CurrentPaneDomain" }),
+    },
     split_nav("h"),
     split_nav("j"),
     split_nav("k"),
