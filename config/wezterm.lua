@@ -4,11 +4,7 @@ local act = wezterm.action
 
 -- Get the last path segment from a string
 local function basename(path)
-    local parts = {}
-    for part in string.gmatch(path, "[^/]+") do
-        table.insert(parts, part)
-    end
-    return parts[#parts] or ""
+    return string.gsub(path, "(.*[/\\])(.*)", "%2")
 end
 
 -- Check if table contains element.
@@ -96,12 +92,13 @@ else
 end
 
 local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
-local function split_nav(key, mods)
+local function split_nav(key)
     return {
         key = key,
-        mods = mods,
+        mods = "CTRL",
         action = wezterm.action_callback(function(win, pane)
             if pane:get_user_vars().IS_NVIM == "true" then
+                wezterm.log_error("nvim", key, "CTRL")
                 win:perform_action({ SendKey = { key = key, mods = "CTRL" } }, pane)
             else
                 win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
@@ -123,20 +120,28 @@ config.keys = {
         key = "\\",
         action = wezterm.action.SplitHorizontal({ args = config.default_prog, domain = "CurrentPaneDomain" }),
     },
-    split_nav("h", "CTRL"),
-    split_nav("j", "CTRL"),
-    split_nav("k", "CTRL"),
-    split_nav("l", "CTRL"),
-    split_nav("h", "LEADER"),
-    split_nav("j", "LEADER"),
-    split_nav("k", "LEADER"),
-    split_nav("l", "LEADER"),
+    split_nav("h"),
+    split_nav("j"),
+    split_nav("k"),
+    split_nav("l"),
+    { mods = "LEADER", key = "h", action = act.ActivatePaneDirection(direction_keys["h"]) },
+    { mods = "LEADER", key = "j", action = act.ActivatePaneDirection(direction_keys["j"]) },
+    { mods = "LEADER", key = "k", action = act.ActivatePaneDirection(direction_keys["k"]) },
+    { mods = "LEADER", key = "l", action = act.ActivatePaneDirection(direction_keys["l"]) },
 
     -- toggle pane zoom
     { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 
     -- vi-mode copy
     { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
+
+    {
+        key = "t",
+        mods = "LEADER",
+        action = wezterm.action_callback(function(win, pane)
+            wezterm.log_error("process is", pane:get_foreground_process_name())
+        end),
+    },
 }
 
 -- wezterm-sessionizer
