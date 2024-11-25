@@ -13,11 +13,11 @@ PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
 
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-if [ "$(which virtualenvwrapper.sh)" ]; then
+if command -v virtualenvwrapper.sh &> /dev/null; then
     source "$(which virtualenvwrapper.sh)"
 fi
 
-# fnm (rust-based nvm/n alternative)
+# fnm (rust-based n/nvm alternative)
 if command -v fnm &> /dev/null; then
   eval "$(fnm env --use-on-cd)"
 fi
