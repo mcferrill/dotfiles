@@ -2,6 +2,10 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local act = wezterm.action
 
+local is_darwin <const> = wezterm.target_triple:find("darwin") ~= nil
+local is_linux <const> = wezterm.target_triple:find("linux") ~= nil
+local windows = not is_darwin and not is_linux
+
 -- Get the last path segment from a string
 local function basename(path)
     return string.gsub(path, "(.*[/\\])(.*)", "%2")
@@ -81,16 +85,6 @@ config.font = wezterm.font_with_fallback({
 config.enable_tab_bar = false
 config.window_background_opacity = 0.90
 
--- Use powershell, and smaller font size on windows
-local windows = false
-if package.config:sub(1, 1) == "/" then
-    config.font_size = 13
-else
-    windows = true
-    config.font_size = 10.25
-    config.default_prog = { "powershell.exe" }
-end
-
 local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
 local function split_nav(key)
     return {
@@ -132,6 +126,8 @@ config.keys = {
     -- toggle pane zoom
     { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
 
+    { key = "x", mods = "LEADER", action = wezterm.action.CloseCurrentPane({ confirm = true }) },
+
     -- vi-mode copy
     { key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 
@@ -144,9 +140,27 @@ config.keys = {
     },
 }
 
--- wezterm-sessionizer
--- TODO: implement on windows?
-if not windows then
+if is_darwin then
+    table.insert(config.keys, {
+        key = "LeftArrow",
+        mods = "OPT",
+        action = act.SendKey({ key = "b", mods = "ALT" }),
+    })
+    table.insert(config.keys, {
+        key = "RightArrow",
+        mods = "OPT",
+        action = act.SendKey({ key = "b", mods = "ALT" }),
+    })
+end
+
+-- Use powershell, and smaller font size on windows
+if windows then
+    config.font_size = 10.25
+    config.default_prog = { "powershell.exe" }
+else
+    config.font_size = 13
+    -- wezterm-sessionizer
+    -- TODO: implement on windows?
     table.insert(config.keys, { key = "f", mods = "CTRL", action = wezterm.action_callback(wezterm_sessionizer) })
 end
 
