@@ -44,3 +44,7 @@
         stdout: true
         stderr: true
         stdin: true
+
+- shell:
+    - [pdm plugin add pdm-django, Installing django plugin for pdm]
+
