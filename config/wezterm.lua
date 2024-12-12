@@ -156,7 +156,7 @@ end
 -- Use powershell, and smaller font size on windows
 if windows then
     config.font_size = 10.25
-    config.default_prog = { "powershell.exe" }
+    config.default_prog = { "pwsh.exe" }
 else
     config.font_size = 13
     -- wezterm-sessionizer
