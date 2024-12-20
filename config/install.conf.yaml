@@ -12,15 +12,16 @@
 
 - omnipkg:
     - install: [
-        {mac: fnm},  # Linux uses cargo below
+        # Linux uses rust/cargo below
+        {mac: fnm},
+        {mac: starship},
         fzf,
         git,
         git-lfs,
         neovim,
         [python3, python],
         pipx,
-        starship,
-        [the_silver_searcher, silversearcher-ag],
+        {else: the_silver_searcher, apt: silversearcher-ag},
         tmux,
         zsh,
         bitwarden-cli,
