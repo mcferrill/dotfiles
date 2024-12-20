@@ -15,6 +15,7 @@
         # Linux uses rust/cargo below
         {mac: fnm},
         {mac: starship},
+
         fzf,
         git,
         git-lfs,
@@ -24,9 +25,10 @@
         {else: the_silver_searcher, apt: silversearcher-ag},
         tmux,
         zsh,
-        bitwarden-cli,
         rustup,
         jq,
+
+        # Mac specific
         {mac: cormacrelf/tap/dark-notify},
         {mac: dark-mode},
         {mac: dozer},
@@ -43,7 +45,7 @@
       - command: rustup default stable
         platform: linux
         description: Use rustup to install stable toolchain
-      - command: cargo install fnm starship
+      - command: cargo install fnm starship bws
         platform: linux
         description: Install rust dependencies
       - command: mkdir ..\\AppData\\Local\\nvim
@@ -117,4 +119,5 @@
             ~/.config/tmux/plugins/tpm/bin/install_plugins || true,
             Installing tmux plugins,
         ]
+      - [pipx install pdm, Installing pdm]
       - [pdm plugin add pdm-django, Installing django plugin for pdm]

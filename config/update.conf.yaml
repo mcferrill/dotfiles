@@ -6,25 +6,11 @@
             try pulling master,
         ]
 
+- omnipkg:
+    - update
+    - upgrade
+
 - crossplatform-shell:
-      - command: sudo apt update && sudo apt upgrade -y
-        platform: linux
-        description: apt updates (sudo)
-        stdout: true
-        stderr: true
-        stdin: true
-      - command: apt update && apt upgrade -y
-        platform: linux
-        description: apt updates (non-sudo)
-        stdout: true
-        stderr: true
-        stdin: true
-      - command: brew update && brew upgrade
-        platform: "!win32"
-        description: brew updates
-        stdout: true
-        stderr: true
-        stdin: true
       - command: ~/.config/tmux/plugins/tpm/bin/update_plugins all
         platform: "!win32"
         description: tmux plugin updates
@@ -46,5 +32,6 @@
         stdin: true
 
 - shell:
+    - [pdm self update, Updating pdm]
     - [pdm plugin add pdm-django, Installing django plugin for pdm]
 
