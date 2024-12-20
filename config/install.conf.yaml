@@ -12,7 +12,7 @@
 
 - omnipkg:
     - install: [
-        fnm,
+        {mac: fnm},  # Linux uses cargo below
         fzf,
         git,
         git-lfs,
@@ -20,7 +20,7 @@
         [python3, python],
         pipx,
         starship,
-        the_silver_searcher,
+        [the_silver_searcher, silversearcher-ag],
         tmux,
         zsh,
         bitwarden-cli,
@@ -39,6 +39,12 @@
 - clean: ["~"]
 
 - crossplatform-shell:
+      - command: cargo install fnm
+        platform: linux
+        description: Install fnm
+      - command: cargo install starship --locked
+        platform: linux
+        description: Install starship
       - command: mkdir ..\\AppData\\Local\\nvim
         platform: win32
         description: Ensure nvim directory exists on windows
