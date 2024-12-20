@@ -7,6 +7,9 @@ if [ -f $DOTFILES/sys.sh ]; then
     . $DOTFILES/sys.sh
 fi
 
+# Cargo
+export PATH=$HOME/.cargo/bin:$PATH
+
 # Python (virtualenvwrapper, pip, etc.)
 WORKON_HOME=$HOME/.envs
 PIP_VIRTUALENV_BASE=$WORKON_HOME
