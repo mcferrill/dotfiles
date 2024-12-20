@@ -25,7 +25,7 @@
         tmux,
         zsh,
         bitwarden-cli,
-        rust,
+        rustup,
         jq,
         {mac: cormacrelf/tap/dark-notify},
         {mac: dark-mode},
@@ -40,12 +40,12 @@
 - clean: ["~"]
 
 - crossplatform-shell:
-      - command: cargo install fnm
+      - command: rustup default stable
         platform: linux
-        description: Install fnm
-      - command: cargo install starship --locked
+        description: Use rustup to install stable toolchain
+      - command: cargo install fnm starship
         platform: linux
-        description: Install starship
+        description: Install rust dependencies
       - command: mkdir ..\\AppData\\Local\\nvim
         platform: win32
         description: Ensure nvim directory exists on windows
