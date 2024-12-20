@@ -15,4 +15,4 @@ cd "${BASEDIR}"
 git submodule sync --quiet --recursive
 git submodule update --init --recursive
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -v -d "${BASEDIR}" --plugin-dir dotbot-brew --plugin-dir dotbot-crossplatform -c "${CONFIG}" "${@:2}"
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -v -d "${BASEDIR}" --plugin-dir dotbot-brew --plugin-dir dotbot-crossplatform --plugin-dir dotbot-omnipkg -c "${CONFIG}" "${@:2}"

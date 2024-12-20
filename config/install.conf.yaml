@@ -10,10 +10,31 @@
           force: true
           fallback_to_copy: true
 
-- install-brew: true
-
-- brewfile:
-      - Brewfile
+- omnipkg:
+    - install: [
+        fnm,
+        fzf,
+        git,
+        git-lfs,
+        neovim,
+        [python3, python],
+        pipx,
+        starship,
+        the_silver_searcher,
+        tmux,
+        zsh,
+        bitwarden-cli,
+        rust,
+        jq,
+        {mac: cormacrelf/tap/dark-notify},
+        {mac: dark-mode},
+        {mac: dozer},
+        {mac: font-fira-code-nerd-font},
+        {mac: karabiner-elements},
+        {mac: keepingyouawake},
+        {mac: nikitabobko/tap/aerospace},
+        {mac: wezterm},
+    ]
 
 - clean: ["~"]
 
