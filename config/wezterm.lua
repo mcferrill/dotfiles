@@ -91,9 +91,9 @@ local function split_nav(key)
         key = key,
         mods = "CTRL",
         action = wezterm.action_callback(function(win, pane)
-            if pane:get_user_vars().IS_NVIM == "true" then
-                wezterm.log_error("nvim", key, "CTRL")
+            if pane:get_user_vars().IS_NVIM == "true" or string.find(pane:get_foreground_process_name(), "wsl") then
                 win:perform_action({ SendKey = { key = key, mods = "CTRL" } }, pane)
+            elseif pane:get_foreground_process_name() then
             else
                 win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
             end
@@ -101,7 +101,7 @@ local function split_nav(key)
     }
 end
 
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
     -- create splits with - and | and navigate with CTRL-hjkl or LEADER-hjkl
     {
