@@ -19,4 +19,4 @@
 	url = https://github.com/msdrigg/dotbot-crossplatform.git
 [submodule "dotbot-omnipkg"]
 	path = dotbot-omnipkg
-	url = https://github.com/code-maniac/dotbot-omnipkg
+	url = https://github.com/mcferrill/dotbot-omnipkg
