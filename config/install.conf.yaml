@@ -31,7 +31,6 @@
         # Mac specific
         {mac: cormacrelf/tap/dark-notify},
         {mac: dark-mode},
-        {mac: dozer},
         {mac: font-fira-code-nerd-font},
         {mac: karabiner-elements},
         {mac: keepingyouawake},
