@@ -75,6 +75,7 @@ local function auto_theme()
     return "Builtin Solarized Light"
 end
 
+config.max_fps = 240
 config.color_scheme = auto_theme()
 config.automatically_reload_config = true
 config.font = wezterm.font_with_fallback({
