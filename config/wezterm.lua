@@ -146,17 +146,12 @@ config.keys = {
     },
 }
 
+-- Enable CMD-arrow and OPT-arrow navigation
 if is_darwin then
-    table.insert(config.keys, {
-        key = "LeftArrow",
-        mods = "OPT",
-        action = act.SendKey({ key = "b", mods = "ALT" }),
-    })
-    table.insert(config.keys, {
-        key = "RightArrow",
-        mods = "OPT",
-        action = act.SendKey({ key = "b", mods = "ALT" }),
-    })
+    table.insert(config.keys, { key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) })
+    table.insert(config.keys, { key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) })
+    table.insert(config.keys, { key = "LeftArrow", mods = "CMD", action = wezterm.action({ SendString = "\x1bOH" }) })
+    table.insert(config.keys, { key = "RightArrow", mods = "CMD", action = wezterm.action({ SendString = "\x1bOF" }) })
 end
 
 -- Use powershell, and smaller font size on windows
