@@ -458,6 +458,8 @@ require("lazy").setup({
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
             require("mason-lspconfig").setup({
+                ensure_installed = {},
+                automatic_installation = true,
                 handlers = {
                     function(server_name)
                         local server = servers[server_name] or {}
@@ -522,7 +524,7 @@ require("lazy").setup({
             end,
             formatters_by_ft = {
                 lua = { "stylua" },
-                python = { "ruff" },
+                -- python = { "ruff" }, disabling leaves it to the lsp :facepalm:
                 -- You can use 'stop_after_first' to run the first available formatter from the list
                 javascript = { "prettierd", "prettier", stop_after_first = true },
             },
