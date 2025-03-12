@@ -13,7 +13,7 @@
 - omnipkg:
     - install: [
         # Linux uses rust/cargo below
-        {mac: fnm},
+        {mac: mise},
         {mac: starship},
 
         fzf,
@@ -44,7 +44,10 @@
       - command: rustup default stable
         platform: linux
         description: Use rustup to install stable toolchain
-      - command: cargo install fnm starship bws
+      - command: cargo install cargo-binstall
+        platform: linux
+        description: Install rust dependencies
+      - command: cargo binstall mise starship bws
         platform: linux
         description: Install rust dependencies
       - command: mkdir ..\\AppData\\Local\\nvim
