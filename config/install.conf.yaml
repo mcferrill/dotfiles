@@ -21,7 +21,6 @@
         git-lfs,
         neovim,
         [python3, python],
-        pipx,
         {else: the_silver_searcher, apt: silversearcher-ag},
         tmux,
         zsh,
@@ -90,6 +89,9 @@
       - ~/.config/wezterm/wezterm.lua:
             path: config/wezterm.lua
             platform: "!win32"
+      - ~/.config/mise/config.toml:
+            path: config/mise.toml
+            platform: "!win32"
       - ~/.vimrc:
             path: config/vimrc
             platform: "!win32"
@@ -121,5 +123,6 @@
             ~/.config/tmux/plugins/tpm/bin/install_plugins || true,
             Installing tmux plugins,
         ]
-      - [pipx install pdm, Installing pdm]
+      # - [pipx install pdm, Installing pdm]
+      - [mise install]
       - [pdm plugin add pdm-django, Installing django plugin for pdm]

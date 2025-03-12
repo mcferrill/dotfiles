@@ -20,8 +20,8 @@ if command -v virtualenvwrapper.sh &> /dev/null; then
     source "$(which virtualenvwrapper.sh)"
 fi
 
-# fnm (rust-based n/nvm alternative)
-if command -v fnm &> /dev/null; then
-  eval "$(fnm env --use-on-cd)"
+# mise (handles tool versions)
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
 fi
 
