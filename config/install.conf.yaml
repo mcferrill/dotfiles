@@ -12,22 +12,16 @@
 
 - omnipkg:
     - install: [
-        # Linux uses rust/cargo below
-        {mac: mise},
-        {mac: starship},
-
-        fzf,
         git,
         git-lfs,
-        neovim,
-        [python3, python],
-        {else: the_silver_searcher, apt: silversearcher-ag},
+        {apt: silversearcher-ag, else: the_silver_searcher},
         tmux,
         zsh,
         rustup,
         jq,
 
         # Mac specific
+        {mac: mise},
         {mac: cormacrelf/tap/dark-notify},
         {mac: dark-mode},
         {mac: font-fira-code-nerd-font},
@@ -46,7 +40,7 @@
       - command: cargo install cargo-binstall
         platform: linux
         description: Install rust dependencies
-      - command: cargo binstall mise starship bws
+      - command: cargo binstall mise
         platform: linux
         description: Install rust dependencies
       - command: mkdir ..\\AppData\\Local\\nvim
@@ -123,6 +117,5 @@
             ~/.config/tmux/plugins/tpm/bin/install_plugins || true,
             Installing tmux plugins,
         ]
-      # - [pipx install pdm, Installing pdm]
       - [mise install]
       - [pdm plugin add pdm-django, Installing django plugin for pdm]

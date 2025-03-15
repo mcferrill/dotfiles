@@ -1,5 +1,11 @@
 [tools]
+bitwarden = "latest"
+bitwarden-secrets-manager = "latest"
+fzf = "latest"
+neovim = "latest"
 node = "20.18.3"
-pdm = "2.22.4"
-pipx = "1.7.1"
+pdm = "latest"
+pipx = "latest"
 python = "3.13.2"
+starship = "latest"
+uv = "latest"
