@@ -34,15 +34,9 @@
 - clean: ["~"]
 
 - crossplatform-shell:
-      - command: rustup default stable
+      - command: curl https://mise.run | sh
         platform: linux
-        description: Use rustup to install stable toolchain
-      - command: cargo install cargo-binstall
-        platform: linux
-        description: Install rust dependencies
-      - command: cargo binstall mise
-        platform: linux
-        description: Install rust dependencies
+        description: Install mise
       - command: mkdir ..\\AppData\\Local\\nvim
         platform: win32
         description: Ensure nvim directory exists on windows
