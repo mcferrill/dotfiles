@@ -27,7 +27,7 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 
 ## Tools Configured
 
-- Powershell (windows), zsh+oh-my-zsh (everything else) - shell autocomplete, history search, etc.
+- Powershell (windows), zsh+[oh-my-zsh](https://ohmyz.sh/) (everything else) - shell autocomplete, history search, etc.
 - [starship](https://starship.rs/) - terminal styling
 - [Git](https://git-scm.com/) - source code management
 - Tmux & plugins via tpm - terminal multiplexer (splits/tabs, etc)
