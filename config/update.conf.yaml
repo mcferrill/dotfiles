@@ -1,3 +1,4 @@
+
 - shell:
       - [git pull, get latest version]
       - [git submodule foreach 'git pull origin main || :', try pulling main]
@@ -14,6 +15,12 @@
       - command: ~/.config/tmux/plugins/tpm/bin/update_plugins all
         platform: "!win32"
         description: tmux plugin updates
+        stdout: true
+        stderr: true
+        stdin: true
+      - command: mise up
+        platform: "!win32"
+        description: update mise tools
         stdout: true
         stderr: true
         stdin: true
