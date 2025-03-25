@@ -17,7 +17,6 @@
         {apt: silversearcher-ag, else: the_silver_searcher},
         tmux,
         zsh,
-        rustup,
         jq,
 
         # Mac specific
