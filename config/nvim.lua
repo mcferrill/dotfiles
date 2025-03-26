@@ -439,6 +439,7 @@ require("lazy").setup({
                 volar = {},
                 ruff = {},
                 eslint = {},
+                phpactor = {},
                 -- emmet_ls = {},
                 lua_ls = {
                     -- cmd = {...},
