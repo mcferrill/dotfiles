@@ -39,6 +39,6 @@
         stdin: true
 
 - shell:
-    - [pdm self update, Updating pdm]
+    - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
     - [pdm plugin add pdm-django, Installing django plugin for pdm]
 

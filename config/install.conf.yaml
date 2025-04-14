@@ -41,6 +41,7 @@
         description: Ensure nvim directory exists on windows
 
 - crossplatform-link:
+      # Windows #
       - ~/.wezterm.lua:
             path: config/wezterm.lua
             platform: "win32"
@@ -52,8 +53,6 @@
       #       platform: "win32"
       #       force: true
       #       fallback_to_copy: true
-      - ~/.config/starship.toml:
-            path: config/starship.toml
       - ~/AppData/Local/nvim/init.lua:
             path: config/nvim.lua
             platform: "win32"
@@ -61,6 +60,9 @@
             fallback_to_copy: true
             create: true
 
+      # Mac/Linux #
+      - ~/.config/starship.toml:
+            path: config/starship.toml
       - ~/.bashrc:
             path: config/bashrc
             platform: "!win32"
@@ -86,6 +88,7 @@
             path: config/zshrc
             platform: "!win32"
 
+      # Mac #
       - ~/.config/karabiner/karabiner.json:
             path: config/karabiner.json
             platform: darwin
