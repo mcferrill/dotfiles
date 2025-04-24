@@ -11,3 +11,6 @@ python = "3.13.2"
 ripgrep = "latest"
 starship = "latest"
 uv = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["python"]
