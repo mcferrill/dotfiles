@@ -648,15 +648,6 @@ require("lazy").setup({
             --  into multiple repos for maintenance purposes.
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-path",
-
-            {
-                "tzachar/cmp-tabnine",
-                build = "./install.sh",
-                config = function()
-                    local tabnine = require("cmp_tabnine.config")
-                    tabnine:setup({}) -- put your options here
-                end,
-            },
         },
         config = function()
             -- See `:help cmp`
