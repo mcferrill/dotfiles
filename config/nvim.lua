@@ -392,13 +392,14 @@ require("lazy").setup({
         "neovim/nvim-lspconfig",
         dependencies = {
             {
-                "williamboman/mason.nvim",
+                "mason-org/mason.nvim",
+                version = "1.11.0",
                 config = true,
                 opts = {
                     ensure_installed = { "djlint" },
                 },
             },
-            "williamboman/mason-lspconfig.nvim",
+            { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             -- Useful status updates for LSP.
