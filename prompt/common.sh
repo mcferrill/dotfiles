@@ -21,7 +21,4 @@ if command -v virtualenvwrapper.sh &> /dev/null; then
 fi
 
 # mise (handles tool versions)
-if command -v mise &> /dev/null; then
-  eval "$(mise activate zsh --shims)"
-fi
-
+export PATH="$HOME/.local/share/mise/shims:$PATH"
