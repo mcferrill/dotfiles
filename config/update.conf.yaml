@@ -12,6 +12,13 @@
     - upgrade
 
 - crossplatform-shell:
+      - command: mise self-update -y
+        platform: "!macos"
+        description: update mise
+        stdout: true
+        stderr: true
+        stdin: true
+
       - command: ~/.config/tmux/plugins/tpm/bin/update_plugins all
         platform: "!win32"
         description: tmux plugin updates
