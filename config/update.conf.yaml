@@ -13,7 +13,7 @@
 
 - crossplatform-shell:
       - command: mise self-update -y
-        platform: "!macos"
+        platform: "!darwin"
         description: update mise
         stdout: true
         stderr: true
