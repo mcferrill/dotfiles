@@ -12,3 +12,7 @@ uv = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
+experimental = true
+
+[settings.python]
+compile = false
