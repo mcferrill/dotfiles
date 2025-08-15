@@ -2,7 +2,7 @@
 # bitwarden = "latest"
 # bitwarden-secrets-manager = "latest"
 fzf = "latest"
-neovim = "stable"
+neovim = "0.10.4"
 node = "20.18.3"
 pdm = "latest"
 python = "3.13.2"
