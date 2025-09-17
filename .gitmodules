@@ -16,7 +16,7 @@
 	ignore = dirty
 [submodule "dotbot-crossplatform"]
 	path = dotbot-crossplatform
-	url = https://github.com/msdrigg/dotbot-crossplatform.git
+	url = https://github.com/mcferrill/dotbot-crossplatform.git
 [submodule "dotbot-omnipkg"]
 	path = dotbot-omnipkg
 	url = https://github.com/mcferrill/dotbot-omnipkg
