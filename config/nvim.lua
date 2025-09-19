@@ -400,13 +400,16 @@ require("lazy").setup({
         dependencies = {
             {
                 "mason-org/mason.nvim",
-                version = "1.11.0",
+                -- version = "1.11.0",
                 config = true,
                 opts = {
                     ensure_installed = { "djlint" },
                 },
             },
-            { "mason-org/mason-lspconfig.nvim", version = "1.32.0" },
+            {
+                "mason-org/mason-lspconfig.nvim",
+                -- version = "1.32.0"
+            },
             "WhoIsSethDaniel/mason-tool-installer.nvim",
 
             -- Useful status updates for LSP.
@@ -515,7 +518,6 @@ require("lazy").setup({
                 ts_ls = {},
                 cssls = {},
                 html = {},
-                volar = {},
                 ruff = {},
                 eslint = {},
                 phpactor = {},
@@ -550,16 +552,16 @@ require("lazy").setup({
             require("mason-lspconfig").setup({
                 ensure_installed = {},
                 automatic_installation = true,
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        -- This handles overriding only values explicitly passed
-                        -- by the server configuration above. Useful when disabling
-                        -- certain features of an LSP (for example, turning off formatting for tsserver)
-                        server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-                        require("lspconfig")[server_name].setup(server)
-                    end,
-                },
+                -- handlers = {
+                --     function(server_name)
+                --         local server = servers[server_name] or {}
+                --         -- This handles overriding only values explicitly passed
+                --         -- by the server configuration above. Useful when disabling
+                --         -- certain features of an LSP (for example, turning off formatting for tsserver)
+                --         server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+                --         require("lspconfig")[server_name].setup(server)
+                --     end,
+                -- },
             })
         end,
     },
