@@ -3,7 +3,7 @@
 # bitwarden-secrets-manager = "latest"
 fzf = "latest"
 neovim = "0.11.3"
-node = "20.18.3"
+node = "lts"
 pdm = "latest"
 python = "3.13.2"
 ripgrep = "latest"
