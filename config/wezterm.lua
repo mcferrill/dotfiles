@@ -4,7 +4,21 @@ local act = wezterm.action
 
 local is_darwin <const> = wezterm.target_triple:find("darwin") ~= nil
 local is_linux <const> = wezterm.target_triple:find("linux") ~= nil
+local is_arch = false
+
+if is_linux then
+    local file = io.open("/etc/os-release", "r")
+    if file then
+        local content = file:read("*all")
+        file:close()
+        if content:match("ID=arch") then
+            is_arch = true
+        end
+    end
+end
 local windows = not is_darwin and not is_linux
+
+config.enable_wayland = false
 
 -- Get the last path segment from a string
 local function basename(path)
@@ -66,8 +80,9 @@ end
 
 local function auto_theme()
     local appearance = "Dark"
-    if wezterm.gui then
+    if not is_arch and wezterm.gui then
         appearance = wezterm.gui.get_appearance()
+        print("appearance", wezterm.gui.get_appearance())
     end
     if appearance:find("Dark") then
         return "Kanagawa (Gogh)"
@@ -79,12 +94,12 @@ config.max_fps = 240
 config.color_scheme = auto_theme()
 config.automatically_reload_config = true
 config.font = wezterm.font_with_fallback({
-    -- { family = "FiraCode Nerd Font", weight = "DemiBold" },
+    { family = "FiraCode Nerd Font", weight = "DemiBold" },
     { family = "Fira Code", weight = "DemiBold" },
+    { family = "Fira Code" },
 })
 
 config.enable_tab_bar = false
-config.window_background_opacity = 0.90
 
 local direction_keys = { h = "Left", j = "Down", k = "Up", l = "Right" }
 local function split_nav(key)
@@ -155,14 +170,22 @@ if is_darwin then
 end
 
 -- Use powershell, and smaller font size on windows
+local font_size = 13
+local opacity = 0.90
 if windows then
-    config.font_size = 10.25
+    font_size = 10.25
     config.default_prog = { "pwsh.exe" }
 else
-    config.font_size = 13
+    if is_arch then
+        font_size = 11
+        opacity = 0.98
+    end
     -- wezterm-sessionizer
     -- TODO: implement on windows?
     table.insert(config.keys, { key = "f", mods = "CTRL", action = wezterm.action_callback(wezterm_sessionizer) })
 end
+
+config.window_background_opacity = opacity
+config.font_size = font_size
 
 return config
