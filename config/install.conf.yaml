@@ -36,29 +36,29 @@
       - command: curl https://mise.run | sh
         platform: linux
         description: Install mise
-      - command: mkdir ..\\AppData\\Local\\nvim
-        platform: win32
-        description: Ensure nvim directory exists on windows
+      # - command: mkdir ..\\AppData\\Local\\nvim
+      #   platform: win32
+      #   description: Ensure nvim directory exists on windows
 
 - crossplatform-link:
       # Windows #
-      - ~/.wezterm.lua:
-            path: config/wezterm.lua
-            platform: "win32"
-            force: true
-            fallback_to_copy: true
+      # - ~/.wezterm.lua:
+      #       path: config/wezterm.lua
+      #       platform: "win32"
+      #       force: true
+      #       fallback_to_copy: true
       # This doesn't seem to work rn
       # - ~/Documents/Powershell/Microsoft.PowerShell_profile.ps1:
       #       path: misc/Powershell.ps1
       #       platform: "win32"
       #       force: true
       #       fallback_to_copy: true
-      - ~/AppData/Local/nvim/init.lua:
-            path: config/nvim.lua
-            platform: "win32"
-            force: true
-            fallback_to_copy: true
-            create: true
+      # - ~/AppData/Local/nvim/init.lua:
+      #       path: config/nvim.lua
+      #       platform: "win32"
+      #       force: true
+      #       fallback_to_copy: true
+      #       create: true
 
       # Mac/Linux #
       - ~/.config/starship.toml:
