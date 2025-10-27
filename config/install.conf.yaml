@@ -114,4 +114,4 @@
             Installing tmux plugins,
         ]
       - [mise install]
-      - [pdm plugin add pdm-django, Installing django plugin for pdm]
+      - [pdm self add pdm-django, Installing django plugin for pdm]
