@@ -4,6 +4,7 @@
 fzf = "latest"
 neovim = "0.11"
 node = "lts"
+opencode = "latest"
 pdm = "latest"
 python = "3.13.2"
 ripgrep = "latest"
