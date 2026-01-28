@@ -1,4 +1,5 @@
 [tools]
+1password = "latest"
 # bitwarden = "latest"
 # bitwarden-secrets-manager = "latest"
 fzf = "latest"
