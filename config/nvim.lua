@@ -85,7 +85,7 @@ require("lazy").setup({
             cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
     },
-    { "xiyaowong/transparent.nvim", lazy = false },
+    -- { "xiyaowong/transparent.nvim", lazy = false },
     { "mrjones2014/smart-splits.nvim", lazy = false },
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -101,12 +101,18 @@ require("lazy").setup({
     },
 
     -- Appearance
-    { "rebelot/kanagawa.nvim", priority = 1000, lazy = false },
+    -- { "rebelot/kanagawa.nvim", priority = 1000, lazy = false },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+    },
     {
         "cormacrelf/dark-notify",
         config = function()
             local dn = require("dark_notify")
-            vim.cmd.colorscheme("kanagawa")
+            vim.cmd.colorscheme("tokyonight")
             if vim.loop.os_uname().sysname == "Darwin" then
                 dn.run({
                     schemes = {
@@ -115,12 +121,12 @@ require("lazy").setup({
                     },
                     onchange = function(_)
                         -- Set transparent background
-                        vim.cmd([[
-                            highlight Normal guibg=none
-                            highlight NonText guibg=none
-                            highlight Normal ctermbg=none
-                            highlight NonText ctermbg=none
-                          ]])
+                        -- vim.cmd([[
+                        --     highlight Normal guibg=none
+                        --     highlight NonText guibg=none
+                        --     highlight Normal ctermbg=none
+                        --     highlight NonText ctermbg=none
+                        --   ]])
                     end,
                 })
             end
