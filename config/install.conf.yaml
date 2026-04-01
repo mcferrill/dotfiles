@@ -81,6 +81,15 @@
       - ~/.config/mise/config.toml:
             path: config/mise.toml
             platform: "!win32"
+      - ~/.config/opencode/plugins/youtube-comments.ts:
+            path: config/opencode-yt-comments.ts
+            platform: "!win32"
+      - ~/.config/opencode/package.json:
+            path: config/opencode-package.json
+            platform: "!win32"
+      - ~/.config/opencode/tui.jsonc:
+            path: config/opencode-tui.jsonc
+            platform: "!win32"
       - ~/.vimrc:
             path: config/vimrc
             platform: "!win32"
