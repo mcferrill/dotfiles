@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@ai-sdk/openai-compatible": "^2.0.37",
-    "@opencode-ai/plugin": "1.4.3",
+    "@opencode-ai/plugin": "1.4.6",
     "googleapis": "^140.0.0"
   },
   "devDependencies": {
