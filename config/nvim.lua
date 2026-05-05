@@ -313,6 +313,7 @@ require("lazy").setup({
             "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
+            vim.lsp.enable("sourcekit")
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
                 callback = function(event)
