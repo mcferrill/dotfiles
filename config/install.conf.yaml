@@ -17,6 +17,7 @@
         skillshare,
         {apt: silversearcher-ag, else: the_silver_searcher},
         tmux,
+        herdr,
         zsh,
         jq,
 
@@ -78,6 +79,9 @@
             platform: "!win32"
       - ~/.config/wezterm/wezterm.lua:
             path: config/wezterm.lua
+            platform: "!win32"
+      - ~/.config/herdr/config.toml:
+            path: config/herdr.toml
             platform: "!win32"
       - ~/.config/mise/config.toml:
             path: config/mise.toml
