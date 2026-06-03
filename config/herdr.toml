@@ -41,6 +41,9 @@ name = "tokyo-night"
 # alt+..., cmd/super, and punctuation-with-modifiers may depend on your terminal/tmux setup.
 # prefix = "ctrl+b"
 
+split_vertical = "prefix+backslash"
+split_horizontal = "prefix+minus"
+
 # Prefix-mode actions
 # help = "prefix+?"
 # settings = "prefix+s"
