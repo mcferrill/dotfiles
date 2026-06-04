@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+HERDR_BIN=${HERDR_BIN:-/opt/homebrew/bin/herdr}
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~/projects ~ -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected")
+
+workspace_id=$("$HERDR_BIN" workspace list |
+    jq -r --arg label "$selected_name" \
+        '.result.workspaces[] | select(.label == $label) | .workspace_id' |
+    head -n 1)
+
+if [[ -n $workspace_id ]]; then
+    "$HERDR_BIN" workspace focus "$workspace_id"
+else
+    "$HERDR_BIN" workspace create --cwd "$selected" --label "$selected_name" --focus
+fi

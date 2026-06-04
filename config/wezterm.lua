@@ -25,6 +25,9 @@ local function basename(path)
     return string.gsub(path, "(.*[/\\])(.*)", "%2")
 end
 
+local herdr_sessionizer_path = wezterm.home_dir .. "/.files/bin/herdr-sessionizer"
+local herdr_path = "/opt/homebrew/bin/herdr"
+
 -- Check if table contains element.
 local function contains(table, element)
     for _, v in pairs(table) do
@@ -71,6 +74,58 @@ local function wezterm_sessionizer(window, pane)
                         wezterm.mux.spawn_window({ workspace = selected_name, cwd = dir })
                     end
                     window:perform_action(act.SwitchToWorkspace({ name = selected_name }), pane)
+                end
+            end),
+        }),
+        pane
+    )
+end
+
+local function herdr_sessionizer(window, pane)
+    local success, stdout, stderr = wezterm.run_child_process({
+        "find",
+        wezterm.home_dir .. "/projects",
+        wezterm.home_dir,
+        "-mindepth",
+        "1",
+        "-maxdepth",
+        "1",
+        "-type",
+        "d",
+    })
+    if not success then
+        wezterm.log_error("Failed to list directories: " .. stderr)
+        return
+    end
+
+    local dirs = {}
+    for line in stdout:gmatch("[^\r\n]+") do
+        table.insert(dirs, { label = line })
+    end
+
+    window:perform_action(
+        act.InputSelector({
+            title = "Select Herdr Workspace Directory",
+            choices = dirs,
+            fuzzy = true,
+            action = wezterm.action_callback(function(_, _, _, dir)
+                if dir then
+                    local herdr_workspace_name = "herdr"
+                    local workspaces = wezterm.mux.get_workspace_names()
+                    local ok, _, err = wezterm.run_child_process({ herdr_sessionizer_path, dir })
+                    if not ok then
+                        wezterm.log_error("Failed to open Herdr workspace: " .. err)
+                        return
+                    end
+
+                    if not contains(workspaces, herdr_workspace_name) then
+                        wezterm.mux.spawn_window({
+                            workspace = herdr_workspace_name,
+                            cwd = dir,
+                            args = { herdr_path },
+                        })
+                    end
+                    window:perform_action(act.SwitchToWorkspace({ name = herdr_workspace_name }), pane)
                 end
             end),
         }),
@@ -183,6 +238,7 @@ else
     -- wezterm-sessionizer
     -- TODO: implement on windows?
     table.insert(config.keys, { key = "f", mods = "CTRL", action = wezterm.action_callback(wezterm_sessionizer) })
+    table.insert(config.keys, { key = "f", mods = "CTRL|SHIFT", action = wezterm.action_callback(herdr_sessionizer) })
 end
 
 config.window_background_opacity = opacity
