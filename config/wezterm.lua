@@ -227,7 +227,7 @@ end
 
 -- Use powershell, and smaller font size on windows
 local font_size = 13
-local opacity = 0.90
+local opacity = 0.98
 if windows then
     font_size = 10.25
     config.default_prog = { "pwsh.exe" }
@@ -242,7 +242,7 @@ else
     table.insert(config.keys, { key = "f", mods = "CTRL|SHIFT", action = wezterm.action_callback(herdr_sessionizer) })
 end
 
--- config.window_background_opacity = opacity
+config.window_background_opacity = opacity
 config.font_size = font_size
 
 return config
