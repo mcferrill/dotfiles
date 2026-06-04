@@ -18,6 +18,7 @@
         {apt: silversearcher-ag, else: the_silver_searcher},
         tmux,
         herdr,
+        lazygit,
         zsh,
         jq,
 
