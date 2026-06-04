@@ -140,7 +140,8 @@ local function auto_theme()
         print("appearance", wezterm.gui.get_appearance())
     end
     if appearance:find("Dark") then
-        return "Kanagawa (Gogh)"
+        -- return "Kanagawa (Gogh)"
+        return "tokyonight"
     end
     return "Builtin Solarized Light"
 end
@@ -241,7 +242,7 @@ else
     table.insert(config.keys, { key = "f", mods = "CTRL|SHIFT", action = wezterm.action_callback(herdr_sessionizer) })
 end
 
-config.window_background_opacity = opacity
+-- config.window_background_opacity = opacity
 config.font_size = font_size
 
 return config
