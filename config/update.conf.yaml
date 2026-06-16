@@ -32,19 +32,6 @@
         stderr: true
         stdin: true
 
-      # - command: scoop update --all
-      #   platform: "win32"
-      #   description: scoop updates
-      #   stdout: true
-      #   stderr: true
-      #   stdin: true
-      # - command: wsl --shell-type standard -- ~/.files/install update
-      #   platform: "win32"
-      #   description: wsl updates
-      #   stdout: true
-      #   stderr: true
-      #   stdin: true
-
 - shell:
     - [nvim --headless "+Lazy! sync" +TSUpdate +qa, Installing neovim plugins]
     - [pdm plugin add pdm-django, Installing django plugin for pdm]
