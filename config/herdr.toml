@@ -18,6 +18,7 @@ prompt_new_tab_name = false
 show_agent_labels_on_pane_borders = true
 agent_panel_scope = "all"
 
+agent_panel_sort = "spaces"
 [ui.sidebar.spaces]
 row_gap = 1 
 
