@@ -17,6 +17,7 @@
         skillshare,
         {apt: silversearcher-ag, else: the_silver_searcher},
         tmux,
+        tmate,
         herdr,
         lazygit,
         zsh,
@@ -51,6 +52,9 @@
             platform: "!win32"
       - ~/.config/tmux/tmux.conf:
             path: config/tmux.conf
+            platform: "!win32"
+      - ~/.tmate.conf:
+            path: config/tmate.conf
             platform: "!win32"
       - ~/.config/tmux/plugins/tpm:
             path: tpm
