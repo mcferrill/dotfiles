@@ -107,12 +107,10 @@ managed_links() {
       printf '%s\n' "$relative"
     done < <(find "$tree" \( -type f -o -type l \) -print0)
   done
-  printf '%s\n' .config/tmux/plugins/tpm
 }
 link_all() {
   walk_home_tree "$DOTFILES_DIR/home"
   walk_home_tree "$DOTFILES_DIR/home-$PLATFORM"
-  link_file tpm .config/tmux/plugins/tpm
 }
 unlink_all() {
   local path target
@@ -136,7 +134,6 @@ install_packages() {
 }
 post_install() {
   command -v mise >/dev/null 2>&1 && run mise install || true
-  [[ -x "${DOT_HOME}/.config/tmux/plugins/tpm/bin/install_plugins" ]] && run "${DOT_HOME}/.config/tmux/plugins/tpm/bin/install_plugins" || true
   command -v nvim >/dev/null 2>&1 && run nvim --headless '+Lazy! sync' +TSUpdate +qa || true
   command -v pdm >/dev/null 2>&1 && run pdm self add pdm-django || true
   [[ "$PLATFORM" == darwin ]] && { run defaults write com.apple.dock expose-group-apps -bool true || true; run defaults write com.apple.spaces spans-displays -bool true || true; }

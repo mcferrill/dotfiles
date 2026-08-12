@@ -7,16 +7,3 @@
 [submodule "prompt/zsh-plugins/plugins/zsh-autosuggestions"]
 	path = prompt/zsh-plugins/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "dotbot"]
-	path = dotbot
-	url = https://github.com/anishathalye/dotbot
-[submodule "tpm"]
-	path = tpm
-	url = https://github.com/tmux-plugins/tpm.git
-	ignore = dirty
-[submodule "dotbot-crossplatform"]
-	path = dotbot-crossplatform
-	url = https://github.com/mcferrill/dotbot-crossplatform.git
-[submodule "dotbot-omnipkg"]
-	path = dotbot-omnipkg
-	url = https://github.com/mcferrill/dotbot-omnipkg

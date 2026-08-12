@@ -26,7 +26,7 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 - zsh+[oh-my-zsh](https://ohmyz.sh/) - shell autocomplete, history search, etc.
 - [starship](https://starship.rs/) - terminal styling
 - [Git](https://git-scm.com/) - source code management
-- Tmux & plugins via tpm - terminal multiplexer (splits/tabs, etc)
+- Tmux - terminal multiplexer (splits/tabs, etc)
 - [herdr](https://herdr.dev/) - a tmux-like multiplexer made for agents
 - [Neovim](https://neovim.io/) & plugins - telescope, lsps, formatting (based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim))
 - [wezterm](https://wezfurlong.org/wezterm/) - cross platform terminal emulator
