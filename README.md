@@ -1,7 +1,7 @@
 # mcferrill's dotfiles
 
 This is a set of config files mostly starting with "." (hence the repo name)
-that allow consistent behavior between multiple tools across environments. Uses [dotbot](https://github.com/anishathalye/dotbot)
+that allow consistent behavior between multiple tools across environments. Uses the repository's native `install` tool.
 
 ## Installing and Updating
 
@@ -9,9 +9,11 @@ Clone the repo (eg. to $HOME/.files or $HOME/dotfiles) and install with:
 
 `./install`
 
-Configuration for this is in config/install.conf.yaml.
+With no command, `./install` performs an idempotent, non-destructive installation.
 
-Add "update" to update dotfiles, submodules, and system as in `./install update`. This is configured in config/update.conf.yaml.
+Use `./install update` to update dotfiles, submodules, packages, and plugins.
+
+Use `./install link`, `./install unlink`, `./install packages`, or `./install doctor` for individual operations. Use `./install help` for command help. Add `--dry-run` to inspect changes without applying them.
 
 ## Secrets
 

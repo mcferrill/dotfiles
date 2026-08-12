@@ -1,18 +1,142 @@
 #!/usr/bin/env bash
 
-set -e
+set -euo pipefail
 
-CONFIG="config/install.conf.yaml"
-if [ $# -ne 0 ]; then
-    CONFIG="config/$1.conf.yaml"
-fi
-DOTBOT_DIR="dotbot"
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOT_HOME="${DOT_HOME:-$HOME}"
+DRY_RUN=false
+VERBOSE=false
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+case "$(uname -s)" in
+  Darwin) PLATFORM=darwin ;;
+  Linux) [[ -f /etc/arch-release ]] && PLATFORM=arch || PLATFORM=ubuntu ;;
+  *) echo "Unsupported platform" >&2; exit 1 ;;
+esac
 
-cd "${BASEDIR}"
-git submodule sync --quiet --recursive
-git submodule update --init --recursive
+usage() { cat <<'EOF'
+Usage: ./install [--dry-run] [--verbose] [command]
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -v -d "${BASEDIR}" --plugin-dir dotbot-crossplatform --plugin-dir dotbot-omnipkg -c "${CONFIG}" "${@:2}"
+With no command, install dotfiles, packages, and configured tools.
+
+Commands: update, init, link, unlink, packages, doctor, help
+Environment: DOT_HOME overrides the target home directory for testing.
+EOF
+}
+command_usage() {
+  case "${1:-}" in
+    init)
+      cat <<'EOF'
+Usage: ./install init [--dry-run] [--verbose]
+
+Install configured packages, links, and post-install tools. This operation is
+idempotent and refuses to replace unmanaged files.
+EOF
+      ;;
+    update)
+      cat <<'EOF'
+Usage: ./install update [--dry-run] [--verbose]
+
+Pull repository and submodule changes, update platform packages, relink managed
+files, and refresh configured plugins and tools.
+EOF
+      ;;
+    link)
+      cat <<'EOF'
+Usage: ./install link [--dry-run] [--verbose]
+
+Create or refresh the managed links. Existing unmanaged files are never
+replaced.
+EOF
+      ;;
+    unlink)
+      cat <<'EOF'
+Usage: ./install unlink [--dry-run] [--verbose]
+
+Remove managed links that point into this repository. Other files are left
+untouched.
+EOF
+      ;;
+    packages)
+      cat <<'EOF'
+Usage: ./install packages [install|update] [--dry-run] [--verbose]
+
+Install configured packages, or update the platform package manager when given
+the update action.
+EOF
+      ;;
+    doctor)
+      cat <<'EOF'
+Usage: ./install doctor
+
+Check required commands and report the state of managed links.
+EOF
+      ;;
+    help|--help|-h) usage ;;
+    *) echo "Unknown command: ${1:-}" >&2; usage >&2; return 2 ;;
+  esac
+}
+run() { if $DRY_RUN; then printf '+ '; printf '%q ' "$@"; printf '\n'; else $VERBOSE && printf '  %q ' "$@" && printf '\n'; "$@"; fi; }
+require_command() { command -v "$1" >/dev/null 2>&1 || { echo "Missing command: $1" >&2; return 1; }; }
+
+link_file() {
+  local source="${DOTFILES_DIR}/$1" destination="${DOT_HOME}/${2#~/}"
+  [[ -e "$source" ]] || { echo "Missing source: $source" >&2; return 1; }
+  if [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then return 0; fi
+  if [[ -e "$destination" || -L "$destination" ]]; then
+    [[ -L "$destination" && "$(readlink "$destination")" == "${DOTFILES_DIR}"/* ]] || { echo "Refusing to replace existing path: $destination" >&2; return 1; }
+    run rm "$destination"
+  fi
+  run mkdir -p "$(dirname "$destination")"
+  run ln -s "$source" "$destination"
+}
+
+managed_links() {
+  printf '%s\n' .config/starship.toml .bashrc .config/nvim/init.lua .config/tmux/tmux.conf .tmate.conf .config/tmux/plugins/tpm .config/wezterm/wezterm.lua .config/herdr/config.toml .config/mise/config.toml .config/opencode/plugins/youtube-comments.ts .config/opencode/package.json .config/opencode/tui.jsonc .vimrc .zshrc
+  [[ "$PLATFORM" == darwin ]] && printf '%s\n' .config/karabiner/karabiner.json .aerospace.toml
+}
+link_all() {
+  link_file config/starship.toml .config/starship.toml; link_file config/bashrc .bashrc; link_file config/nvim.lua .config/nvim/init.lua
+  link_file config/tmux.conf .config/tmux/tmux.conf; link_file config/tmate.conf .tmate.conf; link_file tpm .config/tmux/plugins/tpm
+  link_file config/wezterm.lua .config/wezterm/wezterm.lua; link_file config/herdr.toml .config/herdr/config.toml; link_file config/mise.toml .config/mise/config.toml
+  link_file config/opencode-yt-comments.ts .config/opencode/plugins/youtube-comments.ts; link_file config/opencode-package.json .config/opencode/package.json; link_file config/opencode-tui.jsonc .config/opencode/tui.jsonc
+  link_file config/vimrc .vimrc; link_file config/zshrc .zshrc
+  [[ "$PLATFORM" == darwin ]] && { link_file config/karabiner.json .config/karabiner/karabiner.json; link_file config/aerospace.toml .aerospace.toml; }
+}
+unlink_all() {
+  local path target
+  while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && run rm "$target"; done < <(managed_links)
+}
+
+brew_taps=(cormacrelf/tap/dark-notify nikitabobko/tap/aerospace)
+brew_formulae=(git git-lfs skillshare tmux tmate herdr lazygit zsh jq mise dark-notify)
+brew_casks=(dark-mode font-fira-code-nerd-font karabiner-elements wezterm)
+linux_packages=(git git-lfs tmux tmate herdr lazygit zsh jq silversearcher-ag)
+install_packages() {
+  local package
+  if [[ "$PLATFORM" == darwin ]]; then
+    require_command brew; for package in "${brew_taps[@]}"; do run brew tap "$package" || true; done
+    for package in "${brew_formulae[@]}"; do run brew install "$package" || true; done
+    for package in "${brew_casks[@]}"; do run brew install --cask "$package" || true; done
+  else
+    if [[ "$PLATFORM" == arch ]]; then require_command pacman; for package in "${linux_packages[@]}"; do run sudo pacman --noconfirm -S "$package" || true; done
+    else require_command apt-get; run sudo apt-get update; for package in "${linux_packages[@]}"; do run sudo apt-get install -y "$package" || true; done; fi
+  fi
+}
+post_install() {
+  command -v mise >/dev/null 2>&1 && run mise install || true
+  [[ -x "${DOT_HOME}/.config/tmux/plugins/tpm/bin/install_plugins" ]] && run "${DOT_HOME}/.config/tmux/plugins/tpm/bin/install_plugins" || true
+  command -v nvim >/dev/null 2>&1 && run nvim --headless '+Lazy! sync' +TSUpdate +qa || true
+  command -v pdm >/dev/null 2>&1 && run pdm self add pdm-django || true
+  [[ "$PLATFORM" == darwin ]] && { run defaults write com.apple.dock expose-group-apps -bool true || true; run defaults write com.apple.spaces spans-displays -bool true || true; }
+}
+init() { install_packages; link_all; post_install; }
+update() { require_command git; run git -C "$DOTFILES_DIR" pull; run git -C "$DOTFILES_DIR" submodule sync --quiet --recursive; run git -C "$DOTFILES_DIR" submodule update --init --recursive; [[ "$PLATFORM" == darwin ]] && { run brew update; run brew upgrade; } || install_packages; link_all; post_install; }
+package_update() { if [[ "$PLATFORM" == darwin ]]; then run brew update; run brew upgrade; elif [[ "$PLATFORM" == arch ]]; then run sudo pacman --noconfirm -Syu; else run sudo apt-get update; run sudo apt-get upgrade -y; fi; }
+doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && echo "ok: $target" || echo "unmanaged: $target"; done < <(managed_links); return "$failures"; }
+
+while [[ $# -gt 0 ]]; do case "$1" in --dry-run) DRY_RUN=true; shift ;; --verbose) VERBOSE=true; shift ;; -h|--help) usage; exit 0 ;; *) break ;; esac; done
+command="${1:-init}"; shift || true
+if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then command_usage "$command"; exit $?; fi
+if [[ "$command" == packages && "${1:-}" == update && ("${2:-}" == "--help" || "${2:-}" == "-h") ]]; then command_usage packages; exit $?; fi
+while [[ $# -gt 0 ]]; do case "$1" in --dry-run) DRY_RUN=true ;; --verbose) VERBOSE=true ;; --help|-h) command_usage "$command"; exit $? ;; *) break ;; esac; shift; done
+case "$command" in init) init ;; update) update ;; link) link_all ;; unlink) unlink_all ;; packages) [[ "${1:-install}" == update ]] && package_update || install_packages ;; doctor) doctor ;; help|--help|-h) usage ;; *) echo "Unknown command: $command" >&2; usage >&2; exit 2 ;; esac
