@@ -1,7 +1,7 @@
 # mcferrill's dotfiles
 
 This is a set of config files mostly starting with "." (hence the repo name)
-that allow consistent behavior between multiple tools across environments. Uses the repository's native `install` tool.
+that allow consistent behavior between multiple tools across environments.
 
 ## Installing and Updating
 
