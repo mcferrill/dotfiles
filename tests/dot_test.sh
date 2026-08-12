@@ -11,6 +11,7 @@ for command in init update link unlink packages doctor help; do
   run_dot "$command" --help >/dev/null
 done
 run_dot packages update --help >/dev/null
+run_dot packages list >/dev/null
 assert_link() {
   [[ -L "$TEST_HOME/$1" ]] || { echo "expected link: $1" >&2; exit 1; }
   [[ "$(readlink "$TEST_HOME/$1")" == "$ROOT/$2" ]] || { echo "wrong target: $1" >&2; exit 1; }

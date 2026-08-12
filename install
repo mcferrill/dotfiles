@@ -20,6 +20,7 @@ With no command, install dotfiles, packages, and configured tools.
 
 Commands: update, init, link, unlink, packages, doctor, help
 Environment: DOT_HOME overrides the target home directory for testing.
+Package manifest: packages.conf
 EOF
 }
 command_usage() {
@@ -58,10 +59,10 @@ EOF
       ;;
     packages)
       cat <<'EOF'
-Usage: ./install packages [install|update] [--dry-run] [--verbose]
+Usage: ./install packages [install|list|update] [--dry-run] [--verbose]
 
-Install configured packages, or update the platform package manager when given
-the update action.
+Install configured packages, list the selected package set, or update the
+platform package manager.
 EOF
       ;;
     doctor)
@@ -72,7 +73,7 @@ Check required commands and report the state of managed links.
 EOF
       ;;
     help|--help|-h) usage ;;
-    *) echo "Unknown command: ${1:-}" >&2; usage >&2; return 2 ;;
+  *) echo "Unknown command: ${1:-}" >&2; usage >&2; return 2 ;;
   esac
 }
 run() { if $DRY_RUN; then printf '+ '; printf '%q ' "$@"; printf '\n'; else $VERBOSE && printf '  %q ' "$@" && printf '\n'; "$@"; fi; }
@@ -117,19 +118,53 @@ unlink_all() {
   while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && run rm "$target"; done < <(managed_links)
 }
 
-brew_taps=(cormacrelf/tap/dark-notify nikitabobko/tap/aerospace)
-brew_formulae=(git git-lfs skillshare tmux tmate herdr lazygit zsh jq mise dark-notify)
-brew_casks=(dark-mode font-fira-code-nerd-font karabiner-elements wezterm)
-linux_packages=(git git-lfs tmux tmate herdr lazygit zsh jq silversearcher-ag)
+PACKAGE_CONFIG="${DOTFILES_DIR}/packages.conf"
+package_entries() {
+  [[ -f "$PACKAGE_CONFIG" ]] || { echo "Missing package manifest: $PACKAGE_CONFIG" >&2; return 1; }
+  awk -v platform="$PLATFORM" '$1 == "all" || $1 == platform { if ($2 != "" && $2 !~ /^#/) print $2 "\t" $3 }' "$PACKAGE_CONFIG"
+}
+list_packages() {
+  local type package
+  printf 'Packages for %s:\n' "$PLATFORM"
+  while IFS=$'\t' read -r type package; do
+    printf '  %-7s %s\n' "$type" "$package"
+  done < <(package_entries)
+}
+validate_packages() {
+  local type package
+  while IFS=$'\t' read -r type package; do
+    case "$type" in
+      auto|tap|formula|cask|package) ;;
+      *) echo "Unsupported package type '$type' in $PACKAGE_CONFIG" >&2; return 1 ;;
+    esac
+    [[ -n "$package" ]] || { echo "Package name is required in $PACKAGE_CONFIG" >&2; return 1; }
+  done < <(package_entries)
+}
 install_packages() {
-  local package
+  local type package
+  validate_packages
   if [[ "$PLATFORM" == darwin ]]; then
-    require_command brew; for package in "${brew_taps[@]}"; do run brew tap "$package" || true; done
-    for package in "${brew_formulae[@]}"; do run brew install "$package" || true; done
-    for package in "${brew_casks[@]}"; do run brew install --cask "$package" || true; done
+    require_command brew
+    while IFS=$'\t' read -r type package; do
+      [[ "$type" == auto ]] && type=formula
+      case "$type" in
+        tap) run brew tap "$package" || true ;;
+        formula) run brew install "$package" || true ;;
+        cask) run brew install --cask "$package" || true ;;
+      esac
+    done < <(package_entries)
   else
-    if [[ "$PLATFORM" == arch ]]; then require_command pacman; for package in "${linux_packages[@]}"; do run sudo pacman --noconfirm -S "$package" || true; done
-    else require_command apt-get; run sudo apt-get update; for package in "${linux_packages[@]}"; do run sudo apt-get install -y "$package" || true; done; fi
+    local manager=apt-get
+    [[ "$PLATFORM" == arch ]] && manager=pacman
+    require_command "$manager"
+    [[ "$manager" == apt-get ]] && run sudo apt-get update
+    while IFS=$'\t' read -r type package; do
+      [[ "$type" == auto ]] && type=package
+      [[ "$type" == package ]] || continue
+      if [[ "$manager" == pacman ]]; then run sudo pacman --noconfirm -S "$package" || true
+      else run sudo apt-get install -y "$package" || true
+      fi
+    done < <(package_entries)
   fi
 }
 post_install() {
@@ -141,11 +176,11 @@ post_install() {
 init() { install_packages; link_all; post_install; }
 update() { require_command git; run git -C "$DOTFILES_DIR" pull; run git -C "$DOTFILES_DIR" submodule sync --quiet --recursive; run git -C "$DOTFILES_DIR" submodule update --init --recursive; [[ "$PLATFORM" == darwin ]] && { run brew update; run brew upgrade; } || install_packages; link_all; post_install; }
 package_update() { if [[ "$PLATFORM" == darwin ]]; then run brew update; run brew upgrade; elif [[ "$PLATFORM" == arch ]]; then run sudo pacman --noconfirm -Syu; else run sudo apt-get update; run sudo apt-get upgrade -y; fi; }
-doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && echo "ok: $target" || echo "unmanaged: $target"; done < <(managed_links); return "$failures"; }
+doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; validate_packages || failures=$((failures + 1)); [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && echo "ok: $target" || echo "unmanaged: $target"; done < <(managed_links); return "$failures"; }
 
 while [[ $# -gt 0 ]]; do case "$1" in --dry-run) DRY_RUN=true; shift ;; --verbose) VERBOSE=true; shift ;; -h|--help) usage; exit 0 ;; *) break ;; esac; done
 command="${1:-init}"; shift || true
 if [[ "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then command_usage "$command"; exit $?; fi
 if [[ "$command" == packages && "${1:-}" == update && ("${2:-}" == "--help" || "${2:-}" == "-h") ]]; then command_usage packages; exit $?; fi
 while [[ $# -gt 0 ]]; do case "$1" in --dry-run) DRY_RUN=true ;; --verbose) VERBOSE=true ;; --help|-h) command_usage "$command"; exit $? ;; *) break ;; esac; shift; done
-case "$command" in init) init ;; update) update ;; link) link_all ;; unlink) unlink_all ;; packages) [[ "${1:-install}" == update ]] && package_update || install_packages ;; doctor) doctor ;; help|--help|-h) usage ;; *) echo "Unknown command: $command" >&2; usage >&2; exit 2 ;; esac
+case "$command" in init) init ;; update) update ;; link) link_all ;; unlink) unlink_all ;; packages) case "${1:-install}" in list) list_packages ;; update) package_update ;; install) install_packages ;; *) echo "Unknown packages action: ${1:-}" >&2; command_usage packages >&2; exit 2 ;; esac ;; doctor) doctor ;; help|--help|-h) usage ;; *) echo "Unknown command: $command" >&2; usage >&2; exit 2 ;; esac

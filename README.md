@@ -17,6 +17,8 @@ Use `./install link`, `./install unlink`, `./install packages`, or `./install do
 
 Managed home files live under `home/` and mirror paths below `$HOME`. Platform-specific files live under `home-darwin/`, `home-ubuntu/`, or `home-arch/`. The linker walks these trees recursively and refuses to replace unmanaged files.
 
+Packages are declared in `packages.conf` using one entry per line: `scope type package`. Use `all` for shared packages and `darwin`, `ubuntu`, or `arch` for platform-specific entries. Use `auto` for a shared package whose native package type is obvious. Run `./install packages list` to inspect the selected package set.
+
 ## Secrets
 
 Some things like SSH keys or private configs shouldn't be used. You can use a secrets manager like bitwarden to store and sync these items.
