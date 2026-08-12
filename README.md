@@ -29,8 +29,13 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 - [starship](https://starship.rs/) - terminal styling
 - [Git](https://git-scm.com/) - source code management
 - Tmux - terminal multiplexer (splits/tabs, etc)
+- tmate - remote terminal sharing with shared tmux configuration
 - [herdr](https://herdr.dev/) - a tmux-like multiplexer made for agents
-- [Neovim](https://neovim.io/) & plugins - telescope, lsps, formatting (based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim))
+- [Neovim](https://neovim.io/) - Telescope, LSP, completion, formatting, and Treesitter (based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim))
+- [mise](https://mise.jdx.dev/) - manages tool versions including Python, Node, Neovim, Starship, uv, PDM, and OpenCode
+- [OpenCode](https://opencode.ai/) - TUI, package, and custom plugin configuration
+- uv and PDM - Python environments and tooling
+- lazygit, jq, ripgrep, fzf, git-lfs, and the Silver Searcher - command-line development tools
 - [wezterm](https://wezfurlong.org/wezterm/) - cross platform terminal emulator
 - macos
   - [karabiner](https://karabiner-elements.pqrs.org/) - keyboard customization (more easily generated with [this](https://github.com/mxstbr/karabiner))
@@ -42,5 +47,8 @@ On unixy systems you can put system specific configuration in ~/.files/sys.sh an
 
 ## Currently used on
 
-- macOS
+ - macOS
 - Ubuntu
+- Arch Linux
+
+The `bin/` directory also includes tmux and Herdr sessionizers plus small cleanup and dependency utilities.
