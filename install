@@ -76,7 +76,23 @@ EOF
   *) echo "Unknown command: ${1:-}" >&2; usage >&2; return 2 ;;
   esac
 }
-run() { if $DRY_RUN; then printf '+ '; printf '%q ' "$@"; printf '\n'; else $VERBOSE && printf '  %q ' "$@" && printf '\n'; "$@"; fi; }
+run() {
+  if $DRY_RUN; then
+    printf '+ '
+    printf '%q ' "$@"
+    printf '\n'
+  elif $VERBOSE; then
+    printf '  '
+    printf '%q ' "$@"
+    printf '\n'
+    "$@"
+  else
+    printf '  '
+    printf '%q ' "$@"
+    printf '\n'
+    "$@" >/dev/null 2>&1
+  fi
+}
 require_command() { command -v "$1" >/dev/null 2>&1 || { echo "Missing command: $1" >&2; return 1; }; }
 
 link_file() {
