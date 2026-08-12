@@ -93,6 +93,18 @@ require("lazy").setup({
     },
     "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
     {
+        "laytan/cloak.nvim",
+        ft = { "conf", "dotenv" },
+        opts = {
+            patterns = {
+                {
+                    file_pattern = { ".env*", "sys.sh", ".dev.vars" },
+                    cloak_pattern = "=.+",
+                },
+            },
+        },
+    },
+    {
         "windwp/nvim-autopairs",
         event = "InsertEnter",
         -- Optional dependency
