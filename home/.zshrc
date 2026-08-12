@@ -7,6 +7,10 @@ source "${DOTFILES}/prompt/aliases.zsh"
 autoload -Uz compinit
 compinit
 
+# Make completion matching case-insensitive without changing the typed or
+# completed path casing.
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'm:{a-z}={A-Z} l:|=* r:|=*'
+
 bindkey -s '^f' "tmux-sessionizer\n"
 
 if (( $+commands[mise] )); then
