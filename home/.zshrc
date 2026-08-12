@@ -1,26 +1,24 @@
 
-export DOTFILES=$HOME/.files
-export PATH=$DOTFILES/bin:$PATH:~/.local/bin
+export DOTFILES="${HOME}/.files"
 
-# Shared settings for bash & zsh
-. $DOTFILES/prompt/common.sh
+source "${DOTFILES}/prompt/environment.sh"
+source "${DOTFILES}/prompt/aliases.zsh"
 
-autoload -Uz compinit && compinit
-bindkey -s ^f "tmux-sessionizer\n"
+autoload -Uz compinit
+compinit
 
-# oh-my-zsh
-export ZSH=$DOTFILES/prompt/oh-my-zsh
-export ZSH_CUSTOM=$DOTFILES/prompt/zsh-plugins
-plugins=(colored-man-pages colorize zsh-syntax-highlighting zsh-autosuggestions)
-export ZSH_COLORIZE_STYLE=github-dark
-source $ZSH/oh-my-zsh.sh
+bindkey -s '^f' "tmux-sessionizer\n"
 
-# starship
-if command -v starship &> /dev/null
-then
+if (( $+commands[mise] )); then
+    eval "$(mise activate zsh)"
+fi
+
+if (( $+commands[starship] )); then
     eval "$(starship init zsh)"
 fi
 
-# Shared aliases, etc.
-. $DOTFILES/prompt/aliases.sh
-. $DOTFILES/prompt/1pass.sh
+source "${DOTFILES}/prompt/plugins.zsh"
+
+if (( $+commands[op] )); then
+    source <(op completion zsh)
+fi

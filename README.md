@@ -23,7 +23,7 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 
 ## Tools Configured
 
-- zsh+[oh-my-zsh](https://ohmyz.sh/) - shell autocomplete, history search, etc.
+- zsh - completion, history search, syntax highlighting, and autosuggestions
 - [starship](https://starship.rs/) - terminal styling
 - [Git](https://git-scm.com/) - source code management
 - Tmux - terminal multiplexer (splits/tabs, etc)
