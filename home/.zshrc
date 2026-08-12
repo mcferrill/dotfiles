@@ -24,4 +24,3 @@ fi
 # Shared aliases, etc.
 . $DOTFILES/prompt/aliases.sh
 . $DOTFILES/prompt/1pass.sh
-

@@ -15,6 +15,8 @@ Use `./install update` to update dotfiles, submodules, packages, and plugins.
 
 Use `./install link`, `./install unlink`, `./install packages`, or `./install doctor` for individual operations. Use `./install help` for command help. Add `--dry-run` to inspect changes without applying them.
 
+Managed home files live under `home/` and mirror paths below `$HOME`. Platform-specific files live under `home-darwin/`, `home-ubuntu/`, or `home-arch/`. The linker walks these trees recursively and refuses to replace unmanaged files.
+
 ## Secrets
 
 Some things like SSH keys or private configs shouldn't be used. You can use a secrets manager like bitwarden to store and sync these items.

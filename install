@@ -90,17 +90,29 @@ link_file() {
   run ln -s "$source" "$destination"
 }
 
+walk_home_tree() {
+  local tree="$1" path relative
+  [[ -d "$tree" ]] || return 0
+  while IFS= read -r -d '' path; do
+    relative="${path#"$tree"/}"
+    link_file "${path#"$DOTFILES_DIR"/}" "$relative"
+  done < <(find "$tree" \( -type f -o -type l \) -print0)
+}
 managed_links() {
-  printf '%s\n' .config/starship.toml .bashrc .config/nvim/init.lua .config/tmux/tmux.conf .tmate.conf .config/tmux/plugins/tpm .config/wezterm/wezterm.lua .config/herdr/config.toml .config/mise/config.toml .config/opencode/plugins/youtube-comments.ts .config/opencode/package.json .config/opencode/tui.jsonc .vimrc .zshrc
-  [[ "$PLATFORM" == darwin ]] && printf '%s\n' .config/karabiner/karabiner.json .aerospace.toml
+  local tree path relative
+  for tree in "$DOTFILES_DIR/home" "$DOTFILES_DIR/home-$PLATFORM"; do
+    [[ -d "$tree" ]] || continue
+    while IFS= read -r -d '' path; do
+      relative="${path#"$tree"/}"
+      printf '%s\n' "$relative"
+    done < <(find "$tree" \( -type f -o -type l \) -print0)
+  done
+  printf '%s\n' .config/tmux/plugins/tpm
 }
 link_all() {
-  link_file config/starship.toml .config/starship.toml; link_file config/bashrc .bashrc; link_file config/nvim.lua .config/nvim/init.lua
-  link_file config/tmux.conf .config/tmux/tmux.conf; link_file config/tmate.conf .tmate.conf; link_file tpm .config/tmux/plugins/tpm
-  link_file config/wezterm.lua .config/wezterm/wezterm.lua; link_file config/herdr.toml .config/herdr/config.toml; link_file config/mise.toml .config/mise/config.toml
-  link_file config/opencode-yt-comments.ts .config/opencode/plugins/youtube-comments.ts; link_file config/opencode-package.json .config/opencode/package.json; link_file config/opencode-tui.jsonc .config/opencode/tui.jsonc
-  link_file config/vimrc .vimrc; link_file config/zshrc .zshrc
-  [[ "$PLATFORM" == darwin ]] && { link_file config/karabiner.json .config/karabiner/karabiner.json; link_file config/aerospace.toml .aerospace.toml; }
+  walk_home_tree "$DOTFILES_DIR/home"
+  walk_home_tree "$DOTFILES_DIR/home-$PLATFORM"
+  link_file tpm .config/tmux/plugins/tpm
 }
 unlink_all() {
   local path target

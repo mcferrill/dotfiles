@@ -17,14 +17,14 @@ assert_link() {
 }
 
 run_dot link
-assert_link .zshrc config/zshrc
-assert_link .config/nvim/init.lua config/nvim.lua
+assert_link .zshrc home/.zshrc
+assert_link .config/nvim/init.lua home/.config/nvim/init.lua
 run_dot link
 
 rm "$TEST_HOME/.zshrc"
-ln -s "$ROOT/config/bashrc" "$TEST_HOME/.zshrc"
+ln -s "$ROOT/home/.bashrc" "$TEST_HOME/.zshrc"
 run_dot link
-assert_link .zshrc config/zshrc
+assert_link .zshrc home/.zshrc
 
 rm "$TEST_HOME/.zshrc"
 printf 'unmanaged\n' > "$TEST_HOME/.zshrc"

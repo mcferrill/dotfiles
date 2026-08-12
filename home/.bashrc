@@ -12,4 +12,3 @@ source $DOTFILES/prompt/common.sh
 
 # Shared aliases, etc.
 source $DOTFILES/prompt/aliases.sh
-
