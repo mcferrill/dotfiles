@@ -1,3 +1,29 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-brew list -1 | while read cask; do echo -ne "\x1B[1;34m $cask \x1B[0m used by:"; brew uses $cask --installed | awk '{printf(" %s ", $0)}'; echo ""; done
+set -euo pipefail
+
+usage() {
+    cat <<'EOF'
+Usage: brew-dependencies [--formula] [--cask]
+
+Show installed Homebrew packages and the installed packages that depend on
+each one. Defaults to formulae.
+EOF
+}
+
+kind=formula
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --formula) kind=formula ;;
+        --cask) kind=cask ;;
+        -h|--help) usage; exit 0 ;;
+        *) usage >&2; exit 2 ;;
+    esac
+    shift
+done
+
+command -v brew >/dev/null 2>&1 || { echo "brew is required" >&2; exit 1; }
+brew list "--$kind" | while IFS= read -r package; do
+    used_by=$(brew uses "$package" --installed | tr '\n' ' ')
+    printf '%-32s used by: %s\n' "$package" "${used_by:-none}"
+done
