@@ -1,6 +1,0 @@
-[submodule "prompt/zsh-plugins/plugins/zsh-syntax-highlighting"]
-	path = prompt/zsh-plugins/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "prompt/zsh-plugins/plugins/zsh-autosuggestions"]
-	path = prompt/zsh-plugins/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
