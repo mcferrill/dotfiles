@@ -23,29 +23,60 @@ fi
 
 source "${DOTFILES}/prompt/plugins.zsh"
 
-# Search history entries that begin with the text already typed. Bind both
-# common terminal encodings for the arrow keys after plugins load.
+# Walk through all history when the line starts empty; otherwise search by prefix.
 bindkey -e
-_history_beginning_search_backward_end() {
-    zle history-beginning-search-backward
-    zle end-of-line
+typeset -g _history_navigation_mode=0
+typeset -g _history_search_prefix=''
+
+_history_reset_navigation_mode() {
+    _history_navigation_mode=0
+    _history_search_prefix=''
 }
 
-_history_beginning_search_forward_end() {
-    zle history-beginning-search-forward
-    zle end-of-line
+_history_up_or_prefix_search() {
+    if (( _history_navigation_mode == 1 )) || [[ -z $BUFFER ]]; then
+        _history_navigation_mode=1
+        zle up-line-or-history
+    else
+        if (( _history_navigation_mode != 2 )); then
+            _history_search_prefix=$BUFFER
+            _history_navigation_mode=2
+        fi
+        BUFFER=$_history_search_prefix
+        CURSOR=${#BUFFER}
+        zle history-beginning-search-backward
+        zle end-of-line
+    fi
 }
 
-zle -N _history_beginning_search_backward_end
-zle -N _history_beginning_search_forward_end
+_history_down_or_prefix_search() {
+    if (( _history_navigation_mode == 1 )) || [[ -z $BUFFER ]]; then
+        _history_navigation_mode=1
+        zle down-line-or-history
+    else
+        if (( _history_navigation_mode != 2 )); then
+            _history_search_prefix=$BUFFER
+            _history_navigation_mode=2
+        fi
+        BUFFER=$_history_search_prefix
+        CURSOR=${#BUFFER}
+        zle history-beginning-search-forward
+        zle end-of-line
+    fi
+}
+
+zle -N _history_up_or_prefix_search
+zle -N _history_down_or_prefix_search
+autoload -Uz add-zle-hook-widget
+add-zle-hook-widget zle-line-init _history_reset_navigation_mode
 
 for keymap in emacs viins; do
-    bindkey -M "$keymap" '^[[A' _history_beginning_search_backward_end
-    bindkey -M "$keymap" '^[[B' _history_beginning_search_forward_end
-    bindkey -M "$keymap" '^[OA' _history_beginning_search_backward_end
-    bindkey -M "$keymap" '^[OB' _history_beginning_search_forward_end
-    bindkey -M "$keymap" '^P' _history_beginning_search_backward_end
-    bindkey -M "$keymap" '^N' _history_beginning_search_forward_end
+    bindkey -M "$keymap" '^[[A' _history_up_or_prefix_search
+    bindkey -M "$keymap" '^[[B' _history_down_or_prefix_search
+    bindkey -M "$keymap" '^[OA' _history_up_or_prefix_search
+    bindkey -M "$keymap" '^[OB' _history_down_or_prefix_search
+    bindkey -M "$keymap" '^P' _history_up_or_prefix_search
+    bindkey -M "$keymap" '^N' _history_down_or_prefix_search
 done
 
 if (( $+commands[op] )); then
