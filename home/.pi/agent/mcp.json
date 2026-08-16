@@ -1,0 +1,43 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/config.json",
+  "mcpServers": {
+    "cloudflare-docs": {
+      "url": "https://docs.mcp.cloudflare.com/mcp",
+      "lifecycle": "lazy"
+    },
+    "context7": {
+      "url": "https://mcp.context7.com/mcp/oauth",
+      "auth": "oauth",
+      "lifecycle": "lazy"
+    },
+    "sentry": {
+      "url": "https://mcp.sentry.dev/mcp",
+      "auth": "oauth",
+      "lifecycle": "lazy"
+    },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y", "chrome-devtools-mcp@latest",
+        "--headless", "--no-performance-crux", "--no-usage-statistics"
+      ],
+      "lifecycle": "lazy"
+    },
+    "agent-device": {
+      "command": "npx",
+      "args": ["-y", "agent-device@0.20.0", "mcp"],
+      "lifecycle": "lazy"
+    },
+    "ga4": {
+      "url": "https://ga4-gtm-mcp-server.1-five-q-innovations.workers.dev/mcp",
+      "headers": {
+        "Authorization": "Bearer $env:GA4_MCP_TOKEN"
+      },
+      "lifecycle": "lazy"
+    },
+    "agent-gateway": {
+      "url": "https://agent-gateway.fiveq.dev/mcp",
+      "lifecycle": "lazy"
+    }
+  }
+}
