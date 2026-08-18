@@ -8,5 +8,7 @@
   "packages": [
     "npm:@plannotator/pi-extension",
     "npm:pi-mcp-adapter"
-  ]
+  ],
+  "hideThinkingBlock": false,
+  "defaultThinkingLevel": "low"
 }
