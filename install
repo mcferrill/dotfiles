@@ -190,7 +190,9 @@ post_install() {
   [[ "$PLATFORM" == darwin ]] && { run defaults write com.apple.dock expose-group-apps -bool true || true; run defaults write com.apple.spaces spans-displays -bool true || true; }
 }
 post_update() {
-  command -v nvim >/dev/null 2>&1 && run nvim --headless -c MasonUpdate -c MasonToolsUpdate -c qa || true
+  # MasonToolsUpdate is asynchronous; use its blocking variant so headless nvim
+  # cannot exit while package installs are still running.
+  command -v nvim >/dev/null 2>&1 && run nvim --headless -c MasonUpdate -c MasonToolsUpdateSync -c qa || true
 }
 init() { install_packages; link_all; post_install; }
 update() { require_command git; run git -C "$DOTFILES_DIR" pull; [[ "$PLATFORM" == darwin ]] && { run brew update; run brew upgrade; } || install_packages; link_all; post_install; post_update; }
