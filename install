@@ -194,9 +194,22 @@ post_update() {
   # cannot exit while package installs are still running.
   command -v nvim >/dev/null 2>&1 && run nvim --headless -c MasonUpdate -c MasonToolsUpdateSync -c qa || true
 }
+brew_upgrade() {
+  local formulae casks
+  formulae="$(brew outdated --formula --quiet 2>/dev/null || true)"
+  casks="$(brew outdated --cask --quiet 2>/dev/null || true)"
+  if [[ -n "$formulae$casks" ]]; then
+    echo "Homebrew packages to upgrade:"
+    [[ -z "$formulae" ]] || printf '%s\n' "$formulae" | sed 's/^/  /'
+    [[ -z "$casks" ]] || printf '%s\n' "$casks" | sed 's/^/  /'
+  else
+    echo "Homebrew packages to upgrade: none"
+  fi
+  run brew upgrade
+}
 init() { install_packages; link_all; post_install; }
-update() { require_command git; run git -C "$DOTFILES_DIR" pull; [[ "$PLATFORM" == darwin ]] && { run brew update; run brew upgrade; } || install_packages; link_all; post_install; post_update; }
-package_update() { if [[ "$PLATFORM" == darwin ]]; then run brew update; run brew upgrade; elif [[ "$PLATFORM" == arch ]]; then run sudo pacman --noconfirm -Syu; else run sudo apt-get update; run sudo apt-get upgrade -y; fi; }
+update() { require_command git; run git -C "$DOTFILES_DIR" pull; [[ "$PLATFORM" == darwin ]] && { run brew update; brew_upgrade; } || install_packages; link_all; post_install; post_update; }
+package_update() { if [[ "$PLATFORM" == darwin ]]; then run brew update; brew_upgrade; elif [[ "$PLATFORM" == arch ]]; then run sudo pacman --noconfirm -Syu; else run sudo apt-get update; run sudo apt-get upgrade -y; fi; }
 doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; validate_packages || failures=$((failures + 1)); [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && echo "ok: $target" || echo "unmanaged: $target"; done < <(managed_links); return "$failures"; }
 
 while [[ $# -gt 0 ]]; do case "$1" in --dry-run) DRY_RUN=true; shift ;; --verbose) VERBOSE=true; shift ;; -h|--help) usage; exit 0 ;; *) break ;; esac; done
