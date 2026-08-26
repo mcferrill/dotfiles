@@ -189,6 +189,23 @@ post_install() {
   command -v pdm >/dev/null 2>&1 && run pdm self add pdm-django || true
   [[ "$PLATFORM" == darwin ]] && { run defaults write com.apple.dock expose-group-apps -bool true || true; run defaults write com.apple.spaces spans-displays -bool true || true; }
 }
+mise_upgrade() {
+  command -v mise >/dev/null 2>&1 || return 0
+  local output
+  if $DRY_RUN; then
+    printf '+ mise up\n'
+    return 0
+  fi
+  output="$(mise up 2>&1)" || {
+    printf '%s\n' "$output"
+    return 1
+  }
+  [[ -z "$output" ]] || printf '%s\n' "$output"
+  echo "mise changed packages:"
+  printf '%s\n' "$output" | grep -Ei 'installed|upgraded|updated' || echo "  none"
+  echo "mise gated packages:"
+  printf '%s\n' "$output" | grep -E 'minimum_release_age' | sed -E 's/^mise WARN +([^ ]+).*/  \1/' || echo "  none"
+}
 post_update() {
   # MasonToolsUpdate is asynchronous; use its blocking variant so headless nvim
   # cannot exit while package installs are still running.
@@ -208,7 +225,7 @@ brew_upgrade() {
   run brew upgrade
 }
 init() { install_packages; link_all; post_install; }
-update() { require_command git; run git -C "$DOTFILES_DIR" pull; [[ "$PLATFORM" == darwin ]] && { run brew update; brew_upgrade; } || install_packages; link_all; post_install; post_update; }
+update() { require_command git; run git -C "$DOTFILES_DIR" pull; [[ "$PLATFORM" == darwin ]] && { run brew update; brew_upgrade; } || install_packages; link_all; post_install; mise_upgrade; post_update; }
 package_update() { if [[ "$PLATFORM" == darwin ]]; then run brew update; brew_upgrade; elif [[ "$PLATFORM" == arch ]]; then run sudo pacman --noconfirm -Syu; else run sudo apt-get update; run sudo apt-get upgrade -y; fi; }
 doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; validate_packages || failures=$((failures + 1)); [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && echo "ok: $target" || echo "unmanaged: $target"; done < <(managed_links); return "$failures"; }
 
