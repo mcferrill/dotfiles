@@ -150,11 +150,23 @@ validate_packages() {
   local type package
   while IFS=$'\t' read -r type package; do
     case "$type" in
-      auto|tap|formula|cask|package) ;;
+      auto|tap|formula|cask|package|skill) ;;
       *) echo "Unsupported package type '$type' in $PACKAGE_CONFIG" >&2; return 1 ;;
     esac
     [[ -n "$package" ]] || { echo "Package name is required in $PACKAGE_CONFIG" >&2; return 1; }
   done < <(package_entries)
+}
+install_skills() {
+  command -v npx >/dev/null 2>&1 || return 0
+  local type repository
+  while IFS=$'\t' read -r type repository; do
+    [[ "$type" == skill ]] || continue
+    run npx --yes skills add "$repository" --global --yes || true
+  done < <(package_entries)
+}
+update_skills() {
+  command -v npx >/dev/null 2>&1 || return 0
+  run npx --yes skills update --global --yes || true
 }
 install_packages() {
   local type package
@@ -167,6 +179,7 @@ install_packages() {
         tap) run brew tap "$package" || true ;;
         formula) run brew install "$package" || true ;;
         cask) run brew install --cask "$package" || true ;;
+        skill) continue ;;
       esac
     done < <(package_entries)
   else
@@ -224,8 +237,8 @@ brew_upgrade() {
   fi
   run brew upgrade
 }
-init() { install_packages; link_all; post_install; }
-update() { require_command git; run git -C "$DOTFILES_DIR" pull; [[ "$PLATFORM" == darwin ]] && { run brew update; brew_upgrade; } || install_packages; link_all; post_install; mise_upgrade; post_update; }
+init() { install_packages; install_skills; link_all; post_install; }
+update() { require_command git; run git -C "$DOTFILES_DIR" pull; [[ "$PLATFORM" == darwin ]] && { run brew update; brew_upgrade; } || install_packages; install_skills; update_skills; link_all; post_install; mise_upgrade; post_update; }
 package_update() { if [[ "$PLATFORM" == darwin ]]; then run brew update; brew_upgrade; elif [[ "$PLATFORM" == arch ]]; then run sudo pacman --noconfirm -Syu; else run sudo apt-get update; run sudo apt-get upgrade -y; fi; }
 doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; validate_packages || failures=$((failures + 1)); [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && echo "ok: $target" || echo "unmanaged: $target"; done < <(managed_links); return "$failures"; }
 
