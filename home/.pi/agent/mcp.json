@@ -38,6 +38,11 @@
     "agent-gateway": {
       "url": "https://agent-gateway.fiveq.dev/mcp",
       "lifecycle": "lazy"
+    },
+    "open-computer-use": {
+      "command": "open-computer-use",
+      "args": ["mcp"],
+      "lifecycle": "lazy"
     }
   }
 }
