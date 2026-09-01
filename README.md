@@ -34,6 +34,7 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 - [Neovim](https://neovim.io/) - Telescope, LSP, completion, formatting, and Treesitter (based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim))
 - [mise](https://mise.jdx.dev/) - manages tool versions including Python, Node, Neovim, Starship, uv, PDM, and OpenCode
 - [OpenCode](https://opencode.ai/) - TUI, package, and custom plugin configuration
+- [pi](https://pi.dev/) - Config, extensions, MCP
 - uv and PDM - Python environments and tooling
 - lazygit, jq, ripgrep, fzf, git-lfs, and the Silver Searcher - command-line development tools
 - [wezterm](https://wezfurlong.org/wezterm/) - cross platform terminal emulator
