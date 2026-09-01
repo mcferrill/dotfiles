@@ -1,9 +1,21 @@
 {
-    "$schema": "../git/github.com/wynainfo/pi-permission-modes/schemas/permission-mode.schema.json",
-    "defaultMode": "build",
-    "cycleOrder": ["build", "yolo"],
-    "modes": {
-        "build": {},
-        "yolo": {}
+  "$schema": "../git/github.com/wynainfo/pi-permission-modes/schemas/permission-mode.schema.json",
+  "defaultMode": "build",
+  "cycleOrder": [
+    "build",
+    "yolo"
+  ],
+  "modes": {
+    "build": {},
+    "yolo": {},
+    "default": {
+      "permission": {
+        "tool": {
+          "*": "ask",
+          "mcp": "allow",
+          "mcp__agent_gateway": "allow"
+        }
+      }
     }
+  }
 }

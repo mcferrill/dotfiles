@@ -13,8 +13,7 @@
     "npm:pi-ponytail",
     "git:github.com/SamuelLHuber/pi-fff",
     "npm:pi-lens",
-    "npm:pi-context-view",
-    "git:github.com/wynainfo/pi-permission-modes"
+    "npm:pi-context-view"
   ],
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "low",
