@@ -30,7 +30,7 @@ command_usage() {
 Usage: ./install init [--dry-run] [--verbose]
 
 Install configured packages, links, and post-install tools. This operation is
-idempotent and refuses to replace unmanaged files.
+idempotent and backs up existing files before replacing them.
 EOF
       ;;
     update)
@@ -45,8 +45,8 @@ EOF
       cat <<'EOF'
 Usage: ./install link [--dry-run] [--verbose]
 
-Create or refresh the managed links. Existing unmanaged files are never
-replaced.
+Create or refresh the managed links. Existing files are backed up before
+being replaced.
 EOF
       ;;
     unlink)
@@ -100,8 +100,14 @@ link_file() {
   [[ -e "$source" ]] || { echo "Missing source: $source" >&2; return 1; }
   if [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then return 0; fi
   if [[ -e "$destination" || -L "$destination" ]]; then
-    [[ -L "$destination" && "$(readlink "$destination")" == "${DOTFILES_DIR}"/* ]] || { echo "Refusing to replace existing path: $destination" >&2; return 1; }
-    run rm "$destination"
+    if [[ -L "$destination" && "$(readlink "$destination")" == "${DOTFILES_DIR}"/* ]]; then
+      run rm "$destination"
+    else
+      local backup="${destination}.backup.$(date +%Y%m%d%H%M%S)"
+      while [[ -e "$backup" || -L "$backup" ]]; do backup="${destination}.backup.$(date +%Y%m%d%H%M%S).$RANDOM"; done
+      echo "Backing up $destination to $backup"
+      run mv "$destination" "$backup"
+    fi
   fi
   run mkdir -p "$(dirname "$destination")"
   run ln -s "$source" "$destination"
