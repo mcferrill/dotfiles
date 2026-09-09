@@ -13,7 +13,8 @@
     "npm:pi-ponytail",
     "git:github.com/SamuelLHuber/pi-fff",
     "npm:pi-lens",
-    "npm:pi-context-view"
+    "npm:pi-context-view",
+    "npm:remote-pi"
   ],
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "low",
