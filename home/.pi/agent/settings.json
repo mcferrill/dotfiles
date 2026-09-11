@@ -6,7 +6,10 @@
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-luna",
   "packages": [
-    "npm:@plannotator/pi-extension",
+    {
+      "source": "npm:@plannotator/pi-extension",
+      "skills": []
+    },
     "npm:pi-mcp-adapter",
     "npm:@nicknisi/pi-cloak",
     "npm:pi-skill-toggle",
