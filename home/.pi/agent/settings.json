@@ -10,7 +10,7 @@
       "source": "npm:@plannotator/pi-extension",
       "skills": []
     },
-    "npm:pi-mcp-adapter",
+    "npm:pi-mcp-adapter@2.31",
     "npm:@nicknisi/pi-cloak",
     "npm:pi-skill-toggle",
     "npm:pi-ponytail",
