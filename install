@@ -205,7 +205,6 @@ install_packages() {
 post_install() {
   command -v mise >/dev/null 2>&1 && run mise install || true
   command -v nvim >/dev/null 2>&1 && run nvim --headless '+Lazy! sync' +TSUpdate +qa || true
-  command -v pdm >/dev/null 2>&1 && run pdm self add pdm-django || true
   [[ "$PLATFORM" == darwin ]] && { run defaults write com.apple.dock expose-group-apps -bool true || true; run defaults write com.apple.spaces spans-displays -bool true || true; }
 }
 mise_upgrade() {
