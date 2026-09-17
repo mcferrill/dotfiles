@@ -4,7 +4,7 @@
   "tuiMode": "regular",
   "enableInstallTelemetry": false,
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.6-luna",
+  "defaultModel": "gpt-5.6-sol",
   "packages": [
     {
       "source": "npm:@plannotator/pi-extension",
