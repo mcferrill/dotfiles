@@ -17,7 +17,8 @@
     "git:github.com/SamuelLHuber/pi-fff",
     "npm:pi-lens",
     "npm:pi-context-view",
-    "npm:remote-pi"
+    "npm:remote-pi",
+    "git:github.com/just-joshn/pi-pstack"
   ],
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "low",
