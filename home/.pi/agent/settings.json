@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "0.99.1",
   "theme": "tokyonight",
   "tuiMode": "regular",
   "enableInstallTelemetry": false,
@@ -10,14 +10,16 @@
       "source": "npm:@plannotator/pi-extension",
       "skills": []
     },
-    "npm:pi-mcp-adapter@2.31",
     "npm:@nicknisi/pi-cloak",
     "npm:pi-skill-toggle",
     "npm:pi-ponytail",
     "git:github.com/SamuelLHuber/pi-fff",
     "npm:pi-lens",
     "npm:pi-context-view",
-    "npm:remote-pi",
+    {
+      "source": "npm:remote-pi",
+      "extensions": []
+    },
     "git:github.com/just-joshn/pi-pstack"
   ],
   "hideThinkingBlock": false,

@@ -2,47 +2,38 @@
   "$schema": "https://modelcontextprotocol.io/schema/config.json",
   "mcpServers": {
     "cloudflare-docs": {
-      "url": "https://docs.mcp.cloudflare.com/mcp",
-      "lifecycle": "lazy"
+      "url": "https://docs.mcp.cloudflare.com/mcp"
     },
     "context7": {
-      "url": "https://mcp.context7.com/mcp/oauth",
-      "auth": "oauth",
-      "lifecycle": "lazy"
+      "url": "https://mcp.context7.com/mcp/oauth"
     },
     "sentry": {
-      "url": "https://mcp.sentry.dev/mcp",
-      "auth": "oauth",
-      "lifecycle": "lazy"
+      "url": "https://mcp.sentry.dev/mcp"
     },
     "chrome-devtools": {
       "command": "npx",
       "args": [
         "-y", "chrome-devtools-mcp@latest",
         "--headless", "--no-performance-crux", "--no-usage-statistics"
-      ],
-      "lifecycle": "lazy"
+      ]
     },
     "agent-device": {
       "command": "npx",
-      "args": ["-y", "agent-device@0.20.0", "mcp"],
-      "lifecycle": "lazy"
+      "args": ["-y", "agent-device@0.20.0", "mcp"]
     },
     "ga4": {
       "url": "https://ga4-gtm-mcp-server.1-five-q-innovations.workers.dev/mcp",
       "headers": {
-        "Authorization": "Bearer $env:GA4_MCP_TOKEN"
-      },
-      "lifecycle": "lazy"
+        "Authorization": "Bearer ${GA4_MCP_TOKEN}"
+      }
     },
     "agent-gateway": {
-      "url": "https://agent-gateway.fiveq.dev/mcp",
-      "lifecycle": "lazy"
+      "url": "https://agent-gateway.fiveq.dev/mcp"
     },
     "open-computer-use": {
-      "command": "open-computer-use",
-      "args": ["mcp"],
-      "lifecycle": "lazy"
+      "enabled": false,
+      "command": "npx",
+      "args": ["mcp", "open-computer-use"]
     }
   }
 }
