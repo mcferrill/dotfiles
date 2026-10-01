@@ -4,7 +4,7 @@
   "tuiMode": "regular",
   "enableInstallTelemetry": false,
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6-astra",
+  "defaultModel": "gpt-6.1-sol",
   "packages": [
     {
       "source": "npm:@plannotator/pi-extension",
@@ -20,10 +20,16 @@
       "source": "npm:remote-pi",
       "extensions": []
     },
-    "git:github.com/just-joshn/pi-pstack"
+    {
+      "source": "git:github.com/just-joshn/pi-pstack",
+      "extensions": [],
+      "skills": [],
+      "prompts": [],
+      "themes": []
+    }
   ],
   "hideThinkingBlock": false,
-  "defaultThinkingLevel": "low",
+  "defaultThinkingLevel": "medium",
   "skills": [
     "/Users/mcferrill/.codex/skills/_fiveq",
     "/Users/mcferrill/.codex/skills/_sable",
