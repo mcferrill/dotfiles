@@ -30,6 +30,11 @@
     "agent-gateway": {
       "url": "https://agent-gateway.fiveq.dev/mcp"
     },
+    "agent-gateway-dev": {
+      "url": "http://localhost:8787/mcp",
+      "oauth": { "scope": "mcp:read" },
+      "description": "Local development Agent Gateway with authenticated read-only access"
+    },
     "open-computer-use": {
       "enabled": false,
       "command": "npx",
