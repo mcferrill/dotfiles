@@ -13,13 +13,20 @@
     "chrome-devtools": {
       "command": "npx",
       "args": [
-        "-y", "chrome-devtools-mcp@latest",
-        "--headless", "--no-performance-crux", "--no-usage-statistics"
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--headless",
+        "--no-performance-crux",
+        "--no-usage-statistics"
       ]
     },
     "agent-device": {
       "command": "npx",
-      "args": ["-y", "agent-device@0.20.0", "mcp"]
+      "args": [
+        "-y",
+        "agent-device@0.20.0",
+        "mcp"
+      ]
     },
     "ga4": {
       "url": "https://ga4-gtm-mcp-server.1-five-q-innovations.workers.dev/mcp",
@@ -32,13 +39,19 @@
     },
     "agent-gateway-dev": {
       "url": "http://localhost:8787/mcp",
-      "oauth": { "scope": "mcp:read" },
-      "description": "Local development Agent Gateway with authenticated read-only access"
+      "oauth": {
+        "scope": "mcp:read"
+      },
+      "description": "Local development Agent Gateway with authenticated read-only access",
+      "exposure": "deferred"
     },
     "open-computer-use": {
       "enabled": false,
       "command": "npx",
-      "args": ["mcp", "open-computer-use"]
+      "args": [
+        "mcp",
+        "open-computer-use"
+      ]
     }
   }
 }
