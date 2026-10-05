@@ -35,7 +35,10 @@
       }
     },
     "agent-gateway": {
-      "url": "https://agent-gateway.fiveq.dev/mcp"
+      "url": "https://agent-gateway.fiveq.dev/mcp",
+      "oauth": {
+        "scope": "mcp:read mcp:write offline_access"
+      }
     },
     "agent-gateway-dev": {
       "enabled": false,
