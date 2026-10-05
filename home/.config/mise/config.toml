@@ -4,6 +4,8 @@
 # bitwarden-secrets-manager = "latest"
 fzf = "latest"
 gitleaks = "latest"
+"aqua:herdrdev/herdr" = "latest"
+lazygit = "latest"
 neovim = "0.11"
 node = "lts"
 opencode = "latest"
