@@ -176,7 +176,7 @@ end
 if windows then
     config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 else
-    config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+    config.leader = { key = "a", mods = "CTRL|ALT", timeout_milliseconds = 1000 }
 end
 
 config.keys = {
