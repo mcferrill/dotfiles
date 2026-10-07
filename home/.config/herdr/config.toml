@@ -24,7 +24,7 @@ row_gap = 1
 [ui.sidebar.agents]
 row_gap = 1 
 rows = [
-  ["state_icon", "workspace", "state_text"],
+  ["state_icon", "machine"],
   ["terminal_title_stripped"],
 ]
 
