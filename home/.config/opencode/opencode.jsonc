@@ -1,0 +1,47 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "update": "auto",
+  "plugins": [
+    "@plannotator/opencode@latest"
+  ],
+  "mcp": {
+    "servers": {
+      "cloudflare-docs": {
+        "type": "remote",
+        "url": "https://docs.mcp.cloudflare.com/mcp"
+      },
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp/oauth"
+      },
+      "sentry": {
+        "type": "remote",
+        "url": "https://mcp.sentry.dev/mcp"
+      },
+      "chrome-devtools": {
+        "type": "local",
+        "command": ["npx", "-y", "chrome-devtools-mcp@latest", "--headless", "--no-performance-crux", "--no-usage-statistics"]
+      },
+      "agent-device": {
+        "type": "local",
+        "command": ["npx", "-y", "agent-device@0.20.0", "mcp"]
+      },
+      "ga4": {
+        "type": "remote",
+        "url": "https://ga4-gtm-mcp-server.1-five-q-innovations.workers.dev/mcp",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer {env:GA4_MCP_TOKEN}"
+        }
+      },
+      "agent-gateway": {
+        "type": "remote",
+        "url": "https://agent-gateway.fiveq.dev/mcp"
+      },
+      // "donordirect": {
+      //   "type": "remote",
+      //   "url": "http://localhost:8787/mcp"
+      // },
+    }
+  }
+}
