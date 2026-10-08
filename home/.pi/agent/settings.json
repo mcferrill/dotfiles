@@ -1,6 +1,6 @@
 {
   "lastChangelogVersion": "1.0.4",
-  "theme": "tokyonight",
+  "theme": "system",
   "tuiMode": "regular",
   "enableInstallTelemetry": false,
   "defaultProvider": "openai-codex",
