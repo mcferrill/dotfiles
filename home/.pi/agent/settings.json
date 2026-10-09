@@ -3,7 +3,7 @@
   "theme": "system",
   "tuiMode": "regular",
   "enableInstallTelemetry": false,
-  "defaultProvider": "openai-codex",
+  "defaultProvider": "openai",
   "defaultModel": "gpt-6.1-sol",
   "packages": [
     {
@@ -104,5 +104,6 @@
     "-/Users/mcferrill/.codex/skills/_mattpocock/skills/engineering/to-tickets",
     "-/Users/mcferrill/.codex/skills/_mattpocock/skills/engineering/triage",
     "-/Users/mcferrill/.codex/skills/_mattpocock/skills/productivity/write-a-skill"
-  ]
+  ],
+  "deviceId": "dfceb521-2795-438a-bb3d-8e1ce5d6d64d"
 }
