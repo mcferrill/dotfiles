@@ -225,6 +225,7 @@ mise_upgrade() {
   printf '%s\n' "$output" | grep -E 'minimum_release_age' | sed -E 's/^mise WARN +([^ ]+).*/  \1/' || echo "  none"
 }
 post_update() {
+  command -v pi >/dev/null 2>&1 && run pi update --extensions || true
   # MasonToolsUpdate is asynchronous; use its blocking variant so headless nvim
   # cannot exit while package installs are still running.
   command -v nvim >/dev/null 2>&1 && run nvim --headless -c MasonUpdate -c MasonToolsUpdateSync -c qa || true
