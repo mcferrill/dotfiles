@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-HERDR_BIN=${HERDR_BIN:-/opt/homebrew/bin/herdr}
+# ponytail: Homebrew path is the macOS fallback when `herdr` is not on PATH.
+HERDR_BIN=${HERDR_BIN:-$(command -v herdr || true)}
+if [[ ! -x ${HERDR_BIN:-} && -x /opt/homebrew/bin/herdr ]]; then
+    HERDR_BIN=/opt/homebrew/bin/herdr
+fi
+if [[ ! -x ${HERDR_BIN:-} ]]; then
+    echo "herdr not found" >&2
+    exit 1
+fi
 
 if [[ $# -eq 1 ]]; then
     selected=$1

@@ -39,6 +39,9 @@ end
 
 local herdr_sessionizer_path = wezterm.home_dir .. "/.files/bin/herdr-sessionizer"
 local herdr_path = "/opt/homebrew/bin/herdr"
+if not io.open(herdr_path, "r") then
+    herdr_path = "herdr"
+end
 
 -- Check if table contains element.
 local function contains(table, element)
@@ -254,7 +257,7 @@ end
 
 -- One point smaller than the shared 13pt size. macOS and other Linux stay at 13.
 if is_omarchy then
-    font_size = 10
+    font_size = 9
 end
 
 config.window_background_opacity = opacity
