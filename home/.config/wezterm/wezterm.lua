@@ -17,8 +17,20 @@ if is_linux then
     end
 end
 local windows = not is_darwin and not is_linux
+local is_omarchy = false
 
-config.enable_wayland = false
+if is_linux then
+    local omarchy = io.open("/usr/share/omarchy/version", "r")
+    if omarchy then
+        omarchy:close()
+        is_omarchy = true
+    end
+end
+
+-- XWayland ignores the compositor scale and reports ~96 DPI, so the same
+-- point size looks tiny on HiDPI Linux. Native Wayland follows the desktop
+-- scale. This option is ignored on macOS and Windows.
+config.enable_wayland = is_linux
 
 -- Get the last path segment from a string
 local function basename(path)
@@ -232,14 +244,17 @@ if windows then
     font_size = 10.25
     config.default_prog = { "pwsh.exe" }
 else
-    if is_arch then
-        font_size = 11
-        opacity = 0.98
-    end
+    -- Same point size as macOS. Do not hardcode DPI here: a fixed dpi
+    -- value would be wrong on other Linux machines and external displays.
     -- wezterm-sessionizer
     -- TODO: implement on windows?
     table.insert(config.keys, { key = "f", mods = "CTRL", action = wezterm.action_callback(wezterm_sessionizer) })
     table.insert(config.keys, { key = "f", mods = "CTRL|SHIFT", action = wezterm.action_callback(herdr_sessionizer) })
+end
+
+-- One point smaller than the shared 13pt size. macOS and other Linux stay at 13.
+if is_omarchy then
+    font_size = 10
 end
 
 config.window_background_opacity = opacity
