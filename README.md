@@ -42,6 +42,33 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
   - [karabiner](https://karabiner-elements.pqrs.org/) - keyboard customization (more easily generated with [this](https://github.com/mxstbr/karabiner))
   - [aerospace](https://github.com/nikitabobko/AeroSpace) - window manager (like i3)
 
+## Caps Lock shortcuts on Linux
+
+`home/.config/keyd/default.conf` recreates the Karabiner navigation and media
+shortcuts: tap Caps Lock for Escape; hold it with A/D for Home/End, W/S for
+Page Up/Down, Space for play/pause, Up/Down for volume, and Left/Right for
+previous/next track. This is a named layer, not Ctrl+Alt+Shift+Super; unmapped
+keys do not send four modifiers. The config is linked on every platform but
+only used by keyd on Linux.
+
+On Arch, install keyd with `sudo pacman -S --needed keyd`, then run `./install link`.
+Activate it once (do not replace an existing `/etc/keyd/default.conf` without
+reviewing it):
+
+```sh
+sudo mkdir -p /etc/keyd
+sudo ln -s "$HOME/.config/keyd/default.conf" /etc/keyd/default.conf
+sudo systemctl enable --now keyd
+```
+
+After edits, run `sudo keyd reload`. Test Caps alone and each shortcut in an
+editor/media player. To undo, run `sudo systemctl disable --now keyd`.
+
+The config matches all keyboards. keyd exposes a virtual keyboard, so existing
+Hyprland device-specific settings (such as Quefrency Alt/Super swaps) may no
+longer match; reconcile those before enabling it. To preserve per-keyboard
+behavior, use device-specific keyd configs rather than a global Alt/Super swap.
+
 ## Per-machine config
 
 On unixy systems you can put system specific configuration in ~/.files/sys.sh and they will also be sourced.
