@@ -256,7 +256,8 @@ package_update() {
     run brew update; brew_upgrade
   elif [[ "$PLATFORM" == arch ]]; then
     if command -v omarchy >/dev/null 2>&1; then
-      VERBOSE=true run omarchy update
+      # ponytail: restore after omacom/omarchy-mac#741 is fixed upstream.
+      echo "Skipping omarchy update temporarily (omacom/omarchy-mac#741)."
     else
       run sudo pacman --noconfirm -Syu
     fi
