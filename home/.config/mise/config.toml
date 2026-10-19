@@ -18,6 +18,7 @@ watchexec = "latest"
 gh = "latest"
 codex = "latest"
 pnpm = "latest"
+"npm:playwright" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
