@@ -50,12 +50,16 @@
       "exposure": "deferred"
     },
     "open-computer-use": {
-      "enabled": false,
       "command": "npx",
       "args": [
-        "mcp",
-        "open-computer-use"
-      ]
+        "-y",
+        "open-computer-use@latest",
+        "mcp"
+      ],
+      "env": {
+        "PATH": "/usr/bin:${PATH}"
+      },
+      "enabled": false
     }
   }
 }
