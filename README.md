@@ -44,30 +44,44 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 
 ## Caps Lock shortcuts on Linux
 
-`home/.config/keyd/default.conf` recreates the Karabiner navigation and media
+`home/.config/keyd/common` recreates the Karabiner navigation and media
 shortcuts: tap Caps Lock for Escape; hold it with A/D for Home/End, W/S for
 Page Up/Down, Space for play/pause, Up/Down for volume, and Left/Right for
 previous/next track. This is a named layer, not Ctrl+Alt+Shift+Super; unmapped
-keys do not send four modifiers. The config is linked on every platform but
-only used by keyd on Linux.
+keys do not send four modifiers.
+
+`default.conf` explicitly matches this MacBook's built-in keyboard, leaving its
+modifiers unchanged. `quefrency.conf` matches both Quefrency Rev. 6 typing
+interfaces and swaps Alt/Super on both sides (ordinary Alt, not AltGr). The full
+IDs from `sudo keyd monitor` exclude trackpads, mice, and consumer controls.
+Other keyboards are unchanged; add their IDs deliberately if needed.
 
 On Arch, install keyd with `sudo pacman -S --needed keyd`, then run `./install link`.
-Activate it once (do not replace an existing `/etc/keyd/default.conf` without
-reviewing it):
+Review and back up any existing `/etc/keyd` before activation. If it is an empty
+directory, remove it with `sudo rmdir /etc/keyd`. Then, from the repo root:
 
 ```sh
-sudo mkdir -p /etc/keyd
-sudo ln -s "$HOME/.config/keyd/default.conf" /etc/keyd/default.conf
+sudo ln -s "$PWD/home/.config/keyd" /etc/keyd
+keyd check
 sudo systemctl enable --now keyd
 ```
 
-After edits, run `sudo keyd reload`. Test Caps alone and each shortcut in an
-editor/media player. To undo, run `sudo systemctl disable --now keyd`.
+Link the whole directory directly to the repo: keyd rejects includes that resolve
+outside their config directory, so individual file symlinks will not work here.
+The home config links are harmless on macOS; keyd is only used on Linux.
 
-The config matches all keyboards. keyd exposes a virtual keyboard, so existing
-Hyprland device-specific settings (such as Quefrency Alt/Super swaps) may no
-longer match; reconcile those before enabling it. To preserve per-keyboard
-behavior, use device-specific keyd configs rather than a global Alt/Super swap.
+Before activation, back up `~/.config/hypr/input.lua` and remove its old
+Quefrency `altwin:swap_alt_win` device overrides; keyd now owns that swap. Leave
+other input settings alone. Run `hyprctl reload` and `hyprctl configerrors`.
+
+After edits, run `keyd check` (including checking for warnings), then
+`sudo keyd reload`. Check `journalctl -u keyd -b` for the expected device matches.
+Test Caps alone and all nine shortcuts on both keyboards, check both sides of
+the modifier row, and reconnect the Quefrency. Confirm mice/trackpad still work.
+Hardware or firmware changes may require updating the interface IDs.
+
+To undo, run `sudo systemctl disable --now keyd`, restore the saved Hyprland
+input config, and reload Hyprland. keyd's emergency exit is Backspace+Escape+Enter.
 
 ## Per-machine config
 
