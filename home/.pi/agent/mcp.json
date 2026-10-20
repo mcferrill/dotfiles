@@ -49,6 +49,17 @@
       "description": "Local development Agent Gateway with authenticated read-only access. Use only when explicitly requested.",
       "exposure": "deferred"
     },
+    "hypruse": {
+      "command": "uvx",
+      "args": [
+        "hypruse"
+      ],
+      "env": {
+        "HYPRUSE_READONLY": "1"
+      },
+      "description": "Read-only Hyprland desktop discovery, screenshots, and accessibility inspection. No input or app launching.",
+      "enabled": false
+    },
     "open-computer-use": {
       "command": "npx",
       "args": [
