@@ -42,6 +42,25 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
   - [karabiner](https://karabiner-elements.pqrs.org/) - keyboard customization (more easily generated with [this](https://github.com/mxstbr/karabiner))
   - [aerospace](https://github.com/nikitabobko/AeroSpace) - window manager (like i3)
 
+## Pi
+
+Local extensions live in `home/.pi/agent/extensions/`:
+
+- `git-interceptor.ts` prevents interactive Git editor hangs and blocks `--no-verify`
+  in Git-related bash calls. This is a convenience guard, not a shell sandbox.
+- `/save-md path` saves the latest assistant response on the active branch as
+  Markdown, excluding thinking/tool calls and refusing to overwrite existing files.
+
+New shared skills belong in `home/.agents/skills/` (installed to
+`~/.agents/skills/`, which Pi discovers automatically). Existing externally managed
+collections stay in place; their explicit includes/exclusions use portable `~/`
+paths. Missing collections must be installed separately on each machine.
+
+Run `node test-pi.mjs` with Node 24+ to check the extensions and configuration.
+After linking new files with `./install link`, run `/reload` in Pi. On both Linux
+and macOS, verify `/save-md`, `/skill:herdr`, and `/skill:context7-mcp` are available;
+check startup diagnostics and `/skills-toggle` for the intended collection filters.
+
 ## Caps Lock shortcuts on Linux
 
 `home/.config/keyd/common` recreates the Karabiner navigation and media

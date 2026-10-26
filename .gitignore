@@ -12,3 +12,20 @@ dot/vim/tmp/*
 *.pyc
 .vscode
 dot/vim/init.vim
+
+# Pi credentials, runtime state, and installed packages (keep config tracked).
+**/.pi/**/auth.json
+**/.pi/**/mcp-auth.json
+**/.pi/**/mcp-oauth/
+**/.pi/**/mcp-cache.json
+**/.pi/**/mcp-npx-cache.json
+**/.pi/**/sessions/
+**/.pi/**/todos/
+**/.pi/**/node_modules/
+home/.pi/agent/npm/
+home/.pi/agent/git/
+home/.pi/agent/cache/
+home/.pi/agent/logs/
+home/.pi/agent/*.log
+home/.pi/agent/extensions/**/.env
+home/.pi/agent/extensions/**/.env.*
