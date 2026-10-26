@@ -131,9 +131,28 @@ managed_links() {
     done < <(find "$tree" \( -type f -o -type l \) -print0)
   done
 }
+setup_keyd() {
+  [[ "$PLATFORM" != darwin && "$DOT_HOME" == "$HOME" ]] || return 0
+  command -v keyd >/dev/null 2>&1 || { echo "Skipping keyd setup: keyd is not installed."; return 0; }
+  local destination=/etc/keyd source="$DOTFILES_DIR/home/.config/keyd"
+  if [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then
+    : # Already managed.
+  elif [[ -d "$destination" && ! -L "$destination" ]] && run sudo rmdir "$destination"; then
+    run sudo ln -s "$source" "$destination"
+  elif [[ ! -e "$destination" && ! -L "$destination" ]]; then
+    run sudo ln -s "$source" "$destination"
+  else
+    echo "Warning: leaving existing $destination untouched; keyd setup skipped." >&2
+    return 0
+  fi
+  run keyd check || return $?
+  run sudo systemctl enable --now keyd || return $?
+  run sudo keyd reload
+}
 link_all() {
   walk_home_tree "$DOTFILES_DIR/home"
   walk_home_tree "$DOTFILES_DIR/home-$PLATFORM"
+  setup_keyd
 }
 unlink_all() {
   local path target

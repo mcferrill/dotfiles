@@ -56,15 +56,13 @@ interfaces and swaps Alt/Super on both sides (ordinary Alt, not AltGr). The full
 IDs from `sudo keyd monitor` exclude trackpads, mice, and consumer controls.
 Other keyboards are unchanged; add their IDs deliberately if needed.
 
-On Arch, install keyd with `sudo pacman -S --needed keyd`, then run `./install link`.
-Review and back up any existing `/etc/keyd` before activation. If it is an empty
-directory, remove it with `sudo rmdir /etc/keyd`. Then, from the repo root:
-
-```sh
-sudo ln -s "$PWD/home/.config/keyd" /etc/keyd
-keyd check
-sudo systemctl enable --now keyd
-```
+On Arch, `./install` installs keyd and activates its configuration. If keyd is
+already installed, `./install link` is sufficient. On Linux, the linking step
+creates `/etc/keyd` as a symlink to this repo (replacing only an empty directory),
+checks the config, enables the service, and reloads keyd. Existing nonempty or
+unrelated configurations are left untouched with a warning; review and back them
+up before moving them aside and rerunning. macOS and `DOT_HOME` test installs skip
+system keyd setup.
 
 Link the whole directory directly to the repo: keyd rejects includes that resolve
 outside their config directory, so individual file symlinks will not work here.
