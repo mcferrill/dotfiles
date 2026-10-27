@@ -82,3 +82,6 @@ done
 if (( $+commands[op] )); then
     source <(op completion zsh)
 fi
+
+# Vite+ bin (https://viteplus.dev)
+. "/home/mcferrill/.config/vite-plus/env"

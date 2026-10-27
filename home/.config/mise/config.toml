@@ -19,6 +19,9 @@ gh = "latest"
 codex = "latest"
 pnpm = "latest"
 "npm:playwright" = "latest"
+claude = "latest"
+opencode = { version = "latest", allow_builds = ["@opencode/cli"] }
+"npm:@xai-official/grok" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
