@@ -224,7 +224,7 @@ install_packages() {
 post_install() {
   command -v mise >/dev/null 2>&1 && run mise install || true
   command -v nvim >/dev/null 2>&1 && run nvim --headless '+Lazy! sync' +TSUpdate +qa || true
-  [[ "$PLATFORM" == darwin ]] && { run defaults write com.apple.dock expose-group-apps -bool true || true; run defaults write com.apple.spaces spans-displays -bool true || true; }
+  [[ "$PLATFORM" == darwin ]] && { run defaults write com.apple.dock expose-group-apps -bool true || true; run defaults write com.apple.spaces spans-displays -bool true || true; run defaults -currentHost write -g AppleFontSmoothing -int 0 || true; }
 }
 mise_upgrade() {
   command -v mise >/dev/null 2>&1 || return 0
