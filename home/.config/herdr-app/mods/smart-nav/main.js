@@ -1,5 +1,5 @@
 import { View, div } from "gpui-kit";
-import { focused, panes, terminals, exec, run, nextCommand } from "herdr";
+import { focused, panes, terminals, exec, run, nextCommand, notify } from "herdr";
 
 const keys = { left: "h", down: "j", up: "k", right: "l" };
 
@@ -11,7 +11,7 @@ export default class SmartNav extends View {
         try {
           await this.navigate(command);
         } catch (error) {
-          console.error(`Smart navigation failed: ${error.message}`);
+          notify({ title: "Smart navigation failed", body: error.message, level: "error" });
         }
       }
     });
@@ -23,10 +23,12 @@ export default class SmartNav extends View {
     if (!Object.hasOwn(keys, command)) return;
     const pane = panes().find((p) => p.pane === focus.pane);
     if (pane?.program?.key === "nvim" && !focus.terminal.includes("/")) {
-      const server = terminals().find((t) => t.address === focus.terminal)?.labels?.["herdr.nvim-server"];
-      if (!server) throw new Error("Restart Neovim to register its RPC server");
+      const labels = terminals().find((t) => t.address === focus.terminal)?.labels;
+      const server = labels?.["herdr.nvim-server"];
+      const executable = labels?.["herdr.nvim-bin"];
+      if (!server || !executable) throw new Error("Restart Neovim to register its RPC server and executable");
       // RPC bypasses hc keys' human-typing quiet period and Desktop's keybindings.
-      const result = await exec("nvim", ["--server", server, "--remote-send", `<C-${keys[command]}>`]);
+      const result = await exec(executable, ["--server", server, "--remote-send", `<C-${keys[command]}>`]);
       if (result.code !== 0) throw new Error(result.stderr);
     } else {
       run("pane.go", { direction: command });

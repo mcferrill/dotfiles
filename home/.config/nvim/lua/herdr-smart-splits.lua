@@ -11,14 +11,18 @@ end
 function M.activate()
     local terminal = vim.env.HC_TERMINAL_ID
     local server = vim.v.servername ~= "" and vim.v.servername or vim.fn.serverstart()
-    local result = vim.system({ "hc", "label", terminal, "herdr.nvim-server=" .. server }, { text = true }):wait(1000)
+    local result = vim.system({
+        "hc", "label", terminal,
+        "herdr.nvim-server=" .. server,
+        "herdr.nvim-bin=" .. vim.v.progpath,
+    }, { text = true }):wait(1000)
     if result.code ~= 0 then
         error("Could not register Neovim RPC server: " .. (result.stderr or "request timed out"))
     end
     vim.api.nvim_create_autocmd("VimLeavePre", {
         group = vim.api.nvim_create_augroup("herdr-smart-splits", { clear = true }),
         callback = function()
-            vim.system({ "hc", "label", terminal, "herdr.nvim-server=" }):wait(1000)
+            vim.system({ "hc", "label", terminal, "herdr.nvim-server=", "herdr.nvim-bin=" }):wait(1000)
         end,
     })
 end
