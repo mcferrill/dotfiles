@@ -44,6 +44,9 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 
 ## Pi
 
+Global agent instructions live in `home/.pi/agent/AGENTS.md`, linked to
+`~/.pi/agent/AGENTS.md` by `./install link`.
+
 Local extensions live in `home/.pi/agent/extensions/`:
 
 - `git-interceptor.ts` prevents interactive Git editor hangs and blocks `--no-verify`
