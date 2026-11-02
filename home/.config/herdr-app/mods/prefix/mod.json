@@ -1,0 +1,5 @@
+{
+  "place": "none",
+  "title": "TUI prefix aliases",
+  "overlay": { "kind": "dialog", "width": 720, "height": 72 }
+}

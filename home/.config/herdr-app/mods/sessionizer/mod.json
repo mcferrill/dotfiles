@@ -1,0 +1,5 @@
+{
+  "place": "none",
+  "title": "Project sessionizer",
+  "overlay": { "kind": "dialog", "width": 720, "height": 420 }
+}

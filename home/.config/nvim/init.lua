@@ -118,7 +118,14 @@ require("lazy").setup({
         end,
     },
     -- { "xiyaowong/transparent.nvim", lazy = false },
-    { "mrjones2014/smart-splits.nvim", lazy = false },
+    {
+        "mrjones2014/smart-splits.nvim",
+        lazy = false,
+        opts = function()
+            local herdr = require("herdr-smart-splits")
+            return herdr.detect() and { mux = { backend = herdr }, move = { at_edge = "stop" } } or {}
+        end,
+    },
     {
         "nvim-neo-tree/neo-tree.nvim",
         dependencies = {
