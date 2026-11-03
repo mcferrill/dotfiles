@@ -1,6 +1,6 @@
 ---
 name: herdr
-description: "Control Herdr, a terminal multiplexer for coding agents. Use only when the user explicitly mentions Herdr or asks to use Herdr to inspect or control panes, tabs, workspaces, commands, or another agent. Do not use merely because a task could benefit from a background terminal, delegation, or parallel work. Requires HERDR_ENV=1."
+description: "Control the older Herdr TUI using the herdr CLI. Use only for explicit Herdr requests when HERDR_ENV=1 and HC_TERMINAL_ID is unset. Not for herdr-core or the desktop app."
 ---
 
 # Herdr
@@ -10,10 +10,10 @@ Herdr organizes terminals into workspaces, tabs, and panes, recognizes coding ag
 Before issuing any control command, verify that this agent is running inside a Herdr-managed pane:
 
 ```bash
-test "${HERDR_ENV:-}" = 1
+test -z "${HC_TERMINAL_ID:-}" && test "${HERDR_ENV:-}" = 1
 ```
 
-If the check fails, say that you are not running inside Herdr and stop. Do not inspect or control the focused Herdr session from outside Herdr.
+If HC_TERMINAL_ID is set, use the herdr-core skill for terminals and agents, or the herdr-app skill for desktop topology and window control. Do not use this older CLI. Otherwise, if the check fails, say that you are not running inside the older Herdr TUI and stop using this skill. Do not inspect or control the focused TUI session from outside it.
 
 When the check passes, the `herdr` binary in `PATH` talks to the current session. Use it to inspect neighboring work, create terminal layout, start agents and commands, read output, and wait for state changes.
 
