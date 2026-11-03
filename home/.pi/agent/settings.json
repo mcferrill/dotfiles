@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "theme": "system",
   "tuiMode": "regular",
   "enableInstallTelemetry": false,
@@ -21,7 +21,10 @@
       "skills": [],
       "prompts": [],
       "themes": []
-    }
+    },
+    "npm:pi-web-access",
+    "npm:context-mode",
+    "git:github.com/dmmulroy/pi-claude-cli"
   ],
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "medium",
@@ -100,5 +103,9 @@
     "-~/.codex/skills/_mattpocock/skills/engineering/triage",
     "-~/.codex/skills/_mattpocock/skills/productivity/write-a-skill"
   ],
-  "deviceId": "dfceb521-2795-438a-bb3d-8e1ce5d6d64d"
+  "deviceId": "dfceb521-2795-438a-bb3d-8e1ce5d6d64d",
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.8",
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0"
+  }
 }
