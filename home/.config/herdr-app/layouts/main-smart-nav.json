@@ -1,5 +1,9 @@
 {
   "id": "root",
+  "theme": {
+    "light": "tokyonight-day",
+    "dark": "tokyonight-moon"
+  },
   "cloned_from": {
     "name": "main",
     "version": "0.1.11"
