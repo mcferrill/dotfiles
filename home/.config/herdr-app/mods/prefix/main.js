@@ -13,6 +13,7 @@ const actions = {
   z: ["pane.zoom", {}],
   x: ["pane.close", {}],
   c: ["tab.new", {}],
+  b: ["layout.toggle", { id: "sidebar" }],
 };
 
 export default class Prefix extends View {
@@ -35,6 +36,6 @@ export default class Prefix extends View {
     return div().id("prefix").track_focus(this.handle)
       .on_key_down((event, cx) => this.key(event, cx))
       .size_full().p(16).rounded(8).bg(t.popover).text_color(t.foreground).text_size(13)
-      .child("Ctrl+B → \\ right · - below · hjkl focus · z zoom · x close · c new tab · Esc cancel");
+      .child("Ctrl+B → \\ right · - below · hjkl focus · z zoom · x close · c new tab · b sidebar · Esc cancel");
   }
 }
