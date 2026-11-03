@@ -84,4 +84,6 @@ if (( $+commands[op] )); then
 fi
 
 # Vite+ bin (https://viteplus.dev)
-. "/home/mcferrill/.config/vite-plus/env"
+if [ -r "$HOME/.config/vite-plus/env" ]; then
+    . "$HOME/.config/vite-plus/env"
+fi
