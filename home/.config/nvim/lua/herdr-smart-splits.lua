@@ -35,8 +35,8 @@ function M.move(direction)
     if not ({ left = true, down = true, up = true, right = true })[direction] then
         return false
     end
-    -- ponytail: the synchronous handoff navigates Desktop's current focus (local use only).
-    local result = vim.system({ "herdr-app", "do", "pane.go", "--direction", direction }, {
+    -- Hand off without sending the key back to Neovim; the mod preserves Desktop pane zoom.
+    local result = vim.system({ "herdr-app", "do", "smart-nav.move-" .. direction }, {
         text = true,
     }):wait(1000)
     if result.code ~= 0 then

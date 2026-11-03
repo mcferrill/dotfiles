@@ -20,18 +20,32 @@ export default class SmartNav extends View {
   async navigate(command) {
     const focus = focused();
     if (!focus?.pane || !focus.terminal) return;
-    if (!Object.hasOwn(keys, command)) return;
+    const handoff = command.startsWith("move-");
+    const direction = handoff ? command.slice(5) : command;
+    if (!Object.hasOwn(keys, direction)) return;
     const pane = panes().find((p) => p.pane === focus.pane);
-    if (pane?.program?.key === "nvim" && !focus.terminal.includes("/")) {
+    if (!handoff && pane?.program?.key === "nvim" && !focus.terminal.includes("/")) {
       const labels = terminals().find((t) => t.address === focus.terminal)?.labels;
       const server = labels?.["herdr.nvim-server"];
       const executable = labels?.["herdr.nvim-bin"];
       if (!server || !executable) throw new Error("Restart Neovim to register its RPC server and executable");
       // RPC bypasses hc keys' human-typing quiet period and Desktop's keybindings.
-      const result = await exec(executable, ["--server", server, "--remote-send", `<C-${keys[command]}>`]);
+      const result = await exec(executable, ["--server", server, "--remote-send", `<C-${keys[direction]}>`]);
       if (result.code !== 0) throw new Error(result.stderr);
+    } else if (pane?.zoomed) {
+      // ponytail: CLI round-trips use fresh focus and let the unzoomed geometry render.
+      const invoke = async (...args) => {
+        const result = await exec("herdr-app", ["do", ...args]);
+        if (result.code !== 0) throw new Error(result.stderr);
+      };
+      await invoke("pane.zoom", "--pane", focus.pane);
+      try {
+        await invoke("pane.go", "--direction", direction);
+      } finally {
+        await invoke("pane.zoom");
+      }
     } else {
-      run("pane.go", { direction: command });
+      run("pane.go", { direction });
     }
   }
 
