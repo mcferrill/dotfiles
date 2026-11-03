@@ -17,6 +17,13 @@ There are two different Herdr stacks. Never mix their commands or IDs.
 
 A missing `HERDR_ENV` does not mean herdr-core or herdr-app is unavailable.
 
+## Git worktrees
+
+Unless explicitly requested otherwise, create worktrees under
+`~/.worktrees/<project>/<branch>/`, where `<project>` is the main repository's
+folder name. Do not create them alongside repositories in `~/projects`.
+This convention does not authorize creating worktrees or moving existing ones.
+
 ## Classification in codemode
 
 For large batches requiring semantic labels or scores, consider an available
