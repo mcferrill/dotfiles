@@ -13,6 +13,9 @@ dot/vim/tmp/*
 .vscode
 dot/vim/init.vim
 
+# Herdr workspace-specific preferences and runtime state.
+home/.config/herdr-app/shared.json
+
 # Pi credentials, runtime state, and installed packages (keep config tracked).
 **/.pi/**/auth.json
 **/.pi/**/mcp-auth.json

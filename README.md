@@ -42,6 +42,33 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
   - [karabiner](https://karabiner-elements.pqrs.org/) - keyboard customization (more easily generated with [this](https://github.com/mxstbr/karabiner))
   - [aerospace](https://github.com/nikitabobko/AeroSpace) - window manager (like i3)
 
+## Herdr app
+
+Shared settings, keybindings, layouts, themes, and custom mods live under
+`home/.config/herdr-app/`. The app's `shared.json` is local-only and is not
+installed by this repo: it mixes preferences with workspace IDs and runtime
+state.
+
+To reproduce these preferences, merge the following keys into your local
+`~/.config/herdr-app/shared.json` with Herdr closed, preserving other settings:
+
+```json
+{
+  "layout": "main-smart-nav",
+  "frame.welcomed": "finished"
+}
+```
+
+`layout` selects the custom layout shipped here, which uses `tokyonight-day`
+for light mode and `tokyonight-moon` for dark mode. `frame.welcomed` marks
+onboarding as complete; omit it if you want to go through onboarding.
+
+`space.colors` maps local space IDs to ANSI palette names. The preference here
+is to use `ansi1` through `ansi6`, reusing colors across spaces as needed.
+Assign colors to your own spaces in Herdr; no workspace names, IDs, groups, or
+per-space mappings are distributed. The themes supply the palette, but these
+docs do not automatically apply color assignments.
+
 ## Pi
 
 Global agent instructions live in `home/.pi/agent/AGENTS.md`, linked to
