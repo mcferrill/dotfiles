@@ -69,10 +69,15 @@ Assign colors to your own spaces in Herdr; no workspace names, IDs, groups, or
 per-space mappings are distributed. The themes supply the palette, but these
 docs do not automatically apply color assignments.
 
-## Pi
+## Shared agent instructions
 
-Global agent instructions live in `home/.pi/agent/AGENTS.md`, linked to
-`~/.pi/agent/AGENTS.md` by `./install link`.
+Global agent instructions live in `home/.agents/AGENTS.md`, installed as
+`~/.agents/AGENTS.md` by `./install link`. The harness entry points
+`home/.pi/agent/AGENTS.md` and `home/.config/opencode/AGENTS.md` are relative
+symlinks to that shared source, so Pi and OpenCode receive the same guidance
+without duplicated files. Edit the shared source to update both harnesses.
+
+## Pi
 
 Local extensions live in `home/.pi/agent/extensions/`:
 

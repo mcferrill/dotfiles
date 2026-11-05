@@ -1,5 +1,6 @@
 {
   "global": {
+    "cmd-shift-m": "mod.open:markdown-panel",
     "alt-1": "space.select:1",
     "alt-2": "space.select:2",
     "alt-3": "space.select:3",

@@ -1,0 +1,14 @@
+{
+  "hide": [
+    { "provider": "anthropic" },
+    { "provider": "pi-claude-cli", "model": "claude-*-4*" },
+    { "provider": "openai", "model": "gpt-4*" },
+    { "provider": "openai", "model": "gpt-daybreak-*" },
+    { "provider": "openai", "model": "o1*" },
+    { "provider": "openai", "model": "o3*" },
+    { "provider": "openai", "model": "o4*" },
+    { "provider": "opencode", "model": "claude-*" },
+    { "provider": "opencode", "model": "gpt-*" },
+    { "provider": "opencode", "model": "grok-*" }
+  ]
+}

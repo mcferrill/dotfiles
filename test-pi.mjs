@@ -1,7 +1,7 @@
 // Run with Node 24+: node test-pi.mjs
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdtemp, readFile, rm, symlink } from "node:fs/promises";
+import { mkdtemp, readFile, readlink, realpath, rm, symlink } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import gitInterceptor from "./home/.pi/agent/extensions/git-interceptor.ts";
@@ -72,6 +72,13 @@ try {
 }
 
 let settings;
+const sharedInstructions = new URL("./home/.agents/AGENTS.md", import.meta.url);
+for (const path of ["home/.pi/agent/AGENTS.md", "home/.config/opencode/AGENTS.md"]) {
+  const entry = new URL(path, import.meta.url);
+  assert.equal(await readlink(entry), "../../.agents/AGENTS.md");
+  assert.equal(await realpath(entry), await realpath(sharedInstructions));
+  assert.equal(await readFile(entry, "utf8"), await readFile(sharedInstructions, "utf8"));
+}
 try {
   settings = JSON.parse(await readFile(new URL("./home/.pi/agent/settings.json", import.meta.url), "utf8"));
 } catch (error) {
@@ -84,4 +91,4 @@ assert.deepEqual(execFileSync("git", ["check-ignore", "--no-index", "--stdin"], 
 for (const path of ["home/.pi/agent/settings.json", "home/.pi/agent/mcp.json", "home/.pi/agent/cloak.json", "home/.pi/agent/extensions/save-md.ts", "home/.agents/skills/herdr/SKILL.md"]) {
   assert.throws(() => execFileSync("git", ["check-ignore", "--no-index", path], { cwd: new URL(".", import.meta.url) }), { status: 1 });
 }
-console.log("Pi checks passed: Git guard, Markdown saving, portable paths, package removal, and ignore rules.");
+console.log("Pi checks passed: shared instructions, Git guard, Markdown saving, portable paths, package removal, and ignore rules.");

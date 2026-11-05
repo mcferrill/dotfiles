@@ -24,7 +24,8 @@
     },
     "npm:pi-web-access",
     "npm:context-mode",
-    "git:github.com/dmmulroy/pi-claude-cli"
+    "git:github.com/dmmulroy/pi-claude-cli",
+    "npm:pi-hide-providers"
   ],
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "medium",
@@ -105,7 +106,7 @@
   ],
   "deviceId": "dfceb521-2795-438a-bb3d-8e1ce5d6d64d",
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.8",
-    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0"
+    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.9",
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0"
   }
 }
