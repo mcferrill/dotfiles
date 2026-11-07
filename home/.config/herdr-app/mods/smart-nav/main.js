@@ -1,22 +1,26 @@
 import { View, div } from "gpui-kit";
-import { focused, panes, terminals, exec, run, nextCommand, notify } from "herdr";
+import { focused, panes, terminals, exec, run, nextCommand, notify, shared, setShared, spaces } from "herdr";
 
+/** @type {Record<string, string>} */
 const keys = { left: "h", down: "j", up: "k", right: "l" };
 
 export default class SmartNav extends View {
+  /** @param {unknown} _props @param {import("gpui-kit").Context} cx */
   init(_props, cx) {
+    if (shared("frame.welcomed") !== "finished") setShared("frame.welcomed", "finished");
     cx.spawn(async () => {
       for (;;) {
         const command = await nextCommand();
         try {
           await this.navigate(command);
         } catch (error) {
-          notify({ title: "Smart navigation failed", body: error.message, level: "error" });
+          notify({ title: "Smart navigation failed", body: error instanceof Error ? error.message : String(error), level: "error" });
         }
       }
     });
   }
 
+  /** @param {string} command */
   async navigate(command) {
     const focus = focused();
     if (!focus?.pane || !focus.terminal) return;
@@ -34,6 +38,7 @@ export default class SmartNav extends View {
       if (result.code !== 0) throw new Error(result.stderr);
     } else if (pane?.zoomed) {
       // ponytail: CLI round-trips use fresh focus and let the unzoomed geometry render.
+      /** @param {...string} args */
       const invoke = async (...args) => {
         const result = await exec("herdr-app", ["do", ...args]);
         if (result.code !== 0) throw new Error(result.stderr);
@@ -50,6 +55,17 @@ export default class SmartNav extends View {
   }
 
   render() {
+    const colors = { .../** @type {Record<string, string>} */ (shared("space.colors") ?? {}) };
+    const palette = ["ansi6", "ansi3", "ansi4", "ansi5", "ansi2", "ansi1"];
+    let changed = false;
+    for (const space of spaces()) {
+      if (colors[space.id] || space.name === "~") continue;
+      /** @param {string} color */
+      const uses = (color) => Object.values(colors).filter((value) => value === color).length;
+      colors[space.id] = palette.reduce((best, color) => uses(color) < uses(best) ? color : best);
+      changed = true;
+    }
+    if (changed) setShared("space.colors", colors);
     // ponytail: main-smart-nav keeps this listener in a visible 1px layout block.
     return div().h(1);
   }

@@ -152,6 +152,8 @@ setup_keyd() {
 link_all() {
   walk_home_tree "$DOTFILES_DIR/home"
   walk_home_tree "$DOTFILES_DIR/home-$PLATFORM"
+  require_command node
+  run node "$DOTFILES_DIR/bin/herdr-app-setup" "$DOT_HOME/.config/herdr-app"
   setup_keyd
 }
 unlink_all() {

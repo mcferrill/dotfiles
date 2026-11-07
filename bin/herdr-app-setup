@@ -1,0 +1,30 @@
+#!/usr/bin/env node
+import { copyFileSync, existsSync, readFileSync, renameSync, unlinkSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
+import { resolve } from "node:path";
+
+const directory = resolve(process.argv[2]);
+const env = { ...process.env, HERDR_APP_HOME: directory };
+const status = spawnSync("herdr-app", ["status"], { env, encoding: "utf8" });
+if (status.status === 0) {
+  // Let the running app persist its own state; never race its shared.json writer.
+  const result = spawnSync("herdr-app", ["do", "layout.switch", "--name", "main-smart-nav"], { env, encoding: "utf8" });
+  if (result.status !== 0) throw new Error(result.stderr || result.error?.message || "Herdr layout activation failed");
+} else {
+  const path = `${directory}/shared.json`;
+  const exists = existsSync(path);
+  const state = exists ? JSON.parse(readFileSync(path, "utf8")) : {};
+  if (!state || typeof state !== "object" || Array.isArray(state)) throw new Error(`${path}: expected a JSON object`);
+  if (state.layout !== "main-smart-nav" || state["frame.welcomed"] !== "finished") {
+    state.layout = "main-smart-nav";
+    state["frame.welcomed"] = "finished";
+    const temporary = `${path}.tmp-${process.pid}`;
+    if (exists) copyFileSync(path, `${path}.backup.${Date.now()}-${process.pid}`);
+    try {
+      writeFileSync(temporary, `${JSON.stringify(state, null, 2)}\n`, { flag: "wx", mode: 0o600 });
+      renameSync(temporary, path);
+    } finally {
+      if (existsSync(temporary)) unlinkSync(temporary);
+    }
+  }
+}

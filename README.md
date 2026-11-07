@@ -45,29 +45,23 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 ## Herdr app
 
 Shared settings, keybindings, layouts, themes, and custom mods live under
-`home/.config/herdr-app/`. The app's `shared.json` is local-only and is not
-installed by this repo: it mixes preferences with workspace IDs and runtime
-state.
+`home/.config/herdr-app/`. Run `./install link` (also included in `init` and
+`update`) to activate `main-smart-nav`, its `tokyonight-day` / `tokyonight-moon`
+themes, and completed onboarding on Linux and macOS.
 
-To reproduce these preferences, merge the following keys into your local
-`~/.config/herdr-app/shared.json` with Herdr closed, preserving other settings:
+The app's `shared.json` stays local-only: it mixes preferences with workspace
+IDs and runtime state. If Herdr is running, setup activates the layout through
+its CLI; otherwise it merges only `layout` and `frame.welcomed`, preserving all
+other keys and backing up the file before changes. Invalid JSON is left
+untouched and reported as an error. `--dry-run` does not modify preferences.
 
-```json
-{
-  "layout": "main-smart-nav",
-  "frame.welcomed": "finished"
-}
-```
+The custom smart-nav mod assigns uncolored spaces the least-used color from
+`ansi1` through `ansi6` as spaces appear, including remote spaces. Existing
+color choices and disconnected spaces' mappings are preserved; unnamed home
+(`~`) spaces retain Herdr's default. No workspace names, IDs, groups, or
+per-space mappings are distributed.
 
-`layout` selects the custom layout shipped here, which uses `tokyonight-day`
-for light mode and `tokyonight-moon` for dark mode. `frame.welcomed` marks
-onboarding as complete; omit it if you want to go through onboarding.
-
-`space.colors` maps local space IDs to ANSI palette names. The preference here
-is to use `ansi1` through `ansi6`, reusing colors across spaces as needed.
-Assign colors to your own spaces in Herdr; no workspace names, IDs, groups, or
-per-space mappings are distributed. The themes supply the palette, but these
-docs do not automatically apply color assignments.
+Run `node test-herdr-config.mjs` to check setup and automatic color assignment.
 
 ## Shared agent instructions
 
