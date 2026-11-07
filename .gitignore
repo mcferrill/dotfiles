@@ -13,8 +13,18 @@ dot/vim/tmp/*
 .vscode
 dot/vim/init.vim
 
-# Herdr workspace-specific preferences and runtime state.
+# Herdr machine-specific preferences, generated files, and runtime state.
 home/.config/herdr-app/shared.json
+home/.config/herdr-app/data/
+home/.config/herdr-app/view.json
+home/.config/herdr-app/window.json
+home/.config/herdr-app/windows.json
+home/.config/herdr-app/seen.json
+home/.config/herdr-app/installed.json
+home/.config/herdr-app/mods/*/runtime.json
+home/.config/herdr-app/mods/*/gpui-kit.d.ts
+home/.config/herdr-app/mods/*/jsconfig.json
+home/.config/herdr-app/**/*.backup.*
 
 # Pi credentials, runtime state, and installed packages (keep config tracked).
 **/.pi/**/auth.json

@@ -44,16 +44,29 @@ Some things like SSH keys or private configs shouldn't be used. You can use a se
 
 ## Herdr app
 
-Shared settings, keybindings, layouts, themes, and custom mods live under
+Shared settings, keybindings, layouts, themes, and mod sources live under
 `home/.config/herdr-app/`. Run `./install link` (also included in `init` and
-`update`) to activate `main-smart-nav`, its `tokyonight-day` / `tokyonight-moon`
-themes, and completed onboarding on Linux and macOS.
+`update`) to activate `main-smart-nav-insights`, its Tokyo Night day/moon
+themes, Smart Nav, Annotator tabs/reviews, and the Insights toolbar on Linux
+and macOS. The original `main-smart-nav` layout is kept as a fallback.
+Prefix, Sessionizer, and the optional Markdown panel are also included.
+
+**New machine:** install Herdr App, herdr-core (`hc`), Node.js **22.15+**,
+and FiraCode Nerd Font. Annotator additionally needs its compiled helper;
+follow [the Herdr portability guide](docs/herdr-app.md) **before linking**.
+No mod npm dependencies are needed.
+
+Setup generates a local `mods/insights/runtime.json` using the Node executable
+running setup, so the desktop does not need mise on its PATH. Rerun
+`./install link` after changing/removing that Node installation.
 
 The app's `shared.json` stays local-only: it mixes preferences with workspace
 IDs and runtime state. If Herdr is running, setup activates the layout through
 its CLI; otherwise it merges only `layout` and `frame.welcomed`, preserving all
-other keys and backing up the file before changes. Invalid JSON is left
+other keys and backing up the file before changes. Invalid shared JSON is left
 untouched and reported as an error. `--dry-run` does not modify preferences.
+Quota integrations, credentials, usage history, and session state stay local;
+see the portability guide for per-machine activation.
 
 The custom smart-nav mod assigns uncolored spaces the least-used color from
 `ansi1` through `ansi6` as spaces appear, including remote spaces. Existing
@@ -61,7 +74,8 @@ color choices and disconnected spaces' mappings are preserved; unnamed home
 (`~`) spaces retain Herdr's default. No workspace names, IDs, groups, or
 per-space mappings are distributed.
 
-Run `node test-herdr-config.mjs` to check setup and automatic color assignment.
+Run `node test-herdr-config.mjs` to check portable setup, state preservation,
+and the active layout's mod dependencies.
 
 ## Shared agent instructions
 
