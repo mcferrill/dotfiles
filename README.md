@@ -51,6 +51,11 @@ themes, Smart Nav, Annotator tabs/reviews, and the Insights toolbar on Linux
 and macOS. The original `main-smart-nav` layout is kept as a fallback.
 Prefix, Sessionizer, and the optional Markdown panel are also included.
 
+Mod files are copied, not symlinked: Herdr rejects imports that resolve outside
+the mod directory. Edit sources here, then run `./install link` to deploy them.
+Existing mod file symlinks are migrated automatically; differing local files
+are backed up before replacement. `./install unlink` leaves copied mods intact.
+
 **New machine:** install Herdr App, herdr-core (`hc`), Node.js **22.15+**,
 and FiraCode Nerd Font. Annotator additionally needs its compiled helper;
 follow [the Herdr portability guide](docs/herdr-app.md) **before linking**.

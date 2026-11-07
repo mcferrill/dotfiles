@@ -45,16 +45,16 @@ EOF
       cat <<'EOF'
 Usage: ./install link [--dry-run] [--verbose]
 
-Create or refresh the managed links. Existing files are backed up before
-being replaced.
+Create or refresh managed links and copy Herdr mod files (imports must stay
+inside each mod). Existing files are backed up before being replaced.
 EOF
       ;;
     unlink)
       cat <<'EOF'
 Usage: ./install unlink [--dry-run] [--verbose]
 
-Remove managed links that point into this repository. Other files are left
-untouched.
+Remove managed links that point into this repository. Copied Herdr mods and
+other files are left untouched.
 EOF
       ;;
     packages)
@@ -96,9 +96,14 @@ run() {
 require_command() { command -v "$1" >/dev/null 2>&1 || { echo "Missing command: $1" >&2; return 1; }; }
 
 link_file() {
-  local source="${DOTFILES_DIR}/$1" destination="${DOT_HOME}/${2#~/}"
+  local source="${DOTFILES_DIR}/$1" destination="${DOT_HOME}/${2#~/}" copy=false
+  # Herdr rejects imports through file symlinks outside the mod directory.
+  [[ "$2" == .config/herdr-app/mods/* ]] && copy=true
   [[ -e "$source" ]] || { echo "Missing source: $source" >&2; return 1; }
-  if [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then return 0; fi
+  if $copy; then
+    if [[ -f "$destination" && ! -L "$destination" ]] && cmp -s "$source" "$destination"; then return 0; fi
+  elif [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then return 0;
+  fi
   if [[ -e "$destination" || -L "$destination" ]]; then
     if [[ -L "$destination" && "$(readlink "$destination")" == "${DOTFILES_DIR}"/* ]]; then
       run rm "$destination"
@@ -110,7 +115,9 @@ link_file() {
     fi
   fi
   run mkdir -p "$(dirname "$destination")"
-  run ln -s "$source" "$destination"
+  if $copy; then run cp "$source" "$destination"
+  else run ln -s "$source" "$destination"
+  fi
 }
 
 walk_home_tree() {
@@ -286,7 +293,7 @@ package_update() {
     run sudo apt-get update; run sudo apt-get upgrade -y
   fi
 }
-doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; validate_packages || failures=$((failures + 1)); [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]] && echo "ok: $target" || echo "unmanaged: $target"; done < <(managed_links); return "$failures"; }
+doctor() { local failures=0 path target; for path in git curl; do command -v "$path" >/dev/null 2>&1 || { echo "missing: $path"; failures=$((failures + 1)); }; done; validate_packages || failures=$((failures + 1)); [[ "$PLATFORM" != darwin ]] || command -v brew >/dev/null 2>&1 || { echo "missing: brew"; failures=$((failures + 1)); }; while IFS= read -r path; do target="${DOT_HOME}/${path}"; if [[ "$path" == .config/herdr-app/mods/* && -f "$target" && ! -L "$target" ]] && cmp -s "$DOTFILES_DIR/home/$path" "$target"; then echo "ok (copy): $target"; elif [[ -L "$target" && "$(readlink "$target")" == "${DOTFILES_DIR}"/* ]]; then echo "ok: $target"; else echo "unmanaged: $target"; fi; done < <(managed_links); return "$failures"; }
 
 while [[ $# -gt 0 ]]; do case "$1" in --dry-run) DRY_RUN=true; shift ;; --verbose) VERBOSE=true; shift ;; -h|--help) usage; exit 0 ;; *) break ;; esac; done
 command="${1:-init}"; shift || true

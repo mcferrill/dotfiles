@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, readdirSync, rmSync, existsSync, readlinkSync } from "node:fs";
+import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, readdirSync, rmSync, existsSync, lstatSync, symlinkSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { spawnSync } from "node:child_process";
@@ -83,7 +83,29 @@ esac
   const linked = install("link");
   assert.equal(linked.status, 0, linked.stderr);
   const installed = join(targetHome, ".config/herdr-app");
-  assert.equal(readlinkSync(join(installed, "mods/insights/main.js")), join(config, "mods/insights/main.js"));
+  const modFile = join(installed, "mods/insights/main.js");
+  const modSource = join(config, "mods/insights/main.js");
+  const assertCopied = () => {
+    assert.equal(lstatSync(modFile).isSymbolicLink(), false);
+    assert.equal(readFileSync(modFile, "utf8"), readFileSync(modSource, "utf8"));
+  };
+  assertCopied();
+  // Migrate the old per-file symlinks without touching repository sources.
+  rmSync(modFile);
+  symlinkSync(modSource, modFile);
+  assert.equal(install("link").status, 0);
+  assertCopied();
+  writeFileSync(modFile, "local changes");
+  assert.equal(install("link").status, 0);
+  assertCopied();
+  const modBackups = () => readdirSync(join(installed, "mods/insights")).filter(n => n.startsWith("main.js.backup."));
+  assert.equal(modBackups().length, 1);
+  assert.equal(readFileSync(join(installed, "mods/insights", modBackups()[0]), "utf8"), "local changes");
+  assert.equal(install("link").status, 0);
+  assert.equal(modBackups().length, 1, "unchanged copies must not be backed up again");
+  const diagnosis = install("doctor");
+  assert.equal(diagnosis.status, 0, diagnosis.stderr);
+  assert.ok(diagnosis.stdout.includes(`ok (copy): ${modFile}`));
   assert.equal(JSON.parse(readFileSync(join(installed, "shared.json"))).layout, layout);
   assert.ok(existsSync(JSON.parse(readFileSync(join(installed, "mods/insights/runtime.json"))).node));
   console.log("Herdr config checks passed (setup, backups, runtime, CLI, layout dependencies, install, dry-run).");
