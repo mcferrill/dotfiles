@@ -31,7 +31,7 @@
     "ga4": {
       "url": "https://ga4-gtm-mcp-server.1-five-q-innovations.workers.dev/mcp",
       "headers": {
-        "Authorization": "Bearer ${GA4_MCP_TOKEN}"
+          "Authorization": "!printf 'Bearer %s' \"$(/usr/bin/security find-generic-password -s ga4-mcp-token -w)\""
       }
     },
     "agent-gateway": {
