@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.5.0",
+  "lastChangelogVersion": "1.5.2",
   "theme": "system",
   "tuiMode": "regular",
   "enableInstallTelemetry": false,
@@ -106,7 +106,7 @@
   ],
   "deviceId": "dfceb521-2795-438a-bb3d-8e1ce5d6d64d",
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.10",
+    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.11",
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0"
   }
 }
