@@ -31,7 +31,7 @@
     "ga4": {
       "url": "https://ga4-gtm-mcp-server.1-five-q-innovations.workers.dev/mcp",
       "headers": {
-          "Authorization": "!printf 'Bearer %s' \"$(/usr/bin/security find-generic-password -s ga4-mcp-token -w)\""
+        "Authorization": "!printf 'Bearer %s' \"$(/usr/bin/security find-generic-password -s ga4-mcp-token -w)\""
       }
     },
     "agent-gateway": {
@@ -71,6 +71,9 @@
         "PATH": "/usr/bin:${PATH}"
       },
       "enabled": false
+    },
+    "fiveq-compass": {
+      "url": "https://fiveq-compass-mcp.fiveq.com/mcp"
     }
   }
 }
