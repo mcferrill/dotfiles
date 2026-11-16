@@ -8,20 +8,12 @@ gitleaks = "latest"
 lazygit = "latest"
 neovim = "0.11"
 node = "lts"
-# opencode = "latest"
-pi = "latest"
 python = "3.13.2"
 ripgrep = "latest"
 starship = "latest"
 uv = "latest"
 watchexec = "latest"
-gh = "latest"
-codex = "latest"
 pnpm = "latest"
-"npm:playwright" = "latest"
-claude = "latest"
-opencode = { version = "latest", allow_builds = ["@opencode/cli"] }
-"npm:@xai-official/grok" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
@@ -29,3 +21,5 @@ experimental = true
 
 [settings.python]
 compile = false
+
+[settings.upgrade]
