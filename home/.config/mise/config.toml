@@ -14,6 +14,7 @@ starship = "latest"
 uv = "latest"
 watchexec = "latest"
 pnpm = "latest"
+pi = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
