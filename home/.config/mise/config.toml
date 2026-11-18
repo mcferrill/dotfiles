@@ -15,6 +15,9 @@ uv = "latest"
 watchexec = "latest"
 pnpm = "latest"
 pi = "latest"
+claude = "latest"
+codex = "latest"
+grok = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["python"]
