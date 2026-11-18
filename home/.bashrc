@@ -8,10 +8,10 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # Shared settings for bash & zsh
-source $DOTFILES/prompt/common.sh
+source "$DOTFILES/prompt/environment.sh"
 
 # Shared aliases, etc.
-source $DOTFILES/prompt/aliases.sh
+source "$DOTFILES/prompt/aliases.zsh"
 
 # Vite+ bin (https://viteplus.dev)
 if [ -r "$HOME/.config/vite-plus/env" ]; then
