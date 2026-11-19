@@ -74,6 +74,9 @@
     },
     "fiveq-compass": {
       "url": "https://fiveq-compass-mcp.fiveq.com/mcp"
+    },
+    "fiveq-publish": {
+      "url": "https://publish.fiveq.dev/mcp"
     }
   }
 }
