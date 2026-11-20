@@ -108,6 +108,6 @@
   "extensionChangelogVersions": {
     "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.5.1",
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
-    "{\"source\":\"npm:@nicknisi/pi-cloak\",\"scope\":\"user\"}": "0.2.1"
+    "{\"source\":\"npm:@nicknisi/pi-cloak\",\"scope\":\"user\"}": "0.2.2"
   }
 }
