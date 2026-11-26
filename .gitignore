@@ -26,7 +26,8 @@ home/.config/herdr-app/mods/*/gpui-kit.d.ts
 home/.config/herdr-app/mods/*/jsconfig.json
 home/.config/herdr-app/**/*.backup.*
 
-# Pi credentials, runtime state, and installed packages (keep config tracked).
+# Pi private MCP config, credentials, runtime state, and installed packages.
+home/.pi/agent/mcp.json
 **/.pi/**/auth.json
 **/.pi/**/mcp-auth.json
 **/.pi/**/mcp-oauth/
