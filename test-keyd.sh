@@ -15,7 +15,11 @@ run() {
     printf '%s\n' "$*" >>"$SANDBOX/calls"
     case "$*" in
     'keyd check') "$check_ok" ;;
-    'sudo systemctl '* | 'sudo keyd reload') : ;;
+    'sudo systemctl '*) : ;;
+    'sudo keyd reload')
+        echo 'Unsafe keyd reload invoked' >&2
+        return 1
+        ;;
     *) "$@" ;;
     esac
 }
@@ -23,7 +27,9 @@ sudo() { "$@"; }
 check_ok=true
 setup_keyd
 [[ "$(readlink "$SANDBOX/keyd")" == "$ROOT/home/.config/keyd" ]]
-grep -q 'sudo keyd reload' "$SANDBOX/calls"
+printf 'sudo systemctl enable keyd\nsudo systemctl restart keyd\n' >"$SANDBOX/expected-service-calls"
+grep '^sudo systemctl ' "$SANDBOX/calls" >"$SANDBOX/service-calls"
+cmp "$SANDBOX/expected-service-calls" "$SANDBOX/service-calls"
 # Already managed: no link recreation.
 : >"$SANDBOX/calls"
 setup_keyd

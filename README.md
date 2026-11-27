@@ -126,7 +126,7 @@ Other keyboards are unchanged; add their IDs deliberately if needed.
 On Arch, `./install` installs keyd and activates its configuration. If keyd is
 already installed, `./install link` is sufficient. On Linux, the linking step
 creates `/etc/keyd` as a symlink to this repo (replacing only an empty directory),
-checks the config, enables the service, and reloads keyd. Existing nonempty or
+checks the config, enables the service, and restarts keyd. Existing nonempty or
 unrelated configurations are left untouched with a warning; review and back them
 up before moving them aside and rerunning. macOS and `DOT_HOME` test installs skip
 system keyd setup.
@@ -140,7 +140,9 @@ Quefrency `altwin:swap_alt_win` device overrides; keyd now owns that swap. Leave
 other input settings alone. Run `hyprctl reload` and `hyprctl configerrors`.
 
 After edits, run `keyd check` (including checking for warnings), then
-`sudo keyd reload`. Check `journalctl -u keyd -b` for the expected device matches.
+`sudo systemctl restart keyd`. Avoid `keyd reload`: keyd 2.6.0 can crash after
+reloading freed keyboard state ([upstream #1320](https://github.com/rvaiya/keyd/issues/1320)).
+Check `journalctl -u keyd -b` for the expected device matches.
 Test Caps alone and all nine shortcuts on both keyboards, check both sides of
 the modifier row, and reconnect the Quefrency. Confirm mice/trackpad still work.
 Hardware or firmware changes may require updating the interface IDs.

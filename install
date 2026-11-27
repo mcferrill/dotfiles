@@ -153,8 +153,9 @@ setup_keyd() {
     return 0
   fi
   run keyd check || return $?
-  run sudo systemctl enable --now keyd || return $?
-  run sudo keyd reload
+  run sudo systemctl enable keyd || return $?
+  # ponytail: restart avoids keyd 2.6.0's reload use-after-free (upstream #1320).
+  run sudo systemctl restart keyd
 }
 link_all() {
   walk_home_tree "$DOTFILES_DIR/home"
