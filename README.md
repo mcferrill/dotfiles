@@ -82,6 +82,15 @@ per-space mappings are distributed.
 Run `node test-herdr-config.mjs` to check portable setup, state preservation,
 and the active layout's mod dependencies.
 
+## Omarchy idle and lock
+
+Arch-only user plugins in `home-arch/.config/omarchy/plugins/` preserve the
+AC + HDMI policy: screensaver after five minutes, secure lock after ten,
+then black without powering off the displays. Battery timing and lid-close
+sleep behavior stay unchanged. See [restore instructions and compatibility
+notes](docs/omarchy-idle.md) before enabling the clones; linking alone does
+not activate them.
+
 ## Shared agent instructions
 
 Global agent instructions live in `home/.agents/AGENTS.md`, installed as
