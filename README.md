@@ -91,6 +91,13 @@ sleep behavior stay unchanged. See [restore instructions and compatibility
 notes](docs/omarchy-idle.md) before enabling the clones; linking alone does
 not activate them.
 
+## Omarchy workspaces
+
+The Arch-only `home-arch/.config/hypr/workspaces.lua` keeps global workspaces
+1–5 on HDMI (falling back to the laptop when unplugged) and 6–10 on the laptop.
+See [restore and load-order instructions](docs/omarchy-workspaces.md); linking
+alone does not activate the policy. Run `lua test-hypr-workspaces.lua` to check it.
+
 ## Shared agent instructions
 
 Global agent instructions live in `home/.agents/AGENTS.md`, installed as
